@@ -27,6 +27,7 @@ def load_scene(path, dtype="float32"):
         )
         shape = (metadata["reflective_lines"], metadata["reflective_samples"])
         band_names = {
+            1: "coastal_aerosol",
             2: "blue",
             3: "green",
             4: "red",
@@ -36,6 +37,7 @@ def load_scene(path, dtype="float32"):
             10: "thermal",
         }
         band_titles = {
+            1: "coastal aerosol",
             2: "blue",
             3: "green",
             4: "red",
@@ -45,6 +47,7 @@ def load_scene(path, dtype="float32"):
             10: "thermal",
         }
         band_units = {
+            1: "reflectance",
             2: "reflectance",
             3: "reflectance",
             4: "reflectance",
@@ -62,10 +65,12 @@ def load_scene(path, dtype="float32"):
                 "units": band_units[number],
             }
             mult, add = None, None
+            mult_entries = [f"mult_band_{number}", f"mult_band_st_b{number}"]
+            add_entries = [f"add_band_{number}", f"add_band_st_b{number}"]
             for key in metadata:
-                if key.endswith(f"mult_band_{number}"):
+                if any(key.endswith(entry) for entry in mult_entries):
                     mult = metadata[key]
-                elif key.endswith(f"add_band_{number}"):
+                if any(key.endswith(entry) for entry in add_entries):
                     add = metadata[key]
             band = reader.read_band(fname).astype(dtype)
             band[band == 0] = np.nan
