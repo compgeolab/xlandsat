@@ -115,7 +115,7 @@ def load_scene(path, dtype="float32"):
 
 def parse_metadata(text):
     """
-    Parse key metadata from *_MTL.txt files into a dictionary.
+    Parse key metadata from ``*_MTL.txt`` files into a dictionary.
     """
     metadata_raw = [line.strip() for line in text]
     metadata = {}
@@ -197,7 +197,7 @@ class TarReader:
             band = skimage.io.imread(fobj)
         return band
 
-    def __exit__(self, *args):
+    def __exit__(self, exc_type, exc_value, traceback):  # noqa: U100
         self._archive.close()
 
 
@@ -219,7 +219,7 @@ class FolderReader:
         band = skimage.io.imread(fname)
         return band
 
-    def __exit__(self, *args):
+    def __exit__(self, exc_type, exc_value, traceback):  # noqa: U100
         pass
 
 
