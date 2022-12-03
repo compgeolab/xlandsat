@@ -1,11 +1,17 @@
+# Copyright (c) 2022 The xlandsat developers.
+# Distributed under the terms of the MIT License.
+# SPDX-License-Identifier: MIT
+"""
+Main I/O functions for loading the scenes into xarray.
+"""
+import io
 import pathlib
 import re
-import io
 import tarfile
 
 import numpy as np
-import xarray as xr
 import skimage.io
+import xarray as xr
 
 
 def load_scene(path, dtype="float32"):

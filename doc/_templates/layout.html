@@ -1,0 +1,16 @@
+{# Import the theme's layout. #}
+{% extends "!layout.html" %}
+
+{% block extrahead %}
+    <!-- Plausible analytics for anonymous usage statistics -->
+    <script defer data-domain="fatiando.org" src="https://plausible.io/js/plausible.js"></script>
+{% endblock %}
+
+
+{% block htmltitle %}
+    {% if title == '' or title == 'Home' %}
+        <title>{{ docstitle|striptags|e }}</title>
+    {% else %}
+        <title>{{ title|striptags|e }} | {{ docstitle|striptags|e }}</title>
+    {% endif %}
+{% endblock %}

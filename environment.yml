@@ -1,0 +1,41 @@
+name: xlandsat
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python==3.10
+  - pip
+  - make
+  # Run
+  - numpy
+  - xarray
+  - scikit-image
+  # Build
+  - build
+  - twine
+  # Test
+  - pytest
+  - pytest-cov
+  - coverage
+  - pooch
+  # Documentation
+  - sphinx==4.5.*
+  - sphinx-book-theme==0.3.*
+  - sphinx-copybutton==0.5.*
+  - jupyter-sphinx==0.3.*
+  - sphinx-design==0.1.*
+  - myst-parser==0.15.*
+  - matplotlib
+  # Style
+  - black
+  - pathspec
+  - isort
+  - flake8
+  - flake8-bugbear
+  - flake8-builtins
+  - flake8-functions
+  - flake8-mutable
+  - flake8-rst-docstrings
+  - flake8-simplify
+  - flake8-unused-arguments
+  - pep8-naming

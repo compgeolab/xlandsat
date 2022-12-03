@@ -1,6 +1,12 @@
+# Copyright (c) 2022 The xlandsat developers.
+# Distributed under the terms of the MIT License.
+# SPDX-License-Identifier: MIT
+"""
+Generate and manipulate composites.
+"""
+import numpy as np
 import skimage.exposure
 import xarray as xr
-import numpy as np
 
 
 def composite(scene, bands=("red", "green", "blue"), rescale_to=None):
@@ -30,8 +36,7 @@ def composite(scene, bands=("red", "green", "blue"), rescale_to=None):
             255,
         )
     long_name = (
-        ", ".join(f"{scene[b].attrs['long_name']}" for b in bands)
-        + " composite"
+        ", ".join(f"{scene[b].attrs['long_name']}" for b in bands) + " composite"
     )
     name = f"composite_{'_'.join(bands)}"
     coordinates = {"channel": ["red", "green", "blue", "alpha"][:ndim]}
