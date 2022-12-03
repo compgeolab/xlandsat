@@ -10,7 +10,7 @@
 <p align="center">
 <a href="https://pypi.python.org/pypi/xlandsat"><img src="http://img.shields.io/pypi/v/xlandsat.svg?style=flat-square" alt="Latest version on PyPI"></a>
 <a href="https://github.com/conda-forge/xlandsat-feedstock"><img src="https://img.shields.io/conda/vn/conda-forge/xlandsat.svg?style=flat-square" alt="Latest version on conda-forge"></a>
-<a href="https://codecov.io/gh/compgeolab/xlandsat"><img src="https://img.shields.io/codecov/c/github/fatiando/xlandsat/main.svg?style=flat-square" alt="Test coverage status"></a>
+<a href="https://codecov.io/gh/compgeolab/xlandsat"><img src="https://img.shields.io/codecov/c/github/compgeolab/xlandsat/main.svg?style=flat-square" alt="Test coverage status"></a>
 <a href="https://pypi.python.org/pypi/xlandsat"><img src="https://img.shields.io/pypi/pyversions/xlandsat.svg?style=flat-square" alt="Compatible Python versions."></a>
 </p>
 
