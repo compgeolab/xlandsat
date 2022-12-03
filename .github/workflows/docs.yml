@@ -50,8 +50,8 @@ jobs:
           persist-credentials: false
 
       # Need the tags so that setuptools-scm can form a valid version number
-      - name: Fetch git tags
-        run: git fetch origin 'refs/tags/*:refs/tags/*'
+      #- name: Fetch git tags
+      #  run: git fetch origin 'refs/tags/*:refs/tags/*'
 
       - name: Setup Python
         uses: actions/setup-python@v4
