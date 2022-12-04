@@ -16,7 +16,41 @@ import xarray as xr
 
 def load_scene(path, dtype="float32"):
     """
-    Load a Landsat scene downloaded from EarthExplorer.
+    Load a Landsat scene downloaded from USGS EarthExplorer.
+
+    Can read from a folder with ``*.TIF`` files and an ``*_MTL.txt`` file or
+    directly from a tar archive (compressed or not) without the need to first
+    unpack the archive. The bands are converted to reflectance/temperature
+    units using appropriate scaling parameters and UTM coordinates are set in
+    the returned :class:`xarray.Dataset`.
+
+    .. important::
+
+        Do not rename the TIF or MTL files. The folder/archive can have any
+        name but TIF and MTL files need their original names.
+
+    .. note::
+
+        Only supports Landsat 8 and 9 Collection 2 Level 2 scenes.
+
+    Parameters
+    ----------
+    path : str or :class:`pathlib.Path`
+        The path to a folder or tar archive containing the files for a given
+        scene. **Must** include the ``*_MTL.txt`` metadata file. Not all band
+        files need to be present.
+    dtype : str or numpy dtype object
+        The type used for the band arrays. Integer types will result in
+        rounding so floating point is recommended. Default is float32.
+
+    Returns
+    -------
+    scene : :class:`xarray.Dataset`
+        The loaded scene including UTM easting and northing as dimensional
+        coordinates, bands as 2D arrays of the given type as variables, and
+        metadata read from the MTL file and other CF compliant fields in the
+        ``attrs`` attribute.
+
     """
     path = pathlib.Path(path)
     if path.is_file() and ".tar" in path.suffixes:
@@ -172,10 +206,17 @@ def parse_metadata(text):
 
 
 class TarReader:
+    """
+    Context manager for reading metadata and bands from a tar archive.
+    """
+
     def __init__(self, path):
         self.path = path
 
     def __enter__(self):
+        """
+        Enter the context by opening the archive for reading.
+        """
         self._archive = tarfile.open(self.path)
         self._members = [f.name for f in self._archive.getmembers()]
         self.metadata_files = [f for f in self._members if f.endswith("MTL.txt")]
@@ -185,6 +226,9 @@ class TarReader:
         return self
 
     def read_metadata(self):
+        """
+        Return a list of lines read from the metadata file.
+        """
         _check_metadata(self.metadata_files, self.path)
         with io.TextIOWrapper(
             self._archive.extractfile(self.metadata_files[0])
@@ -193,37 +237,62 @@ class TarReader:
         return metadata
 
     def read_band(self, fname):
+        """
+        Read a band file using scikit-image.
+        """
         with self._archive.extractfile(fname) as fobj:
             band = skimage.io.imread(fobj)
         return band
 
     def __exit__(self, exc_type, exc_value, traceback):  # noqa: U100
+        """
+        Clean up the context by closing the archive.
+        """
         self._archive.close()
 
 
 class FolderReader:
+    """
+    Context manager for reading metadata and bands from a local folder.
+    """
+
     def __init__(self, path):
         self.path = path
 
     def __enter__(self):
+        """
+        Enter the context by grabbing a list of files.
+        """
         self.metadata_files = list(self.path.glob("*_MTL.txt"))
         self.band_files = sorted(self.path.glob("*_B*.TIF"))
         return self
 
     def read_metadata(self):
+        """
+        Return a list of lines read from the metadata file.
+        """
         _check_metadata(self.metadata_files, self.path)
         metadata = parse_metadata(self.metadata_files[0].read_text().split("\n"))
         return metadata
 
     def read_band(self, fname):
+        """
+        Read a band file using scikit-image.
+        """
         band = skimage.io.imread(fname)
         return band
 
     def __exit__(self, exc_type, exc_value, traceback):  # noqa: U100
+        """
+        No clean up needed for this context.
+        """
         pass
 
 
 def _check_metadata(files, path):
+    """
+    Check the number of metadata files found and raise appropriate exceptions.
+    """
     if len(files) > 1:
         raise ValueError(
             f"Found {len(files)} '*_MTL.txt' files in {str(path)}. "
