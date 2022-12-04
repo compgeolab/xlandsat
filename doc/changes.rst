@@ -6,9 +6,9 @@ Changelog
 Version 0.0.1
 -------------
 
-Released on: 2022/XX/XX
+Released on: 2022/12/04
 
-doi: https://doi.org/XXX
+doi: https://doi.org/10.5281/zenodo.7395474
 
 **First release of xlandsat!** This first release provides:
 
