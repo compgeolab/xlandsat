@@ -45,8 +45,7 @@ Here's a quick example:
     scene.rgb.plot.imshow()
 
 
-Interested?
------------
+----
 
 .. grid:: 1 2 1 2
     :margin: 5 5 0 0
