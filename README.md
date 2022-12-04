@@ -1,6 +1,5 @@
 <h1 align="center">xlandsat</h1>
-<h2 align="center">Load Landsat remote sensing images into xarray</h2>
-
+<p align="center"><strong>Load Landsat remote sensing images into xarray.</strong></p>
 <p align="center">
 <a href="https://www.compgeolab.org/xlandsat"><strong>Documentation</strong> (latest)</a> •
 <a href="https://www.compgeolab.org/xlandsat/dev"><strong>Documentation</strong> (main branch)</a> •
