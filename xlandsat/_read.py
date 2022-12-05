@@ -13,7 +13,6 @@ import numpy as np
 import skimage.io
 import xarray as xr
 
-
 BAND_NAMES = {
     1: "coastal_aerosol",
     2: "blue",
