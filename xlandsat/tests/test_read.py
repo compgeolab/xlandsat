@@ -40,10 +40,27 @@ def test_load_scene_folder():
     assert path.is_dir()
     scene = load_scene(path)
     assert scene.attrs["title"] == "Landsat 8 scene from 2019-01-30 (path/row=218/74)"
-    assert set(scene.data_vars) == set(
-        ["red", "green", "blue", "nir", "swir1", "swir2"]
+    bands = ["red", "green", "blue", "nir", "swir1", "swir2"]
+    assert set(scene.data_vars) == set(bands)
+    assert all(scene[band].shape == (300, 400) for band in bands)
+
+
+def test_load_scene_crop():
+    "Check that loading only a portion of a scene works"
+    path = pooch.retrieve(
+        "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
+        known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
     )
-    assert scene.red.shape == (300, 400)
+    region = [584400, 596070, -2231670, -2223000]
+    scene = load_scene(path, region=region)
+    assert scene.attrs["title"] == "Landsat 8 scene from 2019-01-30 (path/row=218/74)"
+    bands = ["red", "green", "blue", "nir", "swir1", "swir2"]
+    assert set(scene.data_vars) == set(bands)
+    assert scene.easting.min() == region[0]
+    assert scene.easting.max() == region[1]
+    assert scene.northing.min() == region[2]
+    assert scene.northing.max() == region[3]
+    assert all(scene[band].shape == (290, 390) for band in bands)
 
 
 def test_load_scene_select_bands():

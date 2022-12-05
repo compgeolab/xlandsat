@@ -45,7 +45,7 @@ BAND_UNITS = {
 }
 
 
-def load_scene(path, bands=None, dtype="float32"):
+def load_scene(path, bands=None, region=None, dtype="float32"):
     """
     Load a Landsat scene downloaded from USGS EarthExplorer.
 
@@ -73,6 +73,10 @@ def load_scene(path, bands=None, dtype="float32"):
     bands : None or list
         List of band names to load. If None, will load all bands present in the
         folder/archive. See below for valid band names. Default is None.
+    region : None or list
+        Crop the scene to this bounding box given as a list of West, East,
+        South, and North coordinate values (UTM in meters). If None, no
+        cropping is performed on the scene. Default is None.
     dtype : str or numpy dtype object
         The type used for the band arrays. Integer types will result in
         rounding so floating point is recommended. Default is float32.
@@ -113,14 +117,18 @@ def load_scene(path, bands=None, dtype="float32"):
         reader_class = FolderReader
     with reader_class(path) as reader:
         metadata = reader.read_metadata()
-        region = (
+        available_bands = [int(str(f).split("_B")[-1][:-4]) for f in reader.band_files]
+        scene_region = (
             metadata["corner_ll_projection_x_product"],
             metadata["corner_lr_projection_x_product"],
             metadata["corner_ll_projection_y_product"],
             metadata["corner_ul_projection_y_product"],
         )
         shape = (metadata["reflective_lines"], metadata["reflective_samples"])
-        available_bands = [int(str(f).split("_B")[-1][:-4]) for f in reader.band_files]
+        coords = {
+            "easting": np.linspace(*scene_region[:2], shape[1]),
+            "northing": np.linspace(*scene_region[2:], shape[0]),
+        }
         data_vars = {}
         dims = ("northing", "easting")
         for number, fname in zip(available_bands, reader.band_files):
@@ -134,7 +142,7 @@ def load_scene(path, bands=None, dtype="float32"):
                     mult = metadata[key]
                 if any(key.endswith(entry) for entry in add_entries):
                     add = metadata[key]
-            band = reader.read_band(fname).astype(dtype)
+            band = reader.read_band(fname).astype(dtype)[::-1, :]
             band[band == 0] = np.nan
             band *= mult
             band += add
@@ -142,7 +150,17 @@ def load_scene(path, bands=None, dtype="float32"):
                 "long_name": BAND_TITLES[number],
                 "units": BAND_UNITS[number],
             }
-            data_vars[BAND_NAMES[number]] = (dims, band, band_attrs)
+            data_vars[BAND_NAMES[number]] = xr.DataArray(
+                data=band,
+                dims=dims,
+                coords=coords,
+                attrs=band_attrs,
+                name=BAND_NAMES[number],
+            )
+            if region is not None:
+                data_vars[BAND_NAMES[number]] = data_vars[BAND_NAMES[number]].sel(
+                    easting=slice(*region[:2]), northing=slice(*region[2:])
+                )
     attrs = {
         "Conventions": "CF-1.8",
         "title": (
@@ -152,14 +170,7 @@ def load_scene(path, bands=None, dtype="float32"):
         ),
     }
     attrs.update(metadata)
-    scene = xr.Dataset(
-        data_vars,
-        coords={
-            "easting": np.linspace(*region[:2], shape[1]),
-            "northing": np.linspace(*region[2:], shape[0])[::-1],
-        },
-        attrs=attrs,
-    )
+    scene = xr.Dataset(data_vars, attrs=attrs)
     scene.easting.attrs = {
         "long_name": "UTM easting",
         "standard_name": "projection_x_coordinate",
