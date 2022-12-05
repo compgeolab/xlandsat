@@ -13,8 +13,39 @@ import numpy as np
 import skimage.io
 import xarray as xr
 
+BAND_NAMES = {
+    1: "coastal_aerosol",
+    2: "blue",
+    3: "green",
+    4: "red",
+    5: "nir",
+    6: "swir1",
+    7: "swir2",
+    10: "thermal",
+}
+BAND_TITLES = {
+    1: "coastal aerosol",
+    2: "blue",
+    3: "green",
+    4: "red",
+    5: "near-infrared",
+    6: "short-wave infrared 1",
+    7: "short-wave infrared 2",
+    10: "thermal",
+}
+BAND_UNITS = {
+    1: "reflectance",
+    2: "reflectance",
+    3: "reflectance",
+    4: "reflectance",
+    5: "reflectance",
+    6: "reflectance",
+    7: "reflectance",
+    10: "Kelvin",
+}
 
-def load_scene(path, dtype="float32"):
+
+def load_scene(path, bands=None, dtype="float32"):
     """
     Load a Landsat scene downloaded from USGS EarthExplorer.
 
@@ -39,6 +70,9 @@ def load_scene(path, dtype="float32"):
         The path to a folder or tar archive containing the files for a given
         scene. **Must** include the ``*_MTL.txt`` metadata file. Not all band
         files need to be present.
+    bands : None or list
+        List of band names to load. If None, will load all bands present in the
+        folder/archive. See below for valid band names. Default is None.
     dtype : str or numpy dtype object
         The type used for the band arrays. Integer types will result in
         rounding so floating point is recommended. Default is float32.
@@ -51,8 +85,28 @@ def load_scene(path, dtype="float32"):
         metadata read from the MTL file and other CF compliant fields in the
         ``attrs`` attribute.
 
+    Notes
+    -----
+
+    The valid band names for Landsat 8 and 9 are:
+
+    ====== =====================
+    Number         Name
+    ====== =====================
+    1      ``"coastal_aerosol"``
+    2      ``"blue"``
+    3      ``"green"``
+    4      ``"red"``
+    5      ``"nir"``
+    6      ``"swir1"``
+    7      ``"swir2"``
+    10     ``"thermal"``
+    ====== =====================
+
     """
     path = pathlib.Path(path)
+    if bands is None:
+        bands = BAND_NAMES.values()
     if path.is_file() and ".tar" in path.suffixes:
         reader_class = TarReader
     else:
@@ -66,44 +120,12 @@ def load_scene(path, dtype="float32"):
             metadata["corner_ul_projection_y_product"],
         )
         shape = (metadata["reflective_lines"], metadata["reflective_samples"])
-        band_names = {
-            1: "coastal_aerosol",
-            2: "blue",
-            3: "green",
-            4: "red",
-            5: "nir",
-            6: "swir1",
-            7: "swir2",
-            10: "thermal",
-        }
-        band_titles = {
-            1: "coastal aerosol",
-            2: "blue",
-            3: "green",
-            4: "red",
-            5: "near-infrared",
-            6: "short-wave infrared 1",
-            7: "short-wave infrared 2",
-            10: "thermal",
-        }
-        band_units = {
-            1: "reflectance",
-            2: "reflectance",
-            3: "reflectance",
-            4: "reflectance",
-            5: "reflectance",
-            6: "reflectance",
-            7: "reflectance",
-            10: "Kelvin",
-        }
-        band_numbers = [int(str(f).split("_B")[-1][:-4]) for f in reader.band_files]
+        available_bands = [int(str(f).split("_B")[-1][:-4]) for f in reader.band_files]
         data_vars = {}
         dims = ("northing", "easting")
-        for number, fname in zip(band_numbers, reader.band_files):
-            band_attrs = {
-                "long_name": band_titles[number],
-                "units": band_units[number],
-            }
+        for number, fname in zip(available_bands, reader.band_files):
+            if BAND_NAMES[number] not in bands:
+                continue
             mult, add = None, None
             mult_entries = [f"mult_band_{number}", f"mult_band_st_b{number}"]
             add_entries = [f"add_band_{number}", f"add_band_st_b{number}"]
@@ -116,7 +138,11 @@ def load_scene(path, dtype="float32"):
             band[band == 0] = np.nan
             band *= mult
             band += add
-            data_vars[band_names[number]] = (dims, band, band_attrs)
+            band_attrs = {
+                "long_name": BAND_TITLES[number],
+                "units": BAND_UNITS[number],
+            }
+            data_vars[BAND_NAMES[number]] = (dims, band, band_attrs)
     attrs = {
         "Conventions": "CF-1.8",
         "title": (
