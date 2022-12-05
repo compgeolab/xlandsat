@@ -11,6 +11,7 @@
 <a href="https://github.com/conda-forge/xlandsat-feedstock"><img src="https://img.shields.io/conda/vn/conda-forge/xlandsat.svg?style=flat-square" alt="Latest version on conda-forge"></a>
 <a href="https://codecov.io/gh/compgeolab/xlandsat"><img src="https://img.shields.io/codecov/c/github/compgeolab/xlandsat/main.svg?style=flat-square" alt="Test coverage status"></a>
 <a href="https://pypi.python.org/pypi/xlandsat"><img src="https://img.shields.io/pypi/pyversions/xlandsat.svg?style=flat-square" alt="Compatible Python versions."></a>
+<a href="https://doi.org/10.5281/zenodo.7395473"><img src="https://img.shields.io/badge/doi-10.5281%2Fzenodo.7395473-blue?style=flat-square" alt="DOI used for citations"></a>
 </p>
 
 ## About
