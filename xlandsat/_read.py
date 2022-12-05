@@ -45,7 +45,7 @@ BAND_UNITS = {
 }
 
 
-def load_scene(path, bands=None, region=None, dtype="float32"):
+def load_scene(path, bands=None, region=None, dtype="float16"):
     """
     Load a Landsat scene downloaded from USGS EarthExplorer.
 
@@ -79,7 +79,7 @@ def load_scene(path, bands=None, region=None, dtype="float32"):
         cropping is performed on the scene. Default is None.
     dtype : str or numpy dtype object
         The type used for the band arrays. Integer types will result in
-        rounding so floating point is recommended. Default is float32.
+        rounding so floating point is recommended. Default is float16.
 
     Returns
     -------
