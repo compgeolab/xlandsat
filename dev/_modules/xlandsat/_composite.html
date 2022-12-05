@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>xlandsat._composite | xlandsat v0.0.post17</title>
+        <title>xlandsat._composite | xlandsat v0.0.post28</title>
     
 
     
@@ -83,7 +83,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post17</span></h1>
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post28</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -159,7 +159,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Community
+  Links
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -321,6 +321,42 @@ title="Open an issue"
 <div class="viewcode-block" id="composite"><a class="viewcode-back" href="../../api/generated/xlandsat.composite.html#xlandsat.composite">[docs]</a><span class="k">def</span> <span class="nf">composite</span><span class="p">(</span><span class="n">scene</span><span class="p">,</span> <span class="n">bands</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">),</span> <span class="n">rescale_to</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a composite using the given bands.</span>
+
+<span class="sd">    The composite will be an RGBA array if NaNs are present in any band (with</span>
+<span class="sd">    transparency of the NaN pixels set to full), or RGB is no NaNs are present.</span>
+<span class="sd">    The RGB(A) array is encoded as unsigned 8-bit integers for easier plotting</span>
+<span class="sd">    with matplotlib and smaller memory footprint.</span>
+
+<span class="sd">    Optionally rescale each band to the given range for improved contrast.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    scene : :class:`xarray.Dataset`</span>
+<span class="sd">        A Landsat scene, as read with :func:`xlandsat.load_scene`.</span>
+<span class="sd">    bands : list of str</span>
+<span class="sd">        A list of variable names from the scene that will be used as the</span>
+<span class="sd">        composite&#39;s red, green, and blue channels, respectively.</span>
+<span class="sd">    rescale_to : None or list</span>
+<span class="sd">        If not None, then should be a list/tuple with the minimum and maximum</span>
+<span class="sd">        reflectance ranges to use for rescaling. The same values are used for</span>
+<span class="sd">        each band. Bands are rescaled separately. Example: ``rescale_to=[0,</span>
+<span class="sd">        0.5]``. Default is None.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    composite : :class:`xarray.DataArray`</span>
+<span class="sd">        The composite as a 3D ``DataArray`` of type uint8. The first 2</span>
+<span class="sd">        dimensions are the same as the scene with the ``&quot;channel&quot;`` added as</span>
+<span class="sd">        third dimension. Metadata from the scene is copied to the composite.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+
+<span class="sd">    .. tip::</span>
+
+<span class="sd">        Use the :meth:`xarray.DataArray.plot.imshow` method to plot the</span>
+<span class="sd">        composite using matplotlib.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="n">scene</span><span class="p">[</span><span class="n">bands</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">shape</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">scene</span><span class="p">[</span><span class="n">b</span><span class="p">])</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bands</span><span class="p">)):</span>
@@ -377,7 +413,7 @@ title="Open an issue"
         <footer class="col footer"><p>
   
       &copy; Copyright 2022, The xlandsat developers.<br/>
-    Last updated on Dec 04, 2022.<br/>
+    Last updated on Dec 05, 2022.<br/>
 </p>
         </footer>
     </div>

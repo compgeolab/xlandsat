@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     
-        <title>xlandsat.composite | xlandsat v0.0.post17</title>
+        <title>xlandsat.composite | xlandsat v0.0.post28</title>
     
 
     
@@ -86,7 +86,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post17</span></h1>
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post28</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -162,7 +162,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Community
+  Links
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -378,6 +378,35 @@ title="Print to PDF"
 <dt class="sig sig-object py" id="xlandsat.composite">
 <span class="sig-prename descclassname"><span class="pre">xlandsat.</span></span><span class="sig-name descname"><span class="pre">composite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('red',</span> <span class="pre">'green',</span> <span class="pre">'blue')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_to</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/xlandsat/_composite.html#composite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xlandsat.composite" title="Permalink to this definition">#</a></dt>
 <dd><p>Create a composite using the given bands.</p>
+<p>The composite will be an RGBA array if NaNs are present in any band (with
+transparency of the NaN pixels set to full), or RGB is no NaNs are present.
+The RGB(A) array is encoded as unsigned 8-bit integers for easier plotting
+with matplotlib and smaller memory footprint.</p>
+<p>Optionally rescale each band to the given range for improved contrast.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scene</strong> (<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>) – A Landsat scene, as read with <a class="reference internal" href="xlandsat.load_scene.html#xlandsat.load_scene" title="xlandsat.load_scene"><code class="xref py py-func docutils literal notranslate"><span class="pre">xlandsat.load_scene</span></code></a>.</p></li>
+<li><p><strong>bands</strong> (<em>list of str</em>) – A list of variable names from the scene that will be used as the
+composite’s red, green, and blue channels, respectively.</p></li>
+<li><p><strong>rescale_to</strong> (<em>None</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a>) – If not None, then should be a list/tuple with the minimum and maximum
+reflectance ranges to use for rescaling. The same values are used for
+each band. Bands are rescaled separately. Example: <code class="docutils literal notranslate"><span class="pre">rescale_to=[0,</span>
+<span class="pre">0.5]</span></code>. Default is None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>composite</strong> (<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2022.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a>) – The composite as a 3D <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> of type uint8. The first 2
+dimensions are the same as the scene with the <code class="docutils literal notranslate"><span class="pre">&quot;channel&quot;</span></code> added as
+third dimension. Metadata from the scene is copied to the composite.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use the <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.plot.imshow.html#xarray.DataArray.plot.imshow" title="(in xarray v2022.12.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.DataArray.plot.imshow</span></code></a> method to plot the
+composite using matplotlib.</p>
+</div>
 </dd></dl>
 
 <div style='clear:both'></div></section>
@@ -412,7 +441,7 @@ title="Print to PDF"
         <footer class="col footer"><p>
   
       &copy; Copyright 2022, The xlandsat developers.<br/>
-    Last updated on Dec 04, 2022.<br/>
+    Last updated on Dec 05, 2022.<br/>
 </p>
         </footer>
     </div>

@@ -157,7 +157,7 @@ Here's a quick example:
 .. toctree::
     :maxdepth: 2
     :hidden:
-    :caption: Community
+    :caption: Links
 
     Source code on GitHub <https://github.com/compgeolab/xlandsat>
     Computer-Oriented Geoscience Lab <https://www.compgeolab.org>
