@@ -68,3 +68,26 @@ def test_load_scene_fail_multiple_mtl_files():
         with pytest.raises(ValueError) as error:
             load_scene(duplicate)
         assert "Found 2" in str(error)
+
+
+def test_load_scene_fail_missing_mtl_file():
+    "Check that loading fails when there is no MTL.txt file"
+    paths = pooch.retrieve(
+        "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
+        known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
+        processor=pooch.Untar(),
+    )
+    # Unpack the archive and get the folder name
+    path = pathlib.Path(paths[0]).parent
+    assert path.is_dir()
+    # Duplicate the scene into a temporary folder and add an extra file
+    with tempfile.TemporaryDirectory() as tmpdir:
+        duplicate = pathlib.Path(tmpdir) / "duplicate_scene"
+        shutil.copytree(path, duplicate)
+        # Delete the MTL tiles
+        for mtl_file in duplicate.glob("*_MTL.txt"):
+            mtl_file.unlink()
+        assert not list(duplicate.glob("*_MTL.txt"))
+        with pytest.raises(ValueError) as error:
+            load_scene(duplicate)
+        assert "Couldn't find" in str(error)
