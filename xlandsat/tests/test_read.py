@@ -5,10 +5,11 @@
 Test the main IO functionality
 """
 import pathlib
-import tempfile
 import shutil
-import pytest
+import tempfile
+
 import pooch
+import pytest
 
 from .._read import load_scene
 
@@ -21,7 +22,9 @@ def test_load_scene_archive():
     )
     scene = load_scene(path)
     assert scene.attrs["title"] == "Landsat 8 scene from 2019-01-30 (path/row=218/74)"
-    assert set(scene.data_vars) == set(["red", "green", "blue", "nir", "swir1", "swir2"])
+    assert set(scene.data_vars) == set(
+        ["red", "green", "blue", "nir", "swir1", "swir2"]
+    )
     assert scene.red.shape == (300, 400)
 
 
@@ -37,7 +40,9 @@ def test_load_scene_folder():
     assert path.is_dir()
     scene = load_scene(path)
     assert scene.attrs["title"] == "Landsat 8 scene from 2019-01-30 (path/row=218/74)"
-    assert set(scene.data_vars) == set(["red", "green", "blue", "nir", "swir1", "swir2"])
+    assert set(scene.data_vars) == set(
+        ["red", "green", "blue", "nir", "swir1", "swir2"]
+    )
     assert scene.red.shape == (300, 400)
 
 
