@@ -46,6 +46,18 @@ def test_load_scene_folder():
     assert scene.red.shape == (300, 400)
 
 
+def test_load_scene_select_bands():
+    "Check that loading only a few selected bands works"
+    path = pooch.retrieve(
+        "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
+        known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
+    )
+    scene = load_scene(path, bands=["red", "swir1"])
+    assert scene.attrs["title"] == "Landsat 8 scene from 2019-01-30 (path/row=218/74)"
+    assert set(scene.data_vars) == set(["red", "swir1"])
+    assert scene.red.shape == (300, 400)
+
+
 def test_load_scene_fail_multiple_mtl_files():
     "Check that loading fails when there are multiple MTL.txt files"
     paths = pooch.retrieve(
