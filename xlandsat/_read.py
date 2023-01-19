@@ -149,6 +149,10 @@ def load_scene(path, bands=None, region=None, dtype="float16"):
             band_attrs = {
                 "long_name": BAND_TITLES[number],
                 "units": BAND_UNITS[number],
+                "number": number,
+                "filename": pathlib.Path(fname).name,
+                "scaling_mult": mult,
+                "scaling_add": add,
             }
             data_vars[BAND_NAMES[number]] = xr.DataArray(
                 data=band,
@@ -239,6 +243,7 @@ def parse_metadata(text):
                 name, value = item.split(" = ")
                 metadata[name.lower()] = float(value)
                 break
+    metadata["MTL file"] = "\n".join(text)
     return metadata
 
 
@@ -270,7 +275,7 @@ class TarReader:
         with io.TextIOWrapper(
             self._archive.extractfile(self.metadata_files[0])
         ) as fobj:
-            metadata = parse_metadata(fobj.readlines())
+            metadata = parse_metadata(fobj.read().split("\n"))
         return metadata
 
     def read_band(self, fname):
