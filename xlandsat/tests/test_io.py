@@ -8,10 +8,73 @@ import pathlib
 import shutil
 import tempfile
 
+import numpy.testing as npt
 import pooch
 import pytest
 
-from .._read import load_scene
+from .._io import load_scene, save_scene
+
+
+@pytest.mark.parametrize("compression", ["", ".gz"], ids=["none", "gz"])
+def test_save_scene_round_trip(compression):
+    "Save a scene and load it back again to check if the round trip works"
+    path = pooch.retrieve(
+        "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
+        known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
+    )
+    scene_original = load_scene(path, dtype="float32")
+    with tempfile.TemporaryDirectory() as tmpdir:
+        path_copy = pathlib.Path(tmpdir) / f"scene-copy.tar{compression}"
+        save_scene(path_copy, scene_original)
+        scene = load_scene(path_copy, dtype="float32")
+        assert (
+            scene.attrs["title"] == "Landsat 8 scene from 2019-01-30 (path/row=218/74)"
+        )
+        assert set(scene.data_vars) == set(
+            ["red", "green", "blue", "nir", "swir1", "swir2"]
+        )
+        assert scene.red.shape == (300, 400)
+        npt.assert_allclose(
+            scene.red.values, scene_original.red.values, rtol=0, atol=1e-4
+        )
+        npt.assert_allclose(
+            scene.easting.values, scene_original.easting.values, rtol=0, atol=1e-4
+        )
+        npt.assert_allclose(
+            scene.northing.values, scene_original.northing.values, rtol=0, atol=1e-4
+        )
+
+
+@pytest.mark.parametrize("compression", ["", ".gz"], ids=["none", "gz"])
+def test_save_scene_cropped(compression):
+    "Save a cropped scene and load it back again to check"
+    path = pooch.retrieve(
+        "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
+        known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
+    )
+    scene_original = load_scene(path, dtype="float32").sel(
+        northing=slice(-2.226e6, -2.224e6), easting=slice(5.9e5, 5.92e5)
+    )
+    with tempfile.TemporaryDirectory() as tmpdir:
+        path_copy = pathlib.Path(tmpdir) / f"scene-copy.tar{compression}"
+        save_scene(path_copy, scene_original)
+        scene = load_scene(path_copy, dtype="float32")
+        assert (
+            scene.attrs["title"] == "Landsat 8 scene from 2019-01-30 (path/row=218/74)"
+        )
+        assert set(scene.data_vars) == set(
+            ["red", "green", "blue", "nir", "swir1", "swir2"]
+        )
+        assert scene.red.shape == scene_original.red.shape
+        npt.assert_allclose(
+            scene.red.values, scene_original.red.values, rtol=0, atol=1e-4
+        )
+        npt.assert_allclose(
+            scene.easting.values, scene_original.easting.values, rtol=0, atol=1e-4
+        )
+        npt.assert_allclose(
+            scene.northing.values, scene_original.northing.values, rtol=0, atol=1e-4
+        )
 
 
 def test_load_scene_archive():

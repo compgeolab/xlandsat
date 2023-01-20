@@ -11,4 +11,5 @@ List of functions and classes (API)
    :toctree: generated/
 
     load_scene
+    save_scene
     composite

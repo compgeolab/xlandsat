@@ -9,8 +9,8 @@ import pathlib
 import re
 import tarfile
 
+import imageio
 import numpy as np
-import skimage.io
 import xarray as xr
 
 BAND_NAMES = {
@@ -173,7 +173,26 @@ def load_scene(path, bands=None, region=None, dtype="float16"):
             f"(path/row={metadata['wrs_path']}/{metadata['wrs_row']})"
         ),
     }
-    attrs.update(metadata)
+    metadata_to_keep = [
+        "digital_object_identifier",
+        "origin",
+        "landsat_product_id",
+        "processing_level",
+        "collection_number",
+        "collection_category",
+        "spacecraft_id",
+        "sensor_id",
+        "map_projection",
+        "utm_zone",
+        "datum",
+        "ellipsoid",
+        "date_acquired",
+        "scene_center_time",
+        "wrs_path",
+        "wrs_row",
+        "mtl_file",
+    ]
+    attrs.update({key: metadata[key] for key in metadata_to_keep})
     scene = xr.Dataset(data_vars, attrs=attrs)
     scene.easting.attrs = {
         "long_name": "UTM easting",
@@ -243,7 +262,7 @@ def parse_metadata(text):
                 name, value = item.split(" = ")
                 metadata[name.lower()] = float(value)
                 break
-    metadata["MTL file"] = "\n".join(text)
+    metadata["mtl_file"] = "\n".join(text)
     return metadata
 
 
@@ -280,10 +299,10 @@ class TarReader:
 
     def read_band(self, fname):
         """
-        Read a band file using scikit-image.
+        Read a band file using imageio.
         """
         with self._archive.extractfile(fname) as fobj:
-            band = skimage.io.imread(fobj)
+            band = imageio.v3.imread(fobj, plugin="tifffile", extension=".tif")
         return band
 
     def __exit__(self, exc_type, exc_value, traceback):  # noqa: U100
@@ -319,9 +338,9 @@ class FolderReader:
 
     def read_band(self, fname):
         """
-        Read a band file using scikit-image.
+        Read a band file using imageio.
         """
-        band = skimage.io.imread(fname)
+        band = imageio.v3.imread(fname, plugin="tifffile", extension=".tif")
         return band
 
     def __exit__(self, exc_type, exc_value, traceback):  # noqa: U100
@@ -346,3 +365,66 @@ def _check_metadata(files, path):
             "Download the corresponding file for this scene so we can read "
             "the metadata."
         )
+
+
+def save_scene(path, scene):
+    """
+    Bla
+    """
+    mode = "w"
+    if len(path.suffixes) > 1:
+        mode = f"{mode}:{path.suffixes[-1][1:]}"
+    with tarfile.open(path, mode=mode) as archive:
+        # Edit the bounding box of the scene
+        # NOTE: the lat/lon information will be wrong. Fixing it would mean
+        # adding a pyproj dependency
+        mtl_file_original = scene.attrs["mtl_file"].split("\n")
+        mtl_file = []
+        for line in mtl_file_original:
+            if (
+                "CORNER_UL_PROJECTION_X_PRODUCT" in line
+                or "CORNER_LL_PROJECTION_X_PRODUCT" in line
+            ):
+                line = line.split(" = ")[0] + f" = {scene.easting.min().values}"
+            if (
+                "CORNER_UR_PROJECTION_X_PRODUCT" in line
+                or "CORNER_LR_PROJECTION_X_PRODUCT" in line
+            ):
+                line = line.split(" = ")[0] + f" = {scene.easting.max().values}"
+            if (
+                "CORNER_LL_PROJECTION_Y_PRODUCT" in line
+                or "CORNER_LR_PROJECTION_Y_PRODUCT" in line
+            ):
+                line = line.split(" = ")[0] + f" = {scene.northing.min().values}"
+            if (
+                "CORNER_UL_PROJECTION_Y_PRODUCT" in line
+                or "CORNER_UR_PROJECTION_Y_PRODUCT" in line
+            ):
+                line = line.split(" = ")[0] + f" = {scene.northing.max().values}"
+            if "REFLECTIVE_LINES" in line or "THERMAL_LINES" in line:
+                line = line.split(" = ")[0] + f" = {scene.dims['northing']}"
+            if "REFLECTIVE_SAMPLES" in line or "THERMAL_SAMPLES" in line:
+                line = line.split(" = ")[0] + f" = {scene.dims['easting']}"
+            mtl_file.append(line)
+        mtl_file = "\n".join(mtl_file)
+        # Add the MTL file to the archive
+        info = tarfile.TarInfo(f"{scene.attrs['landsat_product_id']}_MTL.txt")
+        info.size = len(mtl_file.encode())
+        archive.addfile(info, fileobj=io.BytesIO(mtl_file.encode()))
+        # Add the scenes to the archive
+        for name in scene:
+            band = scene[name]
+            unscaled = (band.values - band.attrs["scaling_add"]) / band.attrs[
+                "scaling_mult"
+            ]
+            unscaled[np.isnan(unscaled)] = 0
+            file = io.BytesIO()
+            imageio.v3.imwrite(
+                file,
+                unscaled.astype("uint16")[::-1, :],
+                plugin="tifffile",
+                extension=".tif",
+            )
+            info = tarfile.TarInfo(band.attrs["filename"])
+            info.size = file.getbuffer().nbytes
+            archive.addfile(info, fileobj=io.BytesIO(file.getbuffer()))
