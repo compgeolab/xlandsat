@@ -9,8 +9,8 @@ import pathlib
 import re
 import tarfile
 
-import imageio
 import numpy as np
+import skimage.io
 import xarray as xr
 
 BAND_NAMES = {
@@ -299,10 +299,10 @@ class TarReader:
 
     def read_band(self, fname):
         """
-        Read a band file using imageio.
+        Read a band file using scikit-image.
         """
         with self._archive.extractfile(fname) as fobj:
-            band = imageio.v3.imread(fobj)
+            band = skimage.io.imread(fobj)
         return band
 
     def __exit__(self, exc_type, exc_value, traceback):  # noqa: U100
@@ -338,9 +338,9 @@ class FolderReader:
 
     def read_band(self, fname):
         """
-        Read a band file using imageio.
+        Read a band file using scikit-image.
         """
-        band = imageio.v3.imread(fname)
+        band = skimage.io.imread(fname)
         return band
 
     def __exit__(self, exc_type, exc_value, traceback):  # noqa: U100
@@ -454,10 +454,10 @@ def save_scene(path, scene):
             ]
             unscaled[np.isnan(unscaled)] = 0
             file = io.BytesIO()
-            imageio.v3.imwrite(
+            skimage.io.imsave(
                 file,
                 unscaled.astype("uint16")[::-1, :],
-                extension=".tif",
+                format=".tif",
             )
             info = tarfile.TarInfo(band.attrs["filename"])
             info.size = file.getbuffer().nbytes
