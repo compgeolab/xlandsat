@@ -302,7 +302,7 @@ class TarReader:
         Read a band file using imageio.
         """
         with self._archive.extractfile(fname) as fobj:
-            band = imageio.v3.imread(fobj, extension=".tif")
+            band = imageio.v3.imread(fobj)
         return band
 
     def __exit__(self, exc_type, exc_value, traceback):  # noqa: U100
@@ -340,7 +340,7 @@ class FolderReader:
         """
         Read a band file using imageio.
         """
-        band = imageio.v3.imread(fname, extension=".tif")
+        band = imageio.v3.imread(fname)
         return band
 
     def __exit__(self, exc_type, exc_value, traceback):  # noqa: U100
