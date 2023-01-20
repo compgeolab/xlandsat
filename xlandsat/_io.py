@@ -406,6 +406,7 @@ def save_scene(path, scene):
         metadata read from the MTL file and other CF compliant fields in the
         ``attrs`` attribute.
     """
+    path = pathlib.Path(path)
     mode = "w"
     if len(path.suffixes) > 1:
         mode = f"{mode}:{path.suffixes[-1][1:]}"
