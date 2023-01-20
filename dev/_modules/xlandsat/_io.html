@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>xlandsat._read | xlandsat v0.0.post28</title>
+        <title>xlandsat._io | xlandsat v0.0.post32</title>
     
 
     
@@ -83,7 +83,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post28</span></h1>
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post32</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -127,6 +127,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../../api/generated/xlandsat.load_scene.html">
      xlandsat.load_scene
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.save_scene.html">
+     xlandsat.save_scene
     </a>
    </li>
    <li class="toctree-l2">
@@ -263,7 +268,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/compgeolab/xlandsat/issues/new?title=Issue%20on%20page%20%2F_modules/xlandsat/_read.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/compgeolab/xlandsat/issues/new?title=Issue%20on%20page%20%2F_modules/xlandsat/_io.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -306,7 +311,7 @@ title="Open an issue"
                 
               <div>
                 
-  <h1>Source code for xlandsat._read</h1><div class="highlight"><pre>
+  <h1>Source code for xlandsat._io</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Copyright (c) 2022 The xlandsat developers.</span>
 <span class="c1"># Distributed under the terms of the MIT License.</span>
 <span class="c1"># SPDX-License-Identifier: MIT</span>
@@ -458,6 +463,10 @@ title="Open an issue"
             <span class="n">band_attrs</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="n">BAND_TITLES</span><span class="p">[</span><span class="n">number</span><span class="p">],</span>
                 <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="n">BAND_UNITS</span><span class="p">[</span><span class="n">number</span><span class="p">],</span>
+                <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span>
+                <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s2">&quot;scaling_mult&quot;</span><span class="p">:</span> <span class="n">mult</span><span class="p">,</span>
+                <span class="s2">&quot;scaling_add&quot;</span><span class="p">:</span> <span class="n">add</span><span class="p">,</span>
             <span class="p">}</span>
             <span class="n">data_vars</span><span class="p">[</span><span class="n">BAND_NAMES</span><span class="p">[</span><span class="n">number</span><span class="p">]]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
                 <span class="n">data</span><span class="o">=</span><span class="n">band</span><span class="p">,</span>
@@ -478,7 +487,26 @@ title="Open an issue"
             <span class="sa">f</span><span class="s2">&quot;(path/row=</span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;wrs_path&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;wrs_row&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
         <span class="p">),</span>
     <span class="p">}</span>
-    <span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+    <span class="n">metadata_to_keep</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;digital_object_identifier&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;origin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;landsat_product_id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;processing_level&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;collection_number&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;collection_category&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;spacecraft_id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sensor_id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;map_projection&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;utm_zone&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;datum&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ellipsoid&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;date_acquired&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;scene_center_time&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;wrs_path&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;wrs_row&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mtl_file&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">key</span><span class="p">:</span> <span class="n">metadata</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">metadata_to_keep</span><span class="p">})</span>
     <span class="n">scene</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_vars</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">)</span>
     <span class="n">scene</span><span class="o">.</span><span class="n">easting</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="s2">&quot;UTM easting&quot;</span><span class="p">,</span>
@@ -548,6 +576,7 @@ title="Open an issue"
                 <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; = &quot;</span><span class="p">)</span>
                 <span class="n">metadata</span><span class="p">[</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
                 <span class="k">break</span>
+    <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;mtl_file&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">metadata</span>
 
 
@@ -579,7 +608,7 @@ title="Open an issue"
         <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">TextIOWrapper</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_archive</span><span class="o">.</span><span class="n">extractfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="p">)</span> <span class="k">as</span> <span class="n">fobj</span><span class="p">:</span>
-            <span class="n">metadata</span> <span class="o">=</span> <span class="n">parse_metadata</span><span class="p">(</span><span class="n">fobj</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+            <span class="n">metadata</span> <span class="o">=</span> <span class="n">parse_metadata</span><span class="p">(</span><span class="n">fobj</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">metadata</span>
 
     <span class="k">def</span> <span class="nf">read_band</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
@@ -650,6 +679,104 @@ title="Open an issue"
             <span class="s2">&quot;Download the corresponding file for this scene so we can read &quot;</span>
             <span class="s2">&quot;the metadata.&quot;</span>
         <span class="p">)</span>
+
+
+<div class="viewcode-block" id="save_scene"><a class="viewcode-back" href="../../api/generated/xlandsat.save_scene.html#xlandsat.save_scene">[docs]</a><span class="k">def</span> <span class="nf">save_scene</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">scene</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Save a Landsat scene to a tar archive in the USGS EarthExplorer format.</span>
+
+<span class="sd">    Requires the scene to be in the format returned by</span>
+<span class="sd">    :func:`~xlandsat.load_scene`, including all of the original metadata.</span>
+
+<span class="sd">    The tar archive will contain the bands saved as ``*.TIF`` files in unscaled</span>
+<span class="sd">    16-bit unsigned-integers. The metadata is saved to a corresponding</span>
+<span class="sd">    ``*_MTL.txt`` file. If the scene was cropped, the file metadata will be</span>
+<span class="sd">    adjusted to reflect the new UTM bounding box. The lat/lon bounding box</span>
+<span class="sd">    **will not be updated**.</span>
+
+<span class="sd">    .. tip::</span>
+
+<span class="sd">        **Do not use this function** as a general output format for the scene</span>
+<span class="sd">        unless you require compatibility with EarthExplorer. The best way to</span>
+<span class="sd">        save a scene is with :meth:`xarray.Dataset.to_netcdf` since it will</span>
+<span class="sd">        result in a single file with all metadata preserved. To load the saved</span>
+<span class="sd">        scene, use :func:`xarray.load_dataset`. NetCDF files can also be loaded</span>
+<span class="sd">        lazily with :func:`xarray.open_dataset` to avoid loading the entire</span>
+<span class="sd">        scene into memory.</span>
+
+<span class="sd">    .. note::</span>
+
+<span class="sd">        Only supports Landsat 8 and 9 Collection 2 Level 2 scenes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path : str or :class:`pathlib.Path`</span>
+<span class="sd">        The desired path of the output tar archive. The file extension can be</span>
+<span class="sd">        ``.tar`` (uncompressed) or ``.tar.gz``, ``.tar.xz``, or ``.tar.bz2`` to</span>
+<span class="sd">        make a compressed archive.</span>
+<span class="sd">    scene : :class:`xarray.Dataset`</span>
+<span class="sd">        The scene including UTM easting and northing as dimensional</span>
+<span class="sd">        coordinates, bands as 2D arrays of the given type as variables, and</span>
+<span class="sd">        metadata read from the MTL file and other CF compliant fields in the</span>
+<span class="sd">        ``attrs`` attribute.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;w&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">suffixes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">path</span><span class="o">.</span><span class="n">suffixes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+        <span class="c1"># Edit the bounding box of the scene</span>
+        <span class="c1"># NOTE: the lat/lon information will be wrong. Fixing it would mean</span>
+        <span class="c1"># adding a pyproj dependency</span>
+        <span class="n">mtl_file_original</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;mtl_file&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">mtl_file</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">mtl_file_original</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="s2">&quot;CORNER_UL_PROJECTION_X_PRODUCT&quot;</span> <span class="ow">in</span> <span class="n">line</span>
+                <span class="ow">or</span> <span class="s2">&quot;CORNER_LL_PROJECTION_X_PRODUCT&quot;</span> <span class="ow">in</span> <span class="n">line</span>
+            <span class="p">):</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; = &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; = </span><span class="si">{</span><span class="n">scene</span><span class="o">.</span><span class="n">easting</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="s2">&quot;CORNER_UR_PROJECTION_X_PRODUCT&quot;</span> <span class="ow">in</span> <span class="n">line</span>
+                <span class="ow">or</span> <span class="s2">&quot;CORNER_LR_PROJECTION_X_PRODUCT&quot;</span> <span class="ow">in</span> <span class="n">line</span>
+            <span class="p">):</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; = &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; = </span><span class="si">{</span><span class="n">scene</span><span class="o">.</span><span class="n">easting</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="s2">&quot;CORNER_LL_PROJECTION_Y_PRODUCT&quot;</span> <span class="ow">in</span> <span class="n">line</span>
+                <span class="ow">or</span> <span class="s2">&quot;CORNER_LR_PROJECTION_Y_PRODUCT&quot;</span> <span class="ow">in</span> <span class="n">line</span>
+            <span class="p">):</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; = &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; = </span><span class="si">{</span><span class="n">scene</span><span class="o">.</span><span class="n">northing</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="s2">&quot;CORNER_UL_PROJECTION_Y_PRODUCT&quot;</span> <span class="ow">in</span> <span class="n">line</span>
+                <span class="ow">or</span> <span class="s2">&quot;CORNER_UR_PROJECTION_Y_PRODUCT&quot;</span> <span class="ow">in</span> <span class="n">line</span>
+            <span class="p">):</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; = &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; = </span><span class="si">{</span><span class="n">scene</span><span class="o">.</span><span class="n">northing</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;REFLECTIVE_LINES&quot;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">or</span> <span class="s2">&quot;THERMAL_LINES&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; = &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; = </span><span class="si">{</span><span class="n">scene</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s1">&#39;northing&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;REFLECTIVE_SAMPLES&quot;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">or</span> <span class="s2">&quot;THERMAL_SAMPLES&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; = &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; = </span><span class="si">{</span><span class="n">scene</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s1">&#39;easting&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">mtl_file</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="n">mtl_file</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mtl_file</span><span class="p">)</span>
+        <span class="c1"># Add the MTL file to the archive</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">TarInfo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scene</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;landsat_product_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">_MTL.txt&quot;</span><span class="p">)</span>
+        <span class="n">info</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mtl_file</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+        <span class="n">archive</span><span class="o">.</span><span class="n">addfile</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">fileobj</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">mtl_file</span><span class="o">.</span><span class="n">encode</span><span class="p">()))</span>
+        <span class="c1"># Add the scenes to the archive</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">scene</span><span class="p">:</span>
+            <span class="n">band</span> <span class="o">=</span> <span class="n">scene</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+            <span class="n">unscaled</span> <span class="o">=</span> <span class="p">(</span><span class="n">band</span><span class="o">.</span><span class="n">values</span> <span class="o">-</span> <span class="n">band</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;scaling_add&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">band</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span>
+                <span class="s2">&quot;scaling_mult&quot;</span>
+            <span class="p">]</span>
+            <span class="n">unscaled</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">unscaled</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">file</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+            <span class="n">skimage</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span>
+                <span class="n">file</span><span class="p">,</span>
+                <span class="n">unscaled</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;uint16&quot;</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span>
+                <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;.tif&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">info</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">TarInfo</span><span class="p">(</span><span class="n">band</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;filename&quot;</span><span class="p">])</span>
+            <span class="n">info</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">getbuffer</span><span class="p">()</span><span class="o">.</span><span class="n">nbytes</span>
+            <span class="n">archive</span><span class="o">.</span><span class="n">addfile</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">fileobj</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">getbuffer</span><span class="p">()))</span></div>
 </pre></div>
 
               </div>
@@ -666,8 +793,8 @@ title="Open an issue"
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-      &copy; Copyright 2022, The xlandsat developers.<br/>
-    Last updated on Dec 05, 2022.<br/>
+      &copy; Copyright 2023, The xlandsat developers.<br/>
+    Last updated on Jan 20, 2023.<br/>
 </p>
         </footer>
     </div>

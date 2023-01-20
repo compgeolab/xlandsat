@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     
-        <title>List of functions and classes (API) | xlandsat v0.0.post28</title>
+        <title>List of functions and classes (API) | xlandsat v0.0.post32</title>
     
 
     
@@ -86,7 +86,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post28</span></h1>
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post32</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -130,6 +130,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="generated/xlandsat.load_scene.html">
      xlandsat.load_scene
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/xlandsat.save_scene.html">
+     xlandsat.save_scene
     </a>
    </li>
    <li class="toctree-l2">
@@ -383,7 +388,10 @@ title="Print to PDF"
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/xlandsat.load_scene.html#xlandsat.load_scene" title="xlandsat.load_scene"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_scene</span></code></a>(path[, bands, region, dtype])</p></td>
 <td><p>Load a Landsat scene downloaded from USGS EarthExplorer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/xlandsat.composite.html#xlandsat.composite" title="xlandsat.composite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">composite</span></code></a>(scene[, bands, rescale_to])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/xlandsat.save_scene.html#xlandsat.save_scene" title="xlandsat.save_scene"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_scene</span></code></a>(path, scene)</p></td>
+<td><p>Save a Landsat scene to a tar archive in the USGS EarthExplorer format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/xlandsat.composite.html#xlandsat.composite" title="xlandsat.composite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">composite</span></code></a>(scene[, bands, rescale_to])</p></td>
 <td><p>Create a composite using the given bands.</p></td>
 </tr>
 </tbody>
@@ -419,8 +427,8 @@ title="Print to PDF"
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-      &copy; Copyright 2022, The xlandsat developers.<br/>
-    Last updated on Dec 05, 2022.<br/>
+      &copy; Copyright 2023, The xlandsat developers.<br/>
+    Last updated on Jan 20, 2023.<br/>
 </p>
         </footer>
     </div>

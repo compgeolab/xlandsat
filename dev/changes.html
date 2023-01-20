@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     
-        <title>Changelog | xlandsat v0.0.post28</title>
+        <title>Changelog | xlandsat v0.0.post32</title>
     
 
     
@@ -86,7 +86,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post28</span></h1>
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post32</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -130,6 +130,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="api/generated/xlandsat.load_scene.html">
      xlandsat.load_scene
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.save_scene.html">
+     xlandsat.save_scene
     </a>
    </li>
    <li class="toctree-l2">
@@ -371,6 +376,16 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-0-2-0">
+   Version 0.2.0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-0-1-0">
+   Version 0.1.0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#version-0-0-1">
    Version 0.0.1
   </a>
@@ -395,6 +410,16 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-0-2-0">
+   Version 0.2.0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-0-1-0">
+   Version 0.1.0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#version-0-0-1">
    Version 0.0.1
   </a>
@@ -411,6 +436,48 @@ title="Print to PDF"
                 
   <section id="changelog">
 <span id="changes"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">#</a></h1>
+<section id="version-0-2-0">
+<h2>Version 0.2.0<a class="headerlink" href="#version-0-2-0" title="Permalink to this headline">#</a></h2>
+<p>Released on: 2023/01/20</p>
+<p>doi: <a class="reference external" href="https://doi.org/10.5281/zenodo.7553891">https://doi.org/10.5281/zenodo.7553891</a></p>
+<p>New features:</p>
+<ul class="simple">
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">save_scene</span></code> function to save a scene back to a tar file: <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/19">https://github.com/compgeolab/xlandsat/pull/19</a></p></li>
+</ul>
+<p>This release contains contributions from:</p>
+<ul class="simple">
+<li><p>Leonardo Uieda</p></li>
+</ul>
+</section>
+<section id="version-0-1-0">
+<h2>Version 0.1.0<a class="headerlink" href="#version-0-1-0" title="Permalink to this headline">#</a></h2>
+<p>Released on: 2022/12/06</p>
+<p>doi: <a class="reference external" href="https://doi.org/10.5281/zenodo.7402498">https://doi.org/10.5281/zenodo.7402498</a></p>
+<p>New features:</p>
+<ul class="simple">
+<li><p>Add option to load only selected bands: <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/13">https://github.com/compgeolab/xlandsat/pull/13</a></p></li>
+<li><p>Add option to crop a scene as its being loaded: <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/14">https://github.com/compgeolab/xlandsat/pull/14</a></p></li>
+</ul>
+<p>Documentation:</p>
+<ul class="simple">
+<li><p>Add full docstrings to the 2 API functions: <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/3">https://github.com/compgeolab/xlandsat/pull/3</a></p></li>
+<li><p>Use a p instead of h2 for the README tagline: <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/4">https://github.com/compgeolab/xlandsat/pull/4</a></p></li>
+<li><p>Add full docstrings to the 2 API functions: <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/5">https://github.com/compgeolab/xlandsat/pull/5</a></p></li>
+<li><p>Use the “all versions” Zenodo DOI in citation: <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/7">https://github.com/compgeolab/xlandsat/pull/7</a></p></li>
+<li><p>Expand and populate the Overview tutorial: <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/8">https://github.com/compgeolab/xlandsat/pull/8</a></p></li>
+</ul>
+<p>Maintenance:</p>
+<ul class="simple">
+<li><p>Default to float16 for loading scenes: <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/15">https://github.com/compgeolab/xlandsat/pull/15</a></p></li>
+<li><p>Add codecov configuration file to control reports: <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/6">https://github.com/compgeolab/xlandsat/pull/6</a></p></li>
+<li><p>Add tests for folder reading and &gt; 1 MTL files: <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/11">https://github.com/compgeolab/xlandsat/pull/11</a></p></li>
+<li><p>Add test for missing metadata files: <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/12">https://github.com/compgeolab/xlandsat/pull/12</a></p></li>
+</ul>
+<p>This release contains contributions from:</p>
+<ul class="simple">
+<li><p>Leonardo Uieda</p></li>
+</ul>
+</section>
 <section id="version-0-0-1">
 <h2>Version 0.0.1<a class="headerlink" href="#version-0-0-1" title="Permalink to this headline">#</a></h2>
 <p>Released on: 2022/12/04</p>
@@ -419,8 +486,8 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>A function to get Landsat 8 and 9 Collection 2 Level 2 scenes downloaded from
 <a class="reference external" href="https://earthexplorer.usgs.gov/">USGS EarthExplorer</a> into an
-<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>.</p></li>
-<li><p>A function to generate a composite as an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2022.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> that can
+<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2023.1.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>.</p></li>
+<li><p>A function to generate a composite as an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2023.1.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> that can
 be easily plotted with xarray’s machinery.</p></li>
 </ul>
 <p>This release contains contributions from:</p>
@@ -459,8 +526,8 @@ be easily plotted with xarray’s machinery.</p></li>
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-      &copy; Copyright 2022, The xlandsat developers.<br/>
-    Last updated on Dec 05, 2022.<br/>
+      &copy; Copyright 2023, The xlandsat developers.<br/>
+    Last updated on Jan 20, 2023.<br/>
 </p>
         </footer>
     </div>

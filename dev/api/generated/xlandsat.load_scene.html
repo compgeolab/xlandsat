@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     
-        <title>xlandsat.load_scene | xlandsat v0.0.post28</title>
+        <title>xlandsat.load_scene | xlandsat v0.0.post32</title>
     
 
     
@@ -49,7 +49,7 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="xlandsat.composite" href="xlandsat.composite.html" />
+    <link rel="next" title="xlandsat.save_scene" href="xlandsat.save_scene.html" />
     <link rel="prev" title="List of functions and classes (API)" href="../index.html" />
     <!-- Plausible analytics for anonymous usage statistics -->
     <script defer data-domain="compgeolab.org" src="https://plausible.io/js/plausible.js"></script>
@@ -86,7 +86,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post28</span></h1>
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post32</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -130,6 +130,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      xlandsat.load_scene
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="xlandsat.save_scene.html">
+     xlandsat.save_scene
     </a>
    </li>
    <li class="toctree-l2">
@@ -376,13 +381,13 @@ title="Print to PDF"
 <h1>xlandsat.load_scene<a class="headerlink" href="#xlandsat-load-scene" title="Permalink to this headline">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="xlandsat.load_scene">
-<span class="sig-prename descclassname"><span class="pre">xlandsat.</span></span><span class="sig-name descname"><span class="pre">load_scene</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float16'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/xlandsat/_read.html#load_scene"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xlandsat.load_scene" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">xlandsat.</span></span><span class="sig-name descname"><span class="pre">load_scene</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float16'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/xlandsat/_io.html#load_scene"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#xlandsat.load_scene" title="Permalink to this definition">#</a></dt>
 <dd><p>Load a Landsat scene downloaded from USGS EarthExplorer.</p>
 <p>Can read from a folder with <code class="docutils literal notranslate"><span class="pre">*.TIF</span></code> files and an <code class="docutils literal notranslate"><span class="pre">*_MTL.txt</span></code> file or
 directly from a tar archive (compressed or not) without the need to first
 unpack the archive. The bands are converted to reflectance/temperature
 units using appropriate scaling parameters and UTM coordinates are set in
-the returned <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>.</p>
+the returned <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2023.1.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Do not rename the TIF or MTL files. The folder/archive can have any
@@ -408,7 +413,7 @@ rounding so floating point is recommended. Default is float16.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>scene</strong> (<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2022.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>) – The loaded scene including UTM easting and northing as dimensional
+<dd class="field-even"><p><strong>scene</strong> (<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2023.1.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>) – The loaded scene including UTM easting and northing as dimensional
 coordinates, bands as 2D arrays of the given type as variables, and
 metadata read from the MTL file and other CF compliant fields in the
 <code class="docutils literal notranslate"><span class="pre">attrs</span></code> attribute.</p>
@@ -472,10 +477,10 @@ metadata read from the MTL file and other CF compliant fields in the
             <p class="prev-next-title">List of functions and classes (API)</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="xlandsat.composite.html" title="next page">
+    <a class='right-next' id="next-link" href="xlandsat.save_scene.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">xlandsat.composite</p>
+        <p class="prev-next-title">xlandsat.save_scene</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -486,8 +491,8 @@ metadata read from the MTL file and other CF compliant fields in the
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-      &copy; Copyright 2022, The xlandsat developers.<br/>
-    Last updated on Dec 05, 2022.<br/>
+      &copy; Copyright 2023, The xlandsat developers.<br/>
+    Last updated on Jan 20, 2023.<br/>
 </p>
         </footer>
     </div>
