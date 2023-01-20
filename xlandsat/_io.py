@@ -302,7 +302,7 @@ class TarReader:
         Read a band file using imageio.
         """
         with self._archive.extractfile(fname) as fobj:
-            band = imageio.v3.imread(fobj, plugin="tifffile", extension=".tif")
+            band = imageio.v3.imread(fobj, extension=".tif")
         return band
 
     def __exit__(self, exc_type, exc_value, traceback):  # noqa: U100
@@ -340,7 +340,7 @@ class FolderReader:
         """
         Read a band file using imageio.
         """
-        band = imageio.v3.imread(fname, plugin="tifffile", extension=".tif")
+        band = imageio.v3.imread(fname, extension=".tif")
         return band
 
     def __exit__(self, exc_type, exc_value, traceback):  # noqa: U100
@@ -369,7 +369,42 @@ def _check_metadata(files, path):
 
 def save_scene(path, scene):
     """
-    Bla
+    Save a Landsat scene to a tar archive in the USGS EarthExplorer format.
+
+    Requires the scene to be in the format returned by
+    :func:`~xlandsat.load_scene`, including all of the original metadata.
+
+    The tar archive will contain the bands saved as ``*.TIF`` files in unscaled
+    16-bit unsigned-integers. The metadata is saved to a corresponding
+    ``*_MTL.txt`` file. If the scene was cropped, the file metadata will be
+    adjusted to reflect the new UTM bounding box. The lat/lon bounding box
+    **will not be updated**.
+
+    .. tip::
+
+        **Do not use this function** as a general output format for the scene
+        unless you require compatibility with EarthExplorer. The best way to
+        save a scene is with :meth:`xarray.Dataset.to_netcdf` since it will
+        result in a single file with all metadata preserved. To load the saved
+        scene, use :func:`xarray.load_dataset`. NetCDF files can also be loaded
+        lazily with :func:`xarray.open_dataset` to avoid loading the entire
+        scene into memory.
+
+    .. note::
+
+        Only supports Landsat 8 and 9 Collection 2 Level 2 scenes.
+
+    Parameters
+    ----------
+    path : str or :class:`pathlib.Path`
+        The desired path of the output tar archive. The file extension can be
+        ``.tar`` (uncompressed) or ``.tar.gz``, ``.tar.xz``, or ``.tar.bz2`` to
+        make a compressed archive.
+    scene : :class:`xarray.Dataset`
+        The scene including UTM easting and northing as dimensional
+        coordinates, bands as 2D arrays of the given type as variables, and
+        metadata read from the MTL file and other CF compliant fields in the
+        ``attrs`` attribute.
     """
     mode = "w"
     if len(path.suffixes) > 1:
@@ -422,7 +457,6 @@ def save_scene(path, scene):
             imageio.v3.imwrite(
                 file,
                 unscaled.astype("uint16")[::-1, :],
-                plugin="tifffile",
                 extension=".tif",
             )
             info = tarfile.TarInfo(band.attrs["filename"])

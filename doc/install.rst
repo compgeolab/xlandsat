@@ -55,7 +55,6 @@ xlandsat with ``pip`` or ``conda``:
 * `xarray <https://xarray.dev/>`__
 * `scikit-image <https://scikit-image.org/>`__
 * `imageio <https://github.com/imageio/imageio>`__
-* `tifffile <https://pypi.org/project/tifffile/>`__
 
 See :ref:`dependency-versions` for the our policy of oldest supported versions
 of each dependency.
