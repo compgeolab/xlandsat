@@ -10,6 +10,7 @@ dependencies:
   - numpy
   - xarray
   - scikit-image
+  - imageio
   # Build
   - build
   - twine
