@@ -3,6 +3,21 @@
 Changelog
 =========
 
+Version 0.2.0
+-------------
+
+Released on: 2023/01/20
+
+doi: https://doi.org/10.5281/zenodo.7553891
+
+New features:
+
+* Add the ``save_scene`` function to save a scene back to a tar file: https://github.com/compgeolab/xlandsat/pull/19
+
+This release contains contributions from:
+
+* Leonardo Uieda
+
 Version 0.1.0
 -------------
 
