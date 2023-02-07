@@ -34,13 +34,13 @@ Here's a quick example:
 
     # Download a cropped scene from the Brumadinho dam (Brazil)
     path = pooch.retrieve(
-          "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
+          "doi:10.6084/m9.figshare.21665630.v2/LC08_L2SP_218074_20190130_20200829_02_T1-cropped.tar.gz",
          known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
     )
     # Load the scene directly from the archive (no need to unpack it)
     scene = xls.load_scene(path)
     # Make an RGB composite and add it to the scene Dataset
-    scene = scene.assign(rgb=xls.composite(scene, rescale_to=[0, 0.2]))
+    scene = scene.assign(rgb=xls.composite(scene, rescale_to=[0.03, 0.2]))
     # Plot the composite
     scene.rgb.plot.imshow()
 
@@ -134,7 +134,6 @@ Here's a quick example:
     probably the main way EarthExplorer is used). For cloud-based data
     processing, see the `Pangeo Project <https://pangeo.io/>`__.
 
-
 .. toctree::
     :maxdepth: 2
     :hidden:
@@ -146,10 +145,20 @@ Here's a quick example:
 .. toctree::
     :maxdepth: 2
     :hidden:
+    :caption: User Guide
+
+    composites.rst
+    indices.rst
+    pansharpen.rst
+
+.. toctree::
+    :maxdepth: 2
+    :hidden:
     :caption: Reference Documentation
 
     api/index.rst
     citing.rst
+    references.rst
     changes.rst
     compatibility.rst
     versions.rst
