@@ -21,6 +21,7 @@ BAND_NAMES = {
     5: "nir",
     6: "swir1",
     7: "swir2",
+    8: "pan",
     10: "thermal",
 }
 BAND_TITLES = {
@@ -31,6 +32,7 @@ BAND_TITLES = {
     5: "near-infrared",
     6: "short-wave infrared 1",
     7: "short-wave infrared 2",
+    8: "panchromatic",
     10: "thermal",
 }
 BAND_UNITS = {
@@ -41,6 +43,7 @@ BAND_UNITS = {
     5: "reflectance",
     6: "reflectance",
     7: "reflectance",
+    8: "reflectance",
     10: "Kelvin",
 }
 
@@ -110,69 +113,187 @@ def load_scene(path, bands=None, region=None, dtype="float16"):
     """
     path = pathlib.Path(path)
     if bands is None:
-        bands = BAND_NAMES.values()
-    if path.is_file() and ".tar" in path.suffixes:
-        reader_class = TarReader
-    else:
-        reader_class = FolderReader
-    with reader_class(path) as reader:
+        bands = [
+            "coastal_aerosol",
+            "blue",
+            "green",
+            "red",
+            "nir",
+            "swir1",
+            "swir2",
+            "thermal",
+        ]
+    with choose_reader(path)(path) as reader:
         metadata = reader.read_metadata()
-        available_bands = [int(str(f).split("_B")[-1][:-4]) for f in reader.band_files]
-        scene_region = (
-            metadata["corner_ll_projection_x_product"],
-            metadata["corner_lr_projection_x_product"],
-            metadata["corner_ll_projection_y_product"],
-            metadata["corner_ul_projection_y_product"],
-        )
-        shape = (metadata["reflective_lines"], metadata["reflective_samples"])
-        coords = {
-            "easting": np.linspace(*scene_region[:2], shape[1]),
-            "northing": np.linspace(*scene_region[2:], shape[0]),
-        }
+        coords = coordinates_from_metadata(metadata, "reflective")
         data_vars = {}
-        dims = ("northing", "easting")
-        for number, fname in zip(available_bands, reader.band_files):
+        for fname in reader.band_files:
+            number = int(str(fname).split("_B")[-1][:-4])
             if BAND_NAMES[number] not in bands:
                 continue
-            mult, add = None, None
-            mult_entries = [f"mult_band_{number}", f"mult_band_st_b{number}"]
-            add_entries = [f"add_band_{number}", f"add_band_st_b{number}"]
-            for key in metadata:
-                if any(key.endswith(entry) for entry in mult_entries):
-                    mult = metadata[key]
-                if any(key.endswith(entry) for entry in add_entries):
-                    add = metadata[key]
-            band = reader.read_band(fname).astype(dtype)[::-1, :]
-            band[band == 0] = np.nan
-            band *= mult
-            band += add
-            band_attrs = {
-                "long_name": BAND_TITLES[number],
-                "units": BAND_UNITS[number],
-                "number": number,
-                "filename": pathlib.Path(fname).name,
-                "scaling_mult": mult,
-                "scaling_add": add,
-            }
-            data_vars[BAND_NAMES[number]] = xr.DataArray(
-                data=band,
-                dims=dims,
-                coords=coords,
-                attrs=band_attrs,
-                name=BAND_NAMES[number],
+            data_vars[BAND_NAMES[number]] = read_and_scale_band(
+                fname, reader, dtype, number, coords, metadata, region
             )
-            if region is not None:
-                data_vars[BAND_NAMES[number]] = data_vars[BAND_NAMES[number]].sel(
-                    easting=slice(*region[:2]), northing=slice(*region[2:])
-                )
-    attrs = {
-        "Conventions": "CF-1.8",
-        "title": (
-            f"{metadata['spacecraft_id'].replace('_', ' ').title()} scene from "
-            f"{metadata['date_acquired']} "
-            f"(path/row={metadata['wrs_path']}/{metadata['wrs_row']})"
-        ),
+    if data_vars:
+        scene = xr.Dataset(data_vars, attrs=attrs_from_metadata(metadata))
+        scene.easting.attrs = {
+            "long_name": "UTM easting",
+            "standard_name": "projection_x_coordinate",
+            "units": "m",
+        }
+        scene.northing.attrs = {
+            "long_name": "UTM northing",
+            "standard_name": "projection_y_coordinate",
+            "units": "m",
+        }
+        return scene
+    else:
+        raise ValueError(
+            f"No Landsat Collection 2 Level 2 band files found in '{str(path)}'."
+        )
+
+
+def load_panchromatic(path, region=None, dtype="float32"):
+    """
+    Load the panchromatic band from a USGS EarthExplorer Level 1 Landsat scene.
+
+    Can read from a folder with the ``*.TIF`` file and an ``*_MTL.txt`` file or
+    directly from a tar archive (compressed or not) without the need to first
+    unpack the archive. The band is converted to reflectance units using
+    appropriate scaling parameters and UTM coordinates are set in the returned
+    :class:`xarray.DataArray`.
+
+    .. important::
+
+        Do not rename the TIF or MTL files. The folder/archive can have any
+        name but TIF and MTL files need their original names.
+
+    .. note::
+
+        Only supports Landsat 8 and 9 Collection 2 Level 1 scenes containing
+        the panchromatic band.
+
+    Parameters
+    ----------
+    path : str or :class:`pathlib.Path`
+        The path to a folder or tar archive containing the TIF file for the
+        panchromatic band. **Must** include the ``*_MTL.txt`` metadata file.
+        Other band files may be present but will be ignored.
+    region : None or list
+        Crop the band to this bounding box given as a list of West, East,
+        South, and North coordinate values (UTM in meters). If None, no
+        cropping is performed on the band. Default is None.
+    dtype : str or numpy dtype object
+        The type used for the band array. Integer types will result in rounding
+        so floating point is recommended. Default is float16.
+
+    Returns
+    -------
+    panchromatic : :class:`xarray.DataArray`
+        The loaded band including UTM easting and northing as dimensional
+        coordinates and metadata read from the MTL file and other CF compliant
+        fields in the ``attrs`` attribute.
+    """
+    path = pathlib.Path(path)
+    with choose_reader(path)(path) as reader:
+        metadata = reader.read_metadata()
+        coords = coordinates_from_metadata(metadata, "panchromatic")
+        available_bands = {
+            int(str(fname).split("_B")[-1][:-4]): fname for fname in reader.band_files
+        }
+        if 8 not in available_bands:
+            raise ValueError(
+                f"Could not find the panchromatic band (8) in '{str(path)}'."
+            )
+        band = read_and_scale_band(
+            available_bands[8], reader, dtype, 8, coords, metadata, region
+        )
+    attrs = dict(band.attrs)
+    attrs.update(attrs_from_metadata(metadata))
+    attrs["title"] = (
+        f"{metadata['spacecraft_id'].replace('_', ' ').title()} panchromatic band from "
+        f"{metadata['date_acquired']} "
+        f"(path/row={metadata['wrs_path']}/{metadata['wrs_row']})"
+    )
+    band.attrs = attrs
+    band.easting.attrs = {
+        "long_name": "UTM easting",
+        "standard_name": "projection_x_coordinate",
+        "units": "m",
     }
+    band.northing.attrs = {
+        "long_name": "UTM northing",
+        "standard_name": "projection_y_coordinate",
+        "units": "m",
+    }
+    return band
+
+
+def read_and_scale_band(fname, reader, dtype, number, coords, metadata, region):
+    """
+    Read the band and return a DataArray with the scaled values.
+    """
+    band_data = reader.read_band(fname).astype(dtype)[::-1, :]
+    band_data[band_data == 0] = np.nan
+    mult, add = scaling_parameters(metadata, number)
+    band_data *= mult
+    band_data += add
+    band = xr.DataArray(
+        data=band_data,
+        dims=("northing", "easting"),
+        name=BAND_NAMES[number],
+        coords=coords,
+        attrs={
+            "long_name": BAND_TITLES[number],
+            "units": BAND_UNITS[number],
+            "number": number,
+            "filename": pathlib.Path(fname).name,
+            "scaling_mult": mult,
+            "scaling_add": add,
+        },
+    )
+    if region is not None:
+        band = band.sel(easting=slice(*region[:2]), northing=slice(*region[2:]))
+    return band
+
+
+def scaling_parameters(metadata, number):
+    """
+    Get the scaling parameters for the band of the given number.
+    """
+    mult, add = None, None
+    mult_entries = [f"mult_band_{number}", f"mult_band_st_b{number}"]
+    add_entries = [f"add_band_{number}", f"add_band_st_b{number}"]
+    for key in metadata:
+        if any(key.endswith(entry) for entry in mult_entries):
+            mult = metadata[key]
+        if any(key.endswith(entry) for entry in add_entries):
+            add = metadata[key]
+    return mult, add
+
+
+def coordinates_from_metadata(metadata, band_type):
+    """
+    Generate the UTM pixel coordinate arrays from the metadata.
+    """
+    shape = (metadata[f"{band_type}_lines"], metadata[f"{band_type}_samples"])
+    scene_region = (
+        metadata["corner_ll_projection_x_product"],
+        metadata["corner_lr_projection_x_product"],
+        metadata["corner_ll_projection_y_product"],
+        metadata["corner_ul_projection_y_product"],
+    )
+    coords = {
+        "easting": np.linspace(*scene_region[:2], shape[1]),
+        "northing": np.linspace(*scene_region[2:], shape[0]),
+    }
+    return coords
+
+
+def attrs_from_metadata(metadata):
+    """
+    Create the xarray attrs dictionary from the metadata dictionary.
+    """
     metadata_to_keep = [
         "digital_object_identifier",
         "origin",
@@ -192,19 +313,27 @@ def load_scene(path, bands=None, region=None, dtype="float16"):
         "wrs_row",
         "mtl_file",
     ]
+    attrs = {
+        "Conventions": "CF-1.8",
+        "title": (
+            f"{metadata['spacecraft_id'].replace('_', ' ').title()} scene from "
+            f"{metadata['date_acquired']} "
+            f"(path/row={metadata['wrs_path']}/{metadata['wrs_row']})"
+        ),
+    }
     attrs.update({key: metadata[key] for key in metadata_to_keep})
-    scene = xr.Dataset(data_vars, attrs=attrs)
-    scene.easting.attrs = {
-        "long_name": "UTM easting",
-        "standard_name": "projection_x_coordinate",
-        "units": "m",
-    }
-    scene.northing.attrs = {
-        "long_name": "UTM northing",
-        "standard_name": "projection_y_coordinate",
-        "units": "m",
-    }
-    return scene
+    return attrs
+
+
+def choose_reader(path):
+    """
+    Return the appropriate reader class depending on what "path" is.
+    """
+    if path.is_file() and ".tar" in path.suffixes:
+        reader_class = TarReader
+    else:
+        reader_class = FolderReader
+    return reader_class
 
 
 def parse_metadata(text):
@@ -234,6 +363,8 @@ def parse_metadata(text):
         "UTM_ZONE",
         "REFLECTIVE_LINES",
         "REFLECTIVE_SAMPLES",
+        "PANCHROMATIC_LINES",
+        "PANCHROMATIC_SAMPLES",
         "THERMAL_LINES",
         "THERMAL_SAMPLES",
     ]
@@ -437,10 +568,16 @@ def save_scene(path, scene):
                 or "CORNER_UR_PROJECTION_Y_PRODUCT" in line
             ):
                 line = line.split(" = ")[0] + f" = {scene.northing.max().values}"
-            if "REFLECTIVE_LINES" in line or "THERMAL_LINES" in line:
-                line = line.split(" = ")[0] + f" = {scene.dims['northing']}"
-            if "REFLECTIVE_SAMPLES" in line or "THERMAL_SAMPLES" in line:
-                line = line.split(" = ")[0] + f" = {scene.dims['easting']}"
+            if "pan" in scene:
+                if "PANCHROMATIC_LINES" in line:
+                    line = line.split(" = ")[0] + f" = {scene.dims['northing']}"
+                if "PANCHROMATIC_SAMPLES" in line:
+                    line = line.split(" = ")[0] + f" = {scene.dims['easting']}"
+            else:
+                if "REFLECTIVE_LINES" in line or "THERMAL_LINES" in line:
+                    line = line.split(" = ")[0] + f" = {scene.dims['northing']}"
+                if "REFLECTIVE_SAMPLES" in line or "THERMAL_SAMPLES" in line:
+                    line = line.split(" = ")[0] + f" = {scene.dims['easting']}"
             mtl_file.append(line)
         mtl_file = "\n".join(mtl_file)
         # Add the MTL file to the archive

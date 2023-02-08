@@ -97,3 +97,91 @@ def fetch_brumadinho_before(untar=False):
         # Get the folder name in case we unpacked the archive
         path = pathlib.Path(path[0]).parent
     return path
+
+
+def fetch_liverpool(untar=False):
+    """
+    Download a sample scene from the city of Liverpool, UK
+
+    This is a cropped version of a Landsat 8 scene from 2020/09/27. It was
+    taken on a virtually cloud-free day and shows the Mersey river delta and
+    some off-shore wind turbines.
+
+    The scene was downloaded from `USGS Earth Explorer
+    <https://earthexplorer.usgs.gov/>`__. Original data are in the public
+    domain and are redistributed here in accordance with the `Landsat Data
+    Distribution Policy
+    <https://www.usgs.gov/media/files/landsat-data-distribution-policy>`__.
+
+    Source: https://doi.org/10.6084/m9.figshare.22041353
+    (`CC0 <https://creativecommons.org/publicdomain/zero/1.0/>`__)
+
+    Parameters
+    ----------
+    untar : bool
+        If True, unpack the tar archive after downloading and return a path to
+        the folder containing the unpacked files instead. Default is False.
+
+    Returns
+    -------
+    path : str
+        The path to the downloaded `.tar` file that contains the scene.
+    """
+    if untar:
+        processor = pooch.Untar()
+    else:
+        processor = None
+    path = pooch.retrieve(
+        "https://figshare.com/ndownloader/files/39121064",
+        fname="LC08_L2SP_204023_20200927_20201006_02_T1-cropped.tar.gz",
+        known_hash="md5:3c07e343ccf959be4e5dd5c9aca4e0a4",
+        processor=processor,
+    )
+    if untar:
+        # Get the folder name in case we unpacked the archive
+        path = pathlib.Path(path[0]).parent
+    return path
+
+
+def fetch_liverpool_panchromatic(untar=False):
+    """
+    Download a sample panchromatic band from the city of Liverpool, UK
+
+    This is a cropped version of the panchromatic band from a Landsat 8 Level 1
+    scene from 2020/09/27. It was taken on a virtually cloud-free day and shows
+    the Mersey river delta and some off-shore wind turbines.
+
+    The scene was downloaded from `USGS Earth Explorer
+    <https://earthexplorer.usgs.gov/>`__. Original data are in the public
+    domain and are redistributed here in accordance with the `Landsat Data
+    Distribution Policy
+    <https://www.usgs.gov/media/files/landsat-data-distribution-policy>`__.
+
+    Source: https://doi.org/10.6084/m9.figshare.22041353
+    (`CC0 <https://creativecommons.org/publicdomain/zero/1.0/>`__)
+
+    Parameters
+    ----------
+    untar : bool
+        If True, unpack the tar archive after downloading and return a path to
+        the folder containing the unpacked files instead. Default is False.
+
+    Returns
+    -------
+    path : str
+        The path to the downloaded `.tar` file that contains the scene.
+    """
+    if untar:
+        processor = pooch.Untar()
+    else:
+        processor = None
+    path = pooch.retrieve(
+        "https://figshare.com/ndownloader/files/39121061",
+        fname="LC08_L1TP_204023_20200927_20201006_02_T1-cropped.tar.gz",
+        known_hash="md5:7d43f8580b8e583d137a93f9ae51a73d",
+        processor=processor,
+    )
+    if untar:
+        # Get the folder name in case we unpacked the archive
+        path = pathlib.Path(path[0]).parent
+    return path

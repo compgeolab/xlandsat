@@ -7,13 +7,24 @@ List of functions and classes (API)
 
 .. currentmodule:: xlandsat
 
+Input and output
+----------------
+
 .. autosummary::
-    :toctree: generated/
+   :toctree: generated/
 
     load_scene
     save_scene
-    composite
+    load_panchromatic
 
+Processing
+----------
+
+.. autosummary::
+   :toctree: generated/
+
+    composite
+    pansharpen
 
 Sample datasets
 ---------------
@@ -27,3 +38,5 @@ Sample datasets
 
     datasets.fetch_brumadinho_after
     datasets.fetch_brumadinho_before
+    datasets.fetch_liverpool
+    datasets.fetch_liverpool_panchromatic

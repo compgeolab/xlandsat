@@ -3,5 +3,6 @@
 # SPDX-License-Identifier: MIT
 from . import datasets
 from ._composite import composite
-from ._io import load_scene, save_scene
+from ._io import load_panchromatic, load_scene, save_scene
+from ._pansharpen import pansharpen
 from ._version import __version__

@@ -147,10 +147,20 @@ Here's a quick example:
 .. toctree::
     :maxdepth: 2
     :hidden:
+    :caption: User Guide
+
+    composites.rst
+    indices.rst
+    pansharpen.rst
+
+.. toctree::
+    :maxdepth: 2
+    :hidden:
     :caption: Reference Documentation
 
     api/index.rst
     citing.rst
+    references.rst
     changes.rst
     compatibility.rst
     versions.rst
