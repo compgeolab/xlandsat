@@ -30,19 +30,20 @@ Here's a quick example:
 .. jupyter-execute::
 
     import xlandsat as xls
-    import pooch  # for downloading sample data
 
-    # Download a cropped scene from the Brumadinho dam (Brazil)
-    path = pooch.retrieve(
-          "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
-         known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
-    )
+    # Download a cropped Landsat 8 scene from the Brumadinho dam disaster
+    # (Brazil). The function downloads it and returns the path to the .tar file
+    # containing the scene.
+    path = xls.datasets.fetch_brumadinho_after()
+
     # Load the scene directly from the archive (no need to unpack it)
     scene = xls.load_scene(path)
-    # Make an RGB composite and add it to the scene Dataset
-    scene = scene.assign(rgb=xls.composite(scene, rescale_to=[0, 0.2]))
+
+    # Make an RGB composite and stretch the contrast
+    rgb = xls.composite(scene, rescale_to=[0.03, 0.2])
+
     # Plot the composite
-    scene.rgb.plot.imshow()
+    rgb.plot.imshow()
 
 
 ----

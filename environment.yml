@@ -10,7 +10,7 @@ dependencies:
   - numpy
   - xarray
   - scikit-image
-  - imageio
+  - pooch
   # Build
   - build
   - twine
@@ -18,7 +18,6 @@ dependencies:
   - pytest
   - pytest-cov
   - coverage
-  - pooch
   # Documentation
   - sphinx==4.5.*
   - sphinx-book-theme==0.3.*

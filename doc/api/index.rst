@@ -8,8 +8,22 @@ List of functions and classes (API)
 .. currentmodule:: xlandsat
 
 .. autosummary::
-   :toctree: generated/
+    :toctree: generated/
 
     load_scene
     save_scene
     composite
+
+
+Sample datasets
+---------------
+
+.. automodule:: xlandsat.datasets
+
+.. currentmodule:: xlandsat
+
+.. autosummary::
+    :toctree: generated/
+
+    datasets.fetch_brumadinho_after
+    datasets.fetch_brumadinho_before
