@@ -1,0 +1,2293 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    
+        <title>Overview | xlandsat v0.3.0</title>
+    
+
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/thebelab-helper.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installing" href="install.html" />
+    <link rel="prev" title="Home" href="index.html" />
+    <!-- Plausible analytics for anonymous usage statistics -->
+    <script defer data-domain="compgeolab.org" src="https://plausible.io/js/plausible.js"></script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.3.0</span></h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="install.html">
+   Installing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="composites.html">
+   Composites
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="indices.html">
+   Indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pansharpen.html">
+   Pansharpening
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference Documentation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="api/index.html">
+   List of functions and classes (API)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.load_scene.html">
+     xlandsat.load_scene
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.save_scene.html">
+     xlandsat.save_scene
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.load_panchromatic.html">
+     xlandsat.load_panchromatic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.composite.html">
+     xlandsat.composite
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.pansharpen.html">
+     xlandsat.pansharpen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_brumadinho_after.html">
+     xlandsat.datasets.fetch_brumadinho_after
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_brumadinho_before.html">
+     xlandsat.datasets.fetch_brumadinho_before
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_liverpool.html">
+     xlandsat.datasets.fetch_liverpool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_liverpool_panchromatic.html">
+     xlandsat.datasets.fetch_liverpool_panchromatic
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="citing.html">
+   Citing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="changes.html">
+   Changelog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="compatibility.html">
+   Version compatibility
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="versions.html">
+   Documentation for other versions
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Links
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat">
+   Source code on GitHub
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://www.compgeolab.org">
+   Computer-Oriented Geoscience Lab
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/compgeolab/xlandsat"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/compgeolab/xlandsat/issues/new?title=Issue%20on%20page%20%2Foverview.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/compgeolab/xlandsat/edit/main/doc/overview.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/overview.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-library">
+   The library
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-a-sample-scene">
+   Download a sample scene
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-the-scenes">
+   Load the scenes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-some-reflectance-bands">
+   Plot some reflectance bands
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-now">
+   What now?
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Overview</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-library">
+   The library
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-a-sample-scene">
+   Download a sample scene
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-the-scenes">
+   Load the scenes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-some-reflectance-bands">
+   Plot some reflectance bands
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-now">
+   What now?
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="overview">
+<span id="id1"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h1>
+<section id="the-library">
+<h2>The library<a class="headerlink" href="#the-library" title="Permalink to this headline">#</a></h2>
+<p>All functionality in xlandsat is available from the base namespace of the
+<a class="reference internal" href="api/index.html#module-xlandsat" title="xlandsat"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xlandsat</span></code></a> package. This means that you can access all of them with a
+single import:</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># xlandsat is usually imported as xls</span>
+<span class="kn">import</span> <span class="nn">xlandsat</span> <span class="k">as</span> <span class="nn">xls</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</section>
+<section id="download-a-sample-scene">
+<h2>Download a sample scene<a class="headerlink" href="#download-a-sample-scene" title="Permalink to this headline">#</a></h2>
+<p>As an example, lets download a tar archive of a Landsat 8 scene of the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Brumadinho_dam_disaster">Brumadinho tailings dam disaster</a>
+that happened in 2019 in Brazil.
+The archive is available on figshare at
+<a class="reference external" href="https://doi.org/10.6084/m9.figshare.21665630">https://doi.org/10.6084/m9.figshare.21665630</a> and includes scenes from before
+and after the disaster as both the full scene and a cropped version.</p>
+<p>We’ll use the functions in <a class="reference internal" href="api/index.html#module-xlandsat.datasets" title="xlandsat.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xlandsat.datasets</span></code></a> to download the scenes from
+before and after the disaster to our computer. To save space and bandwidth,
+these are cropped versions of the full Landsat scenes.</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path_before</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">fetch_brumadinho_before</span><span class="p">()</span>
+<span class="n">path_after</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">fetch_brumadinho_after</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">path_before</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">path_after</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pooch/LC08_L2SP_218074_20190114_20200829_02_T1-cropped.tar.gz
+/home/runner/.cache/pooch/LC08_L2SP_218074_20190130_20200829_02_T1-cropped.tar.gz
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Running the code above will only download the data once. We use <a class="reference external" href="https://www.fatiando.org/pooch">Pooch</a> to handle the downloads and it’s smart
+enough to check if the file already exists on your computer. See
+<a class="reference external" href="https://www.fatiando.org/pooch/latest/api/generated/pooch.retrieve.html#pooch.retrieve" title="(in Pooch vv1.6.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pooch.retrieve</span></code></a> for more information.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>If you want to use the full scenes instead of the cropped version,
+use <a class="reference external" href="https://www.fatiando.org/pooch/latest/api/generated/pooch.retrieve.html#pooch.retrieve" title="(in Pooch vv1.6.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pooch.retrieve</span></code></a> to fetch them from the figshare archive
+<a class="reference external" href="https://doi.org/10.6084/m9.figshare.21665630">https://doi.org/10.6084/m9.figshare.21665630</a>.</p>
+</div>
+</section>
+<section id="load-the-scenes">
+<h2>Load the scenes<a class="headerlink" href="#load-the-scenes" title="Permalink to this headline">#</a></h2>
+<p>Now that we have paths to the tar archives of the scenes, we can use
+<a class="reference internal" href="api/generated/xlandsat.load_scene.html#xlandsat.load_scene" title="xlandsat.load_scene"><code class="xref py py-func docutils literal notranslate"><span class="pre">xlandsat.load_scene</span></code></a> to read the bands and metadata directly from the
+archives (without unpacking):</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">before</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">load_scene</span><span class="p">(</span><span class="n">path_before</span><span class="p">)</span>
+<span class="n">before</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:   (easting: 400, northing: 300)
+Coordinates:
+  * easting   (easting) float64 5.835e+05 5.835e+05 ... 5.954e+05 5.955e+05
+  * northing  (northing) float64 -2.232e+06 -2.232e+06 ... -2.223e+06 -2.223e+06
+Data variables:
+    blue      (northing, easting) float16 0.07288 0.07373 ... 0.06506 0.06653
+    green     (northing, easting) float16 0.09851 0.099 ... 0.0835 0.08716
+    red       (northing, easting) float16 0.1035 0.1041 ... 0.07959 0.08423
+    nir       (northing, easting) float16 0.2803 0.2749 0.3203 ... 0.2118 0.2267
+    swir1     (northing, easting) float16 0.2467 0.2474 0.2147 ... 0.172 0.1769
+    swir2     (northing, easting) float16 0.1571 0.1571 0.1281 ... 0.1171 0.1206
+Attributes: (12/19)
+    Conventions:                CF-1.8
+    title:                      Landsat 8 scene from 2019-01-14 (path/row=218...
+    digital_object_identifier:  https://doi.org/10.5066/P9OGBGM6
+    origin:                     Image courtesy of the U.S. Geological Survey
+    landsat_product_id:         LC08_L2SP_218074_20190114_20200829_02_T1
+    processing_level:           L2SP
+    ...                         ...
+    ellipsoid:                  WGS84
+    date_acquired:              2019-01-14
+    scene_center_time:          12:57:13.1804960Z
+    wrs_path:                   218
+    wrs_row:                    74
+    mtl_file:                   GROUP = LANDSAT_METADATA_FILE\n  GROUP = PROD...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-c86011c6-501d-49e8-a18e-19a0aa516af7' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-c86011c6-501d-49e8-a18e-19a0aa516af7' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>easting</span>: 400</li><li><span class='xr-has-index'>northing</span>: 300</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-9fb844c0-d1d8-4f58-8873-8576ca722ff2' class='xr-section-summary-in' type='checkbox'  checked><label for='section-9fb844c0-d1d8-4f58-8873-8576ca722ff2' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>easting</span></div><div class='xr-var-dims'>(easting)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>5.835e+05 5.835e+05 ... 5.955e+05</div><input id='attrs-68694723-c9d5-4fbb-82e7-acf4bc12fc9e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-68694723-c9d5-4fbb-82e7-acf4bc12fc9e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1d9a31e9-cac1-44dd-ad1f-9de19c0279db' class='xr-var-data-in' type='checkbox'><label for='data-1d9a31e9-cac1-44dd-ad1f-9de19c0279db' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM easting</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([583500., 583530., 583560., ..., 595410., 595440., 595470.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>northing</span></div><div class='xr-var-dims'>(northing)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-2.232e+06 ... -2.223e+06</div><input id='attrs-87c2b5bc-1795-41a9-8637-bf8b0a665f84' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-87c2b5bc-1795-41a9-8637-bf8b0a665f84' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7d42b714-1f8f-4a9f-906a-d1b82609b3c9' class='xr-var-data-in' type='checkbox'><label for='data-7d42b714-1f8f-4a9f-906a-d1b82609b3c9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM northing</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([-2231670., -2231640., -2231610., ..., -2222760., -2222730., -2222700.])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3a14e76b-f972-4a70-8e4b-a79fccc386e4' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3a14e76b-f972-4a70-8e4b-a79fccc386e4' class='xr-section-summary' >Data variables: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>blue</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.07288 0.07373 ... 0.06506 0.06653</div><input id='attrs-5aa8bd62-9934-4b5d-aacb-8f968d50b73c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5aa8bd62-9934-4b5d-aacb-8f968d50b73c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ba657ba9-9067-4ab4-9f2d-354f591ece85' class='xr-var-data-in' type='checkbox'><label for='data-ba657ba9-9067-4ab4-9f2d-354f591ece85' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>blue</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>2</dd><dt><span>filename :</span></dt><dd>LC08_L2SP_218074_20190114_20200829_02_T1_SR_B2.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.0729 , 0.0737 , 0.06934, ..., 0.06396, 0.06165, 0.06604],
+       [0.074  , 0.07263, 0.0768 , ..., 0.06128, 0.06042, 0.07117],
+       [0.0748 , 0.0719 , 0.07556, ..., 0.05957, 0.05676, 0.06177],
+       ...,
+       [0.06494, 0.06238, 0.063  , ..., 0.0652 , 0.0663 , 0.0657 ],
+       [0.067  , 0.0647 , 0.06238, ..., 0.0647 , 0.06506, 0.0663 ],
+       [0.067  , 0.0665 , 0.06396, ..., 0.067  , 0.06506, 0.0665 ]],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>green</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.09851 0.099 ... 0.0835 0.08716</div><input id='attrs-392e2748-d692-478d-a3d2-cded34fa3f2b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-392e2748-d692-478d-a3d2-cded34fa3f2b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6604eaef-a24d-4be4-8354-9bdde692bf56' class='xr-var-data-in' type='checkbox'><label for='data-6604eaef-a24d-4be4-8354-9bdde692bf56' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>green</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>3</dd><dt><span>filename :</span></dt><dd>LC08_L2SP_218074_20190114_20200829_02_T1_SR_B3.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.0985 , 0.099  , 0.09326, ..., 0.0919 , 0.08264, 0.0841 ],
+       [0.1024 , 0.1    , 0.1045 , ..., 0.08496, 0.0891 , 0.1034 ],
+       [0.103  , 0.1    , 0.10266, ..., 0.084  , 0.0764 , 0.07495],
+       ...,
+       [0.08496, 0.07935, 0.0807 , ..., 0.0842 , 0.0842 , 0.0825 ],
+       [0.0875 , 0.083  , 0.0774 , ..., 0.08374, 0.08264, 0.0846 ],
+       [0.0873 , 0.08704, 0.0814 , ..., 0.0852 , 0.0835 , 0.08716]],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>red</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.1035 0.1041 ... 0.07959 0.08423</div><input id='attrs-3be86f0f-d47c-4653-9c03-ecafb2e2d7aa' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3be86f0f-d47c-4653-9c03-ecafb2e2d7aa' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a5628b93-3708-4d1d-b04b-5c98cb50aba4' class='xr-var-data-in' type='checkbox'><label for='data-a5628b93-3708-4d1d-b04b-5c98cb50aba4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>red</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>4</dd><dt><span>filename :</span></dt><dd>LC08_L2SP_218074_20190114_20200829_02_T1_SR_B4.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.1035 , 0.1041 , 0.08704, ..., 0.0834 , 0.074  , 0.0796 ],
+       [0.109  , 0.1029 , 0.1073 , ..., 0.06934, 0.07825, 0.1046 ],
+       [0.1078 , 0.103  , 0.10657, ..., 0.0707 , 0.0657 , 0.0668 ],
+       ...,
+       [0.07886, 0.07263, 0.07336, ..., 0.0764 , 0.0803 , 0.0779 ],
+       [0.0819 , 0.0785 , 0.0714 , ..., 0.07544, 0.0773 , 0.0812 ],
+       [0.08093, 0.08167, 0.07434, ..., 0.0801 , 0.0796 , 0.0842 ]],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>nir</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.2803 0.2749 ... 0.2118 0.2267</div><input id='attrs-79a96d9f-2033-4cf0-be27-aec24b440764' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-79a96d9f-2033-4cf0-be27-aec24b440764' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-64e87a4a-1946-4b86-867e-ece51361e5dc' class='xr-var-data-in' type='checkbox'><label for='data-64e87a4a-1946-4b86-867e-ece51361e5dc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>near-infrared</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>5</dd><dt><span>filename :</span></dt><dd>LC08_L2SP_218074_20190114_20200829_02_T1_SR_B5.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.2803, 0.275 , 0.3203, ..., 0.2832, 0.2905, 0.2773],
+       [0.2837, 0.2915, 0.3047, ..., 0.3032, 0.2827, 0.2847],
+       [0.3018, 0.3042, 0.2983, ..., 0.3213, 0.2598, 0.2573],
+       ...,
+       [0.2394, 0.2291, 0.2191, ..., 0.2465, 0.2301, 0.2184],
+       [0.2382, 0.2177, 0.1993, ..., 0.2423, 0.2177, 0.2169],
+       [0.2443, 0.2301, 0.2191, ..., 0.2274, 0.2118, 0.2267]],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>swir1</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.2467 0.2474 ... 0.172 0.1769</div><input id='attrs-edf7bf33-e19d-4502-bc8a-cf0e5531bc97' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-edf7bf33-e19d-4502-bc8a-cf0e5531bc97' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5a65ebb6-a385-4e30-93a9-4e2423591c35' class='xr-var-data-in' type='checkbox'><label for='data-5a65ebb6-a385-4e30-93a9-4e2423591c35' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>short-wave infrared 1</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>6</dd><dt><span>filename :</span></dt><dd>LC08_L2SP_218074_20190114_20200829_02_T1_SR_B6.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.2467, 0.2474, 0.2147, ..., 0.1874, 0.1725, 0.1915],
+       [0.2559, 0.2457, 0.2457, ..., 0.1827, 0.1815, 0.2103],
+       [0.254 , 0.2401, 0.2443, ..., 0.1681, 0.1539, 0.16  ],
+       ...,
+       [0.1937, 0.1664, 0.1654, ..., 0.1766, 0.1766, 0.1708],
+       [0.194 , 0.1859, 0.1525, ..., 0.1727, 0.1715, 0.1759],
+       [0.1874, 0.1896, 0.1632, ..., 0.1766, 0.172 , 0.1769]],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>swir2</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.1571 0.1571 ... 0.1171 0.1206</div><input id='attrs-60669303-42a9-4e0f-917d-9fd8c768fcce' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-60669303-42a9-4e0f-917d-9fd8c768fcce' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1eaf864e-daf4-41c5-ad1b-064cd8fc737e' class='xr-var-data-in' type='checkbox'><label for='data-1eaf864e-daf4-41c5-ad1b-064cd8fc737e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>short-wave infrared 2</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>7</dd><dt><span>filename :</span></dt><dd>LC08_L2SP_218074_20190114_20200829_02_T1_SR_B7.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.1571 , 0.1571 , 0.128  , ..., 0.1245 , 0.10156, 0.1112 ],
+       [0.163  , 0.1552 , 0.1576 , ..., 0.1067 , 0.10864, 0.1364 ],
+       [0.161  , 0.1503 , 0.1534 , ..., 0.10046, 0.0897 , 0.0929 ],
+       ...,
+       [0.1216 , 0.1045 , 0.10547, ..., 0.11475, 0.11755, 0.11523],
+       [0.125  , 0.1205 , 0.1    , ..., 0.1122 , 0.11475, 0.1199 ],
+       [0.11926, 0.1206 , 0.10474, ..., 0.1194 , 0.11707, 0.1206 ]],
+      dtype=float16)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-b4ea90c2-34c0-4eed-b7fb-c9ca241b401e' class='xr-section-summary-in' type='checkbox'  ><label for='section-b4ea90c2-34c0-4eed-b7fb-c9ca241b401e' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>easting</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-5a884373-dd96-42cd-8924-c0dd0f175b88' class='xr-index-data-in' type='checkbox'/><label for='index-5a884373-dd96-42cd-8924-c0dd0f175b88' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([583500.0, 583530.0, 583560.0, 583590.0, 583620.0, 583650.0,
+              583680.0, 583710.0, 583740.0, 583770.0,
+              ...
+              595200.0, 595230.0, 595260.0, 595290.0, 595320.0, 595350.0,
+              595380.0, 595410.0, 595440.0, 595470.0],
+             dtype=&#x27;float64&#x27;, name=&#x27;easting&#x27;, length=400))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>northing</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-2546182e-a0f1-487a-99f3-0dee3c3f475c' class='xr-index-data-in' type='checkbox'/><label for='index-2546182e-a0f1-487a-99f3-0dee3c3f475c' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([-2231670.0, -2231640.0, -2231610.0, -2231580.0, -2231550.0,
+              -2231520.0, -2231490.0, -2231460.0, -2231430.0, -2231400.0,
+              ...
+              -2222970.0, -2222940.0, -2222910.0, -2222880.0, -2222850.0,
+              -2222820.0, -2222790.0, -2222760.0, -2222730.0, -2222700.0],
+             dtype=&#x27;float64&#x27;, name=&#x27;northing&#x27;, length=300))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-cffc213b-fbe4-47cc-af68-288fb59bd35c' class='xr-section-summary-in' type='checkbox'  ><label for='section-cffc213b-fbe4-47cc-af68-288fb59bd35c' class='xr-section-summary' >Attributes: <span>(19)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>title :</span></dt><dd>Landsat 8 scene from 2019-01-14 (path/row=218/74)</dd><dt><span>digital_object_identifier :</span></dt><dd>https://doi.org/10.5066/P9OGBGM6</dd><dt><span>origin :</span></dt><dd>Image courtesy of the U.S. Geological Survey</dd><dt><span>landsat_product_id :</span></dt><dd>LC08_L2SP_218074_20190114_20200829_02_T1</dd><dt><span>processing_level :</span></dt><dd>L2SP</dd><dt><span>collection_number :</span></dt><dd>02</dd><dt><span>collection_category :</span></dt><dd>T1</dd><dt><span>spacecraft_id :</span></dt><dd>LANDSAT_8</dd><dt><span>sensor_id :</span></dt><dd>OLI_TIRS</dd><dt><span>map_projection :</span></dt><dd>UTM</dd><dt><span>utm_zone :</span></dt><dd>23</dd><dt><span>datum :</span></dt><dd>WGS84</dd><dt><span>ellipsoid :</span></dt><dd>WGS84</dd><dt><span>date_acquired :</span></dt><dd>2019-01-14</dd><dt><span>scene_center_time :</span></dt><dd>12:57:13.1804960Z</dd><dt><span>wrs_path :</span></dt><dd>218</dd><dt><span>wrs_row :</span></dt><dd>74</dd><dt><span>mtl_file :</span></dt><dd>GROUP = LANDSAT_METADATA_FILE
+  GROUP = PRODUCT_CONTENTS
+    ORIGIN = &quot;Image courtesy of the U.S. Geological Survey&quot;
+    DIGITAL_OBJECT_IDENTIFIER = &quot;https://doi.org/10.5066/P9OGBGM6&quot;
+    LANDSAT_PRODUCT_ID = &quot;LC08_L2SP_218074_20190114_20200829_02_T1&quot;
+    PROCESSING_LEVEL = &quot;L2SP&quot;
+    COLLECTION_NUMBER = 02
+    COLLECTION_CATEGORY = &quot;T1&quot;
+    OUTPUT_FORMAT = &quot;GEOTIFF&quot;
+    FILE_NAME_BAND_1 = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_SR_B1.TIF&quot;
+    FILE_NAME_BAND_2 = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_SR_B2.TIF&quot;
+    FILE_NAME_BAND_3 = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_SR_B3.TIF&quot;
+    FILE_NAME_BAND_4 = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_SR_B4.TIF&quot;
+    FILE_NAME_BAND_5 = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_SR_B5.TIF&quot;
+    FILE_NAME_BAND_6 = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_SR_B6.TIF&quot;
+    FILE_NAME_BAND_7 = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_SR_B7.TIF&quot;
+    FILE_NAME_BAND_ST_B10 = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_ST_B10.TIF&quot;
+    FILE_NAME_THERMAL_RADIANCE = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_ST_TRAD.TIF&quot;
+    FILE_NAME_UPWELL_RADIANCE = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_ST_URAD.TIF&quot;
+    FILE_NAME_DOWNWELL_RADIANCE = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_ST_DRAD.TIF&quot;
+    FILE_NAME_ATMOSPHERIC_TRANSMITTANCE = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_ST_ATRAN.TIF&quot;
+    FILE_NAME_EMISSIVITY = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_ST_EMIS.TIF&quot;
+    FILE_NAME_EMISSIVITY_STDEV = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_ST_EMSD.TIF&quot;
+    FILE_NAME_CLOUD_DISTANCE = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_ST_CDIST.TIF&quot;
+    FILE_NAME_QUALITY_L2_AEROSOL = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_SR_QA_AEROSOL.TIF&quot;
+    FILE_NAME_QUALITY_L2_SURFACE_TEMPERATURE = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_ST_QA.TIF&quot;
+    FILE_NAME_QUALITY_L1_PIXEL = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_QA_PIXEL.TIF&quot;
+    FILE_NAME_QUALITY_L1_RADIOMETRIC_SATURATION = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_QA_RADSAT.TIF&quot;
+    FILE_NAME_ANGLE_COEFFICIENT = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_ANG.txt&quot;
+    FILE_NAME_METADATA_ODL = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_MTL.txt&quot;
+    FILE_NAME_METADATA_XML = &quot;LC08_L2SP_218074_20190114_20200829_02_T1_MTL.xml&quot;
+    DATA_TYPE_BAND_1 = &quot;UINT16&quot;
+    DATA_TYPE_BAND_2 = &quot;UINT16&quot;
+    DATA_TYPE_BAND_3 = &quot;UINT16&quot;
+    DATA_TYPE_BAND_4 = &quot;UINT16&quot;
+    DATA_TYPE_BAND_5 = &quot;UINT16&quot;
+    DATA_TYPE_BAND_6 = &quot;UINT16&quot;
+    DATA_TYPE_BAND_7 = &quot;UINT16&quot;
+    DATA_TYPE_BAND_ST_B10 = &quot;UINT16&quot;
+    DATA_TYPE_THERMAL_RADIANCE = &quot;INT16&quot;
+    DATA_TYPE_UPWELL_RADIANCE = &quot;INT16&quot;
+    DATA_TYPE_DOWNWELL_RADIANCE = &quot;INT16&quot;
+    DATA_TYPE_ATMOSPHERIC_TRANSMITTANCE = &quot;INT16&quot;
+    DATA_TYPE_EMISSIVITY = &quot;INT16&quot;
+    DATA_TYPE_EMISSIVITY_STDEV = &quot;INT16&quot;
+    DATA_TYPE_CLOUD_DISTANCE = &quot;INT16&quot;
+    DATA_TYPE_QUALITY_L2_AEROSOL = &quot;UINT8&quot;
+    DATA_TYPE_QUALITY_L2_SURFACE_TEMPERATURE = &quot;INT16&quot;
+    DATA_TYPE_QUALITY_L1_PIXEL = &quot;UINT16&quot;
+    DATA_TYPE_QUALITY_L1_RADIOMETRIC_SATURATION = &quot;UINT16&quot;
+  END_GROUP = PRODUCT_CONTENTS
+  GROUP = IMAGE_ATTRIBUTES
+    SPACECRAFT_ID = &quot;LANDSAT_8&quot;
+    SENSOR_ID = &quot;OLI_TIRS&quot;
+    WRS_TYPE = 2
+    WRS_PATH = 218
+    WRS_ROW = 74
+    NADIR_OFFNADIR = &quot;NADIR&quot;
+    TARGET_WRS_PATH = 218
+    TARGET_WRS_ROW = 74
+    DATE_ACQUIRED = 2019-01-14
+    SCENE_CENTER_TIME = &quot;12:57:13.1804960Z&quot;
+    STATION_ID = &quot;LGN&quot;
+    CLOUD_COVER = 9.86
+    CLOUD_COVER_LAND = 9.86
+    IMAGE_QUALITY_OLI = 9
+    IMAGE_QUALITY_TIRS = 9
+    SATURATION_BAND_1 = &quot;Y&quot;
+    SATURATION_BAND_2 = &quot;Y&quot;
+    SATURATION_BAND_3 = &quot;Y&quot;
+    SATURATION_BAND_4 = &quot;Y&quot;
+    SATURATION_BAND_5 = &quot;Y&quot;
+    SATURATION_BAND_6 = &quot;Y&quot;
+    SATURATION_BAND_7 = &quot;Y&quot;
+    SATURATION_BAND_8 = &quot;N&quot;
+    SATURATION_BAND_9 = &quot;N&quot;
+    ROLL_ANGLE = -0.001
+    SUN_AZIMUTH = 97.81448496
+    SUN_ELEVATION = 59.92196710
+    EARTH_SUN_DISTANCE = 0.9835584
+    TRUNCATION_OLI = &quot;UPPER&quot;
+    TIRS_SSM_MODEL = &quot;FINAL&quot;
+    TIRS_SSM_POSITION_STATUS = &quot;ESTIMATED&quot;
+  END_GROUP = IMAGE_ATTRIBUTES
+  GROUP = PROJECTION_ATTRIBUTES
+    MAP_PROJECTION = &quot;UTM&quot;
+    DATUM = &quot;WGS84&quot;
+    ELLIPSOID = &quot;WGS84&quot;
+    UTM_ZONE = 23
+    GRID_CELL_SIZE_REFLECTIVE = 30.00
+    GRID_CELL_SIZE_THERMAL = 30.00
+    REFLECTIVE_LINES = 300	
+    REFLECTIVE_SAMPLES = 400
+    THERMAL_LINES = 300
+    THERMAL_SAMPLES = 400
+    ORIENTATION = &quot;NORTH_UP&quot;
+    CORNER_UL_LAT_PRODUCT = -19.17924
+    CORNER_UL_LON_PRODUCT = -45.36143
+    CORNER_UR_LAT_PRODUCT = -19.17048
+    CORNER_UR_LON_PRODUCT = -43.17034
+    CORNER_LL_LAT_PRODUCT = -21.28831
+    CORNER_LL_LON_PRODUCT = -45.36634
+    CORNER_LR_LAT_PRODUCT = -21.27849
+    CORNER_LR_LON_PRODUCT = -43.14551
+    CORNER_UL_PROJECTION_X_PRODUCT = 583500.000
+    CORNER_UL_PROJECTION_Y_PRODUCT = -2222700.000
+    CORNER_UR_PROJECTION_X_PRODUCT = 595470.000
+    CORNER_UR_PROJECTION_Y_PRODUCT = -2222700.000
+    CORNER_LL_PROJECTION_X_PRODUCT = 583500.000
+    CORNER_LL_PROJECTION_Y_PRODUCT = -2231670.000
+    CORNER_LR_PROJECTION_X_PRODUCT = 595470.000
+    CORNER_LR_PROJECTION_Y_PRODUCT = -2231670.000
+  END_GROUP = PROJECTION_ATTRIBUTES
+  GROUP = LEVEL2_PROCESSING_RECORD
+    ORIGIN = &quot;Image courtesy of the U.S. Geological Survey&quot;
+    DIGITAL_OBJECT_IDENTIFIER = &quot;https://doi.org/10.5066/P9OGBGM6&quot;
+    REQUEST_ID = &quot;L2&quot;
+    LANDSAT_PRODUCT_ID = &quot;LC08_L2SP_218074_20190114_20200829_02_T1&quot;
+    PROCESSING_LEVEL = &quot;L2SP&quot;
+    OUTPUT_FORMAT = &quot;GEOTIFF&quot;
+    DATE_PRODUCT_GENERATED = 2020-08-29T22:04:19Z
+    PROCESSING_SOFTWARE_VERSION = &quot;LPGS_15.3.1c&quot;
+    ALGORITHM_SOURCE_SURFACE_REFLECTANCE = &quot;LaSRC_1.5.0&quot;
+    DATA_SOURCE_OZONE = &quot;MODIS&quot;
+    DATA_SOURCE_PRESSURE = &quot;Calculated&quot;
+    DATA_SOURCE_WATER_VAPOR = &quot;MODIS&quot;
+    DATA_SOURCE_AIR_TEMPERATURE = &quot;MODIS&quot;
+    ALGORITHM_SOURCE_SURFACE_TEMPERATURE = &quot;st_1.3.0&quot;
+    DATA_SOURCE_REANALYSIS = &quot;GEOS-5 FP-IT&quot;
+  END_GROUP = LEVEL2_PROCESSING_RECORD
+  GROUP = LEVEL2_SURFACE_REFLECTANCE_PARAMETERS
+    REFLECTANCE_MAXIMUM_BAND_1 = 1.602213
+    REFLECTANCE_MINIMUM_BAND_1 = -0.199972
+    REFLECTANCE_MAXIMUM_BAND_2 = 1.602213
+    REFLECTANCE_MINIMUM_BAND_2 = -0.199972
+    REFLECTANCE_MAXIMUM_BAND_3 = 1.602213
+    REFLECTANCE_MINIMUM_BAND_3 = -0.199972
+    REFLECTANCE_MAXIMUM_BAND_4 = 1.602213
+    REFLECTANCE_MINIMUM_BAND_4 = -0.199972
+    REFLECTANCE_MAXIMUM_BAND_5 = 1.602213
+    REFLECTANCE_MINIMUM_BAND_5 = -0.199972
+    REFLECTANCE_MAXIMUM_BAND_6 = 1.602213
+    REFLECTANCE_MINIMUM_BAND_6 = -0.199972
+    REFLECTANCE_MAXIMUM_BAND_7 = 1.602213
+    REFLECTANCE_MINIMUM_BAND_7 = -0.199972
+    QUANTIZE_CAL_MAX_BAND_1 = 65535
+    QUANTIZE_CAL_MIN_BAND_1 = 1
+    QUANTIZE_CAL_MAX_BAND_2 = 65535
+    QUANTIZE_CAL_MIN_BAND_2 = 1
+    QUANTIZE_CAL_MAX_BAND_3 = 65535
+    QUANTIZE_CAL_MIN_BAND_3 = 1
+    QUANTIZE_CAL_MAX_BAND_4 = 65535
+    QUANTIZE_CAL_MIN_BAND_4 = 1
+    QUANTIZE_CAL_MAX_BAND_5 = 65535
+    QUANTIZE_CAL_MIN_BAND_5 = 1
+    QUANTIZE_CAL_MAX_BAND_6 = 65535
+    QUANTIZE_CAL_MIN_BAND_6 = 1
+    QUANTIZE_CAL_MAX_BAND_7 = 65535
+    QUANTIZE_CAL_MIN_BAND_7 = 1
+    REFLECTANCE_MULT_BAND_1 = 2.75e-05
+    REFLECTANCE_MULT_BAND_2 = 2.75e-05
+    REFLECTANCE_MULT_BAND_3 = 2.75e-05
+    REFLECTANCE_MULT_BAND_4 = 2.75e-05
+    REFLECTANCE_MULT_BAND_5 = 2.75e-05
+    REFLECTANCE_MULT_BAND_6 = 2.75e-05
+    REFLECTANCE_MULT_BAND_7 = 2.75e-05
+    REFLECTANCE_ADD_BAND_1 = -0.2
+    REFLECTANCE_ADD_BAND_2 = -0.2
+    REFLECTANCE_ADD_BAND_3 = -0.2
+    REFLECTANCE_ADD_BAND_4 = -0.2
+    REFLECTANCE_ADD_BAND_5 = -0.2
+    REFLECTANCE_ADD_BAND_6 = -0.2
+    REFLECTANCE_ADD_BAND_7 = -0.2
+  END_GROUP = LEVEL2_SURFACE_REFLECTANCE_PARAMETERS
+  GROUP = LEVEL2_SURFACE_TEMPERATURE_PARAMETERS
+    TEMPERATURE_MAXIMUM_BAND_ST_B10 = 372.999941
+    TEMPERATURE_MINIMUM_BAND_ST_B10 = 149.003418
+    QUANTIZE_CAL_MAXIMUM_BAND_ST_B10 = 65535
+    QUANTIZE_CAL_MINIMUM_BAND_ST_B10 = 1
+    TEMPERATURE_MULT_BAND_ST_B10 = 0.00341802
+    TEMPERATURE_ADD_BAND_ST_B10 = 149.0
+  END_GROUP = LEVEL2_SURFACE_TEMPERATURE_PARAMETERS
+  GROUP = LEVEL1_PROCESSING_RECORD
+    ORIGIN = &quot;Image courtesy of the U.S. Geological Survey&quot;
+    DIGITAL_OBJECT_IDENTIFIER = &quot;https://doi.org/10.5066/P975CC9B&quot;
+    REQUEST_ID = &quot;L2&quot;
+    LANDSAT_SCENE_ID = &quot;LC82180742019014LGN00&quot;
+    LANDSAT_PRODUCT_ID = &quot;LC08_L1TP_218074_20190114_20200829_02_T1&quot;
+    PROCESSING_LEVEL = &quot;L1TP&quot;
+    COLLECTION_CATEGORY = &quot;T1&quot;
+    OUTPUT_FORMAT = &quot;GEOTIFF&quot;
+    DATE_PRODUCT_GENERATED = 2020-08-29T21:45:03Z
+    PROCESSING_SOFTWARE_VERSION = &quot;LPGS_15.3.1c&quot;
+    FILE_NAME_BAND_1 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_B1.TIF&quot;
+    FILE_NAME_BAND_2 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_B2.TIF&quot;
+    FILE_NAME_BAND_3 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_B3.TIF&quot;
+    FILE_NAME_BAND_4 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_B4.TIF&quot;
+    FILE_NAME_BAND_5 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_B5.TIF&quot;
+    FILE_NAME_BAND_6 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_B6.TIF&quot;
+    FILE_NAME_BAND_7 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_B7.TIF&quot;
+    FILE_NAME_BAND_8 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_B8.TIF&quot;
+    FILE_NAME_BAND_9 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_B9.TIF&quot;
+    FILE_NAME_BAND_10 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_B10.TIF&quot;
+    FILE_NAME_BAND_11 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_B11.TIF&quot;
+    FILE_NAME_QUALITY_L1_PIXEL = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_QA_PIXEL.TIF&quot;
+    FILE_NAME_QUALITY_L1_RADIOMETRIC_SATURATION = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_QA_RADSAT.TIF&quot;
+    FILE_NAME_ANGLE_COEFFICIENT = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_ANG.txt&quot;
+    FILE_NAME_ANGLE_SENSOR_AZIMUTH_BAND_4 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_VAA.TIF&quot;
+    FILE_NAME_ANGLE_SENSOR_ZENITH_BAND_4 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_VZA.TIF&quot;
+    FILE_NAME_ANGLE_SOLAR_AZIMUTH_BAND_4 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_SAA.TIF&quot;
+    FILE_NAME_ANGLE_SOLAR_ZENITH_BAND_4 = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_SZA.TIF&quot;
+    FILE_NAME_METADATA_ODL = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_MTL.txt&quot;
+    FILE_NAME_METADATA_XML = &quot;LC08_L1TP_218074_20190114_20200829_02_T1_MTL.xml&quot;
+    FILE_NAME_CPF = &quot;LC08CPF_20190101_20190331_02.01&quot;
+    FILE_NAME_BPF_OLI = &quot;LO8BPF20190114123217_20190114131719.02&quot;
+    FILE_NAME_BPF_TIRS = &quot;LT8BPF20190106111321_20190121165109.02&quot;
+    FILE_NAME_RLUT = &quot;LC08RLUT_20150303_20431231_02_01.h5&quot;
+    DATA_SOURCE_TIRS_STRAY_LIGHT_CORRECTION = &quot;TIRS&quot;
+    DATA_SOURCE_ELEVATION = &quot;GLS2000&quot;
+    GROUND_CONTROL_POINTS_VERSION = 5
+    GROUND_CONTROL_POINTS_MODEL = 749
+    GEOMETRIC_RMSE_MODEL = 6.471
+    GEOMETRIC_RMSE_MODEL_Y = 5.198
+    GEOMETRIC_RMSE_MODEL_X = 3.855
+    GROUND_CONTROL_POINTS_VERIFY = 211
+    GEOMETRIC_RMSE_VERIFY = 3.596
+  END_GROUP = LEVEL1_PROCESSING_RECORD
+  GROUP = LEVEL1_MIN_MAX_RADIANCE
+    RADIANCE_MAXIMUM_BAND_1 = 785.68616
+    RADIANCE_MINIMUM_BAND_1 = -64.88222
+    RADIANCE_MAXIMUM_BAND_2 = 804.55225
+    RADIANCE_MINIMUM_BAND_2 = -66.44019
+    RADIANCE_MAXIMUM_BAND_3 = 741.38800
+    RADIANCE_MINIMUM_BAND_3 = -61.22406
+    RADIANCE_MAXIMUM_BAND_4 = 625.18011
+    RADIANCE_MINIMUM_BAND_4 = -51.62758
+    RADIANCE_MAXIMUM_BAND_5 = 382.57907
+    RADIANCE_MINIMUM_BAND_5 = -31.59350
+    RADIANCE_MAXIMUM_BAND_6 = 95.14393
+    RADIANCE_MINIMUM_BAND_6 = -7.85702
+    RADIANCE_MAXIMUM_BAND_7 = 32.06860
+    RADIANCE_MINIMUM_BAND_7 = -2.64824
+    RADIANCE_MAXIMUM_BAND_8 = 707.53186
+    RADIANCE_MINIMUM_BAND_8 = -58.42821
+    RADIANCE_MAXIMUM_BAND_9 = 149.52057
+    RADIANCE_MINIMUM_BAND_9 = -12.34746
+    RADIANCE_MAXIMUM_BAND_10 = 22.00180
+    RADIANCE_MINIMUM_BAND_10 = 0.10033
+    RADIANCE_MAXIMUM_BAND_11 = 22.00180
+    RADIANCE_MINIMUM_BAND_11 = 0.10033
+  END_GROUP = LEVEL1_MIN_MAX_RADIANCE
+  GROUP = LEVEL1_MIN_MAX_REFLECTANCE
+    REFLECTANCE_MAXIMUM_BAND_1 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_1 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_2 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_2 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_3 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_3 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_4 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_4 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_5 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_5 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_6 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_6 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_7 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_7 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_8 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_8 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_9 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_9 = -0.099980
+  END_GROUP = LEVEL1_MIN_MAX_REFLECTANCE
+  GROUP = LEVEL1_MIN_MAX_PIXEL_VALUE
+    QUANTIZE_CAL_MAX_BAND_1 = 65535
+    QUANTIZE_CAL_MIN_BAND_1 = 1
+    QUANTIZE_CAL_MAX_BAND_2 = 65535
+    QUANTIZE_CAL_MIN_BAND_2 = 1
+    QUANTIZE_CAL_MAX_BAND_3 = 65535
+    QUANTIZE_CAL_MIN_BAND_3 = 1
+    QUANTIZE_CAL_MAX_BAND_4 = 65535
+    QUANTIZE_CAL_MIN_BAND_4 = 1
+    QUANTIZE_CAL_MAX_BAND_5 = 65535
+    QUANTIZE_CAL_MIN_BAND_5 = 1
+    QUANTIZE_CAL_MAX_BAND_6 = 65535
+    QUANTIZE_CAL_MIN_BAND_6 = 1
+    QUANTIZE_CAL_MAX_BAND_7 = 65535
+    QUANTIZE_CAL_MIN_BAND_7 = 1
+    QUANTIZE_CAL_MAX_BAND_8 = 65535
+    QUANTIZE_CAL_MIN_BAND_8 = 1
+    QUANTIZE_CAL_MAX_BAND_9 = 65535
+    QUANTIZE_CAL_MIN_BAND_9 = 1
+    QUANTIZE_CAL_MAX_BAND_10 = 65535
+    QUANTIZE_CAL_MIN_BAND_10 = 1
+    QUANTIZE_CAL_MAX_BAND_11 = 65535
+    QUANTIZE_CAL_MIN_BAND_11 = 1
+  END_GROUP = LEVEL1_MIN_MAX_PIXEL_VALUE
+  GROUP = LEVEL1_RADIOMETRIC_RESCALING
+    RADIANCE_MULT_BAND_1 = 1.2979E-02
+    RADIANCE_MULT_BAND_2 = 1.3291E-02
+    RADIANCE_MULT_BAND_3 = 1.2247E-02
+    RADIANCE_MULT_BAND_4 = 1.0328E-02
+    RADIANCE_MULT_BAND_5 = 6.3200E-03
+    RADIANCE_MULT_BAND_6 = 1.5717E-03
+    RADIANCE_MULT_BAND_7 = 5.2975E-04
+    RADIANCE_MULT_BAND_8 = 1.1688E-02
+    RADIANCE_MULT_BAND_9 = 2.4700E-03
+    RADIANCE_MULT_BAND_10 = 3.3420E-04
+    RADIANCE_MULT_BAND_11 = 3.3420E-04
+    RADIANCE_ADD_BAND_1 = -64.89520
+    RADIANCE_ADD_BAND_2 = -66.45347
+    RADIANCE_ADD_BAND_3 = -61.23631
+    RADIANCE_ADD_BAND_4 = -51.63791
+    RADIANCE_ADD_BAND_5 = -31.59982
+    RADIANCE_ADD_BAND_6 = -7.85859
+    RADIANCE_ADD_BAND_7 = -2.64877
+    RADIANCE_ADD_BAND_8 = -58.43990
+    RADIANCE_ADD_BAND_9 = -12.34993
+    RADIANCE_ADD_BAND_10 = 0.10000
+    RADIANCE_ADD_BAND_11 = 0.10000
+    REFLECTANCE_MULT_BAND_1 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_2 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_3 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_4 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_5 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_6 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_7 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_8 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_9 = 2.0000E-05
+    REFLECTANCE_ADD_BAND_1 = -0.100000
+    REFLECTANCE_ADD_BAND_2 = -0.100000
+    REFLECTANCE_ADD_BAND_3 = -0.100000
+    REFLECTANCE_ADD_BAND_4 = -0.100000
+    REFLECTANCE_ADD_BAND_5 = -0.100000
+    REFLECTANCE_ADD_BAND_6 = -0.100000
+    REFLECTANCE_ADD_BAND_7 = -0.100000
+    REFLECTANCE_ADD_BAND_8 = -0.100000
+    REFLECTANCE_ADD_BAND_9 = -0.100000
+  END_GROUP = LEVEL1_RADIOMETRIC_RESCALING
+  GROUP = LEVEL1_THERMAL_CONSTANTS
+    K1_CONSTANT_BAND_10 = 774.8853
+    K2_CONSTANT_BAND_10 = 1321.0789
+    K1_CONSTANT_BAND_11 = 480.8883
+    K2_CONSTANT_BAND_11 = 1201.1442
+  END_GROUP = LEVEL1_THERMAL_CONSTANTS
+  GROUP = LEVEL1_PROJECTION_PARAMETERS
+    MAP_PROJECTION = &quot;UTM&quot;
+    DATUM = &quot;WGS84&quot;
+    ELLIPSOID = &quot;WGS84&quot;
+    UTM_ZONE = 23
+    GRID_CELL_SIZE_PANCHROMATIC = 15.00
+    GRID_CELL_SIZE_REFLECTIVE = 30.00
+    GRID_CELL_SIZE_THERMAL = 30.00
+    ORIENTATION = &quot;NORTH_UP&quot;
+    RESAMPLING_OPTION = &quot;CUBIC_CONVOLUTION&quot;
+  END_GROUP = LEVEL1_PROJECTION_PARAMETERS
+END_GROUP = LANDSAT_METADATA_FILE
+END
+</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>And the after scene:</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">after</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">load_scene</span><span class="p">(</span><span class="n">path_after</span><span class="p">)</span>
+<span class="n">after</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:   (easting: 400, northing: 300)
+Coordinates:
+  * easting   (easting) float64 5.844e+05 5.844e+05 ... 5.963e+05 5.964e+05
+  * northing  (northing) float64 -2.232e+06 -2.232e+06 ... -2.223e+06 -2.223e+06
+Data variables:
+    blue      (northing, easting) float16 0.0686 0.07043 ... 0.05823 0.0564
+    green     (northing, easting) float16 0.1027 0.09839 ... 0.07593 0.07043
+    red       (northing, easting) float16 0.09778 0.09778 ... 0.06799 0.06177
+    nir       (northing, easting) float16 0.2988 0.2715 0.2881 ... 0.2637 0.251
+    swir1     (northing, easting) float16 0.2311 0.2274 0.2316 ... 0.1608 0.142
+    swir2     (northing, easting) float16 0.145 0.1442 0.144 ... 0.09961 0.08655
+Attributes: (12/19)
+    Conventions:                CF-1.8
+    title:                      Landsat 8 scene from 2019-01-30 (path/row=218...
+    digital_object_identifier:  https://doi.org/10.5066/P9OGBGM6
+    origin:                     Image courtesy of the U.S. Geological Survey
+    landsat_product_id:         LC08_L2SP_218074_20190130_20200829_02_T1
+    processing_level:           L2SP
+    ...                         ...
+    ellipsoid:                  WGS84
+    date_acquired:              2019-01-30
+    scene_center_time:          12:57:09.1851220Z
+    wrs_path:                   218
+    wrs_row:                    74
+    mtl_file:                   GROUP = LANDSAT_METADATA_FILE\n  GROUP = PROD...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-51f9d78f-d4a4-4848-89ba-759359ca6897' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-51f9d78f-d4a4-4848-89ba-759359ca6897' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>easting</span>: 400</li><li><span class='xr-has-index'>northing</span>: 300</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-ed59b5b9-6bf8-4059-8243-5d97924be3e6' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ed59b5b9-6bf8-4059-8243-5d97924be3e6' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>easting</span></div><div class='xr-var-dims'>(easting)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>5.844e+05 5.844e+05 ... 5.964e+05</div><input id='attrs-3f2c4526-2de1-4b4b-aa52-07ccaecfe733' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3f2c4526-2de1-4b4b-aa52-07ccaecfe733' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fc7cca06-108a-49e8-b57e-045c39499ccc' class='xr-var-data-in' type='checkbox'><label for='data-fc7cca06-108a-49e8-b57e-045c39499ccc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM easting</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([584400., 584430., 584460., ..., 596310., 596340., 596370.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>northing</span></div><div class='xr-var-dims'>(northing)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-2.232e+06 ... -2.223e+06</div><input id='attrs-a8006fab-ecf1-4d78-842e-302edc0c5122' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a8006fab-ecf1-4d78-842e-302edc0c5122' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-67a62917-2983-4037-a1ad-424f9fbb6188' class='xr-var-data-in' type='checkbox'><label for='data-67a62917-2983-4037-a1ad-424f9fbb6188' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM northing</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([-2231670., -2231640., -2231610., ..., -2222760., -2222730., -2222700.])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-adf8bb17-6cbd-4dc2-90eb-e45d67a5a464' class='xr-section-summary-in' type='checkbox'  checked><label for='section-adf8bb17-6cbd-4dc2-90eb-e45d67a5a464' class='xr-section-summary' >Data variables: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>blue</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.0686 0.07043 ... 0.05823 0.0564</div><input id='attrs-5a8d64e9-1c62-4201-9cae-98ebcaa6f5a4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5a8d64e9-1c62-4201-9cae-98ebcaa6f5a4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-467d6702-6917-48e6-9913-fbd081e5a137' class='xr-var-data-in' type='checkbox'><label for='data-467d6702-6917-48e6-9913-fbd081e5a137' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>blue</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>2</dd><dt><span>filename :</span></dt><dd>LC08_L2SP_218074_20190130_20200829_02_T1_SR_B2.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.0686 , 0.07043, 0.07007, ..., 0.068  , 0.0652 , 0.0665 ],
+       [0.0713 , 0.0697 , 0.07007, ..., 0.0647 , 0.062  , 0.05725],
+       [0.0713 , 0.07495, 0.0735 , ..., 0.06238, 0.05945, 0.05603],
+       ...,
+       [0.06287, 0.06165, 0.06055, ..., 0.06165, 0.05908, 0.05493],
+       [0.06165, 0.06287, 0.06165, ..., 0.06006, 0.06055, 0.0564 ],
+       [0.06165, 0.06396, 0.0597 , ..., 0.05847, 0.05823, 0.0564 ]],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>green</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.1027 0.09839 ... 0.07593 0.07043</div><input id='attrs-ae84b638-3b5b-480a-8507-ae7338b0c363' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ae84b638-3b5b-480a-8507-ae7338b0c363' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-58e85c35-201a-4425-a758-d3027e3c6a32' class='xr-var-data-in' type='checkbox'><label for='data-58e85c35-201a-4425-a758-d3027e3c6a32' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>green</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>3</dd><dt><span>filename :</span></dt><dd>LC08_L2SP_218074_20190130_20200829_02_T1_SR_B3.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.10266, 0.0984 , 0.10315, ..., 0.09326, 0.0862 , 0.0906 ],
+       [0.0984 , 0.0968 , 0.09985, ..., 0.0875 , 0.0807 , 0.074  ],
+       [0.09265, 0.1051 , 0.1046 , ..., 0.0831 , 0.07654, 0.0707 ],
+       ...,
+       [0.0829 , 0.0803 , 0.0791 , ..., 0.079  , 0.07214, 0.0692 ],
+       [0.08093, 0.08264, 0.07996, ..., 0.08044, 0.077  , 0.0708 ],
+       [0.08264, 0.083  , 0.0763 , ..., 0.0773 , 0.0759 , 0.07043]],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>red</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.09778 0.09778 ... 0.06799 0.06177</div><input id='attrs-6bfff326-0491-4f13-bb6f-64db24e49310' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6bfff326-0491-4f13-bb6f-64db24e49310' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-864dda1f-caea-42fb-b4ed-25d86dbb590b' class='xr-var-data-in' type='checkbox'><label for='data-864dda1f-caea-42fb-b4ed-25d86dbb590b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>red</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>4</dd><dt><span>filename :</span></dt><dd>LC08_L2SP_218074_20190130_20200829_02_T1_SR_B4.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.0978 , 0.0978 , 0.0984 , ..., 0.0934 , 0.0852 , 0.09216],
+       [0.10156, 0.0969 , 0.09827, ..., 0.08826, 0.0774 , 0.068  ],
+       [0.10034, 0.1083 , 0.1068 , ..., 0.0807 , 0.0692 , 0.06042],
+       ...,
+       [0.0763 , 0.07214, 0.0692 , ..., 0.0858 , 0.0718 , 0.0637 ],
+       [0.07275, 0.0758 , 0.0714 , ..., 0.0769 , 0.07227, 0.06396],
+       [0.0729 , 0.0769 , 0.0665 , ..., 0.06616, 0.068  , 0.06177]],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>nir</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.2988 0.2715 ... 0.2637 0.251</div><input id='attrs-ce737a77-1ff2-4ca7-9ee5-a20e73a4dd45' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ce737a77-1ff2-4ca7-9ee5-a20e73a4dd45' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5553e8b0-59e6-43ef-9f56-4fa0f234b451' class='xr-var-data-in' type='checkbox'><label for='data-5553e8b0-59e6-43ef-9f56-4fa0f234b451' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>near-infrared</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>5</dd><dt><span>filename :</span></dt><dd>LC08_L2SP_218074_20190130_20200829_02_T1_SR_B5.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.2988, 0.2715, 0.288 , ..., 0.2915, 0.252 , 0.247 ],
+       [0.2534, 0.2744, 0.2808, ..., 0.2612, 0.2428, 0.2323],
+       [0.2181, 0.272 , 0.2754, ..., 0.2568, 0.2593, 0.2598],
+       ...,
+       [0.2783, 0.2837, 0.273 , ..., 0.1696, 0.195 , 0.2135],
+       [0.2773, 0.2847, 0.271 , ..., 0.2306, 0.2607, 0.2345],
+       [0.3003, 0.2778, 0.2607, ..., 0.272 , 0.2637, 0.251 ]],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>swir1</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.2311 0.2274 ... 0.1608 0.142</div><input id='attrs-b6ab2d81-3f18-42fc-b497-4de8dbfee71a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b6ab2d81-3f18-42fc-b497-4de8dbfee71a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dd8c0e17-61bf-471e-a634-3ada5549aed6' class='xr-var-data-in' type='checkbox'><label for='data-dd8c0e17-61bf-471e-a634-3ada5549aed6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>short-wave infrared 1</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>6</dd><dt><span>filename :</span></dt><dd>LC08_L2SP_218074_20190130_20200829_02_T1_SR_B6.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.2311, 0.2274, 0.2316, ..., 0.226 , 0.1832, 0.213 ],
+       [0.2448, 0.2267, 0.2272, ..., 0.2094, 0.1825, 0.1642],
+       [0.2455, 0.2462, 0.2404, ..., 0.1976, 0.1842, 0.152 ],
+       ...,
+       [0.193 , 0.1842, 0.1698, ..., 0.1552, 0.1316, 0.1205],
+       [0.1874, 0.191 , 0.1725, ..., 0.1625, 0.1615, 0.151 ],
+       [0.191 , 0.1866, 0.1576, ..., 0.1617, 0.1608, 0.142 ]],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>swir2</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.145 0.1442 ... 0.09961 0.08655</div><input id='attrs-b843b3f5-7944-441e-b8c7-1f720eec3170' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b843b3f5-7944-441e-b8c7-1f720eec3170' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f54f5647-73bc-4979-a3ec-b78eaadc3575' class='xr-var-data-in' type='checkbox'><label for='data-f54f5647-73bc-4979-a3ec-b78eaadc3575' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>short-wave infrared 2</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>7</dd><dt><span>filename :</span></dt><dd>LC08_L2SP_218074_20190130_20200829_02_T1_SR_B7.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.145  , 0.1442 , 0.144  , ..., 0.1346 , 0.11694, 0.1298 ],
+       [0.162  , 0.1455 , 0.143  , ..., 0.1304 , 0.11194, 0.0985 ],
+       [0.1813 , 0.1598 , 0.1547 , ..., 0.11804, 0.10767, 0.0886 ],
+       ...,
+       [0.11475, 0.10706, 0.1011 , ..., 0.1123 , 0.09485, 0.08044],
+       [0.1106 , 0.1127 , 0.1035 , ..., 0.1102 , 0.10205, 0.0934 ],
+       [0.1112 , 0.1102 , 0.0934 , ..., 0.0979 , 0.0996 , 0.08655]],
+      dtype=float16)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-8060ed72-04d4-4025-828b-e041a7e4fbc5' class='xr-section-summary-in' type='checkbox'  ><label for='section-8060ed72-04d4-4025-828b-e041a7e4fbc5' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>easting</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-ab53e1cd-d418-4b8c-a191-4149bde4408c' class='xr-index-data-in' type='checkbox'/><label for='index-ab53e1cd-d418-4b8c-a191-4149bde4408c' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([584400.0, 584430.0, 584460.0, 584490.0, 584520.0, 584550.0,
+              584580.0, 584610.0, 584640.0, 584670.0,
+              ...
+              596100.0, 596130.0, 596160.0, 596190.0, 596220.0, 596250.0,
+              596280.0, 596310.0, 596340.0, 596370.0],
+             dtype=&#x27;float64&#x27;, name=&#x27;easting&#x27;, length=400))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>northing</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-9b4fca71-ef7e-48ef-b161-45460e613c36' class='xr-index-data-in' type='checkbox'/><label for='index-9b4fca71-ef7e-48ef-b161-45460e613c36' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([-2231670.0, -2231640.0, -2231610.0, -2231580.0, -2231550.0,
+              -2231520.0, -2231490.0, -2231460.0, -2231430.0, -2231400.0,
+              ...
+              -2222970.0, -2222940.0, -2222910.0, -2222880.0, -2222850.0,
+              -2222820.0, -2222790.0, -2222760.0, -2222730.0, -2222700.0],
+             dtype=&#x27;float64&#x27;, name=&#x27;northing&#x27;, length=300))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-0fa9e612-0b46-4ad6-887d-76d10f375f59' class='xr-section-summary-in' type='checkbox'  ><label for='section-0fa9e612-0b46-4ad6-887d-76d10f375f59' class='xr-section-summary' >Attributes: <span>(19)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>title :</span></dt><dd>Landsat 8 scene from 2019-01-30 (path/row=218/74)</dd><dt><span>digital_object_identifier :</span></dt><dd>https://doi.org/10.5066/P9OGBGM6</dd><dt><span>origin :</span></dt><dd>Image courtesy of the U.S. Geological Survey</dd><dt><span>landsat_product_id :</span></dt><dd>LC08_L2SP_218074_20190130_20200829_02_T1</dd><dt><span>processing_level :</span></dt><dd>L2SP</dd><dt><span>collection_number :</span></dt><dd>02</dd><dt><span>collection_category :</span></dt><dd>T1</dd><dt><span>spacecraft_id :</span></dt><dd>LANDSAT_8</dd><dt><span>sensor_id :</span></dt><dd>OLI_TIRS</dd><dt><span>map_projection :</span></dt><dd>UTM</dd><dt><span>utm_zone :</span></dt><dd>23</dd><dt><span>datum :</span></dt><dd>WGS84</dd><dt><span>ellipsoid :</span></dt><dd>WGS84</dd><dt><span>date_acquired :</span></dt><dd>2019-01-30</dd><dt><span>scene_center_time :</span></dt><dd>12:57:09.1851220Z</dd><dt><span>wrs_path :</span></dt><dd>218</dd><dt><span>wrs_row :</span></dt><dd>74</dd><dt><span>mtl_file :</span></dt><dd>GROUP = LANDSAT_METADATA_FILE
+  GROUP = PRODUCT_CONTENTS
+    ORIGIN = &quot;Image courtesy of the U.S. Geological Survey&quot;
+    DIGITAL_OBJECT_IDENTIFIER = &quot;https://doi.org/10.5066/P9OGBGM6&quot;
+    LANDSAT_PRODUCT_ID = &quot;LC08_L2SP_218074_20190130_20200829_02_T1&quot;
+    PROCESSING_LEVEL = &quot;L2SP&quot;
+    COLLECTION_NUMBER = 02
+    COLLECTION_CATEGORY = &quot;T1&quot;
+    OUTPUT_FORMAT = &quot;GEOTIFF&quot;
+    FILE_NAME_BAND_1 = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_SR_B1.TIF&quot;
+    FILE_NAME_BAND_2 = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_SR_B2.TIF&quot;
+    FILE_NAME_BAND_3 = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_SR_B3.TIF&quot;
+    FILE_NAME_BAND_4 = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_SR_B4.TIF&quot;
+    FILE_NAME_BAND_5 = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_SR_B5.TIF&quot;
+    FILE_NAME_BAND_6 = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_SR_B6.TIF&quot;
+    FILE_NAME_BAND_7 = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_SR_B7.TIF&quot;
+    FILE_NAME_BAND_ST_B10 = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_ST_B10.TIF&quot;
+    FILE_NAME_THERMAL_RADIANCE = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_ST_TRAD.TIF&quot;
+    FILE_NAME_UPWELL_RADIANCE = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_ST_URAD.TIF&quot;
+    FILE_NAME_DOWNWELL_RADIANCE = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_ST_DRAD.TIF&quot;
+    FILE_NAME_ATMOSPHERIC_TRANSMITTANCE = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_ST_ATRAN.TIF&quot;
+    FILE_NAME_EMISSIVITY = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_ST_EMIS.TIF&quot;
+    FILE_NAME_EMISSIVITY_STDEV = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_ST_EMSD.TIF&quot;
+    FILE_NAME_CLOUD_DISTANCE = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_ST_CDIST.TIF&quot;
+    FILE_NAME_QUALITY_L2_AEROSOL = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_SR_QA_AEROSOL.TIF&quot;
+    FILE_NAME_QUALITY_L2_SURFACE_TEMPERATURE = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_ST_QA.TIF&quot;
+    FILE_NAME_QUALITY_L1_PIXEL = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_QA_PIXEL.TIF&quot;
+    FILE_NAME_QUALITY_L1_RADIOMETRIC_SATURATION = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_QA_RADSAT.TIF&quot;
+    FILE_NAME_ANGLE_COEFFICIENT = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_ANG.txt&quot;
+    FILE_NAME_METADATA_ODL = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_MTL.txt&quot;
+    FILE_NAME_METADATA_XML = &quot;LC08_L2SP_218074_20190130_20200829_02_T1_MTL.xml&quot;
+    DATA_TYPE_BAND_1 = &quot;UINT16&quot;
+    DATA_TYPE_BAND_2 = &quot;UINT16&quot;
+    DATA_TYPE_BAND_3 = &quot;UINT16&quot;
+    DATA_TYPE_BAND_4 = &quot;UINT16&quot;
+    DATA_TYPE_BAND_5 = &quot;UINT16&quot;
+    DATA_TYPE_BAND_6 = &quot;UINT16&quot;
+    DATA_TYPE_BAND_7 = &quot;UINT16&quot;
+    DATA_TYPE_BAND_ST_B10 = &quot;UINT16&quot;
+    DATA_TYPE_THERMAL_RADIANCE = &quot;INT16&quot;
+    DATA_TYPE_UPWELL_RADIANCE = &quot;INT16&quot;
+    DATA_TYPE_DOWNWELL_RADIANCE = &quot;INT16&quot;
+    DATA_TYPE_ATMOSPHERIC_TRANSMITTANCE = &quot;INT16&quot;
+    DATA_TYPE_EMISSIVITY = &quot;INT16&quot;
+    DATA_TYPE_EMISSIVITY_STDEV = &quot;INT16&quot;
+    DATA_TYPE_CLOUD_DISTANCE = &quot;INT16&quot;
+    DATA_TYPE_QUALITY_L2_AEROSOL = &quot;UINT8&quot;
+    DATA_TYPE_QUALITY_L2_SURFACE_TEMPERATURE = &quot;INT16&quot;
+    DATA_TYPE_QUALITY_L1_PIXEL = &quot;UINT16&quot;
+    DATA_TYPE_QUALITY_L1_RADIOMETRIC_SATURATION = &quot;UINT16&quot;
+  END_GROUP = PRODUCT_CONTENTS
+  GROUP = IMAGE_ATTRIBUTES
+    SPACECRAFT_ID = &quot;LANDSAT_8&quot;
+    SENSOR_ID = &quot;OLI_TIRS&quot;
+    WRS_TYPE = 2
+    WRS_PATH = 218
+    WRS_ROW = 74
+    NADIR_OFFNADIR = &quot;NADIR&quot;
+    TARGET_WRS_PATH = 218
+    TARGET_WRS_ROW = 74
+    DATE_ACQUIRED = 2019-01-30
+    SCENE_CENTER_TIME = &quot;12:57:09.1851220Z&quot;
+    STATION_ID = &quot;LGN&quot;
+    CLOUD_COVER = 1.07
+    CLOUD_COVER_LAND = 1.07
+    IMAGE_QUALITY_OLI = 9
+    IMAGE_QUALITY_TIRS = 9
+    SATURATION_BAND_1 = &quot;Y&quot;
+    SATURATION_BAND_2 = &quot;Y&quot;
+    SATURATION_BAND_3 = &quot;Y&quot;
+    SATURATION_BAND_4 = &quot;Y&quot;
+    SATURATION_BAND_5 = &quot;Y&quot;
+    SATURATION_BAND_6 = &quot;Y&quot;
+    SATURATION_BAND_7 = &quot;Y&quot;
+    SATURATION_BAND_8 = &quot;N&quot;
+    SATURATION_BAND_9 = &quot;N&quot;
+    ROLL_ANGLE = -0.001
+    SUN_AZIMUTH = 90.98350850
+    SUN_ELEVATION = 58.47348294
+    EARTH_SUN_DISTANCE = 0.9850678
+    TRUNCATION_OLI = &quot;UPPER&quot;
+    TIRS_SSM_MODEL = &quot;FINAL&quot;
+    TIRS_SSM_POSITION_STATUS = &quot;ESTIMATED&quot;
+  END_GROUP = IMAGE_ATTRIBUTES
+  GROUP = PROJECTION_ATTRIBUTES
+    MAP_PROJECTION = &quot;UTM&quot;
+    DATUM = &quot;WGS84&quot;
+    ELLIPSOID = &quot;WGS84&quot;
+    UTM_ZONE = 23
+    GRID_CELL_SIZE_REFLECTIVE = 30.00
+    GRID_CELL_SIZE_THERMAL = 30.00
+    REFLECTIVE_LINES = 300
+    REFLECTIVE_SAMPLES = 400
+    THERMAL_LINES = 300
+    THERMAL_SAMPLES = 400
+    ORIENTATION = &quot;NORTH_UP&quot;
+    CORNER_UL_LAT_PRODUCT = -19.17926
+    CORNER_UL_LON_PRODUCT = -45.35287
+    CORNER_UR_LAT_PRODUCT = -19.17040
+    CORNER_UR_LON_PRODUCT = -43.16179
+    CORNER_LL_LAT_PRODUCT = -21.28833
+    CORNER_LL_LON_PRODUCT = -45.35766
+    CORNER_LR_LAT_PRODUCT = -21.27840
+    CORNER_LR_LON_PRODUCT = -43.13684
+    CORNER_UL_PROJECTION_X_PRODUCT = 584400.000
+    CORNER_UL_PROJECTION_Y_PRODUCT = -2222700.000
+    CORNER_UR_PROJECTION_X_PRODUCT = 596370.000
+    CORNER_UR_PROJECTION_Y_PRODUCT = -2222700.000
+    CORNER_LL_PROJECTION_X_PRODUCT = 584400.000
+    CORNER_LL_PROJECTION_Y_PRODUCT = -2231670.000
+    CORNER_LR_PROJECTION_X_PRODUCT = 596370.000
+    CORNER_LR_PROJECTION_Y_PRODUCT = -2231670.000
+  END_GROUP = PROJECTION_ATTRIBUTES
+  GROUP = LEVEL2_PROCESSING_RECORD
+    ORIGIN = &quot;Image courtesy of the U.S. Geological Survey&quot;
+    DIGITAL_OBJECT_IDENTIFIER = &quot;https://doi.org/10.5066/P9OGBGM6&quot;
+    REQUEST_ID = &quot;L2&quot;
+    LANDSAT_PRODUCT_ID = &quot;LC08_L2SP_218074_20190130_20200829_02_T1&quot;
+    PROCESSING_LEVEL = &quot;L2SP&quot;
+    OUTPUT_FORMAT = &quot;GEOTIFF&quot;
+    DATE_PRODUCT_GENERATED = 2020-08-29T21:55:28Z
+    PROCESSING_SOFTWARE_VERSION = &quot;LPGS_15.3.1c&quot;
+    ALGORITHM_SOURCE_SURFACE_REFLECTANCE = &quot;LaSRC_1.5.0&quot;
+    DATA_SOURCE_OZONE = &quot;MODIS&quot;
+    DATA_SOURCE_PRESSURE = &quot;Calculated&quot;
+    DATA_SOURCE_WATER_VAPOR = &quot;MODIS&quot;
+    DATA_SOURCE_AIR_TEMPERATURE = &quot;MODIS&quot;
+    ALGORITHM_SOURCE_SURFACE_TEMPERATURE = &quot;st_1.3.0&quot;
+    DATA_SOURCE_REANALYSIS = &quot;GEOS-5 FP-IT&quot;
+  END_GROUP = LEVEL2_PROCESSING_RECORD
+  GROUP = LEVEL2_SURFACE_REFLECTANCE_PARAMETERS
+    REFLECTANCE_MAXIMUM_BAND_1 = 1.602213
+    REFLECTANCE_MINIMUM_BAND_1 = -0.199972
+    REFLECTANCE_MAXIMUM_BAND_2 = 1.602213
+    REFLECTANCE_MINIMUM_BAND_2 = -0.199972
+    REFLECTANCE_MAXIMUM_BAND_3 = 1.602213
+    REFLECTANCE_MINIMUM_BAND_3 = -0.199972
+    REFLECTANCE_MAXIMUM_BAND_4 = 1.602213
+    REFLECTANCE_MINIMUM_BAND_4 = -0.199972
+    REFLECTANCE_MAXIMUM_BAND_5 = 1.602213
+    REFLECTANCE_MINIMUM_BAND_5 = -0.199972
+    REFLECTANCE_MAXIMUM_BAND_6 = 1.602213
+    REFLECTANCE_MINIMUM_BAND_6 = -0.199972
+    REFLECTANCE_MAXIMUM_BAND_7 = 1.602213
+    REFLECTANCE_MINIMUM_BAND_7 = -0.199972
+    QUANTIZE_CAL_MAX_BAND_1 = 65535
+    QUANTIZE_CAL_MIN_BAND_1 = 1
+    QUANTIZE_CAL_MAX_BAND_2 = 65535
+    QUANTIZE_CAL_MIN_BAND_2 = 1
+    QUANTIZE_CAL_MAX_BAND_3 = 65535
+    QUANTIZE_CAL_MIN_BAND_3 = 1
+    QUANTIZE_CAL_MAX_BAND_4 = 65535
+    QUANTIZE_CAL_MIN_BAND_4 = 1
+    QUANTIZE_CAL_MAX_BAND_5 = 65535
+    QUANTIZE_CAL_MIN_BAND_5 = 1
+    QUANTIZE_CAL_MAX_BAND_6 = 65535
+    QUANTIZE_CAL_MIN_BAND_6 = 1
+    QUANTIZE_CAL_MAX_BAND_7 = 65535
+    QUANTIZE_CAL_MIN_BAND_7 = 1
+    REFLECTANCE_MULT_BAND_1 = 2.75e-05
+    REFLECTANCE_MULT_BAND_2 = 2.75e-05
+    REFLECTANCE_MULT_BAND_3 = 2.75e-05
+    REFLECTANCE_MULT_BAND_4 = 2.75e-05
+    REFLECTANCE_MULT_BAND_5 = 2.75e-05
+    REFLECTANCE_MULT_BAND_6 = 2.75e-05
+    REFLECTANCE_MULT_BAND_7 = 2.75e-05
+    REFLECTANCE_ADD_BAND_1 = -0.2
+    REFLECTANCE_ADD_BAND_2 = -0.2
+    REFLECTANCE_ADD_BAND_3 = -0.2
+    REFLECTANCE_ADD_BAND_4 = -0.2
+    REFLECTANCE_ADD_BAND_5 = -0.2
+    REFLECTANCE_ADD_BAND_6 = -0.2
+    REFLECTANCE_ADD_BAND_7 = -0.2
+  END_GROUP = LEVEL2_SURFACE_REFLECTANCE_PARAMETERS
+  GROUP = LEVEL2_SURFACE_TEMPERATURE_PARAMETERS
+    TEMPERATURE_MAXIMUM_BAND_ST_B10 = 372.999941
+    TEMPERATURE_MINIMUM_BAND_ST_B10 = 149.003418
+    QUANTIZE_CAL_MAXIMUM_BAND_ST_B10 = 65535
+    QUANTIZE_CAL_MINIMUM_BAND_ST_B10 = 1
+    TEMPERATURE_MULT_BAND_ST_B10 = 0.00341802
+    TEMPERATURE_ADD_BAND_ST_B10 = 149.0
+  END_GROUP = LEVEL2_SURFACE_TEMPERATURE_PARAMETERS
+  GROUP = LEVEL1_PROCESSING_RECORD
+    ORIGIN = &quot;Image courtesy of the U.S. Geological Survey&quot;
+    DIGITAL_OBJECT_IDENTIFIER = &quot;https://doi.org/10.5066/P975CC9B&quot;
+    REQUEST_ID = &quot;L2&quot;
+    LANDSAT_SCENE_ID = &quot;LC82180742019030LGN00&quot;
+    LANDSAT_PRODUCT_ID = &quot;LC08_L1TP_218074_20190130_20200829_02_T1&quot;
+    PROCESSING_LEVEL = &quot;L1TP&quot;
+    COLLECTION_CATEGORY = &quot;T1&quot;
+    OUTPUT_FORMAT = &quot;GEOTIFF&quot;
+    DATE_PRODUCT_GENERATED = 2020-08-29T21:44:51Z
+    PROCESSING_SOFTWARE_VERSION = &quot;LPGS_15.3.1c&quot;
+    FILE_NAME_BAND_1 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_B1.TIF&quot;
+    FILE_NAME_BAND_2 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_B2.TIF&quot;
+    FILE_NAME_BAND_3 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_B3.TIF&quot;
+    FILE_NAME_BAND_4 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_B4.TIF&quot;
+    FILE_NAME_BAND_5 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_B5.TIF&quot;
+    FILE_NAME_BAND_6 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_B6.TIF&quot;
+    FILE_NAME_BAND_7 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_B7.TIF&quot;
+    FILE_NAME_BAND_8 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_B8.TIF&quot;
+    FILE_NAME_BAND_9 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_B9.TIF&quot;
+    FILE_NAME_BAND_10 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_B10.TIF&quot;
+    FILE_NAME_BAND_11 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_B11.TIF&quot;
+    FILE_NAME_QUALITY_L1_PIXEL = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_QA_PIXEL.TIF&quot;
+    FILE_NAME_QUALITY_L1_RADIOMETRIC_SATURATION = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_QA_RADSAT.TIF&quot;
+    FILE_NAME_ANGLE_COEFFICIENT = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_ANG.txt&quot;
+    FILE_NAME_ANGLE_SENSOR_AZIMUTH_BAND_4 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_VAA.TIF&quot;
+    FILE_NAME_ANGLE_SENSOR_ZENITH_BAND_4 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_VZA.TIF&quot;
+    FILE_NAME_ANGLE_SOLAR_AZIMUTH_BAND_4 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_SAA.TIF&quot;
+    FILE_NAME_ANGLE_SOLAR_ZENITH_BAND_4 = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_SZA.TIF&quot;
+    FILE_NAME_METADATA_ODL = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_MTL.txt&quot;
+    FILE_NAME_METADATA_XML = &quot;LC08_L1TP_218074_20190130_20200829_02_T1_MTL.xml&quot;
+    FILE_NAME_CPF = &quot;LC08CPF_20190101_20190331_02.01&quot;
+    FILE_NAME_BPF_OLI = &quot;LO8BPF20190130123149_20190130131715.02&quot;
+    FILE_NAME_BPF_TIRS = &quot;LT8BPF20190121191115_20190204101737.02&quot;
+    FILE_NAME_RLUT = &quot;LC08RLUT_20150303_20431231_02_01.h5&quot;
+    DATA_SOURCE_TIRS_STRAY_LIGHT_CORRECTION = &quot;TIRS&quot;
+    DATA_SOURCE_ELEVATION = &quot;GLS2000&quot;
+    GROUND_CONTROL_POINTS_VERSION = 5
+    GROUND_CONTROL_POINTS_MODEL = 930
+    GEOMETRIC_RMSE_MODEL = 5.619
+    GEOMETRIC_RMSE_MODEL_Y = 4.619
+    GEOMETRIC_RMSE_MODEL_X = 3.201
+    GROUND_CONTROL_POINTS_VERIFY = 288
+    GEOMETRIC_RMSE_VERIFY = 3.331
+  END_GROUP = LEVEL1_PROCESSING_RECORD
+  GROUP = LEVEL1_MIN_MAX_RADIANCE
+    RADIANCE_MAXIMUM_BAND_1 = 783.28015
+    RADIANCE_MINIMUM_BAND_1 = -64.68353
+    RADIANCE_MAXIMUM_BAND_2 = 802.08838
+    RADIANCE_MINIMUM_BAND_2 = -66.23672
+    RADIANCE_MAXIMUM_BAND_3 = 739.11761
+    RADIANCE_MINIMUM_BAND_3 = -61.03657
+    RADIANCE_MAXIMUM_BAND_4 = 623.26562
+    RADIANCE_MINIMUM_BAND_4 = -51.46947
+    RADIANCE_MAXIMUM_BAND_5 = 381.40747
+    RADIANCE_MINIMUM_BAND_5 = -31.49675
+    RADIANCE_MAXIMUM_BAND_6 = 94.85257
+    RADIANCE_MINIMUM_BAND_6 = -7.83296
+    RADIANCE_MAXIMUM_BAND_7 = 31.97039
+    RADIANCE_MINIMUM_BAND_7 = -2.64013
+    RADIANCE_MAXIMUM_BAND_8 = 705.36511
+    RADIANCE_MINIMUM_BAND_8 = -58.24928
+    RADIANCE_MAXIMUM_BAND_9 = 149.06268
+    RADIANCE_MINIMUM_BAND_9 = -12.30964
+    RADIANCE_MAXIMUM_BAND_10 = 22.00180
+    RADIANCE_MINIMUM_BAND_10 = 0.10033
+    RADIANCE_MAXIMUM_BAND_11 = 22.00180
+    RADIANCE_MINIMUM_BAND_11 = 0.10033
+  END_GROUP = LEVEL1_MIN_MAX_RADIANCE
+  GROUP = LEVEL1_MIN_MAX_REFLECTANCE
+    REFLECTANCE_MAXIMUM_BAND_1 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_1 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_2 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_2 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_3 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_3 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_4 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_4 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_5 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_5 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_6 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_6 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_7 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_7 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_8 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_8 = -0.099980
+    REFLECTANCE_MAXIMUM_BAND_9 = 1.210700
+    REFLECTANCE_MINIMUM_BAND_9 = -0.099980
+  END_GROUP = LEVEL1_MIN_MAX_REFLECTANCE
+  GROUP = LEVEL1_MIN_MAX_PIXEL_VALUE
+    QUANTIZE_CAL_MAX_BAND_1 = 65535
+    QUANTIZE_CAL_MIN_BAND_1 = 1
+    QUANTIZE_CAL_MAX_BAND_2 = 65535
+    QUANTIZE_CAL_MIN_BAND_2 = 1
+    QUANTIZE_CAL_MAX_BAND_3 = 65535
+    QUANTIZE_CAL_MIN_BAND_3 = 1
+    QUANTIZE_CAL_MAX_BAND_4 = 65535
+    QUANTIZE_CAL_MIN_BAND_4 = 1
+    QUANTIZE_CAL_MAX_BAND_5 = 65535
+    QUANTIZE_CAL_MIN_BAND_5 = 1
+    QUANTIZE_CAL_MAX_BAND_6 = 65535
+    QUANTIZE_CAL_MIN_BAND_6 = 1
+    QUANTIZE_CAL_MAX_BAND_7 = 65535
+    QUANTIZE_CAL_MIN_BAND_7 = 1
+    QUANTIZE_CAL_MAX_BAND_8 = 65535
+    QUANTIZE_CAL_MIN_BAND_8 = 1
+    QUANTIZE_CAL_MAX_BAND_9 = 65535
+    QUANTIZE_CAL_MIN_BAND_9 = 1
+    QUANTIZE_CAL_MAX_BAND_10 = 65535
+    QUANTIZE_CAL_MIN_BAND_10 = 1
+    QUANTIZE_CAL_MAX_BAND_11 = 65535
+    QUANTIZE_CAL_MIN_BAND_11 = 1
+  END_GROUP = LEVEL1_MIN_MAX_PIXEL_VALUE
+  GROUP = LEVEL1_RADIOMETRIC_RESCALING
+    RADIANCE_MULT_BAND_1 = 1.2939E-02
+    RADIANCE_MULT_BAND_2 = 1.3250E-02
+    RADIANCE_MULT_BAND_3 = 1.2210E-02
+    RADIANCE_MULT_BAND_4 = 1.0296E-02
+    RADIANCE_MULT_BAND_5 = 6.3006E-03
+    RADIANCE_MULT_BAND_6 = 1.5669E-03
+    RADIANCE_MULT_BAND_7 = 5.2813E-04
+    RADIANCE_MULT_BAND_8 = 1.1652E-02
+    RADIANCE_MULT_BAND_9 = 2.4624E-03
+    RADIANCE_MULT_BAND_10 = 3.3420E-04
+    RADIANCE_MULT_BAND_11 = 3.3420E-04
+    RADIANCE_ADD_BAND_1 = -64.69647
+    RADIANCE_ADD_BAND_2 = -66.24997
+    RADIANCE_ADD_BAND_3 = -61.04878
+    RADIANCE_ADD_BAND_4 = -51.47977
+    RADIANCE_ADD_BAND_5 = -31.50305
+    RADIANCE_ADD_BAND_6 = -7.83452
+    RADIANCE_ADD_BAND_7 = -2.64065
+    RADIANCE_ADD_BAND_8 = -58.26093
+    RADIANCE_ADD_BAND_9 = -12.31211
+    RADIANCE_ADD_BAND_10 = 0.10000
+    RADIANCE_ADD_BAND_11 = 0.10000
+    REFLECTANCE_MULT_BAND_1 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_2 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_3 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_4 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_5 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_6 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_7 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_8 = 2.0000E-05
+    REFLECTANCE_MULT_BAND_9 = 2.0000E-05
+    REFLECTANCE_ADD_BAND_1 = -0.100000
+    REFLECTANCE_ADD_BAND_2 = -0.100000
+    REFLECTANCE_ADD_BAND_3 = -0.100000
+    REFLECTANCE_ADD_BAND_4 = -0.100000
+    REFLECTANCE_ADD_BAND_5 = -0.100000
+    REFLECTANCE_ADD_BAND_6 = -0.100000
+    REFLECTANCE_ADD_BAND_7 = -0.100000
+    REFLECTANCE_ADD_BAND_8 = -0.100000
+    REFLECTANCE_ADD_BAND_9 = -0.100000
+  END_GROUP = LEVEL1_RADIOMETRIC_RESCALING
+  GROUP = LEVEL1_THERMAL_CONSTANTS
+    K1_CONSTANT_BAND_10 = 774.8853
+    K2_CONSTANT_BAND_10 = 1321.0789
+    K1_CONSTANT_BAND_11 = 480.8883
+    K2_CONSTANT_BAND_11 = 1201.1442
+  END_GROUP = LEVEL1_THERMAL_CONSTANTS
+  GROUP = LEVEL1_PROJECTION_PARAMETERS
+    MAP_PROJECTION = &quot;UTM&quot;
+    DATUM = &quot;WGS84&quot;
+    ELLIPSOID = &quot;WGS84&quot;
+    UTM_ZONE = 23
+    GRID_CELL_SIZE_PANCHROMATIC = 15.00
+    GRID_CELL_SIZE_REFLECTIVE = 30.00
+    GRID_CELL_SIZE_THERMAL = 30.00
+    ORIENTATION = &quot;NORTH_UP&quot;
+    RESAMPLING_OPTION = &quot;CUBIC_CONVOLUTION&quot;
+  END_GROUP = LEVEL1_PROJECTION_PARAMETERS
+END_GROUP = LANDSAT_METADATA_FILE
+END
+</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Did you notice?</p>
+<p>If you look carefully at the coordinates for each scene, you may notice
+that they don’t exactly coincide in area. That’s OK since <a class="reference external" href="https://docs.xarray.dev/en/stable/index.html#module-xarray" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xarray</span></code></a>
+knows how to take the pixel coordinates into account when doing
+mathematical operations like calculating indices and differences between
+scenes.</p>
+</div>
+</section>
+<section id="plot-some-reflectance-bands">
+<h2>Plot some reflectance bands<a class="headerlink" href="#plot-some-reflectance-bands" title="Permalink to this headline">#</a></h2>
+<p>Now we can use the <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.plot.html#xarray.DataArray.plot" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.DataArray.plot</span></code></a> method to make plots of
+individual bands with <a class="reference external" href="https://matplotlib.org/stable/index.html#module-matplotlib" title="(in Matplotlib v3.6.3)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib</span></code></a>. A bonus is that <a class="reference external" href="https://docs.xarray.dev/en/stable/index.html#module-xarray" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xarray</span></code></a> uses the
+metadata that <a class="reference internal" href="api/generated/xlandsat.load_scene.html#xlandsat.load_scene" title="xlandsat.load_scene"><code class="xref py py-func docutils literal notranslate"><span class="pre">xlandsat.load_scene</span></code></a> inserts into the scene to
+automatically add labels and annotations to the plot.</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Make the pseudocolor plots of the near infrared band</span>
+<span class="n">before</span><span class="o">.</span><span class="n">nir</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">after</span><span class="o">.</span><span class="n">nir</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+
+<span class="c1"># Set the title using metadata from each scene</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Before: </span><span class="si">{</span><span class="n">before</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After: </span><span class="si">{</span><span class="n">after</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set the aspect to equal so that pixels are squares, not rectangles</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/overview_4_0.png" src="_images/overview_4_0.png" />
+</div>
+</div>
+</section>
+<section id="what-now">
+<h2>What now?<a class="headerlink" href="#what-now" title="Permalink to this headline">#</a></h2>
+<p>Learn more about what you can do with xlandsat and xarray:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="composites.html#composites"><span class="std std-ref">Composites</span></a></p></li>
+<li><p><a class="reference internal" href="indices.html#indices"><span class="std std-ref">Indices</span></a></p></li>
+<li><p><a class="reference internal" href="pansharpen.html#pansharpen"><span class="std std-ref">Pansharpening</span></a></p></li>
+</ul>
+<p>By getting the data into an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>, xlandsat opens the door
+for a huge range of operations. You now have access to everything that
+<a class="reference external" href="https://docs.xarray.dev/en/stable/index.html#module-xarray" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xarray</span></code></a> can do: interpolation, reduction, slicing, grouping, saving to
+cloud-optimized formats, and much more. So go off and do something cool!</p>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Home</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="install.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Installing</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+      &copy; Copyright 2023, The xlandsat developers.<br/>
+    Last updated on Feb 08, 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
