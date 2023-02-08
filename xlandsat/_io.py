@@ -198,9 +198,13 @@ def load_panchromatic(path, region=None, dtype="float32"):
     with choose_reader(path)(path) as reader:
         metadata = reader.read_metadata()
         coords = coordinates_from_metadata(metadata, "panchromatic")
-        available_bands = {int(str(fname).split("_B")[-1][:-4]): fname for fname in reader.band_files}
+        available_bands = {
+            int(str(fname).split("_B")[-1][:-4]): fname for fname in reader.band_files
+        }
         if 8 not in available_bands:
-            raise ValueError(f"Could not find the panchromatic band (8) in '{str(path)}'.")
+            raise ValueError(
+                f"Could not find the panchromatic band (8) in '{str(path)}'."
+            )
         band = read_and_scale_band(
             available_bands[8], reader, dtype, 8, coords, metadata, region
         )
