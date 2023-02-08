@@ -23,42 +23,33 @@ As an example, lets download a tar archive of a Landsat 8 scene of the
 `Brumadinho tailings dam disaster <https://en.wikipedia.org/wiki/Brumadinho_dam_disaster>`__
 that happened in 2019 in Brazil.
 The archive is available on figshare at
-https://doi.org/10.6084/m9.figshare.21665630.v1 and includes scenes from before
+https://doi.org/10.6084/m9.figshare.21665630 and includes scenes from before
 and after the disaster as both the full scene and a cropped version.
 
-We'll use :mod:`pooch` to download the scenes from before and after the
-disaster to our computer.
-To save space and bandwidth, we'll use the cropped version here.
+We'll use the functions in :mod:`xlandsat.datasets` to download the scenes from
+before and after the disaster to our computer. To save space and bandwidth,
+these are cropped versions of the full Landsat scenes.
 
 .. jupyter-execute::
 
-    import pooch
-
-    path_before = pooch.retrieve(
-          "doi:10.6084/m9.figshare.21665630.v1/cropped-before.tar.gz",
-         known_hash="md5:d2a503c944bb7ef3b41294d44b77e98c",
-    )
-    path_after = pooch.retrieve(
-          "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
-         known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
-    )
+    path_before = xls.datasets.fetch_brumadinho_before()
+    path_after = xls.datasets.fetch_brumadinho_after()
     print(path_before)
     print(path_after)
 
 
 .. tip::
 
-    Running the code above will only download the data once since Pooch is
-    smart enough to check if the file already exists on your computer.
-    See :func:`pooch.retrieve` for more information.
+    Running the code above will only download the data once. We use `Pooch
+    <https://www.fatiando.org/pooch>`__ to handle the downloads and it's smart
+    enough to check if the file already exists on your computer. See
+    :func:`pooch.retrieve` for more information.
 
 .. seealso::
 
-     If you want to use the full scene instead of the cropped version,
-     substitute the file name to ``full-after.tar.gz`` and
-     ``full-before.tar.gz``. Don't forget to also update the MD5 hashes
-     accordingly, which you can find on `the figshare archive
-     <https://doi.org/10.6084/m9.figshare.21665630.v1>`__.
+     If you want to use the full scenes instead of the cropped version,
+     use :func:`pooch.retrieve` to fetch them from the figshare archive
+     https://doi.org/10.6084/m9.figshare.21665630.
 
 
 Load the scenes
