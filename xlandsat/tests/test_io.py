@@ -9,19 +9,16 @@ import shutil
 import tempfile
 
 import numpy.testing as npt
-import pooch
 import pytest
 
 from .._io import load_scene, save_scene
+from ..datasets import fetch_brumadinho_after
 
 
 @pytest.mark.parametrize("compression", ["", ".gz"], ids=["none", "gz"])
 def test_save_scene_round_trip(compression):
     "Save a scene and load it back again to check if the round trip works"
-    path = pooch.retrieve(
-        "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
-        known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
-    )
+    path = fetch_brumadinho_after()
     scene_original = load_scene(path, dtype="float32")
     with tempfile.TemporaryDirectory() as tmpdir:
         path_copy = pathlib.Path(tmpdir) / f"scene-copy.tar{compression}"
@@ -48,10 +45,7 @@ def test_save_scene_round_trip(compression):
 @pytest.mark.parametrize("compression", ["", ".gz"], ids=["none", "gz"])
 def test_save_scene_cropped(compression):
     "Save a cropped scene and load it back again to check"
-    path = pooch.retrieve(
-        "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
-        known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
-    )
+    path = fetch_brumadinho_after()
     scene_original = load_scene(path, dtype="float32").sel(
         northing=slice(-2.226e6, -2.224e6), easting=slice(5.9e5, 5.92e5)
     )
@@ -79,10 +73,7 @@ def test_save_scene_cropped(compression):
 
 def test_load_scene_archive():
     "Check basic things about loading a scene from a tar archive"
-    path = pooch.retrieve(
-        "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
-        known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
-    )
+    path = fetch_brumadinho_after()
     scene = load_scene(path)
     assert scene.attrs["title"] == "Landsat 8 scene from 2019-01-30 (path/row=218/74)"
     assert set(scene.data_vars) == set(
@@ -93,13 +84,7 @@ def test_load_scene_archive():
 
 def test_load_scene_folder():
     "Check basic things about loading a scene from a folder"
-    paths = pooch.retrieve(
-        "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
-        known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
-        processor=pooch.Untar(),
-    )
-    # Unpack the archive and get the folder name
-    path = pathlib.Path(paths[0]).parent
+    path = fetch_brumadinho_after(untar=True)
     assert path.is_dir()
     scene = load_scene(path)
     assert scene.attrs["title"] == "Landsat 8 scene from 2019-01-30 (path/row=218/74)"
@@ -110,10 +95,7 @@ def test_load_scene_folder():
 
 def test_load_scene_crop():
     "Check that loading only a portion of a scene works"
-    path = pooch.retrieve(
-        "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
-        known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
-    )
+    path = fetch_brumadinho_after()
     region = [584400, 596070, -2231670, -2223000]
     scene = load_scene(path, region=region)
     assert scene.attrs["title"] == "Landsat 8 scene from 2019-01-30 (path/row=218/74)"
@@ -128,10 +110,7 @@ def test_load_scene_crop():
 
 def test_load_scene_select_bands():
     "Check that loading only a few selected bands works"
-    path = pooch.retrieve(
-        "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
-        known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
-    )
+    path = fetch_brumadinho_after()
     scene = load_scene(path, bands=["red", "swir1"])
     assert scene.attrs["title"] == "Landsat 8 scene from 2019-01-30 (path/row=218/74)"
     assert set(scene.data_vars) == set(["red", "swir1"])
@@ -140,13 +119,7 @@ def test_load_scene_select_bands():
 
 def test_load_scene_fail_multiple_mtl_files():
     "Check that loading fails when there are multiple MTL.txt files"
-    paths = pooch.retrieve(
-        "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
-        known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
-        processor=pooch.Untar(),
-    )
-    # Unpack the archive and get the folder name
-    path = pathlib.Path(paths[0]).parent
+    path = fetch_brumadinho_after(untar=True)
     assert path.is_dir()
     # Find the name of the MTL file
     mtl = list(path.glob("*_MTL.txt"))
@@ -164,13 +137,7 @@ def test_load_scene_fail_multiple_mtl_files():
 
 def test_load_scene_fail_missing_mtl_file():
     "Check that loading fails when there is no MTL.txt file"
-    paths = pooch.retrieve(
-        "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
-        known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
-        processor=pooch.Untar(),
-    )
-    # Unpack the archive and get the folder name
-    path = pathlib.Path(paths[0]).parent
+    path = fetch_brumadinho_after(untar=True)
     assert path.is_dir()
     # Duplicate the scene into a temporary folder and add an extra file
     with tempfile.TemporaryDirectory() as tmpdir:

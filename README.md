@@ -30,19 +30,20 @@ tailings dam disaster in Brazil](https://doi.org/10.6084/m9.figshare.21665630.v1
 
 ```python
 import xlandsat as xls
-import pooch  # for downloading the sample scene
 
-# Download the scene as a tar archive
-path = pooch.retrieve(
-      "doi:10.6084/m9.figshare.21665630.v1/cropped-after.tar.gz",
-     known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
-)
+# Download a cropped Landsat 8 scene from the Brumadinho dam disaster
+# (Brazil). The function downloads it and returns the path to the .tar file
+# containing the scene.
+path = xls.datasets.fetch_brumadinho_after()
+
 # Load the scene directly from the archive (no need to unpack it)
 scene = xls.load_scene(path)
-# Make an RGB composite and add it to the scene Dataset
-scene = scene.assign(rgb=xls.composite(scene, rescale_to=[0, 0.2]))
+
+# Make an RGB composite and stretch the contrast
+rgb = xls.composite(scene, rescale_to=[0.03, 0.2])
+
 # Plot the composite
-scene.rgb.plot.imshow()
+rgb.plot.imshow()
 ```
 
 ![RGB map showing the flooded plain after the dam collapse as light brown.]( https://raw.githubusercontent.com/compgeolab/xlandsat/main/doc/_static/readme-example.jpg)
@@ -53,8 +54,8 @@ scene.rgb.plot.imshow()
 * Provide some calculation, like composites, but leave most of the rest to the
   user and xarray.
 
-Our goal is not to provide a solution for large-scale data processing. Instead,
-our target is smaller scale analysis done on individual computers. For
+Our goal is **not** to provide a solution for large-scale data processing.
+Instead, our target is smaller scale analysis done on individual computers. For
 cloud-based data processing, see the [Pangeo Project](https://pangeo.io).
 
 ## Project status
