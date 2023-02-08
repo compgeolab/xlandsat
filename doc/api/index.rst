@@ -25,3 +25,16 @@ Processing
 
     composite
     pansharpen
+
+Sample datasets
+---------------
+
+.. automodule:: xlandsat.datasets
+
+.. currentmodule:: xlandsat
+
+.. autosummary::
+    :toctree: generated/
+
+    datasets.fetch_brumadinho_after
+    datasets.fetch_brumadinho_before
