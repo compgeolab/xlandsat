@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     
-        <title>xlandsat.composite | xlandsat v0.0.post32</title>
+        <title>xlandsat.composite | xlandsat v0.0.post36</title>
     
 
     
@@ -49,8 +49,8 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Citing" href="../../citing.html" />
-    <link rel="prev" title="xlandsat.save_scene" href="xlandsat.save_scene.html" />
+    <link rel="next" title="xlandsat.pansharpen" href="xlandsat.pansharpen.html" />
+    <link rel="prev" title="xlandsat.load_panchromatic" href="xlandsat.load_panchromatic.html" />
     <!-- Plausible analytics for anonymous usage statistics -->
     <script defer data-domain="compgeolab.org" src="https://plausible.io/js/plausible.js"></script>
 
@@ -86,7 +86,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post32</span></h1>
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post36</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -108,6 +108,28 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../install.html">
    Installing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../composites.html">
+   Composites
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../indices.html">
+   Indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../pansharpen.html">
+   Pansharpening
   </a>
  </li>
 </ul>
@@ -137,9 +159,39 @@
      xlandsat.save_scene
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="xlandsat.load_panchromatic.html">
+     xlandsat.load_panchromatic
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      xlandsat.composite
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="xlandsat.pansharpen.html">
+     xlandsat.pansharpen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="xlandsat.datasets.fetch_brumadinho_after.html">
+     xlandsat.datasets.fetch_brumadinho_after
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="xlandsat.datasets.fetch_brumadinho_before.html">
+     xlandsat.datasets.fetch_brumadinho_before
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="xlandsat.datasets.fetch_liverpool.html">
+     xlandsat.datasets.fetch_liverpool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="xlandsat.datasets.fetch_liverpool_panchromatic.html">
+     xlandsat.datasets.fetch_liverpool_panchromatic
     </a>
    </li>
   </ul>
@@ -147,6 +199,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../citing.html">
    Citing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../references.html">
+   References
   </a>
  </li>
  <li class="toctree-l1">
@@ -391,7 +448,7 @@ with matplotlib and smaller memory footprint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>scene</strong> (<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2023.1.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>) – A Landsat scene, as read with <a class="reference internal" href="xlandsat.load_scene.html#xlandsat.load_scene" title="xlandsat.load_scene"><code class="xref py py-func docutils literal notranslate"><span class="pre">xlandsat.load_scene</span></code></a>.</p></li>
+<li><p><strong>scene</strong> (<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>) – A Landsat scene, as read with <a class="reference internal" href="xlandsat.load_scene.html#xlandsat.load_scene" title="xlandsat.load_scene"><code class="xref py py-func docutils literal notranslate"><span class="pre">xlandsat.load_scene</span></code></a>.</p></li>
 <li><p><strong>bands</strong> (<em>list of str</em>) – A list of variable names from the scene that will be used as the
 composite’s red, green, and blue channels, respectively.</p></li>
 <li><p><strong>rescale_to</strong> (<em>None</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a>) – If not None, then should be a list/tuple with the minimum and maximum
@@ -401,7 +458,7 @@ each band. Bands are rescaled separately. Example: <code class="docutils literal
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>composite</strong> (<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2023.1.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a>) – The composite as a 3D <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> of type uint8. The first 2
+<dd class="field-even"><p><strong>composite</strong> (<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a>) – The composite as a 3D <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> of type uint8. The first 2
 dimensions are the same as the scene with the <code class="docutils literal notranslate"><span class="pre">&quot;channel&quot;</span></code> added as
 third dimension. Metadata from the scene is copied to the composite.</p>
 </dd>
@@ -409,7 +466,7 @@ third dimension. Metadata from the scene is copied to the composite.</p>
 <p class="rubric">Notes</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Use the <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.plot.imshow.html#xarray.DataArray.plot.imshow" title="(in xarray v2023.1.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.DataArray.plot.imshow</span></code></a> method to plot the
+<p>Use the <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.plot.imshow.html#xarray.DataArray.plot.imshow" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.DataArray.plot.imshow</span></code></a> method to plot the
 composite using matplotlib.</p>
 </div>
 </dd></dl>
@@ -424,17 +481,17 @@ composite using matplotlib.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="xlandsat.save_scene.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="xlandsat.load_panchromatic.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">xlandsat.save_scene</p>
+            <p class="prev-next-title">xlandsat.load_panchromatic</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../citing.html" title="next page">
+    <a class='right-next' id="next-link" href="xlandsat.pansharpen.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Citing</p>
+        <p class="prev-next-title">xlandsat.pansharpen</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -446,7 +503,7 @@ composite using matplotlib.</p>
         <footer class="col footer"><p>
   
       &copy; Copyright 2023, The xlandsat developers.<br/>
-    Last updated on Jan 20, 2023.<br/>
+    Last updated on Feb 08, 2023.<br/>
 </p>
         </footer>
     </div>

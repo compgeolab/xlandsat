@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>xlandsat._io | xlandsat v0.0.post32</title>
+        <title>xlandsat._io | xlandsat v0.0.post36</title>
     
 
     
@@ -83,7 +83,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post32</span></h1>
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post36</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -105,6 +105,28 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../install.html">
    Installing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../composites.html">
+   Composites
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../indices.html">
+   Indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../pansharpen.html">
+   Pansharpening
   </a>
  </li>
 </ul>
@@ -135,8 +157,38 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.load_panchromatic.html">
+     xlandsat.load_panchromatic
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../../api/generated/xlandsat.composite.html">
      xlandsat.composite
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.pansharpen.html">
+     xlandsat.pansharpen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_brumadinho_after.html">
+     xlandsat.datasets.fetch_brumadinho_after
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_brumadinho_before.html">
+     xlandsat.datasets.fetch_brumadinho_before
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_liverpool.html">
+     xlandsat.datasets.fetch_liverpool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_liverpool_panchromatic.html">
+     xlandsat.datasets.fetch_liverpool_panchromatic
     </a>
    </li>
   </ul>
@@ -144,6 +196,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../../citing.html">
    Citing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../references.html">
+   References
   </a>
  </li>
  <li class="toctree-l1">
@@ -335,6 +392,7 @@ title="Open an issue"
     <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;nir&quot;</span><span class="p">,</span>
     <span class="mi">6</span><span class="p">:</span> <span class="s2">&quot;swir1&quot;</span><span class="p">,</span>
     <span class="mi">7</span><span class="p">:</span> <span class="s2">&quot;swir2&quot;</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">:</span> <span class="s2">&quot;pan&quot;</span><span class="p">,</span>
     <span class="mi">10</span><span class="p">:</span> <span class="s2">&quot;thermal&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">BAND_TITLES</span> <span class="o">=</span> <span class="p">{</span>
@@ -345,6 +403,7 @@ title="Open an issue"
     <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;near-infrared&quot;</span><span class="p">,</span>
     <span class="mi">6</span><span class="p">:</span> <span class="s2">&quot;short-wave infrared 1&quot;</span><span class="p">,</span>
     <span class="mi">7</span><span class="p">:</span> <span class="s2">&quot;short-wave infrared 2&quot;</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">:</span> <span class="s2">&quot;panchromatic&quot;</span><span class="p">,</span>
     <span class="mi">10</span><span class="p">:</span> <span class="s2">&quot;thermal&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">BAND_UNITS</span> <span class="o">=</span> <span class="p">{</span>
@@ -355,6 +414,7 @@ title="Open an issue"
     <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;reflectance&quot;</span><span class="p">,</span>
     <span class="mi">6</span><span class="p">:</span> <span class="s2">&quot;reflectance&quot;</span><span class="p">,</span>
     <span class="mi">7</span><span class="p">:</span> <span class="s2">&quot;reflectance&quot;</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">:</span> <span class="s2">&quot;reflectance&quot;</span><span class="p">,</span>
     <span class="mi">10</span><span class="p">:</span> <span class="s2">&quot;Kelvin&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 
@@ -424,69 +484,187 @@ title="Open an issue"
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">bands</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">bands</span> <span class="o">=</span> <span class="n">BAND_NAMES</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span> <span class="ow">and</span> <span class="s2">&quot;.tar&quot;</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">suffixes</span><span class="p">:</span>
-        <span class="n">reader_class</span> <span class="o">=</span> <span class="n">TarReader</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">reader_class</span> <span class="o">=</span> <span class="n">FolderReader</span>
-    <span class="k">with</span> <span class="n">reader_class</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="n">bands</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;coastal_aerosol&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;green&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;nir&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;swir1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;swir2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;thermal&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="k">with</span> <span class="n">choose_reader</span><span class="p">(</span><span class="n">path</span><span class="p">)(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
         <span class="n">metadata</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read_metadata</span><span class="p">()</span>
-        <span class="n">available_bands</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_B&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">band_files</span><span class="p">]</span>
-        <span class="n">scene_region</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;corner_ll_projection_x_product&quot;</span><span class="p">],</span>
-            <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;corner_lr_projection_x_product&quot;</span><span class="p">],</span>
-            <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;corner_ll_projection_y_product&quot;</span><span class="p">],</span>
-            <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;corner_ul_projection_y_product&quot;</span><span class="p">],</span>
-        <span class="p">)</span>
-        <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;reflective_lines&quot;</span><span class="p">],</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;reflective_samples&quot;</span><span class="p">])</span>
-        <span class="n">coords</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;easting&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">scene_region</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
-            <span class="s2">&quot;northing&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">scene_region</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-        <span class="p">}</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="n">coordinates_from_metadata</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;reflective&quot;</span><span class="p">)</span>
         <span class="n">data_vars</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">dims</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;northing&quot;</span><span class="p">,</span> <span class="s2">&quot;easting&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">fname</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">available_bands</span><span class="p">,</span> <span class="n">reader</span><span class="o">.</span><span class="n">band_files</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">band_files</span><span class="p">:</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_B&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>
             <span class="k">if</span> <span class="n">BAND_NAMES</span><span class="p">[</span><span class="n">number</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">bands</span><span class="p">:</span>
                 <span class="k">continue</span>
-            <span class="n">mult</span><span class="p">,</span> <span class="n">add</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
-            <span class="n">mult_entries</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;mult_band_</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;mult_band_st_b</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
-            <span class="n">add_entries</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;add_band_</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;add_band_st_b</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">:</span>
-                <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">mult_entries</span><span class="p">):</span>
-                    <span class="n">mult</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-                <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">add_entries</span><span class="p">):</span>
-                    <span class="n">add</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-            <span class="n">band</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read_band</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
-            <span class="n">band</span><span class="p">[</span><span class="n">band</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-            <span class="n">band</span> <span class="o">*=</span> <span class="n">mult</span>
-            <span class="n">band</span> <span class="o">+=</span> <span class="n">add</span>
-            <span class="n">band_attrs</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="n">BAND_TITLES</span><span class="p">[</span><span class="n">number</span><span class="p">],</span>
-                <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="n">BAND_UNITS</span><span class="p">[</span><span class="n">number</span><span class="p">],</span>
-                <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span>
-                <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                <span class="s2">&quot;scaling_mult&quot;</span><span class="p">:</span> <span class="n">mult</span><span class="p">,</span>
-                <span class="s2">&quot;scaling_add&quot;</span><span class="p">:</span> <span class="n">add</span><span class="p">,</span>
-            <span class="p">}</span>
-            <span class="n">data_vars</span><span class="p">[</span><span class="n">BAND_NAMES</span><span class="p">[</span><span class="n">number</span><span class="p">]]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
-                <span class="n">data</span><span class="o">=</span><span class="n">band</span><span class="p">,</span>
-                <span class="n">dims</span><span class="o">=</span><span class="n">dims</span><span class="p">,</span>
-                <span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span>
-                <span class="n">attrs</span><span class="o">=</span><span class="n">band_attrs</span><span class="p">,</span>
-                <span class="n">name</span><span class="o">=</span><span class="n">BAND_NAMES</span><span class="p">[</span><span class="n">number</span><span class="p">],</span>
+            <span class="n">data_vars</span><span class="p">[</span><span class="n">BAND_NAMES</span><span class="p">[</span><span class="n">number</span><span class="p">]]</span> <span class="o">=</span> <span class="n">read_and_scale_band</span><span class="p">(</span>
+                <span class="n">fname</span><span class="p">,</span> <span class="n">reader</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">region</span>
             <span class="p">)</span>
-            <span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">data_vars</span><span class="p">[</span><span class="n">BAND_NAMES</span><span class="p">[</span><span class="n">number</span><span class="p">]]</span> <span class="o">=</span> <span class="n">data_vars</span><span class="p">[</span><span class="n">BAND_NAMES</span><span class="p">[</span><span class="n">number</span><span class="p">]]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span>
-                    <span class="n">easting</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="n">region</span><span class="p">[:</span><span class="mi">2</span><span class="p">]),</span> <span class="n">northing</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="n">region</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
-                <span class="p">)</span>
-    <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;Conventions&quot;</span><span class="p">:</span> <span class="s2">&quot;CF-1.8&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;spacecraft_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> scene from &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;date_acquired&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;(path/row=</span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;wrs_path&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;wrs_row&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
-        <span class="p">),</span>
+    <span class="k">if</span> <span class="n">data_vars</span><span class="p">:</span>
+        <span class="n">scene</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_vars</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">attrs_from_metadata</span><span class="p">(</span><span class="n">metadata</span><span class="p">))</span>
+        <span class="n">scene</span><span class="o">.</span><span class="n">easting</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="s2">&quot;UTM easting&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;standard_name&quot;</span><span class="p">:</span> <span class="s2">&quot;projection_x_coordinate&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">scene</span><span class="o">.</span><span class="n">northing</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="s2">&quot;UTM northing&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;standard_name&quot;</span><span class="p">:</span> <span class="s2">&quot;projection_y_coordinate&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">scene</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;No Landsat Collection 2 Level 2 band files found in &#39;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_panchromatic"><a class="viewcode-back" href="../../api/generated/xlandsat.load_panchromatic.html#xlandsat.load_panchromatic">[docs]</a><span class="k">def</span> <span class="nf">load_panchromatic</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load the panchromatic band from a USGS EarthExplorer Level 1 Landsat scene.</span>
+
+<span class="sd">    Can read from a folder with the ``*.TIF`` file and an ``*_MTL.txt`` file or</span>
+<span class="sd">    directly from a tar archive (compressed or not) without the need to first</span>
+<span class="sd">    unpack the archive. The band is converted to reflectance units using</span>
+<span class="sd">    appropriate scaling parameters and UTM coordinates are set in the returned</span>
+<span class="sd">    :class:`xarray.DataArray`.</span>
+
+<span class="sd">    .. important::</span>
+
+<span class="sd">        Do not rename the TIF or MTL files. The folder/archive can have any</span>
+<span class="sd">        name but TIF and MTL files need their original names.</span>
+
+<span class="sd">    .. note::</span>
+
+<span class="sd">        Only supports Landsat 8 and 9 Collection 2 Level 1 scenes containing</span>
+<span class="sd">        the panchromatic band.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path : str or :class:`pathlib.Path`</span>
+<span class="sd">        The path to a folder or tar archive containing the TIF file for the</span>
+<span class="sd">        panchromatic band. **Must** include the ``*_MTL.txt`` metadata file.</span>
+<span class="sd">        Other band files may be present but will be ignored.</span>
+<span class="sd">    region : None or list</span>
+<span class="sd">        Crop the band to this bounding box given as a list of West, East,</span>
+<span class="sd">        South, and North coordinate values (UTM in meters). If None, no</span>
+<span class="sd">        cropping is performed on the band. Default is None.</span>
+<span class="sd">    dtype : str or numpy dtype object</span>
+<span class="sd">        The type used for the band array. Integer types will result in rounding</span>
+<span class="sd">        so floating point is recommended. Default is float16.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    panchromatic : :class:`xarray.DataArray`</span>
+<span class="sd">        The loaded band including UTM easting and northing as dimensional</span>
+<span class="sd">        coordinates and metadata read from the MTL file and other CF compliant</span>
+<span class="sd">        fields in the ``attrs`` attribute.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">choose_reader</span><span class="p">(</span><span class="n">path</span><span class="p">)(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read_metadata</span><span class="p">()</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="n">coordinates_from_metadata</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;panchromatic&quot;</span><span class="p">)</span>
+        <span class="n">available_bands</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_B&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">4</span><span class="p">]):</span> <span class="n">fname</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">band_files</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="mi">8</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">available_bands</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Could not find the panchromatic band (8) in &#39;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+            <span class="p">)</span>
+        <span class="n">band</span> <span class="o">=</span> <span class="n">read_and_scale_band</span><span class="p">(</span>
+            <span class="n">available_bands</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">reader</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">region</span>
+        <span class="p">)</span>
+    <span class="n">attrs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">band</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+    <span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attrs_from_metadata</span><span class="p">(</span><span class="n">metadata</span><span class="p">))</span>
+    <span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;spacecraft_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> panchromatic band from &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;date_acquired&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;(path/row=</span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;wrs_path&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;wrs_row&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
+    <span class="p">)</span>
+    <span class="n">band</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs</span>
+    <span class="n">band</span><span class="o">.</span><span class="n">easting</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="s2">&quot;UTM easting&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;standard_name&quot;</span><span class="p">:</span> <span class="s2">&quot;projection_x_coordinate&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
     <span class="p">}</span>
+    <span class="n">band</span><span class="o">.</span><span class="n">northing</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="s2">&quot;UTM northing&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;standard_name&quot;</span><span class="p">:</span> <span class="s2">&quot;projection_y_coordinate&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">band</span></div>
+
+
+<span class="k">def</span> <span class="nf">read_and_scale_band</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">reader</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read the band and return a DataArray with the scaled values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">band_data</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read_band</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">band_data</span><span class="p">[</span><span class="n">band_data</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">mult</span><span class="p">,</span> <span class="n">add</span> <span class="o">=</span> <span class="n">scaling_parameters</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
+    <span class="n">band_data</span> <span class="o">*=</span> <span class="n">mult</span>
+    <span class="n">band_data</span> <span class="o">+=</span> <span class="n">add</span>
+    <span class="n">band</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">band_data</span><span class="p">,</span>
+        <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;northing&quot;</span><span class="p">,</span> <span class="s2">&quot;easting&quot;</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">BAND_NAMES</span><span class="p">[</span><span class="n">number</span><span class="p">],</span>
+        <span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span>
+        <span class="n">attrs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="n">BAND_TITLES</span><span class="p">[</span><span class="n">number</span><span class="p">],</span>
+            <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="n">BAND_UNITS</span><span class="p">[</span><span class="n">number</span><span class="p">],</span>
+            <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span>
+            <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s2">&quot;scaling_mult&quot;</span><span class="p">:</span> <span class="n">mult</span><span class="p">,</span>
+            <span class="s2">&quot;scaling_add&quot;</span><span class="p">:</span> <span class="n">add</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">band</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">easting</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="n">region</span><span class="p">[:</span><span class="mi">2</span><span class="p">]),</span> <span class="n">northing</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="n">region</span><span class="p">[</span><span class="mi">2</span><span class="p">:]))</span>
+    <span class="k">return</span> <span class="n">band</span>
+
+
+<span class="k">def</span> <span class="nf">scaling_parameters</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the scaling parameters for the band of the given number.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mult</span><span class="p">,</span> <span class="n">add</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="n">mult_entries</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;mult_band_</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;mult_band_st_b</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+    <span class="n">add_entries</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;add_band_</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;add_band_st_b</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">mult_entries</span><span class="p">):</span>
+            <span class="n">mult</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">add_entries</span><span class="p">):</span>
+            <span class="n">add</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">mult</span><span class="p">,</span> <span class="n">add</span>
+
+
+<span class="k">def</span> <span class="nf">coordinates_from_metadata</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">band_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate the UTM pixel coordinate arrays from the metadata.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">band_type</span><span class="si">}</span><span class="s2">_lines&quot;</span><span class="p">],</span> <span class="n">metadata</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">band_type</span><span class="si">}</span><span class="s2">_samples&quot;</span><span class="p">])</span>
+    <span class="n">scene_region</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;corner_ll_projection_x_product&quot;</span><span class="p">],</span>
+        <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;corner_lr_projection_x_product&quot;</span><span class="p">],</span>
+        <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;corner_ll_projection_y_product&quot;</span><span class="p">],</span>
+        <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;corner_ul_projection_y_product&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;easting&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">scene_region</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="s2">&quot;northing&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">scene_region</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">coords</span>
+
+
+<span class="k">def</span> <span class="nf">attrs_from_metadata</span><span class="p">(</span><span class="n">metadata</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create the xarray attrs dictionary from the metadata dictionary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">metadata_to_keep</span> <span class="o">=</span> <span class="p">[</span>
         <span class="s2">&quot;digital_object_identifier&quot;</span><span class="p">,</span>
         <span class="s2">&quot;origin&quot;</span><span class="p">,</span>
@@ -506,19 +684,27 @@ title="Open an issue"
         <span class="s2">&quot;wrs_row&quot;</span><span class="p">,</span>
         <span class="s2">&quot;mtl_file&quot;</span><span class="p">,</span>
     <span class="p">]</span>
+    <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Conventions&quot;</span><span class="p">:</span> <span class="s2">&quot;CF-1.8&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;spacecraft_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> scene from &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;date_acquired&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;(path/row=</span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;wrs_path&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;wrs_row&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="p">),</span>
+    <span class="p">}</span>
     <span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">key</span><span class="p">:</span> <span class="n">metadata</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">metadata_to_keep</span><span class="p">})</span>
-    <span class="n">scene</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_vars</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">)</span>
-    <span class="n">scene</span><span class="o">.</span><span class="n">easting</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="s2">&quot;UTM easting&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;standard_name&quot;</span><span class="p">:</span> <span class="s2">&quot;projection_x_coordinate&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
-    <span class="p">}</span>
-    <span class="n">scene</span><span class="o">.</span><span class="n">northing</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="s2">&quot;UTM northing&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;standard_name&quot;</span><span class="p">:</span> <span class="s2">&quot;projection_y_coordinate&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">scene</span></div>
+    <span class="k">return</span> <span class="n">attrs</span>
+
+
+<span class="k">def</span> <span class="nf">choose_reader</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the appropriate reader class depending on what &quot;path&quot; is.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span> <span class="ow">and</span> <span class="s2">&quot;.tar&quot;</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">suffixes</span><span class="p">:</span>
+        <span class="n">reader_class</span> <span class="o">=</span> <span class="n">TarReader</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">reader_class</span> <span class="o">=</span> <span class="n">FolderReader</span>
+    <span class="k">return</span> <span class="n">reader_class</span>
 
 
 <span class="k">def</span> <span class="nf">parse_metadata</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
@@ -548,6 +734,8 @@ title="Open an issue"
         <span class="s2">&quot;UTM_ZONE&quot;</span><span class="p">,</span>
         <span class="s2">&quot;REFLECTIVE_LINES&quot;</span><span class="p">,</span>
         <span class="s2">&quot;REFLECTIVE_SAMPLES&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;PANCHROMATIC_LINES&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;PANCHROMATIC_SAMPLES&quot;</span><span class="p">,</span>
         <span class="s2">&quot;THERMAL_LINES&quot;</span><span class="p">,</span>
         <span class="s2">&quot;THERMAL_SAMPLES&quot;</span><span class="p">,</span>
     <span class="p">]</span>
@@ -751,10 +939,16 @@ title="Open an issue"
                 <span class="ow">or</span> <span class="s2">&quot;CORNER_UR_PROJECTION_Y_PRODUCT&quot;</span> <span class="ow">in</span> <span class="n">line</span>
             <span class="p">):</span>
                 <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; = &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; = </span><span class="si">{</span><span class="n">scene</span><span class="o">.</span><span class="n">northing</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="k">if</span> <span class="s2">&quot;REFLECTIVE_LINES&quot;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">or</span> <span class="s2">&quot;THERMAL_LINES&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; = &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; = </span><span class="si">{</span><span class="n">scene</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s1">&#39;northing&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="k">if</span> <span class="s2">&quot;REFLECTIVE_SAMPLES&quot;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">or</span> <span class="s2">&quot;THERMAL_SAMPLES&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-                <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; = &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; = </span><span class="si">{</span><span class="n">scene</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s1">&#39;easting&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;pan&quot;</span> <span class="ow">in</span> <span class="n">scene</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s2">&quot;PANCHROMATIC_LINES&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; = &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; = </span><span class="si">{</span><span class="n">scene</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s1">&#39;northing&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">if</span> <span class="s2">&quot;PANCHROMATIC_SAMPLES&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; = &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; = </span><span class="si">{</span><span class="n">scene</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s1">&#39;easting&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s2">&quot;REFLECTIVE_LINES&quot;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">or</span> <span class="s2">&quot;THERMAL_LINES&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; = &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; = </span><span class="si">{</span><span class="n">scene</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s1">&#39;northing&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">if</span> <span class="s2">&quot;REFLECTIVE_SAMPLES&quot;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">or</span> <span class="s2">&quot;THERMAL_SAMPLES&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; = &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; = </span><span class="si">{</span><span class="n">scene</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s1">&#39;easting&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="n">mtl_file</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
         <span class="n">mtl_file</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mtl_file</span><span class="p">)</span>
         <span class="c1"># Add the MTL file to the archive</span>
@@ -794,7 +988,7 @@ title="Open an issue"
         <footer class="col footer"><p>
   
       &copy; Copyright 2023, The xlandsat developers.<br/>
-    Last updated on Jan 20, 2023.<br/>
+    Last updated on Feb 08, 2023.<br/>
 </p>
         </footer>
     </div>

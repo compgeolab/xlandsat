@@ -54,6 +54,7 @@ xlandsat with ``pip`` or ``conda``:
 * `numpy <http://www.numpy.org/>`__
 * `xarray <https://xarray.dev/>`__
 * `scikit-image <https://scikit-image.org/>`__
+* `pooch <https://www.fatiando.org/pooch/>`__
 
 See :ref:`dependency-versions` for the our policy of oldest supported versions
 of each dependency.

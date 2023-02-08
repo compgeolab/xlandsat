@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     
-        <title>Changelog | xlandsat v0.0.post32</title>
+        <title>Changelog | xlandsat v0.0.post36</title>
     
 
     
@@ -50,7 +50,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Version compatibility" href="compatibility.html" />
-    <link rel="prev" title="Citing" href="citing.html" />
+    <link rel="prev" title="References" href="references.html" />
     <!-- Plausible analytics for anonymous usage statistics -->
     <script defer data-domain="compgeolab.org" src="https://plausible.io/js/plausible.js"></script>
 
@@ -86,7 +86,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post32</span></h1>
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post36</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -108,6 +108,28 @@
  <li class="toctree-l1">
   <a class="reference internal" href="install.html">
    Installing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="composites.html">
+   Composites
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="indices.html">
+   Indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pansharpen.html">
+   Pansharpening
   </a>
  </li>
 </ul>
@@ -138,8 +160,38 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.load_panchromatic.html">
+     xlandsat.load_panchromatic
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="api/generated/xlandsat.composite.html">
      xlandsat.composite
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.pansharpen.html">
+     xlandsat.pansharpen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_brumadinho_after.html">
+     xlandsat.datasets.fetch_brumadinho_after
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_brumadinho_before.html">
+     xlandsat.datasets.fetch_brumadinho_before
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_liverpool.html">
+     xlandsat.datasets.fetch_liverpool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_liverpool_panchromatic.html">
+     xlandsat.datasets.fetch_liverpool_panchromatic
     </a>
    </li>
   </ul>
@@ -147,6 +199,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="citing.html">
    Citing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -376,6 +433,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-0-3-0">
+   Version 0.3.0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#version-0-2-0">
    Version 0.2.0
   </a>
@@ -410,6 +472,11 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-0-3-0">
+   Version 0.3.0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#version-0-2-0">
    Version 0.2.0
   </a>
@@ -436,6 +503,24 @@ title="Print to PDF"
                 
   <section id="changelog">
 <span id="changes"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">#</a></h1>
+<section id="version-0-3-0">
+<h2>Version 0.3.0<a class="headerlink" href="#version-0-3-0" title="Permalink to this headline">#</a></h2>
+<p>Released on: 2023/02/08</p>
+<p>doi: <a class="reference external" href="https://doi.org/10.5281/zenodo.7619773">https://doi.org/10.5281/zenodo.7619773</a></p>
+<p>New features:</p>
+<ul class="simple">
+<li><p>Create a datasets module to automate downloading: <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/24">https://github.com/compgeolab/xlandsat/pull/24</a></p></li>
+<li><p>Add pansharpening (Weighted Brovey Transform): <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/23">https://github.com/compgeolab/xlandsat/pull/23</a></p></li>
+</ul>
+<p>Documentation:</p>
+<ul class="simple">
+<li><p>Add a favicon image to the docs: <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/22">https://github.com/compgeolab/xlandsat/pull/22</a></p></li>
+</ul>
+<p>This release contains contributions from:</p>
+<ul class="simple">
+<li><p>Leonardo Uieda</p></li>
+</ul>
+</section>
 <section id="version-0-2-0">
 <h2>Version 0.2.0<a class="headerlink" href="#version-0-2-0" title="Permalink to this headline">#</a></h2>
 <p>Released on: 2023/01/20</p>
@@ -486,8 +571,8 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>A function to get Landsat 8 and 9 Collection 2 Level 2 scenes downloaded from
 <a class="reference external" href="https://earthexplorer.usgs.gov/">USGS EarthExplorer</a> into an
-<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2023.1.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>.</p></li>
-<li><p>A function to generate a composite as an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2023.1.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> that can
+<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>.</p></li>
+<li><p>A function to generate a composite as an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> that can
 be easily plotted with xarray’s machinery.</p></li>
 </ul>
 <p>This release contains contributions from:</p>
@@ -505,11 +590,11 @@ be easily plotted with xarray’s machinery.</p></li>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="citing.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="references.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Citing</p>
+            <p class="prev-next-title">References</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="compatibility.html" title="next page">
@@ -527,7 +612,7 @@ be easily plotted with xarray’s machinery.</p></li>
         <footer class="col footer"><p>
   
       &copy; Copyright 2023, The xlandsat developers.<br/>
-    Last updated on Jan 20, 2023.<br/>
+    Last updated on Feb 08, 2023.<br/>
 </p>
         </footer>
     </div>

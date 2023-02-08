@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     
-        <title>List of functions and classes (API) | xlandsat v0.0.post32</title>
+        <title>List of functions and classes (API) | xlandsat v0.0.post36</title>
     
 
     
@@ -50,7 +50,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="xlandsat.load_scene" href="generated/xlandsat.load_scene.html" />
-    <link rel="prev" title="Installing" href="../install.html" />
+    <link rel="prev" title="Pansharpening" href="../pansharpen.html" />
     <!-- Plausible analytics for anonymous usage statistics -->
     <script defer data-domain="compgeolab.org" src="https://plausible.io/js/plausible.js"></script>
 
@@ -86,7 +86,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post32</span></h1>
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post36</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -108,6 +108,28 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../install.html">
    Installing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../composites.html">
+   Composites
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../indices.html">
+   Indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pansharpen.html">
+   Pansharpening
   </a>
  </li>
 </ul>
@@ -138,8 +160,38 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="generated/xlandsat.load_panchromatic.html">
+     xlandsat.load_panchromatic
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="generated/xlandsat.composite.html">
      xlandsat.composite
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/xlandsat.pansharpen.html">
+     xlandsat.pansharpen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/xlandsat.datasets.fetch_brumadinho_after.html">
+     xlandsat.datasets.fetch_brumadinho_after
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/xlandsat.datasets.fetch_brumadinho_before.html">
+     xlandsat.datasets.fetch_brumadinho_before
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/xlandsat.datasets.fetch_liverpool.html">
+     xlandsat.datasets.fetch_liverpool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/xlandsat.datasets.fetch_liverpool_panchromatic.html">
+     xlandsat.datasets.fetch_liverpool_panchromatic
     </a>
    </li>
   </ul>
@@ -147,6 +199,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../citing.html">
    Citing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   References
   </a>
  </li>
  <li class="toctree-l1">
@@ -353,12 +410,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-and-output">
+   Input and output
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#processing">
+   Processing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-xlandsat.datasets">
+   Sample datasets
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -370,6 +461,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-and-output">
+   Input and output
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#processing">
+   Processing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-xlandsat.datasets">
+   Sample datasets
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -379,6 +493,8 @@ title="Print to PDF"
                 
   <section id="module-xlandsat">
 <span id="list-of-functions-and-classes-api"></span><span id="api"></span><h1>List of functions and classes (API)<a class="headerlink" href="#module-xlandsat" title="Permalink to this headline">#</a></h1>
+<section id="input-and-output">
+<h2>Input and output<a class="headerlink" href="#input-and-output" title="Permalink to this headline">#</a></h2>
 <table class="autosummary longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
@@ -391,11 +507,53 @@ title="Print to PDF"
 <tr class="row-even"><td><p><a class="reference internal" href="generated/xlandsat.save_scene.html#xlandsat.save_scene" title="xlandsat.save_scene"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_scene</span></code></a>(path, scene)</p></td>
 <td><p>Save a Landsat scene to a tar archive in the USGS EarthExplorer format.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/xlandsat.composite.html#xlandsat.composite" title="xlandsat.composite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">composite</span></code></a>(scene[, bands, rescale_to])</p></td>
-<td><p>Create a composite using the given bands.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/xlandsat.load_panchromatic.html#xlandsat.load_panchromatic" title="xlandsat.load_panchromatic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_panchromatic</span></code></a>(path[, region, dtype])</p></td>
+<td><p>Load the panchromatic band from a USGS EarthExplorer Level 1 Landsat scene.</p></td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="processing">
+<h2>Processing<a class="headerlink" href="#processing" title="Permalink to this headline">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/xlandsat.composite.html#xlandsat.composite" title="xlandsat.composite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">composite</span></code></a>(scene[, bands, rescale_to])</p></td>
+<td><p>Create a composite using the given bands.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/xlandsat.pansharpen.html#xlandsat.pansharpen" title="xlandsat.pansharpen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pansharpen</span></code></a>(scene, panchromatic[, weights])</p></td>
+<td><p>Pansharpen the red, green, and blue bands of a scene.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-xlandsat.datasets">
+<span id="sample-datasets"></span><h2>Sample datasets<a class="headerlink" href="#module-xlandsat.datasets" title="Permalink to this headline">#</a></h2>
+<p>Functions for downloading and caching sample datasets.</p>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/xlandsat.datasets.fetch_brumadinho_after.html#xlandsat.datasets.fetch_brumadinho_after" title="xlandsat.datasets.fetch_brumadinho_after"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datasets.fetch_brumadinho_after</span></code></a>([untar])</p></td>
+<td><p>Download a sample scene from after the Brumadinho tailings dam disaster</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/xlandsat.datasets.fetch_brumadinho_before.html#xlandsat.datasets.fetch_brumadinho_before" title="xlandsat.datasets.fetch_brumadinho_before"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datasets.fetch_brumadinho_before</span></code></a>([untar])</p></td>
+<td><p>Download a sample scene from before the Brumadinho tailings dam disaster</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/xlandsat.datasets.fetch_liverpool.html#xlandsat.datasets.fetch_liverpool" title="xlandsat.datasets.fetch_liverpool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datasets.fetch_liverpool</span></code></a>([untar])</p></td>
+<td><p>Download a sample scene from the city of Liverpool, UK</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/xlandsat.datasets.fetch_liverpool_panchromatic.html#xlandsat.datasets.fetch_liverpool_panchromatic" title="xlandsat.datasets.fetch_liverpool_panchromatic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datasets.fetch_liverpool_panchromatic</span></code></a>([untar])</p></td>
+<td><p>Download a sample panchromatic band from the city of Liverpool, UK</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 
 
@@ -406,11 +564,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../install.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../pansharpen.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Installing</p>
+            <p class="prev-next-title">Pansharpening</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="generated/xlandsat.load_scene.html" title="next page">
@@ -428,7 +586,7 @@ title="Print to PDF"
         <footer class="col footer"><p>
   
       &copy; Copyright 2023, The xlandsat developers.<br/>
-    Last updated on Jan 20, 2023.<br/>
+    Last updated on Feb 08, 2023.<br/>
 </p>
         </footer>
     </div>
