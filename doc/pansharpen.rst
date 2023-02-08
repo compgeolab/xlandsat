@@ -15,16 +15,9 @@ of Liverpool, UK:
 
     import xlandsat as xls
     import matplotlib.pyplot as plt
-    import pooch
 
-    path = pooch.retrieve(
-         "doi:10.6084/m9.figshare.22041353.v1/LC08_L2SP_204023_20200927_20201006_02_T1-cropped.tar.gz",
-         known_hash="md5:3c07e343ccf959be4e5dd5c9aca4e0a4",
-    )
-    path_pan = pooch.retrieve(
-         "doi:10.6084/m9.figshare.22041353.v1/LC08_L1TP_204023_20200927_20201006_02_T1-cropped.tar.gz",
-         known_hash="md5:7d43f8580b8e583d137a93f9ae51a73d",
-    )
+    path = xls.datasets.fetch_liverpool()
+    path_pan = xls.datasets.fetch_liverpool_panchromatic()
 
 Load the scene with :func:`xlandsat.load_scene`:
 

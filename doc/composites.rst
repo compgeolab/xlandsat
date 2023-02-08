@@ -15,16 +15,9 @@ As an example, let's load two example scenes from the
 
     import xlandsat as xls
     import matplotlib.pyplot as plt
-    import pooch
 
-    path_before = pooch.retrieve(
-          "doi:10.6084/m9.figshare.21665630.v2/LC08_L2SP_218074_20190114_20200829_02_T1-cropped.tar.gz",
-         known_hash="md5:d2a503c944bb7ef3b41294d44b77e98c",
-    )
-    path_after = pooch.retrieve(
-          "doi:10.6084/m9.figshare.21665630.v2/LC08_L2SP_218074_20190130_20200829_02_T1-cropped.tar.gz",
-         known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
-    )
+    path_before = xls.datasets.fetch_brumadinho_before()
+    path_after = xls.datasets.fetch_brumadinho_after()
 
     before = xls.load_scene(path_before)
     after = xls.load_scene(path_after)
