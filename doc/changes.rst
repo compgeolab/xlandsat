@@ -3,6 +3,26 @@
 Changelog
 =========
 
+Version 0.3.0
+-------------
+
+Released on: 2023/02/08
+
+doi: https://doi.org/10.5281/zenodo.7619773
+
+New features:
+
+* Create a datasets module to automate downloading: https://github.com/compgeolab/xlandsat/pull/24
+* Add pansharpening (Weighted Brovey Transform): https://github.com/compgeolab/xlandsat/pull/23
+
+Documentation:
+
+* Add a favicon image to the docs: https://github.com/compgeolab/xlandsat/pull/22
+
+This release contains contributions from:
+
+* Leonardo Uieda
+
 Version 0.2.0
 -------------
 
