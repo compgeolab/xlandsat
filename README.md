@@ -46,7 +46,8 @@ rgb = xls.composite(scene, rescale_to=[0.03, 0.2])
 rgb.plot.imshow()
 ```
 
-![RGB map showing the flooded plain after the dam collapse as light brown.]( https://raw.githubusercontent.com/compgeolab/xlandsat/main/doc/_static/readme-example.jpg)
+<img src="https://raw.githubusercontent.com/compgeolab/xlandsat/main/doc/_static/readme-example.jpg"
+     alt="RGB map showing the flooded plain after the dam collapse as light brown" width="100%">
 
 ## Project goals
 
