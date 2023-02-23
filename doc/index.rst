@@ -112,8 +112,8 @@ Here's a quick example:
 
 .. note::
 
-    Only **Landsat 8 and 9 Collection 2 Level 2 data products** are supported at
-    the moment.
+    Only **Landsat 8 and 9 Level 1 & 2 data products** have been tested at the
+    moment.
 
 .. admonition:: xlandsat is ready for use but still changing
     :class: important
@@ -168,7 +168,9 @@ Here's a quick example:
 .. toctree::
     :maxdepth: 2
     :hidden:
-    :caption: Links
+    :caption: Community
 
+    How to contribute <https://github.com/compgeolab/xlandsat/blob/main/CONTRIBUTING.md>
+    Code of Conduct <https://github.com/compgeolab/xlandsat/blob/main/CODE_OF_CONDUCT.md>
     Source code on GitHub <https://github.com/compgeolab/xlandsat>
     Computer-Oriented Geoscience Lab <https://www.compgeolab.org>
