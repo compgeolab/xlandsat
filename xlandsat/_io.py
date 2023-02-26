@@ -233,7 +233,28 @@ def read_and_scale_band(fname, reader, dtype, number, coords, metadata, region):
     """
     Read the band and return a DataArray with the scaled values.
     """
-    band_data = reader.read_band(fname).astype(dtype)[::-1, :]
+    raw_data = reader.read_band(fname)[::-1, :]
+    if region is not None:
+        # Crop by finding the pixel region instead of using xarray for better
+        # performance. This way, we do most operations like type conversion and
+        # scaling on the smaller data already.
+        region = np.array(region)
+        deast = coords["easting"][1] - coords["easting"][0]
+        dnorth = coords["northing"][1] - coords["northing"][0]
+        col_min, col_max = ((region[:2] - coords["easting"][0]) // deast).astype(int)
+        row_min, row_max = ((region[2:] - coords["northing"][0]) // dnorth).astype(int)
+        # So that the interval includes the boundary value
+        col_max += 1
+        row_max += 1
+    else:
+        col_min, row_min = 0, 0
+        row_max, col_max = raw_data.shape
+    coords = {
+        "easting": coords["easting"][col_min:col_max],
+        "northing": coords["northing"][row_min:row_max],
+    }
+    band_data = raw_data[row_min:row_max, col_min:col_max].astype(dtype)
+    del raw_data
     band_data[band_data == 0] = np.nan
     mult, add = scaling_parameters(metadata, number)
     band_data *= mult
@@ -252,8 +273,6 @@ def read_and_scale_band(fname, reader, dtype, number, coords, metadata, region):
             "scaling_add": add,
         },
     )
-    if region is not None:
-        band = band.sel(easting=slice(*region[:2]), northing=slice(*region[2:]))
     return band
 
 
