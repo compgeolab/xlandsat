@@ -74,8 +74,9 @@ We appreciate the effort that goes into making a contribution to our
 open-source projects. To say "thank you" and provide an extra incentive, we
 have established some criteria for giving credit to contributors in different
 ways: from having your name in the changelog, to authorship on academic
-publications. Please read the [Authorship Guidelines](AUTHORSHIP.md) for more
-information.
+publications. Please read the
+[CompGeoLab Authorship Guidelines](https://www.compgeolab.org/manual/authorship.html)
+for more information.
 
 
 ## Reporting a Bug
