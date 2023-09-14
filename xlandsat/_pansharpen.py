@@ -4,6 +4,7 @@
 """
 Pansharpening methods.
 """
+import numpy as np
 
 
 def pansharpen(scene, panchromatic, weights=(1, 1, 0.2)):
@@ -39,9 +40,9 @@ def pansharpen(scene, panchromatic, weights=(1, 1, 0.2)):
         panchromatic, method="nearest", kwargs={"fill_value": "extrapolate"}
     )
     band_average = sum(
-        sharp[band] * weight for band, weight in zip(bands, weights)
+        np.abs(sharp[band]) * weight for band, weight in zip(bands, weights)
     ) / sum(weights)
-    sharp *= panchromatic
+    sharp *= np.abs(panchromatic)
     sharp /= band_average
     sharp.attrs = {
         key: value for key, value in scene.attrs.items() if key not in ("mtl_file")
