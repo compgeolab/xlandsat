@@ -219,10 +219,9 @@ def fetch_momotombo(untar=False):
         processor = pooch.Untar()
     else:
         processor = None
-    fname = "LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz"
     path = pooch.retrieve(
-        f"doi:10.6084/m9.figshare.21931089.v3/{fname}",
-        fname=fname,
+        "https://figshare.com/ndownloader/files/38906151",
+        fname="LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz",
         known_hash="md5:8cc2e4c15e65940a7152fc1c8b412aa9",
         processor=processor,
     )
