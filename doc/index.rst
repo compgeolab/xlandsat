@@ -152,6 +152,7 @@ Here's a quick example:
     composites.rst
     indices.rst
     pansharpen.rst
+    plot-overlay.rst
 
 .. toctree::
     :maxdepth: 2
