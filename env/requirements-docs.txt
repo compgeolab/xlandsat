@@ -2,7 +2,8 @@
 sphinx==4.5.*
 sphinx-book-theme==0.3.*
 sphinx-copybutton==0.5.*
-jupyter-sphinx==0.3.*
+jupyter-sphinx==0.4.*
 sphinx-design==0.1.*
 myst-parser==0.15.*
 matplotlib
+ipykernel
