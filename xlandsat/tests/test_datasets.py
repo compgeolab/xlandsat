@@ -13,6 +13,7 @@ from ..datasets import (
     fetch_brumadinho_before,
     fetch_liverpool,
     fetch_liverpool_panchromatic,
+    fetch_momotombo,
 )
 
 
@@ -24,6 +25,7 @@ def test_fetching_functions(untar):
         fetch_brumadinho_before,
         fetch_liverpool,
         fetch_liverpool_panchromatic,
+        fetch_momotombo,
     ]
     for func in functions:
         path = pathlib.Path(func(untar=untar))
