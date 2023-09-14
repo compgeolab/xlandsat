@@ -185,3 +185,47 @@ def fetch_liverpool_panchromatic(untar=False):
         # Get the folder name in case we unpacked the archive
         path = pathlib.Path(path[0]).parent
     return path
+
+
+def fetch_momotombo(untar=False):
+    """
+    Download a sample scene from the December 2015 Momotombo volcano eruption
+
+    This is a cropped version of a Landsat 8 scene from 2015/12/05. It was
+    taken during the December 2015 eruption of `Momotombo volcano
+    <https://en.wikipedia.org/wiki/Momotombo>`__, Nicaragua.
+
+    The scene was downloaded from `USGS Earth Explorer
+    <https://earthexplorer.usgs.gov/>`__. Original data are in the public
+    domain and are redistributed here in accordance with the `Landsat Data
+    Distribution Policy
+    <https://www.usgs.gov/media/files/landsat-data-distribution-policy>`__.
+
+    Source: https://doi.org/10.6084/m9.figshare.21931089.v3
+    (`CC0 <https://creativecommons.org/publicdomain/zero/1.0/>`__)
+
+    Parameters
+    ----------
+    untar : bool
+        If True, unpack the tar archive after downloading and return a path to
+        the folder containing the unpacked files instead. Default is False.
+
+    Returns
+    -------
+    path : str
+        The path to the downloaded `.tar` file that contains the scene.
+    """
+    if untar:
+        processor = pooch.Untar()
+    else:
+        processor = None
+    path = pooch.retrieve(
+        "https://figshare.com/ndownloader/files/38906151",
+        fname="LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz",
+        known_hash="md5:8cc2e4c15e65940a7152fc1c8b412aa9",
+        processor=processor,
+    )
+    if untar:
+        # Get the folder name in case we unpacked the archive
+        path = pathlib.Path(path[0]).parent
+    return path
