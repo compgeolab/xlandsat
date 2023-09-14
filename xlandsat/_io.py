@@ -452,7 +452,7 @@ class TarReader:
         Read a band file using scikit-image.
         """
         with self._archive.extractfile(fname) as fobj:
-            band = skimage.io.imread(fobj)
+            band = skimage.io.imread(fobj, plugin="tifffile")
         return band
 
     def __exit__(self, exc_type, exc_value, traceback):  # noqa: U100
@@ -490,7 +490,7 @@ class FolderReader:
         """
         Read a band file using scikit-image.
         """
-        band = skimage.io.imread(fname)
+        band = skimage.io.imread(fname, plugin="tifffile")
         return band
 
     def __exit__(self, exc_type, exc_value, traceback):  # noqa: U100
@@ -614,7 +614,7 @@ def save_scene(path, scene):
             skimage.io.imsave(
                 file,
                 unscaled.astype("uint16")[::-1, :],
-                format=".tif",
+                plugin="tifffile",
             )
             info = tarfile.TarInfo(band.attrs["filename"])
             info.size = file.getbuffer().nbytes
