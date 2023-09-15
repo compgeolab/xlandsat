@@ -229,3 +229,49 @@ def fetch_momotombo(untar=False):
         # Get the folder name in case we unpacked the archive
         path = pathlib.Path(path[0]).parent
     return path
+
+
+def fetch_roraima(untar=False):
+    """
+    Download a sample scene from Mount Roraima surrounded by clouds
+
+    Roraima is a *tepui* located in the junction of Brazil, Guyana, and
+    Venezuela. It's famous for the near-constant cloud coverage.
+
+    This is a cropped version of a Landsat 8 scene from 2015/10/04, which is
+    one of the rare relatively cloud-free scenes available.
+
+    The scene was downloaded from `USGS Earth Explorer
+    <https://earthexplorer.usgs.gov/>`__. Original data are in the public
+    domain and are redistributed here in accordance with the `Landsat Data
+    Distribution Policy
+    <https://www.usgs.gov/media/files/landsat-data-distribution-policy>`__.
+
+    Source: https://doi.org/10.6084/m9.figshare.24143622.v1
+    (`CC0 <https://creativecommons.org/publicdomain/zero/1.0/>`__)
+
+    Parameters
+    ----------
+    untar : bool
+        If True, unpack the tar archive after downloading and return a path to
+        the folder containing the unpacked files instead. Default is False.
+
+    Returns
+    -------
+    path : str
+        The path to the downloaded `.tar` file that contains the scene.
+    """
+    if untar:
+        processor = pooch.Untar()
+    else:
+        processor = None
+    path = pooch.retrieve(
+        "https://figshare.com/ndownloader/files/42358005",
+        fname="LC08_L2SP_232056_20151004_20200908_02_T1-cropped.tar.gz",
+        known_hash="md5:f236a8b024aa4a4c62bee294d3bd737f",
+        processor=processor,
+    )
+    if untar:
+        # Get the folder name in case we unpacked the archive
+        path = pathlib.Path(path[0]).parent
+    return path
