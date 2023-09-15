@@ -25,6 +25,7 @@ Processing
 
     composite
     pansharpen
+    interpolate_missing
 
 Sample datasets
 ---------------
