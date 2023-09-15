@@ -42,3 +42,4 @@ Sample datasets
     datasets.fetch_liverpool
     datasets.fetch_liverpool_panchromatic
     datasets.fetch_momotombo
+    datasets.fetch_roraima
