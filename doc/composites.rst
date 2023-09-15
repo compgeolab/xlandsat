@@ -8,7 +8,7 @@ images to visualize information from multiple bands at once.
 For that, we have to create **composites**.
 We provide the :func:`xlandsat.composite` function to make this process easier.
 
-As an example, let's load two example scenes from the
+As an example, let's load an example scene from the
 `Brumadinho tailings dam disaster <https://en.wikipedia.org/wiki/Brumadinho_dam_disaster>`__:
 
 .. jupyter-execute::
@@ -16,30 +16,25 @@ As an example, let's load two example scenes from the
     import xlandsat as xls
     import matplotlib.pyplot as plt
 
-    path_before = xls.datasets.fetch_brumadinho_before()
-    path_after = xls.datasets.fetch_brumadinho_after()
+    path = xls.datasets.fetch_brumadinho_after()
 
-    before = xls.load_scene(path_before)
-    after = xls.load_scene(path_after)
+    scene = xls.load_scene(path)
 
 
-Creating composites
--------------------
+RGB composites
+--------------
 
-Let's make both RGB (true color) and CIR (color infrared) composites for both
-of our scenes:
+Let's make an RGB (true color) composite since that is the most fundamental
+type and it allows us to get a good handle on what we're seeing in the scene.
+The RGB composite is also the default made by :func:`xlandsat.composite` if the
+bands aren't specified.
 
 .. jupyter-execute::
 
-    # Make the composite and add it as a variable to the scene
-    before = before.assign(rgb=xls.composite(before, rescale_to=[0.03, 0.2]))
-    cir_bands = ("nir", "red", "green")
-    before = before.assign(
-        cir=xls.composite(before, bands=cir_bands, rescale_to=[0, 0.4]),
-    )
-    before
+    rgb = xls.composite(scene)
+    rgb
 
-The composites have a similar layout as the bands but with an extra
+The composite has a similar layout as the bands of a scene but with an extra
 ``"channel"`` dimension corresponding to red, green, blue, and
 alpha/transparency. The values are scaled to the [0, 255] range and the
 composite is an array of unsigned 8-bit integers.
@@ -53,55 +48,81 @@ composite is an array of unsigned 8-bit integers.
     blue).
 
 
-Now do the same for the after scene:
-
-.. jupyter-execute::
-
-    after = after.assign(rgb=xls.composite(after, rescale_to=[0.03, 0.2]))
-    after = after.assign(
-        cir=xls.composite(after, bands=cir_bands, rescale_to=[0, 0.4]),
-    )
-    after
-
-
-Plotting composites
--------------------
+Plotting a composite
+--------------------
 
 Composites can be plotted using :meth:`xarray.DataArray.plot.imshow` (using
 :meth:`~xarray.DataArray.plot` won't work and will display histograms instead).
-Let's make the before and after figures again for each of the composites we
-generated.
 
 .. jupyter-execute::
 
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 12))
+    fig, ax = plt.subplots(1, 1, figsize=(10, 6))
 
-    # Plot the composites
-    before.rgb.plot.imshow(ax=ax1)
-    after.rgb.plot.imshow(ax=ax2)
+    rgb.plot.imshow(ax=ax)
 
     # The "long_name" of the composite is the band combination
-    ax1.set_title(f"Before: {before.rgb.attrs['long_name']}")
-    ax2.set_title(f"After: {after.rgb.attrs['long_name']}")
+    ax.set_title(f"Composite: {rgb.attrs['long_name']}")
 
-    ax1.set_aspect("equal")
-    ax2.set_aspect("equal")
+    # Make sure pixels are square and don't have any distortions from plotting
+    ax.set_aspect("equal")
 
     plt.show()
 
-And now the CIR composites:
+Well, this looks bad because that bright cloud is making it so the ground
+pixels have only a small share of the full range of available values. This can
+be mitigated by rescaling the intensity of the image to a smaller range of
+reflectance values.
+
+
+Rescaling intensity (AKA contrast stretching)
+---------------------------------------------
+
+We rescale the intensities of a composite to a given reflectance range by
+setting the ``rescale_to`` parameter when creating a composite. It takes a list
+of the min and max reflectance values allowed. For this image, we can arrive at
+the following values by trial and error until it looks nice:
 
 .. jupyter-execute::
 
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 12))
+    rgb = xls.composite(scene, rescale_to=[0.03, 0.2])
 
-    before.cir.plot.imshow(ax=ax1)
-    after.cir.plot.imshow(ax=ax2)
-
-    ax1.set_title(f"Before: {before.cir.attrs['long_name']}")
-    ax2.set_title(f"After: {after.cir.attrs['long_name']}")
-
-    ax1.set_aspect("equal")
-    ax2.set_aspect("equal")
-
+    fig, ax = plt.subplots(1, 1, figsize=(10, 6))
+    rgb.plot.imshow(ax=ax)
+    ax.set_title(f"Rescaled composite: {rgb.attrs['long_name']}")
+    ax.set_aspect("equal")
     plt.show()
+
+Notice that we can more clearly see the colors of the ground but we lose a lot
+of detail in the clouds.
+
+.. note::
+
+   The rescaling has to be done when creating the composite so that we can use
+   min/max values in reflectance units. After a composite is created, the
+   original range of values is lost and we'd have to specify the min/max
+   between 0 and 255 instead.
+
+
+Color infrared composites
+-------------------------
+
+Another common type of composite is the color infrared (CIR) composites. These
+change the bands used to NIR, red, and green and serve primarily to distinguish
+healthy vegetation from other objects in the scene. Let's make one by specifying
+this band combination to :func:`xlandsat.composite` to see if we can more clearly spot the dam flood.
+
+.. jupyter-execute::
+
+    cir = xls.composite(scene, bands=("nir", "red", "green"), rescale_to=[0, 0.4])
+
+    fig, ax = plt.subplots(1, 1, figsize=(10, 6))
+    cir.plot.imshow(ax=ax)
+    ax.set_title(f"Composite: {rgb.attrs['long_name']}")
+    ax.set_aspect("equal")
+    plt.show()
+
+The flood region can be clearly spotted in the image above as the brown/gray
+blog in the center.
+
+**With this, you can now make composites using any other band combination you
+may want!**
