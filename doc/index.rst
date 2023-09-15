@@ -152,6 +152,7 @@ Here's a quick example:
     composites.rst
     indices.rst
     pansharpen.rst
+    missing-values.rst
     plot-overlay.rst
 
 .. toctree::
