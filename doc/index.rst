@@ -153,6 +153,7 @@ Here's a quick example:
     indices.rst
     pansharpen.rst
     missing-values.rst
+    equalize-histogram.rst
     plot-overlay.rst
 
 .. toctree::

@@ -25,6 +25,7 @@ Processing
 
     composite
     pansharpen
+    equalize_histogram
     interpolate_missing
 
 Sample datasets
