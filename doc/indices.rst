@@ -100,4 +100,4 @@ Now lets plot it:
 
 There's some noise in the cloudy areas of both scenes in the northeast but
 otherwise this plots highlights the area affected by flooding from the dam
-collapse in bright red at the center.
+collapse in purple at the center.
