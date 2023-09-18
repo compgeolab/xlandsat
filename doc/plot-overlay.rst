@@ -22,6 +22,8 @@ First, we'll import the required packages and load the sample scene:
 
     path = xls.datasets.fetch_momotombo()
     scene = xls.load_scene(path)
+    # Fill the missing values due to the volcanic clouds to make it look nicer
+    scene = xls.interpolate_missing(scene)
     scene
 
 Now we can plot an RGB composite and thermal band separately to see that they
@@ -29,13 +31,16 @@ have to show:
 
 .. jupyter-execute::
 
-    # Make the composite and add it to the scene
-    scene = scene.assign(rgb=xls.composite(scene, rescale_to=(0.04, 0.17)))
+    # Make the composite
+    rgb = xls.composite(scene, rescale_to=(0, 0.6))
+
+    # Histogram equalization for a better looking image
+    rgb = xls.equalize_histogram(rgb, clip_limit=0.02, kernel_size=200)
 
     # Plot the RGB and thermal separately
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 12))
 
-    scene.rgb.plot.imshow(ax=ax1)
+    rgb.plot.imshow(ax=ax1)
     scene.thermal.plot.imshow(ax=ax2, cmap="magma")
 
     ax1.set_aspect("equal")
@@ -77,15 +82,16 @@ this is with the :func:`xarray.where` function:
     longer valid.
 
 Now that we have an :class:`xarray.DataArray` with the lava flow only, we can
-plot that on top of the RGB composite and add a bit of transparency.
+plot that on top of the RGB composite and add a bit of transparency using the
+``alpha`` parameter of ``imshow``.
 
 .. jupyter-execute::
 
     fig, ax = plt.subplots(1, 1, figsize=(10, 6))
 
     # RGB goes first so it's at the bottom
-    scene.rgb.plot.imshow(ax=ax)
-    lava.plot.imshow(ax=ax, cmap="magma", alpha=0.5)
+    rgb.plot.imshow(ax=ax)
+    lava.plot.imshow(ax=ax, cmap="magma", alpha=0.6)
 
     ax.set_aspect("equal")
     plt.show()
