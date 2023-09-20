@@ -30,20 +30,24 @@ Here's a quick example:
 .. jupyter-execute::
 
     import xlandsat as xls
+    import matplotlib.pyplot as plt
 
-    # Download a cropped Landsat 8 scene from the Brumadinho dam disaster
-    # (Brazil). The function downloads it and returns the path to the .tar file
-    # containing the scene.
-    path = xls.datasets.fetch_brumadinho_after()
+    # Download a sample Landsat 9 scene in EarthExplorer format
+    path_to_scene_file = xls.datasets.fetch_manaus()
 
-    # Load the scene directly from the archive (no need to unpack it)
-    scene = xls.load_scene(path)
+    # Load the data from the file into an xarray.Dataset
+    scene = xls.load_scene(path_to_scene_file)
 
-    # Make an RGB composite and stretch the contrast
-    rgb = xls.composite(scene, rescale_to=[0.03, 0.2])
+    # Make an RGB composite as an xarray.DataArray
+    rgb = xls.composite(scene, rescale_to=[0.02, 0.2])
 
-    # Plot the composite
+    # Plot the composite using xarray's plotting machinery
     rgb.plot.imshow()
+
+    # Annotate the plot with the rich metadata xlandsat adds to the scene
+    plt.title(f"{rgb.attrs['title']}\n{rgb.attrs['long_name']}")
+    plt.axis("scaled")
+    plt.show()
 
 
 ----
@@ -130,10 +134,12 @@ Here's a quick example:
 .. admonition:: Looking for large-scale cloud-based processing?
     :class: seealso
 
-    Our goal is not to provide a solution for large-scale data processing. The
-    target is smaller scale analysis done on individual computers (which is
-    probably the main way EarthExplorer is used). For cloud-based data
-    processing, see the `Pangeo Project <https://pangeo.io/>`__.
+    Our goal is **not** to provide a solution for large-scale data processing.
+    Our target is smaller scale analysis done on individual computers (which is
+    probably the main way EarthExplorer is used).
+
+    * For cloud-based data processing, see the `Pangeo Project <https://pangeo.io/>`__.
+    * For other satellites and more powerful features, use `Satpy <https://github.com/pytroll/satpy>`__.
 
 
 .. toctree::

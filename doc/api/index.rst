@@ -42,5 +42,6 @@ Sample datasets
     datasets.fetch_brumadinho_before
     datasets.fetch_liverpool
     datasets.fetch_liverpool_panchromatic
+    datasets.fetch_manaus
     datasets.fetch_momotombo
     datasets.fetch_roraima
