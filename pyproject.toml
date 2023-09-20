@@ -6,7 +6,6 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
 version_scheme =  "post-release"
-local_scheme =  "no-local-version"
 write_to =  "xlandsat/_version_generated.py"
 
 # Make sure isort and Black are compatible

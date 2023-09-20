@@ -8,6 +8,47 @@ import pathlib
 
 import pooch
 
+from ._version import __version__
+
+POOCH = pooch.create(
+    path=pooch.os_cache("xlandsat"),
+    base_url="https://github.com/compgeolab/xlandsat/raw/{version}/data/",
+    version=__version__,
+    version_dev="main",
+    registry={
+        # Brumadinho - after
+        "LC08_L2SP_218074_20190130_20200829_02_T1-cropped.tar.gz": "md5:4ae61a2d7a8b853c727c0c433680cece",
+        # Brumadinho - before
+        "LC08_L2SP_218074_20190114_20200829_02_T1-cropped.tar.gz": "md5:d2a503c944bb7ef3b41294d44b77e98c",
+        # Liverpool
+        "LC08_L2SP_204023_20200927_20201006_02_T1-cropped.tar.gz": "md5:3c07e343ccf959be4e5dd5c9aca4e0a4",
+        # Liverpool - Panchromatic
+        "LC08_L1TP_204023_20200927_20201006_02_T1-cropped.tar.gz": "md5:7d43f8580b8e583d137a93f9ae51a73d",
+        # Momotombo
+        "LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz": "md5:8cc2e4c15e65940a7152fc1c8b412aa9",
+        # Roraima
+        "LC08_L2SP_232056_20151004_20200908_02_T1-cropped.tar.gz": "md5:f236a8b024aa4a4c62bee294d3bd737f",
+    },
+)
+
+
+def _fetch(fname, untar):
+    """
+    Fetch a file and handle untaring the archive if requested.
+    """
+    if untar:
+        processor = pooch.Untar()
+    else:
+        processor = None
+    path = POOCH.fetch(
+        fname,
+        processor=processor,
+    )
+    if untar:
+        # Get the folder name in case we unpacked the archive
+        path = pathlib.Path(path[0]).parent
+    return path
+
 
 def fetch_brumadinho_after(untar=False):
     """
@@ -38,20 +79,7 @@ def fetch_brumadinho_after(untar=False):
     path : str
         The path to the downloaded `.tar` file that contains the scene.
     """
-    if untar:
-        processor = pooch.Untar()
-    else:
-        processor = None
-    path = pooch.retrieve(
-        "https://figshare.com/ndownloader/files/38902290",
-        fname="LC08_L2SP_218074_20190130_20200829_02_T1-cropped.tar.gz",
-        known_hash="md5:4ae61a2d7a8b853c727c0c433680cece",
-        processor=processor,
-    )
-    if untar:
-        # Get the folder name in case we unpacked the archive
-        path = pathlib.Path(path[0]).parent
-    return path
+    return _fetch("LC08_L2SP_218074_20190130_20200829_02_T1-cropped.tar.gz", untar)
 
 
 def fetch_brumadinho_before(untar=False):
@@ -83,20 +111,10 @@ def fetch_brumadinho_before(untar=False):
     path : str
         The path to the downloaded `.tar` file that contains the scene.
     """
-    if untar:
-        processor = pooch.Untar()
-    else:
-        processor = None
-    path = pooch.retrieve(
-        "https://figshare.com/ndownloader/files/38902284",
-        fname="LC08_L2SP_218074_20190114_20200829_02_T1-cropped.tar.gz",
-        known_hash="md5:d2a503c944bb7ef3b41294d44b77e98c",
-        processor=processor,
+    return _fetch(
+        "LC08_L2SP_218074_20190114_20200829_02_T1-cropped.tar.gz",
+        untar,
     )
-    if untar:
-        # Get the folder name in case we unpacked the archive
-        path = pathlib.Path(path[0]).parent
-    return path
 
 
 def fetch_liverpool(untar=False):
@@ -127,20 +145,10 @@ def fetch_liverpool(untar=False):
     path : str
         The path to the downloaded `.tar` file that contains the scene.
     """
-    if untar:
-        processor = pooch.Untar()
-    else:
-        processor = None
-    path = pooch.retrieve(
-        "https://figshare.com/ndownloader/files/39121064",
-        fname="LC08_L2SP_204023_20200927_20201006_02_T1-cropped.tar.gz",
-        known_hash="md5:3c07e343ccf959be4e5dd5c9aca4e0a4",
-        processor=processor,
+    return _fetch(
+        "LC08_L2SP_204023_20200927_20201006_02_T1-cropped.tar.gz",
+        untar,
     )
-    if untar:
-        # Get the folder name in case we unpacked the archive
-        path = pathlib.Path(path[0]).parent
-    return path
 
 
 def fetch_liverpool_panchromatic(untar=False):
@@ -171,20 +179,10 @@ def fetch_liverpool_panchromatic(untar=False):
     path : str
         The path to the downloaded `.tar` file that contains the scene.
     """
-    if untar:
-        processor = pooch.Untar()
-    else:
-        processor = None
-    path = pooch.retrieve(
-        "https://figshare.com/ndownloader/files/39121061",
-        fname="LC08_L1TP_204023_20200927_20201006_02_T1-cropped.tar.gz",
-        known_hash="md5:7d43f8580b8e583d137a93f9ae51a73d",
-        processor=processor,
+    return _fetch(
+        "LC08_L1TP_204023_20200927_20201006_02_T1-cropped.tar.gz",
+        untar,
     )
-    if untar:
-        # Get the folder name in case we unpacked the archive
-        path = pathlib.Path(path[0]).parent
-    return path
 
 
 def fetch_momotombo(untar=False):
@@ -215,20 +213,10 @@ def fetch_momotombo(untar=False):
     path : str
         The path to the downloaded `.tar` file that contains the scene.
     """
-    if untar:
-        processor = pooch.Untar()
-    else:
-        processor = None
-    path = pooch.retrieve(
-        "https://figshare.com/ndownloader/files/38906151",
-        fname="LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz",
-        known_hash="md5:8cc2e4c15e65940a7152fc1c8b412aa9",
-        processor=processor,
+    return _fetch(
+        "LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz",
+        untar,
     )
-    if untar:
-        # Get the folder name in case we unpacked the archive
-        path = pathlib.Path(path[0]).parent
-    return path
 
 
 def fetch_roraima(untar=False):
@@ -261,17 +249,4 @@ def fetch_roraima(untar=False):
     path : str
         The path to the downloaded `.tar` file that contains the scene.
     """
-    if untar:
-        processor = pooch.Untar()
-    else:
-        processor = None
-    path = pooch.retrieve(
-        "https://figshare.com/ndownloader/files/42358005",
-        fname="LC08_L2SP_232056_20151004_20200908_02_T1-cropped.tar.gz",
-        known_hash="md5:f236a8b024aa4a4c62bee294d3bd737f",
-        processor=processor,
-    )
-    if untar:
-        # Get the folder name in case we unpacked the archive
-        path = pathlib.Path(path[0]).parent
-    return path
+    return _fetch("LC08_L2SP_232056_20151004_20200908_02_T1-cropped.tar.gz", untar)
