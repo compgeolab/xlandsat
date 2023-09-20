@@ -13,6 +13,7 @@ from ..datasets import (
     fetch_brumadinho_before,
     fetch_liverpool,
     fetch_liverpool_panchromatic,
+    fetch_manaus,
     fetch_momotombo,
     fetch_roraima,
 )
@@ -26,6 +27,7 @@ def test_fetching_functions(untar):
         fetch_brumadinho_before,
         fetch_liverpool,
         fetch_liverpool_panchromatic,
+        fetch_manaus,
         fetch_momotombo,
         fetch_roraima,
     ]

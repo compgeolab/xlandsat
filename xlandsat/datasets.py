@@ -28,6 +28,8 @@ POOCH = pooch.create(
         "LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz": "md5:8cc2e4c15e65940a7152fc1c8b412aa9",
         # Roraima
         "LC08_L2SP_232056_20151004_20200908_02_T1-cropped.tar.gz": "md5:f236a8b024aa4a4c62bee294d3bd737f",
+        # Manaus
+        "LC09_L2SP_231062_20230723_20230802_02_T1-cropped.tar.gz": "md5:ffe2003e665dc7a1a3155011f700a61d",
     },
 )
 
@@ -250,3 +252,36 @@ def fetch_roraima(untar=False):
         The path to the downloaded `.tar` file that contains the scene.
     """
     return _fetch("LC08_L2SP_232056_20151004_20200908_02_T1-cropped.tar.gz", untar)
+
+
+def fetch_manaus(untar=False):
+    """
+    Download a sample scene from Manaus, Brazil
+
+    Manaus is located in the Brazilian Amazon. The scene shows a part of the
+    city and the meeting of the Amazon and Negro rivers.
+
+    This is a cropped version of a Landsat 9 scene from 2023/07/23, during
+    the annual Amazon river floods.
+
+    The scene was downloaded from `USGS Earth Explorer
+    <https://earthexplorer.usgs.gov/>`__. Original data are in the public
+    domain and are redistributed here in accordance with the `Landsat Data
+    Distribution Policy
+    <https://www.usgs.gov/media/files/landsat-data-distribution-policy>`__.
+
+    Source: https://doi.org/10.6084/m9.figshare.24167235.v1
+    (`CC0 <https://creativecommons.org/publicdomain/zero/1.0/>`__)
+
+    Parameters
+    ----------
+    untar : bool
+        If True, unpack the tar archive after downloading and return a path to
+        the folder containing the unpacked files instead. Default is False.
+
+    Returns
+    -------
+    path : str
+        The path to the downloaded `.tar` file that contains the scene.
+    """
+    return _fetch("LC09_L2SP_231062_20230723_20230802_02_T1-cropped.tar.gz", untar)
