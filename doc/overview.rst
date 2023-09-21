@@ -69,8 +69,7 @@ The rest of this tutorial can be executed with your own data by changing the
 
     Running the code above will only download the data once. We use `Pooch
     <https://www.fatiando.org/pooch>`__ to handle the downloads and it's smart
-    enough to check if the file already exists on your computer. See
-    :func:`pooch.retrieve` for more information.
+    enough to check if the file already exists on your computer.
 
 .. seealso::
 
