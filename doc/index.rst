@@ -78,7 +78,7 @@ Here's a quick example:
 
         Open an Issue on GitHub.
 
-        .. button-link:: https://github.com/compgeolab/xlandsat
+        .. button-link:: https://github.com/compgeolab/xlandsat/issues
             :click-parent:
             :color: primary
             :outline:
@@ -131,7 +131,7 @@ Here's a quick example:
     time to bring new ideas on how we can improve the project. Submit
     `issues on GitHub <https://github.com/compgeolab/xlandsat/issues>`__.
 
-.. admonition:: Looking for large-scale cloud-based processing?
+.. admonition:: Looking for large-scale processing or other satellites?
     :class: seealso
 
     Our goal is **not** to provide a solution for large-scale data processing.
