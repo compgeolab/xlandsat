@@ -25,9 +25,10 @@ manipulation, processing, and visualization.
 
 ## Example
 
-Here's a quick example of loading this
+Here's a quick example of loading and plotting this
 [Landsat 9 scene from the city of Manaus, Brazil](https://doi.org/10.6084/m9.figshare.24167235.v1),
-which is where the Amazonas and Negro river merge:
+which is where the Solimões (brown water) and Negro (black water) rivers merge
+to form the Amazon river:
 
 ```python
 import xlandsat as xls
@@ -51,7 +52,7 @@ plt.axis("scaled")
 plt.show()
 ```
 
-<img src="https://raw.githubusercontent.com/compgeolab/xlandsat/main/doc/_static/readme-example.jpg" alt="RGB image showing the city on the left and the black waters of the Negro river merging with the brown waters of the Amazonas river" width="100%">
+<img src="https://raw.githubusercontent.com/compgeolab/xlandsat/main/doc/_static/readme-example.jpg" alt="RGB image showing the city on the left and the black waters of the Negro river merging with the brown waters of the Solimões river" width="100%">
 
 ## Project goals
 
