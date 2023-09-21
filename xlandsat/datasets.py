@@ -259,7 +259,8 @@ def fetch_manaus(untar=False):
     Download a sample scene from Manaus, Brazil
 
     Manaus is located in the Brazilian Amazon. The scene shows a part of the
-    city and the meeting of the Amazon and Negro rivers.
+    city and the meeting of the Solimões and Negro rivers to form the Amazon
+    river.
 
     This is a cropped version of a Landsat 9 scene from 2023/07/23, during
     the annual Amazon river floods.
