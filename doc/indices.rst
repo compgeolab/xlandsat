@@ -1,7 +1,7 @@
 .. _indices:
 
-Indices
--------
+Calculating indices
+-------------------
 
 Indices calculated from multispectral satellite imagery are powerful ways to
 quantitatively analyze these data.
@@ -10,14 +10,29 @@ differentiate between them.
 Many of these indices can be calculated with simple arithmetic operations.
 So now that our data are in :class:`xarray.Dataset`'s, it's fairly easy to
 calculate them.
+As an example, we'll use two example scenes from before and after the
+`Brumadinho tailings dam disaster <https://en.wikipedia.org/wiki/Brumadinho_dam_disaster>`__
+to try to image and quantify the total area flooded by the damn collapse.
 
-As an example, let's load two example scenes from before and after the
-`Brumadinho tailings dam disaster <https://en.wikipedia.org/wiki/Brumadinho_dam_disaster>`__:
+.. admonition:: Trigger warning
+    :class: warning
+
+    This tutorial uses data from the tragic
+    `Brumadinho tailings dam disaster <https://en.wikipedia.org/wiki/Brumadinho_dam_disaster>`__,
+    in which over 250 people lost their lives. We use this dataset to
+    illustrate the usefulness of remote sensing data for monitoring such
+    disasters but we want acknowledge the tragic human consequences and that
+    some readers may find this topic disturbing and may not wish to read
+    futher.
+
+First, we must import the required packages, download our two sample scenes,
+and load them with :func:`xlandsat.load_scene`:
 
 .. jupyter-execute::
 
     import xlandsat as xls
     import matplotlib.pyplot as plt
+
 
     path_before = xls.datasets.fetch_brumadinho_before()
     path_after = xls.datasets.fetch_brumadinho_after()
@@ -32,23 +47,40 @@ NDVI
 We can calculate the
 `NDVI <https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index>`__
 for these scenes to see if we can isolate the effect of the flood following the
-dam collapse:
+dam collapse.
+NDVI highlights vegetation, which we assume will have decreased in the after
+scene due to the flood.
+NDVI is defined as:
 
+.. math::
+
+    NDVI = \dfrac{NIR - Red}{NIR + Red}
+
+which we can calculate with xarray as:
 
 .. jupyter-execute::
 
     ndvi_before = (before.nir - before.red) / (before.nir + before.red)
-    ndvi_after = (after.nir - after.red) / (after.nir + after.red)
+    ndvi_before
 
-    # Set some metadata for xarray to find
+Now we can do the same for the after scene:
+
+.. jupyter-execute::
+
+    ndvi_after = (after.nir - after.red) / (after.nir + after.red)
+    ndvi_after
+
+And add some metadata for xarray to find when making plots:
+
+.. jupyter-execute::
+
     ndvi_before.attrs["long_name"] = "normalized difference vegetation index"
     ndvi_before.attrs["units"] = "dimensionless"
     ndvi_after.attrs["long_name"] = "normalized difference vegetation index"
     ndvi_after.attrs["units"] = "dimensionless"
 
-    ndvi_before
-
-And now we can make pseudo-color plots of the NDVI:
+Now we can make pseudo-color plots of the NDVI from before and after the
+disaster:
 
 .. jupyter-execute::
 
@@ -58,8 +90,8 @@ And now we can make pseudo-color plots of the NDVI:
     ndvi_before.plot(ax=ax1, vmin=-1, vmax=1, cmap="RdBu_r")
     ndvi_after.plot(ax=ax2, vmin=-1, vmax=1, cmap="RdBu_r")
 
-    ax1.set_title(f"Before: {before.attrs['title']}")
-    ax2.set_title(f"After: {after.attrs['title']}")
+    ax1.set_title(f"NDVI before: {before.attrs['title']}")
+    ax2.set_title(f"NDVI after: {after.attrs['title']}")
 
     ax1.set_aspect("equal")
     ax2.set_aspect("equal")
