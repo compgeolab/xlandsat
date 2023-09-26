@@ -64,8 +64,12 @@ in the cloud-free regions:
 
 But, as we mentioned earlier, this means we don't get to see details of the
 clouds anymore. For a more pleasing image, we can use the adaptive histogram
-equalization in :func:`xlandsat.equalize_histogram`. It helps to do a bit of
-contrast stretching first, but to a lesser degree than we did previously.
+equalization in :func:`xlandsat.equalize_histogram`.
+
+.. tip::
+
+    It can be helpful to do a bit of contrast stretching first, but to a lesser
+    degree than we did previously.
 
 .. jupyter-execute::
 

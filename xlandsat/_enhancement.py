@@ -4,27 +4,27 @@
 """
 Operations to enhance composites. Basically wrappers for skimage.exposure.
 """
+import skimage.color
 import skimage.exposure
 
 
 def equalize_histogram(composite, kernel_size=None, clip_limit=0.01):
     """
-    Adaptive histogram equalization on each band of a composite
+    Adaptive histogram equalization for a composite
 
     Use this function to enhance the contrast of a composite when there are a
     few very dark or very light patches that dominate the color range. Use this
     instead of rescaling intensity (contrast stretching) to try to preserve
     some detail in the light/dark patches.
 
-    This is a wrapper around :func:`skimage.exposure.equalize_adapthist`.
-
-    .. tip::
-
-        Results can be very bad if there are missing values in the scene. Use
-        :func:`xlandsat.interpolate_missing` first if that is the case.
-
     If the composite has an alpha channel (transparency), it will be copied to
     the output intact.
+
+    .. warning::
+
+        Results can be very bad if there are missing values (NaNs) in the
+        composite. Use :func:`xlandsat.interpolate_missing` on the scene first
+        (before creating the composite) if that is the case.
 
     Parameters
     ----------
@@ -42,15 +42,25 @@ def equalize_histogram(composite, kernel_size=None, clip_limit=0.01):
     equalized_composite : :class:`xarray.DataArray`
         The composite after equalization, scaled back to unsigned 8-bit integer
         range.
+
+    Notes
+    -----
+
+    This function first converts the composite from the RGB color space to the
+    `HSV color space <https://en.wikipedia.org/wiki/HSL_and_HSV>`__. Then, it
+    applies :func:`skimage.exposure.equalize_adapthist` to the values
+    (intensity) channel. Finally, the composite is converted back into the RGB
+    color space.
     """
     result = composite.copy(deep=True)
-    for i in range(3):
-        result.values[:, :, i] = skimage.exposure.rescale_intensity(
-            skimage.exposure.equalize_adapthist(
-                result.values[:, :, i],
-                kernel_size=kernel_size,
-                clip_limit=clip_limit,
-            ),
-            out_range="uint8",
-        )
+    hsv = skimage.color.rgb2hsv(result.values[:, :, :3])
+    hsv[:, :, 2] = skimage.exposure.equalize_adapthist(
+        hsv[:, :, 2],
+        kernel_size=kernel_size,
+        clip_limit=clip_limit,
+    )
+    result.values[:, :, :3] = skimage.exposure.rescale_intensity(
+        skimage.color.hsv2rgb(hsv),
+        out_range="uint8",
+    )
     return result
