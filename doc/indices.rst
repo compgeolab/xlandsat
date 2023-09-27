@@ -21,9 +21,9 @@ to try to image and quantify the total area flooded by the damn collapse.
     `Brumadinho tailings dam disaster <https://en.wikipedia.org/wiki/Brumadinho_dam_disaster>`__,
     in which over 250 people lost their lives. We use this dataset to
     illustrate the usefulness of remote sensing data for monitoring such
-    disasters but we want acknowledge the tragic human consequences and that
-    some readers may find this topic disturbing and may not wish to read
-    futher.
+    disasters but we want to acknowledge its tragic human consequences.
+    **Some readers may find this topic disturbing and may not wish to read
+    futher.**
 
 First, we must import the required packages, download our two sample scenes,
 and load them with :func:`xlandsat.load_scene`:
