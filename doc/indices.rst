@@ -56,6 +56,10 @@ two scenes contain:
         ax.set_aspect("equal")
     plt.show()
 
+The dam is located at around 592000 east and -2225000 north. The after scene
+clearly shows all of the red mud that flooded the region to the southwest of
+the dam. Notice also the red tinge of the Paraopeba River in the after image
+as it was contaminated by the mud flow.
 
 .. tip::
 
@@ -258,5 +262,7 @@ that many people will understand:
 
 .. warning::
 
-   These are very rough estimates! Do not use them as official numbers or for
-   any purpose other than educational.
+   **This is a very rough estimate!** The final value will vary greatly if you
+   change the threshold used to generate the mask (try it yourself).
+   For a more thorough analysis of the disaster using remote-sensing data, see
+   `Silva Rotta et al. (2020) <https://doi.org/10.1016/j.jag.2020.102119>`__.
