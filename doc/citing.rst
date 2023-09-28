@@ -1,7 +1,7 @@
 .. _citing:
 
-Citing
-======
+Citing xlandsat
+===============
 
 This is research software **made by scientists**. Citations help us justify the
 effort that goes into building and maintaining this project.
