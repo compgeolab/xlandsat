@@ -8,6 +8,7 @@ dependencies:
   - make
   # Run
   - numpy
+  - scipy
   - xarray
   - scikit-image
   - pooch
