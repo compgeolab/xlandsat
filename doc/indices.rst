@@ -266,3 +266,44 @@ that many people will understand:
    change the threshold used to generate the mask (try it yourself).
    For a more thorough analysis of the disaster using remote-sensing data, see
    `Silva Rotta et al. (2020) <https://doi.org/10.1016/j.jag.2020.102119>`__.
+
+
+Other indices
+-------------
+
+Calculating other indices will follow a very similar strategy to NDVI since
+most of them only involve arithmetic operations on different bands.
+As an example, let's calculate and plot the
+`Modified Soil Adjusted Vegetation Index (MSAVI) <https://doi.org/10.1016/0034-4257(94)90134-1>`__
+for our two scenes:
+
+.. jupyter-execute::
+
+    import numpy as np
+
+    # This time, use a loop and put them in a list to avoid repeated code
+    msavi_collection = []
+    for scene in [before, after]:
+        msavi = (
+            (
+                2 * scene.nir + 1 - np.sqrt(
+                    (2 * scene.nir + 1) * 2 - 8 * (scene.nir - scene.red)
+                )
+            ) / 2
+        )
+        msavi.name = "msavi"
+        msavi.attrs["long_name"] = "modified soil adjusted vegetation index"
+        msavi.attrs["units"] = "dimensionless"
+        msavi.attrs["title"] = scene.attrs["title"]
+        msavi_collection.append(msavi)
+
+    # Plotting is mostly the same
+    fig, axes = plt.subplots(2, 1, figsize=(10, 12), layout="tight")
+    for ax, msavi in zip(axes, msavi_collection):
+        msavi.plot(ax=ax, vmin=-0.5, vmax=0.5, cmap="RdBu_r")
+        ax.set_title(msavi.attrs["title"])
+        ax.set_aspect("equal")
+    plt.show()
+
+**With this same logic, you could calculate NBR and dNBR, other variants of
+NDVI, NDSI, etc.**
