@@ -3,6 +3,39 @@
 Overview
 ========
 
+Why use xlandsat?
+-----------------
+
+One of the main features of xlandsat is the ability to easily read scenes
+downloaded from `USGS EarthExplorer <https://earthexplorer.usgs.gov/>`__ into
+:class:`xarray.Dataset` along with all of the available metadata, which is very
+useful for processing and plotting multidimensional array data.
+We offer a simple and easy-to-use tool for smaller scale analysis and
+visualization, which we can do thanks to the power of xarray.
+
+When reading the data from the TIF files files using other tools like
+`rioxarray <https://corteva.github.io/rioxarray/html/index.html>`__, some of
+the rich metadata can be missing since it's not always present in the TIF files
+themselves.
+Things like conversion factors, units, data provenance, WRS path/row numbers,
+etc.
+We take care of fetching that information from the ``*_MTL.txt`` files provided
+by EarthExplorer so that xarray can use it, for example when annotating plots.
+
+On top of that, xlandsat also offers tools for
+:ref:`generating composites <composites>`,
+:ref:`pansharpening <pansharpen>`,
+:ref:`histogram equalization <equalize-histogram>`,
+and more!
+
+.. seealso::
+
+    More powerful (and more complicated) tools exist if your use case is beyond
+    what we can handle.
+    For cloud-based data processing, see the `Pangeo Project <https://pangeo.io/>`__.
+    For other satellites and more powerful features, use `Satpy <https://github.com/pytroll/satpy>`__.
+
+
 The library
 -----------
 
@@ -14,28 +47,6 @@ single import:
 
     # xlandsat is usually imported as xls
     import xlandsat as xls
-
-
-Why use xlandsat?
------------------
-
-One of the main features of xlandsat is the ability to read a scene downloaded
-from `USGS EarthExplorer <https://earthexplorer.usgs.gov/>`__ into an
-:class:`xarray.Dataset`, which is very useful for processing and plotting
-multidimensional array data.
-The downloaded scenes can come in 2 main formats:
-
-1. A ``.tar`` file which includes several bands in ``.TIF`` format and metadata in text files.
-2. The bands and metadata files downloaded individually.
-
-When reading the TIF files using tools like
-`rioxarray <https://corteva.github.io/rioxarray/html/index.html>`__, some of
-the rich metadata can be missing since it's not always present in the TIF files
-themselves.
-Things like UTM zones, conversion factors, units, data provenance, WRS path/row
-numbers, etc.
-We take care of fetching that information from the ``*_MTL.txt`` files provided
-by EarthExplorer so that xarray can use it, for example when annotating plots.
 
 
 Download a sample scene
@@ -143,6 +154,7 @@ What now?
 
 Checkout some of the other things that you can do with xlandsat:
 
+* :ref:`io`
 * :ref:`composites`
 * :ref:`indices`
 

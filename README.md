@@ -1,5 +1,5 @@
 <h1 align="center">xlandsat</h1>
-<p align="center"><strong>Load Landsat remote sensing images into xarray.</strong></p>
+<p align="center"><strong>Analyze Landsat remote sensing images using xarray</strong></p>
 <p align="center">
 <a href="https://www.compgeolab.org/xlandsat"><strong>Documentation</strong> (latest)</a> •
 <a href="https://www.compgeolab.org/xlandsat/dev"><strong>Documentation</strong> (main branch)</a> •
@@ -16,12 +16,12 @@
 
 ## About
 
-**xlandsat** is Python library for loading Landsat scenes downloaded from
-[USGS EarthExplorer](https://earthexplorer.usgs.gov) into `xarray.Dataset`
-containers.
+**xlandsat** is Python library for loading and analyzing Landsat scenes
+downloaded from [USGS EarthExplorer](https://earthexplorer.usgs.gov) with
+the power of [xarray](https://xarray.dev/).
 We take care of reading the metadata from the `*_MTL.txt` files provided by
-EarthExplorer and organizing the bands into a single data structure for easier
-manipulation, processing, and visualization.
+EarthExplorer and organizing the bands into a single `xarray.Dataset` data
+structure for easier manipulation, processing, and visualization.
 
 ## Example
 
