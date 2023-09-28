@@ -52,6 +52,7 @@ These required dependencies should be installed automatically when you install
 xlandsat with ``pip`` or ``conda``:
 
 * `numpy <http://www.numpy.org/>`__
+* `scipy <https://scipy.org>`__
 * `xarray <https://xarray.dev/>`__
 * `scikit-image <https://scikit-image.org/>`__
 * `pooch <https://www.fatiando.org/pooch/>`__
