@@ -14,16 +14,15 @@
 
         .. div:: sd-fs-3
 
-            Load Landsat remote sensing images into xarray
+            Analyze Landsat remote sensing images using xarray
 
 
-**xlandsat** is Python library for
-loading Landsat scenes downloaded from
-`USGS EarthExplorer <https://earthexplorer.usgs.gov/>`__ into
-:class:`xarray.Dataset` containers.
+**xlandsat** is Python library for loading and analyzing Landsat scenes
+downloaded from `USGS EarthExplorer <https://earthexplorer.usgs.gov/>`__ with
+the power of :mod:`xarray`.
 We take care of reading the metadata from the ``*_MTL.txt`` files provided by
-EarthExplorer and organizing the bands into a single data structure for easier
-manipulation, processing, and visualization.
+EarthExplorer and organizing the bands into a single :class:`xarray.Dataset`
+data structure for easier manipulation, processing, and visualization.
 
 Here's a quick example:
 
@@ -155,6 +154,7 @@ Here's a quick example:
     :hidden:
     :caption: User Guide
 
+    io.rst
     composites.rst
     indices.rst
     pansharpen.rst
