@@ -1,8 +1,8 @@
-<h1 align="center">xlandsat</h1>
+<img src="https://github.com/compgeolab/xlandsat/raw/main/doc/_static/banner.png" alt="xlandsat">
 <p align="center"><strong>Analyze Landsat remote sensing images using xarray</strong></p>
 <p align="center">
 <a href="https://www.compgeolab.org/xlandsat"><strong>Documentation</strong> (latest)</a> •
-<a href="https://www.compgeolab.org/xlandsat/dev"><strong>Documentation</strong> (main branch)</a> •
+<a href="https://github.com/compgeolab/xlandsat/blob/main/CONTRIBUTING.md"><strong>Contributing</strong> (how you can help)</a> •
 <a href="https://www.compgeolab.org"><strong>CompGeoLab</strong></a>
 </p>
 
