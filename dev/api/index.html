@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     
-        <title>List of functions and classes (API) | xlandsat v0.0.post36</title>
+        <title>List of functions and classes (API) | xlandsat v0.0.post69+g8648da7</title>
     
 
     
@@ -50,7 +50,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="xlandsat.load_scene" href="generated/xlandsat.load_scene.html" />
-    <link rel="prev" title="Pansharpening" href="../pansharpen.html" />
+    <link rel="prev" title="Plotting bands overlaid on composites" href="../plot-overlay.html" />
     <!-- Plausible analytics for anonymous usage statistics -->
     <script defer data-domain="compgeolab.org" src="https://plausible.io/js/plausible.js"></script>
 
@@ -84,9 +84,14 @@
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post36</span></h1>
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post69+g8648da7</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -118,18 +123,38 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../io.html">
+   Loading and cropping scenes
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../composites.html">
-   Composites
+   Making composites
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../indices.html">
-   Indices
+   Working with indices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../pansharpen.html">
    Pansharpening
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../missing-values.html">
+   Filling missing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../equalize-histogram.html">
+   Histogram equalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plot-overlay.html">
+   Plotting bands overlaid on composites
   </a>
  </li>
 </ul>
@@ -175,6 +200,16 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="generated/xlandsat.equalize_histogram.html">
+     xlandsat.equalize_histogram
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/xlandsat.interpolate_missing.html">
+     xlandsat.interpolate_missing
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="generated/xlandsat.datasets.fetch_brumadinho_after.html">
      xlandsat.datasets.fetch_brumadinho_after
     </a>
@@ -194,11 +229,26 @@
      xlandsat.datasets.fetch_liverpool_panchromatic
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/xlandsat.datasets.fetch_manaus.html">
+     xlandsat.datasets.fetch_manaus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/xlandsat.datasets.fetch_momotombo.html">
+     xlandsat.datasets.fetch_momotombo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generated/xlandsat.datasets.fetch_roraima.html">
+     xlandsat.datasets.fetch_roraima
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../citing.html">
-   Citing
+   Citing xlandsat
   </a>
  </li>
  <li class="toctree-l1">
@@ -224,10 +274,20 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Links
+  Community
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CONTRIBUTING.md">
+   How to contribute
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CODE_OF_CONDUCT.md">
+   Code of Conduct
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference external" href="https://github.com/compgeolab/xlandsat">
    Source code on GitHub
@@ -527,6 +587,12 @@ title="Print to PDF"
 <tr class="row-even"><td><p><a class="reference internal" href="generated/xlandsat.pansharpen.html#xlandsat.pansharpen" title="xlandsat.pansharpen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pansharpen</span></code></a>(scene, panchromatic[, weights])</p></td>
 <td><p>Pansharpen the red, green, and blue bands of a scene.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/xlandsat.equalize_histogram.html#xlandsat.equalize_histogram" title="xlandsat.equalize_histogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">equalize_histogram</span></code></a>(composite[, kernel_size, ...])</p></td>
+<td><p>Adaptive histogram equalization for a composite</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/xlandsat.interpolate_missing.html#xlandsat.interpolate_missing" title="xlandsat.interpolate_missing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpolate_missing</span></code></a>(scene[, pixel_radius])</p></td>
+<td><p>Fill missing values (NaNs) in a scene by cubic interpolation</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -551,6 +617,15 @@ title="Print to PDF"
 <tr class="row-even"><td><p><a class="reference internal" href="generated/xlandsat.datasets.fetch_liverpool_panchromatic.html#xlandsat.datasets.fetch_liverpool_panchromatic" title="xlandsat.datasets.fetch_liverpool_panchromatic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datasets.fetch_liverpool_panchromatic</span></code></a>([untar])</p></td>
 <td><p>Download a sample panchromatic band from the city of Liverpool, UK</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/xlandsat.datasets.fetch_manaus.html#xlandsat.datasets.fetch_manaus" title="xlandsat.datasets.fetch_manaus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datasets.fetch_manaus</span></code></a>([untar])</p></td>
+<td><p>Download a sample scene from Manaus, Brazil</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/xlandsat.datasets.fetch_momotombo.html#xlandsat.datasets.fetch_momotombo" title="xlandsat.datasets.fetch_momotombo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datasets.fetch_momotombo</span></code></a>([untar])</p></td>
+<td><p>Download a sample scene from the December 2015 Momotombo volcano eruption</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/xlandsat.datasets.fetch_roraima.html#xlandsat.datasets.fetch_roraima" title="xlandsat.datasets.fetch_roraima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datasets.fetch_roraima</span></code></a>([untar])</p></td>
+<td><p>Download a sample scene from Mount Roraima surrounded by clouds</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -564,11 +639,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../pansharpen.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../plot-overlay.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Pansharpening</p>
+            <p class="prev-next-title">Plotting bands overlaid on composites</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="generated/xlandsat.load_scene.html" title="next page">
@@ -586,7 +661,7 @@ title="Print to PDF"
         <footer class="col footer"><p>
   
       &copy; Copyright 2023, The xlandsat developers.<br/>
-    Last updated on Feb 08, 2023.<br/>
+    Last updated on Sep 29, 2023.<br/>
 </p>
         </footer>
     </div>

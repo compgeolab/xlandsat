@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     
-        <title>xlandsat.save_scene | xlandsat v0.0.post36</title>
+        <title>xlandsat.save_scene | xlandsat v0.0.post69+g8648da7</title>
     
 
     
@@ -84,9 +84,14 @@
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post36</span></h1>
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post69+g8648da7</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -118,18 +123,38 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../io.html">
+   Loading and cropping scenes
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../composites.html">
-   Composites
+   Making composites
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../indices.html">
-   Indices
+   Working with indices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../pansharpen.html">
    Pansharpening
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../missing-values.html">
+   Filling missing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../equalize-histogram.html">
+   Histogram equalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plot-overlay.html">
+   Plotting bands overlaid on composites
   </a>
  </li>
 </ul>
@@ -175,6 +200,16 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="xlandsat.equalize_histogram.html">
+     xlandsat.equalize_histogram
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="xlandsat.interpolate_missing.html">
+     xlandsat.interpolate_missing
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="xlandsat.datasets.fetch_brumadinho_after.html">
      xlandsat.datasets.fetch_brumadinho_after
     </a>
@@ -194,11 +229,26 @@
      xlandsat.datasets.fetch_liverpool_panchromatic
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="xlandsat.datasets.fetch_manaus.html">
+     xlandsat.datasets.fetch_manaus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="xlandsat.datasets.fetch_momotombo.html">
+     xlandsat.datasets.fetch_momotombo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="xlandsat.datasets.fetch_roraima.html">
+     xlandsat.datasets.fetch_roraima
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../citing.html">
-   Citing
+   Citing xlandsat
   </a>
  </li>
  <li class="toctree-l1">
@@ -224,10 +274,20 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Links
+  Community
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CONTRIBUTING.md">
+   How to contribute
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CODE_OF_CONDUCT.md">
+   Code of Conduct
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference external" href="https://github.com/compgeolab/xlandsat">
    Source code on GitHub
@@ -451,10 +511,10 @@ adjusted to reflect the new UTM bounding box. The lat/lon bounding box
 <p class="admonition-title">Tip</p>
 <p><strong>Do not use this function</strong> as a general output format for the scene
 unless you require compatibility with EarthExplorer. The best way to
-save a scene is with <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.to_netcdf.html#xarray.Dataset.to_netcdf" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.Dataset.to_netcdf</span></code></a> since it will
+save a scene is with <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.to_netcdf.html#xarray.Dataset.to_netcdf" title="(in xarray v2023.9.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.Dataset.to_netcdf</span></code></a> since it will
 result in a single file with all metadata preserved. To load the saved
-scene, use <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.load_dataset.html#xarray.load_dataset" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">xarray.load_dataset</span></code></a>. NetCDF files can also be loaded
-lazily with <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.open_dataset.html#xarray.open_dataset" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">xarray.open_dataset</span></code></a> to avoid loading the entire
+scene, use <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.load_dataset.html#xarray.load_dataset" title="(in xarray v2023.9.1.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">xarray.load_dataset</span></code></a>. NetCDF files can also be loaded
+lazily with <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.open_dataset.html#xarray.open_dataset" title="(in xarray v2023.9.1.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">xarray.open_dataset</span></code></a> to avoid loading the entire
 scene into memory.</p>
 </div>
 <div class="admonition note">
@@ -467,7 +527,7 @@ scene into memory.</p>
 <li><p><strong>path</strong> (str or <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code></a>) – The desired path of the output tar archive. The file extension can be
 <code class="docutils literal notranslate"><span class="pre">.tar</span></code> (uncompressed) or <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code>, <code class="docutils literal notranslate"><span class="pre">.tar.xz</span></code>, or <code class="docutils literal notranslate"><span class="pre">.tar.bz2</span></code> to
 make a compressed archive.</p></li>
-<li><p><strong>scene</strong> (<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>) – The scene including UTM easting and northing as dimensional
+<li><p><strong>scene</strong> (<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2023.9.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>) – The scene including UTM easting and northing as dimensional
 coordinates, bands as 2D arrays of the given type as variables, and
 metadata read from the MTL file and other CF compliant fields in the
 <code class="docutils literal notranslate"><span class="pre">attrs</span></code> attribute.</p></li>
@@ -508,7 +568,7 @@ metadata read from the MTL file and other CF compliant fields in the
         <footer class="col footer"><p>
   
       &copy; Copyright 2023, The xlandsat developers.<br/>
-    Last updated on Feb 08, 2023.<br/>
+    Last updated on Sep 29, 2023.<br/>
 </p>
         </footer>
     </div>

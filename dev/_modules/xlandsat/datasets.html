@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>xlandsat.datasets | xlandsat v0.0.post36</title>
+        <title>xlandsat.datasets | xlandsat v0.0.post69+g8648da7</title>
     
 
     
@@ -81,9 +81,14 @@
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post36</span></h1>
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post69+g8648da7</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -115,18 +120,38 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../io.html">
+   Loading and cropping scenes
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../composites.html">
-   Composites
+   Making composites
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../indices.html">
-   Indices
+   Working with indices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../pansharpen.html">
    Pansharpening
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../missing-values.html">
+   Filling missing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../equalize-histogram.html">
+   Histogram equalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plot-overlay.html">
+   Plotting bands overlaid on composites
   </a>
  </li>
 </ul>
@@ -172,6 +197,16 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.equalize_histogram.html">
+     xlandsat.equalize_histogram
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.interpolate_missing.html">
+     xlandsat.interpolate_missing
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_brumadinho_after.html">
      xlandsat.datasets.fetch_brumadinho_after
     </a>
@@ -191,11 +226,26 @@
      xlandsat.datasets.fetch_liverpool_panchromatic
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_manaus.html">
+     xlandsat.datasets.fetch_manaus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_momotombo.html">
+     xlandsat.datasets.fetch_momotombo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_roraima.html">
+     xlandsat.datasets.fetch_roraima
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../citing.html">
-   Citing
+   Citing xlandsat
   </a>
  </li>
  <li class="toctree-l1">
@@ -221,10 +271,20 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Links
+  Community
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CONTRIBUTING.md">
+   How to contribute
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CODE_OF_CONDUCT.md">
+   Code of Conduct
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference external" href="https://github.com/compgeolab/xlandsat">
    Source code on GitHub
@@ -379,6 +439,49 @@ title="Open an issue"
 
 <span class="kn">import</span> <span class="nn">pooch</span>
 
+<span class="kn">from</span> <span class="nn">._version</span> <span class="kn">import</span> <span class="n">__version__</span>
+
+<span class="n">POOCH</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">path</span><span class="o">=</span><span class="n">pooch</span><span class="o">.</span><span class="n">os_cache</span><span class="p">(</span><span class="s2">&quot;xlandsat&quot;</span><span class="p">),</span>
+    <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://github.com/compgeolab/xlandsat/raw/</span><span class="si">{version}</span><span class="s2">/data/&quot;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="n">__version__</span><span class="p">,</span>
+    <span class="n">version_dev</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+    <span class="n">registry</span><span class="o">=</span><span class="p">{</span>
+        <span class="c1"># Brumadinho - after</span>
+        <span class="s2">&quot;LC08_L2SP_218074_20190130_20200829_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:4ae61a2d7a8b853c727c0c433680cece&quot;</span><span class="p">,</span>
+        <span class="c1"># Brumadinho - before</span>
+        <span class="s2">&quot;LC08_L2SP_218074_20190114_20200829_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:d2a503c944bb7ef3b41294d44b77e98c&quot;</span><span class="p">,</span>
+        <span class="c1"># Liverpool</span>
+        <span class="s2">&quot;LC08_L2SP_204023_20200927_20201006_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:3c07e343ccf959be4e5dd5c9aca4e0a4&quot;</span><span class="p">,</span>
+        <span class="c1"># Liverpool - Panchromatic</span>
+        <span class="s2">&quot;LC08_L1TP_204023_20200927_20201006_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:7d43f8580b8e583d137a93f9ae51a73d&quot;</span><span class="p">,</span>
+        <span class="c1"># Momotombo</span>
+        <span class="s2">&quot;LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:8cc2e4c15e65940a7152fc1c8b412aa9&quot;</span><span class="p">,</span>
+        <span class="c1"># Roraima</span>
+        <span class="s2">&quot;LC08_L2SP_232056_20151004_20200908_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:f236a8b024aa4a4c62bee294d3bd737f&quot;</span><span class="p">,</span>
+        <span class="c1"># Manaus</span>
+        <span class="s2">&quot;LC09_L2SP_231062_20230723_20230802_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:ffe2003e665dc7a1a3155011f700a61d&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_fetch</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">untar</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fetch a file and handle untaring the archive if requested.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">untar</span><span class="p">:</span>
+        <span class="n">processor</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">Untar</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">processor</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">POOCH</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span>
+        <span class="n">fname</span><span class="p">,</span>
+        <span class="n">processor</span><span class="o">=</span><span class="n">processor</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">untar</span><span class="p">:</span>
+        <span class="c1"># Get the folder name in case we unpacked the archive</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">parent</span>
+    <span class="k">return</span> <span class="n">path</span>
+
 
 <div class="viewcode-block" id="fetch_brumadinho_after"><a class="viewcode-back" href="../../api/generated/xlandsat.datasets.fetch_brumadinho_after.html#xlandsat.datasets.fetch_brumadinho_after">[docs]</a><span class="k">def</span> <span class="nf">fetch_brumadinho_after</span><span class="p">(</span><span class="n">untar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -409,20 +512,7 @@ title="Open an issue"
 <span class="sd">    path : str</span>
 <span class="sd">        The path to the downloaded `.tar` file that contains the scene.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">untar</span><span class="p">:</span>
-        <span class="n">processor</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">Untar</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">processor</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
-        <span class="s2">&quot;https://figshare.com/ndownloader/files/38902290&quot;</span><span class="p">,</span>
-        <span class="n">fname</span><span class="o">=</span><span class="s2">&quot;LC08_L2SP_218074_20190130_20200829_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span>
-        <span class="n">known_hash</span><span class="o">=</span><span class="s2">&quot;md5:4ae61a2d7a8b853c727c0c433680cece&quot;</span><span class="p">,</span>
-        <span class="n">processor</span><span class="o">=</span><span class="n">processor</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="k">if</span> <span class="n">untar</span><span class="p">:</span>
-        <span class="c1"># Get the folder name in case we unpacked the archive</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">parent</span>
-    <span class="k">return</span> <span class="n">path</span></div>
+    <span class="k">return</span> <span class="n">_fetch</span><span class="p">(</span><span class="s2">&quot;LC08_L2SP_218074_20190130_20200829_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span> <span class="n">untar</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="fetch_brumadinho_before"><a class="viewcode-back" href="../../api/generated/xlandsat.datasets.fetch_brumadinho_before.html#xlandsat.datasets.fetch_brumadinho_before">[docs]</a><span class="k">def</span> <span class="nf">fetch_brumadinho_before</span><span class="p">(</span><span class="n">untar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -454,20 +544,10 @@ title="Open an issue"
 <span class="sd">    path : str</span>
 <span class="sd">        The path to the downloaded `.tar` file that contains the scene.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">untar</span><span class="p">:</span>
-        <span class="n">processor</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">Untar</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">processor</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
-        <span class="s2">&quot;https://figshare.com/ndownloader/files/38902284&quot;</span><span class="p">,</span>
-        <span class="n">fname</span><span class="o">=</span><span class="s2">&quot;LC08_L2SP_218074_20190114_20200829_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span>
-        <span class="n">known_hash</span><span class="o">=</span><span class="s2">&quot;md5:d2a503c944bb7ef3b41294d44b77e98c&quot;</span><span class="p">,</span>
-        <span class="n">processor</span><span class="o">=</span><span class="n">processor</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="k">if</span> <span class="n">untar</span><span class="p">:</span>
-        <span class="c1"># Get the folder name in case we unpacked the archive</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">parent</span>
-    <span class="k">return</span> <span class="n">path</span></div>
+    <span class="k">return</span> <span class="n">_fetch</span><span class="p">(</span>
+        <span class="s2">&quot;LC08_L2SP_218074_20190114_20200829_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span>
+        <span class="n">untar</span><span class="p">,</span>
+    <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="fetch_liverpool"><a class="viewcode-back" href="../../api/generated/xlandsat.datasets.fetch_liverpool.html#xlandsat.datasets.fetch_liverpool">[docs]</a><span class="k">def</span> <span class="nf">fetch_liverpool</span><span class="p">(</span><span class="n">untar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -498,20 +578,10 @@ title="Open an issue"
 <span class="sd">    path : str</span>
 <span class="sd">        The path to the downloaded `.tar` file that contains the scene.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">untar</span><span class="p">:</span>
-        <span class="n">processor</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">Untar</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">processor</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
-        <span class="s2">&quot;https://figshare.com/ndownloader/files/39121064&quot;</span><span class="p">,</span>
-        <span class="n">fname</span><span class="o">=</span><span class="s2">&quot;LC08_L2SP_204023_20200927_20201006_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span>
-        <span class="n">known_hash</span><span class="o">=</span><span class="s2">&quot;md5:3c07e343ccf959be4e5dd5c9aca4e0a4&quot;</span><span class="p">,</span>
-        <span class="n">processor</span><span class="o">=</span><span class="n">processor</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="k">if</span> <span class="n">untar</span><span class="p">:</span>
-        <span class="c1"># Get the folder name in case we unpacked the archive</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">parent</span>
-    <span class="k">return</span> <span class="n">path</span></div>
+    <span class="k">return</span> <span class="n">_fetch</span><span class="p">(</span>
+        <span class="s2">&quot;LC08_L2SP_204023_20200927_20201006_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span>
+        <span class="n">untar</span><span class="p">,</span>
+    <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="fetch_liverpool_panchromatic"><a class="viewcode-back" href="../../api/generated/xlandsat.datasets.fetch_liverpool_panchromatic.html#xlandsat.datasets.fetch_liverpool_panchromatic">[docs]</a><span class="k">def</span> <span class="nf">fetch_liverpool_panchromatic</span><span class="p">(</span><span class="n">untar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -542,20 +612,111 @@ title="Open an issue"
 <span class="sd">    path : str</span>
 <span class="sd">        The path to the downloaded `.tar` file that contains the scene.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">untar</span><span class="p">:</span>
-        <span class="n">processor</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">Untar</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">processor</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
-        <span class="s2">&quot;https://figshare.com/ndownloader/files/39121061&quot;</span><span class="p">,</span>
-        <span class="n">fname</span><span class="o">=</span><span class="s2">&quot;LC08_L1TP_204023_20200927_20201006_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span>
-        <span class="n">known_hash</span><span class="o">=</span><span class="s2">&quot;md5:7d43f8580b8e583d137a93f9ae51a73d&quot;</span><span class="p">,</span>
-        <span class="n">processor</span><span class="o">=</span><span class="n">processor</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="k">if</span> <span class="n">untar</span><span class="p">:</span>
-        <span class="c1"># Get the folder name in case we unpacked the archive</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">parent</span>
-    <span class="k">return</span> <span class="n">path</span></div>
+    <span class="k">return</span> <span class="n">_fetch</span><span class="p">(</span>
+        <span class="s2">&quot;LC08_L1TP_204023_20200927_20201006_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span>
+        <span class="n">untar</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="fetch_momotombo"><a class="viewcode-back" href="../../api/generated/xlandsat.datasets.fetch_momotombo.html#xlandsat.datasets.fetch_momotombo">[docs]</a><span class="k">def</span> <span class="nf">fetch_momotombo</span><span class="p">(</span><span class="n">untar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Download a sample scene from the December 2015 Momotombo volcano eruption</span>
+
+<span class="sd">    This is a cropped version of a Landsat 8 scene from 2015/12/05. It was</span>
+<span class="sd">    taken during the December 2015 eruption of `Momotombo volcano</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Momotombo&gt;`__, Nicaragua.</span>
+
+<span class="sd">    The scene was downloaded from `USGS Earth Explorer</span>
+<span class="sd">    &lt;https://earthexplorer.usgs.gov/&gt;`__. Original data are in the public</span>
+<span class="sd">    domain and are redistributed here in accordance with the `Landsat Data</span>
+<span class="sd">    Distribution Policy</span>
+<span class="sd">    &lt;https://www.usgs.gov/media/files/landsat-data-distribution-policy&gt;`__.</span>
+
+<span class="sd">    Source: https://doi.org/10.6084/m9.figshare.21931089.v3</span>
+<span class="sd">    (`CC0 &lt;https://creativecommons.org/publicdomain/zero/1.0/&gt;`__)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    untar : bool</span>
+<span class="sd">        If True, unpack the tar archive after downloading and return a path to</span>
+<span class="sd">        the folder containing the unpacked files instead. Default is False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path to the downloaded `.tar` file that contains the scene.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_fetch</span><span class="p">(</span>
+        <span class="s2">&quot;LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span>
+        <span class="n">untar</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="fetch_roraima"><a class="viewcode-back" href="../../api/generated/xlandsat.datasets.fetch_roraima.html#xlandsat.datasets.fetch_roraima">[docs]</a><span class="k">def</span> <span class="nf">fetch_roraima</span><span class="p">(</span><span class="n">untar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Download a sample scene from Mount Roraima surrounded by clouds</span>
+
+<span class="sd">    Roraima is a *tepui* located in the junction of Brazil, Guyana, and</span>
+<span class="sd">    Venezuela. It&#39;s famous for the near-constant cloud coverage.</span>
+
+<span class="sd">    This is a cropped version of a Landsat 8 scene from 2015/10/04, which is</span>
+<span class="sd">    one of the rare relatively cloud-free scenes available.</span>
+
+<span class="sd">    The scene was downloaded from `USGS Earth Explorer</span>
+<span class="sd">    &lt;https://earthexplorer.usgs.gov/&gt;`__. Original data are in the public</span>
+<span class="sd">    domain and are redistributed here in accordance with the `Landsat Data</span>
+<span class="sd">    Distribution Policy</span>
+<span class="sd">    &lt;https://www.usgs.gov/media/files/landsat-data-distribution-policy&gt;`__.</span>
+
+<span class="sd">    Source: https://doi.org/10.6084/m9.figshare.24143622.v1</span>
+<span class="sd">    (`CC0 &lt;https://creativecommons.org/publicdomain/zero/1.0/&gt;`__)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    untar : bool</span>
+<span class="sd">        If True, unpack the tar archive after downloading and return a path to</span>
+<span class="sd">        the folder containing the unpacked files instead. Default is False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path to the downloaded `.tar` file that contains the scene.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_fetch</span><span class="p">(</span><span class="s2">&quot;LC08_L2SP_232056_20151004_20200908_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span> <span class="n">untar</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="fetch_manaus"><a class="viewcode-back" href="../../api/generated/xlandsat.datasets.fetch_manaus.html#xlandsat.datasets.fetch_manaus">[docs]</a><span class="k">def</span> <span class="nf">fetch_manaus</span><span class="p">(</span><span class="n">untar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Download a sample scene from Manaus, Brazil</span>
+
+<span class="sd">    Manaus is located in the Brazilian Amazon. The scene shows a part of the</span>
+<span class="sd">    city and the meeting of the Solimões and Negro rivers to form the Amazon</span>
+<span class="sd">    river.</span>
+
+<span class="sd">    This is a cropped version of a Landsat 9 scene from 2023/07/23, during</span>
+<span class="sd">    the annual Amazon river floods.</span>
+
+<span class="sd">    The scene was downloaded from `USGS Earth Explorer</span>
+<span class="sd">    &lt;https://earthexplorer.usgs.gov/&gt;`__. Original data are in the public</span>
+<span class="sd">    domain and are redistributed here in accordance with the `Landsat Data</span>
+<span class="sd">    Distribution Policy</span>
+<span class="sd">    &lt;https://www.usgs.gov/media/files/landsat-data-distribution-policy&gt;`__.</span>
+
+<span class="sd">    Source: https://doi.org/10.6084/m9.figshare.24167235.v1</span>
+<span class="sd">    (`CC0 &lt;https://creativecommons.org/publicdomain/zero/1.0/&gt;`__)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    untar : bool</span>
+<span class="sd">        If True, unpack the tar archive after downloading and return a path to</span>
+<span class="sd">        the folder containing the unpacked files instead. Default is False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path to the downloaded `.tar` file that contains the scene.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_fetch</span><span class="p">(</span><span class="s2">&quot;LC09_L2SP_231062_20230723_20230802_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span> <span class="n">untar</span><span class="p">)</span></div>
 </pre></div>
 
               </div>
@@ -573,7 +734,7 @@ title="Open an issue"
         <footer class="col footer"><p>
   
       &copy; Copyright 2023, The xlandsat developers.<br/>
-    Last updated on Feb 08, 2023.<br/>
+    Last updated on Sep 29, 2023.<br/>
 </p>
         </footer>
     </div>

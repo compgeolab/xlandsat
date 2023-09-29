@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     
-        <title>Changelog | xlandsat v0.0.post36</title>
+        <title>Changelog | xlandsat v0.0.post69+g8648da7</title>
     
 
     
@@ -84,9 +84,14 @@
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post36</span></h1>
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post69+g8648da7</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -118,18 +123,38 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="io.html">
+   Loading and cropping scenes
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="composites.html">
-   Composites
+   Making composites
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="indices.html">
-   Indices
+   Working with indices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pansharpen.html">
    Pansharpening
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="missing-values.html">
+   Filling missing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="equalize-histogram.html">
+   Histogram equalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot-overlay.html">
+   Plotting bands overlaid on composites
   </a>
  </li>
 </ul>
@@ -175,6 +200,16 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.equalize_histogram.html">
+     xlandsat.equalize_histogram
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.interpolate_missing.html">
+     xlandsat.interpolate_missing
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_brumadinho_after.html">
      xlandsat.datasets.fetch_brumadinho_after
     </a>
@@ -194,11 +229,26 @@
      xlandsat.datasets.fetch_liverpool_panchromatic
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_manaus.html">
+     xlandsat.datasets.fetch_manaus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_momotombo.html">
+     xlandsat.datasets.fetch_momotombo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_roraima.html">
+     xlandsat.datasets.fetch_roraima
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="citing.html">
-   Citing
+   Citing xlandsat
   </a>
  </li>
  <li class="toctree-l1">
@@ -224,10 +274,20 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Links
+  Community
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CONTRIBUTING.md">
+   How to contribute
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CODE_OF_CONDUCT.md">
+   Code of Conduct
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference external" href="https://github.com/compgeolab/xlandsat">
    Source code on GitHub
@@ -433,6 +493,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-0-4-0">
+   Version 0.4.0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#version-0-3-0">
    Version 0.3.0
   </a>
@@ -472,6 +537,11 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-0-4-0">
+   Version 0.4.0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#version-0-3-0">
    Version 0.3.0
   </a>
@@ -503,6 +573,56 @@ title="Print to PDF"
                 
   <section id="changelog">
 <span id="changes"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">#</a></h1>
+<section id="version-0-4-0">
+<h2>Version 0.4.0<a class="headerlink" href="#version-0-4-0" title="Permalink to this headline">#</a></h2>
+<p>Released on: 2023/09/28</p>
+<p>doi: <a class="reference external" href="https://doi.org/10.5281/zenodo.8348805">https://doi.org/10.5281/zenodo.8348805</a></p>
+<p>Bug fixes:</p>
+<ul class="simple">
+<li><p>Bug fix: Use np.abs in pansharpen to avoid sign issues (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/34">#34</a>)</p></li>
+</ul>
+<p>New features and improvements:</p>
+<ul class="simple">
+<li><p>Add function for histogram equalization (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/40">#40</a> <a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/54">#54</a>)</p></li>
+<li><p>Add function to fill missing values by interpolation (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/36">#36</a>)</p></li>
+<li><p>Faster version of cropped loading using less RAM (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/28">#28</a>)</p></li>
+<li><p>Add sample data for Manaus, Brazil (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/49">#49</a>)</p></li>
+<li><p>Add sample data from Mount Roraima (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/39">#39</a>)</p></li>
+<li><p>Add sample data for the Momotombo eruption (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/32">#32</a>)</p></li>
+</ul>
+<p>Documentation:</p>
+<ul class="simple">
+<li><p>Tutorial about the many ways to read data (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/57">#57</a>)</p></li>
+<li><p>Add section on Indices tutorial about other indices (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/55">#55</a>)</p></li>
+<li><p>Add a trigger warning and update the indices tutorial (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/53">#53</a>)</p></li>
+<li><p>Use the Manaus data in the Composites tutorial (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/52">#52</a>)</p></li>
+<li><p>Expand the Overview page and use the Manaus data (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/51">#51</a>)</p></li>
+<li><p>Fill missing and equalization in overlay tutorial (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/45">#45</a>)</p></li>
+<li><p>Fix wrong mention of color in indices tutorial (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/44">#44</a>)</p></li>
+<li><p>Rework and expand the composites tutorial (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/37">#37</a>)</p></li>
+<li><p>Add a tutorial on how to overlay bands on RGB (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/33">#33</a>)</p></li>
+<li><p>Make README preview image full width (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/26">#26</a>)</p></li>
+<li><p>Add a logo for the project (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/43">#43</a>)</p></li>
+<li><p>Add Community guides (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/27">#27</a>)</p></li>
+</ul>
+<p>Maintenance:</p>
+<ul class="simple">
+<li><p>Add Issue templates with a release checklist (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/58">#58</a>)</p></li>
+<li><p>Add missing Scipy dependency (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/56">#56</a>)</p></li>
+<li><p>Update Leo’s affiliation to USP (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/50">#50</a>)</p></li>
+<li><p>Fix version number for uploading to TestPyPI (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/48">#48</a>)</p></li>
+<li><p>Fetch data files from GitHub instead of figshare (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/47">#47</a>)</p></li>
+<li><p>Host sample data files on GitHub (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/46">#46</a>)</p></li>
+<li><p>Add testing and support for Python 3.11 (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/35">#35</a>)</p></li>
+<li><p>Use the tifffile plugin for IO instead of PIL (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/31">#31</a>)</p></li>
+<li><p>Update jupyter-sphinx and add ipykernel (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/30">#30</a>)</p></li>
+<li><p>Move the Authorship Guidelines to the lab manual (<a class="reference external" href="https://github.com/compgeolab/xlandsat/pull/29">#29</a>)</p></li>
+</ul>
+<p>This release contains contributions from:</p>
+<ul class="simple">
+<li><p>Leonardo Uieda</p></li>
+</ul>
+</section>
 <section id="version-0-3-0">
 <h2>Version 0.3.0<a class="headerlink" href="#version-0-3-0" title="Permalink to this headline">#</a></h2>
 <p>Released on: 2023/02/08</p>
@@ -571,8 +691,8 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>A function to get Landsat 8 and 9 Collection 2 Level 2 scenes downloaded from
 <a class="reference external" href="https://earthexplorer.usgs.gov/">USGS EarthExplorer</a> into an
-<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>.</p></li>
-<li><p>A function to generate a composite as an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2023.2.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> that can
+<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v2023.9.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>.</p></li>
+<li><p>A function to generate a composite as an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2023.9.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> that can
 be easily plotted with xarray’s machinery.</p></li>
 </ul>
 <p>This release contains contributions from:</p>
@@ -612,7 +732,7 @@ be easily plotted with xarray’s machinery.</p></li>
         <footer class="col footer"><p>
   
       &copy; Copyright 2023, The xlandsat developers.<br/>
-    Last updated on Feb 08, 2023.<br/>
+    Last updated on Sep 29, 2023.<br/>
 </p>
         </footer>
     </div>

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     
-        <title>Citing | xlandsat v0.0.post36</title>
+        <title>Citing xlandsat | xlandsat v0.0.post69+g8648da7</title>
     
 
     
@@ -50,7 +50,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="References" href="references.html" />
-    <link rel="prev" title="xlandsat.datasets.fetch_liverpool_panchromatic" href="api/generated/xlandsat.datasets.fetch_liverpool_panchromatic.html" />
+    <link rel="prev" title="xlandsat.datasets.fetch_roraima" href="api/generated/xlandsat.datasets.fetch_roraima.html" />
     <!-- Plausible analytics for anonymous usage statistics -->
     <script defer data-domain="compgeolab.org" src="https://plausible.io/js/plausible.js"></script>
 
@@ -84,9 +84,14 @@
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post36</span></h1>
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post69+g8648da7</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -118,18 +123,38 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="io.html">
+   Loading and cropping scenes
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="composites.html">
-   Composites
+   Making composites
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="indices.html">
-   Indices
+   Working with indices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pansharpen.html">
    Pansharpening
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="missing-values.html">
+   Filling missing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="equalize-histogram.html">
+   Histogram equalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot-overlay.html">
+   Plotting bands overlaid on composites
   </a>
  </li>
 </ul>
@@ -175,6 +200,16 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.equalize_histogram.html">
+     xlandsat.equalize_histogram
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.interpolate_missing.html">
+     xlandsat.interpolate_missing
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_brumadinho_after.html">
      xlandsat.datasets.fetch_brumadinho_after
     </a>
@@ -194,11 +229,26 @@
      xlandsat.datasets.fetch_liverpool_panchromatic
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_manaus.html">
+     xlandsat.datasets.fetch_manaus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_momotombo.html">
+     xlandsat.datasets.fetch_momotombo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_roraima.html">
+     xlandsat.datasets.fetch_roraima
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Citing
+   Citing xlandsat
   </a>
  </li>
  <li class="toctree-l1">
@@ -224,10 +274,20 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Links
+  Community
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CONTRIBUTING.md">
+   How to contribute
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CODE_OF_CONDUCT.md">
+   Code of Conduct
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference external" href="https://github.com/compgeolab/xlandsat">
    Source code on GitHub
@@ -422,7 +482,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Citing</h1>
+                <h1>Citing xlandsat</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -434,8 +494,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="citing">
-<span id="id1"></span><h1>Citing<a class="headerlink" href="#citing" title="Permalink to this headline">#</a></h1>
+  <section id="citing-xlandsat">
+<span id="citing"></span><h1>Citing xlandsat<a class="headerlink" href="#citing-xlandsat" title="Permalink to this headline">#</a></h1>
 <p>This is research software <strong>made by scientists</strong>. Citations help us justify the
 effort that goes into building and maintaining this project.</p>
 <p>If you used it in your research, please consider citing the latest Zenodo
@@ -450,11 +510,11 @@ archive: <a class="reference external" href="https://doi.org/10.5281/zenodo.7395
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="api/generated/xlandsat.datasets.fetch_liverpool_panchromatic.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="api/generated/xlandsat.datasets.fetch_roraima.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">xlandsat.datasets.fetch_liverpool_panchromatic</p>
+            <p class="prev-next-title">xlandsat.datasets.fetch_roraima</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="references.html" title="next page">
@@ -472,7 +532,7 @@ archive: <a class="reference external" href="https://doi.org/10.5281/zenodo.7395
         <footer class="col footer"><p>
   
       &copy; Copyright 2023, The xlandsat developers.<br/>
-    Last updated on Feb 08, 2023.<br/>
+    Last updated on Sep 29, 2023.<br/>
 </p>
         </footer>
     </div>

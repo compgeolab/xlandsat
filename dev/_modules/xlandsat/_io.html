@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-        <title>xlandsat._io | xlandsat v0.0.post36</title>
+        <title>xlandsat._io | xlandsat v0.0.post69+g8648da7</title>
     
 
     
@@ -81,9 +81,14 @@
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post36</span></h1>
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post69+g8648da7</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -115,18 +120,38 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../io.html">
+   Loading and cropping scenes
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../composites.html">
-   Composites
+   Making composites
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../indices.html">
-   Indices
+   Working with indices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../pansharpen.html">
    Pansharpening
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../missing-values.html">
+   Filling missing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../equalize-histogram.html">
+   Histogram equalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plot-overlay.html">
+   Plotting bands overlaid on composites
   </a>
  </li>
 </ul>
@@ -172,6 +197,16 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.equalize_histogram.html">
+     xlandsat.equalize_histogram
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.interpolate_missing.html">
+     xlandsat.interpolate_missing
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_brumadinho_after.html">
      xlandsat.datasets.fetch_brumadinho_after
     </a>
@@ -191,11 +226,26 @@
      xlandsat.datasets.fetch_liverpool_panchromatic
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_manaus.html">
+     xlandsat.datasets.fetch_manaus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_momotombo.html">
+     xlandsat.datasets.fetch_momotombo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_roraima.html">
+     xlandsat.datasets.fetch_roraima
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../citing.html">
-   Citing
+   Citing xlandsat
   </a>
  </li>
  <li class="toctree-l1">
@@ -221,10 +271,20 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Links
+  Community
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CONTRIBUTING.md">
+   How to contribute
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CODE_OF_CONDUCT.md">
+   Code of Conduct
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference external" href="https://github.com/compgeolab/xlandsat">
    Source code on GitHub
@@ -604,7 +664,28 @@ title="Open an issue"
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Read the band and return a DataArray with the scaled values.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">band_data</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read_band</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">raw_data</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">read_band</span><span class="p">(</span><span class="n">fname</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Crop by finding the pixel region instead of using xarray for better</span>
+        <span class="c1"># performance. This way, we do most operations like type conversion and</span>
+        <span class="c1"># scaling on the smaller data already.</span>
+        <span class="n">region</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+        <span class="n">deast</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="s2">&quot;easting&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">coords</span><span class="p">[</span><span class="s2">&quot;easting&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">dnorth</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="s2">&quot;northing&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">coords</span><span class="p">[</span><span class="s2">&quot;northing&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">col_min</span><span class="p">,</span> <span class="n">col_max</span> <span class="o">=</span> <span class="p">((</span><span class="n">region</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">coords</span><span class="p">[</span><span class="s2">&quot;easting&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">//</span> <span class="n">deast</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">row_min</span><span class="p">,</span> <span class="n">row_max</span> <span class="o">=</span> <span class="p">((</span><span class="n">region</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">-</span> <span class="n">coords</span><span class="p">[</span><span class="s2">&quot;northing&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">//</span> <span class="n">dnorth</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="c1"># So that the interval includes the boundary value</span>
+        <span class="n">col_max</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">row_max</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">col_min</span><span class="p">,</span> <span class="n">row_min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="n">row_max</span><span class="p">,</span> <span class="n">col_max</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;easting&quot;</span><span class="p">:</span> <span class="n">coords</span><span class="p">[</span><span class="s2">&quot;easting&quot;</span><span class="p">][</span><span class="n">col_min</span><span class="p">:</span><span class="n">col_max</span><span class="p">],</span>
+        <span class="s2">&quot;northing&quot;</span><span class="p">:</span> <span class="n">coords</span><span class="p">[</span><span class="s2">&quot;northing&quot;</span><span class="p">][</span><span class="n">row_min</span><span class="p">:</span><span class="n">row_max</span><span class="p">],</span>
+    <span class="p">}</span>
+    <span class="n">band_data</span> <span class="o">=</span> <span class="n">raw_data</span><span class="p">[</span><span class="n">row_min</span><span class="p">:</span><span class="n">row_max</span><span class="p">,</span> <span class="n">col_min</span><span class="p">:</span><span class="n">col_max</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">raw_data</span>
     <span class="n">band_data</span><span class="p">[</span><span class="n">band_data</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
     <span class="n">mult</span><span class="p">,</span> <span class="n">add</span> <span class="o">=</span> <span class="n">scaling_parameters</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
     <span class="n">band_data</span> <span class="o">*=</span> <span class="n">mult</span>
@@ -623,8 +704,6 @@ title="Open an issue"
             <span class="s2">&quot;scaling_add&quot;</span><span class="p">:</span> <span class="n">add</span><span class="p">,</span>
         <span class="p">},</span>
     <span class="p">)</span>
-    <span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">band</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">easting</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="n">region</span><span class="p">[:</span><span class="mi">2</span><span class="p">]),</span> <span class="n">northing</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="n">region</span><span class="p">[</span><span class="mi">2</span><span class="p">:]))</span>
     <span class="k">return</span> <span class="n">band</span>
 
 
@@ -804,7 +883,7 @@ title="Open an issue"
 <span class="sd">        Read a band file using scikit-image.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_archive</span><span class="o">.</span><span class="n">extractfile</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="k">as</span> <span class="n">fobj</span><span class="p">:</span>
-            <span class="n">band</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">fobj</span><span class="p">)</span>
+            <span class="n">band</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">fobj</span><span class="p">,</span> <span class="n">plugin</span><span class="o">=</span><span class="s2">&quot;tifffile&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">band</span>
 
     <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>  <span class="c1"># noqa: U100</span>
@@ -842,7 +921,7 @@ title="Open an issue"
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Read a band file using scikit-image.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">band</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+        <span class="n">band</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">plugin</span><span class="o">=</span><span class="s2">&quot;tifffile&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">band</span>
 
     <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>  <span class="c1"># noqa: U100</span>
@@ -966,7 +1045,7 @@ title="Open an issue"
             <span class="n">skimage</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span>
                 <span class="n">file</span><span class="p">,</span>
                 <span class="n">unscaled</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;uint16&quot;</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span>
-                <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;.tif&quot;</span><span class="p">,</span>
+                <span class="n">plugin</span><span class="o">=</span><span class="s2">&quot;tifffile&quot;</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="n">info</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">TarInfo</span><span class="p">(</span><span class="n">band</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;filename&quot;</span><span class="p">])</span>
             <span class="n">info</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">getbuffer</span><span class="p">()</span><span class="o">.</span><span class="n">nbytes</span>
@@ -988,7 +1067,7 @@ title="Open an issue"
         <footer class="col footer"><p>
   
       &copy; Copyright 2023, The xlandsat developers.<br/>
-    Last updated on Feb 08, 2023.<br/>
+    Last updated on Sep 29, 2023.<br/>
 </p>
         </footer>
     </div>

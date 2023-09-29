@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     
-        <title>Installing | xlandsat v0.0.post36</title>
+        <title>Installing | xlandsat v0.0.post69+g8648da7</title>
     
 
     
@@ -49,7 +49,7 @@
     <link rel="shortcut icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Composites" href="composites.html" />
+    <link rel="next" title="Loading and cropping scenes" href="io.html" />
     <link rel="prev" title="Overview" href="overview.html" />
     <!-- Plausible analytics for anonymous usage statistics -->
     <script defer data-domain="compgeolab.org" src="https://plausible.io/js/plausible.js"></script>
@@ -84,9 +84,14 @@
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
       
       
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post36</span></h1>
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post69+g8648da7</span></h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -118,18 +123,38 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="io.html">
+   Loading and cropping scenes
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="composites.html">
-   Composites
+   Making composites
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="indices.html">
-   Indices
+   Working with indices
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pansharpen.html">
    Pansharpening
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="missing-values.html">
+   Filling missing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="equalize-histogram.html">
+   Histogram equalization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot-overlay.html">
+   Plotting bands overlaid on composites
   </a>
  </li>
 </ul>
@@ -175,6 +200,16 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.equalize_histogram.html">
+     xlandsat.equalize_histogram
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.interpolate_missing.html">
+     xlandsat.interpolate_missing
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_brumadinho_after.html">
      xlandsat.datasets.fetch_brumadinho_after
     </a>
@@ -194,11 +229,26 @@
      xlandsat.datasets.fetch_liverpool_panchromatic
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_manaus.html">
+     xlandsat.datasets.fetch_manaus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_momotombo.html">
+     xlandsat.datasets.fetch_momotombo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_roraima.html">
+     xlandsat.datasets.fetch_roraima
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="citing.html">
-   Citing
+   Citing xlandsat
   </a>
  </li>
  <li class="toctree-l1">
@@ -224,10 +274,20 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Links
+  Community
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CONTRIBUTING.md">
+   How to contribute
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CODE_OF_CONDUCT.md">
+   Code of Conduct
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference external" href="https://github.com/compgeolab/xlandsat">
    Source code on GitHub
@@ -485,16 +545,16 @@ title="Print to PDF"
 <span id="install"></span><h1>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">#</a></h1>
 <p>There are different ways to install xlandsat:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="3bc197f6-a626-46d6-be8a-bbee3eb2440a" name="5ee0c8c3-5105-48ec-86b3-a780ddcda111" type="radio">
-</input><label class="sd-tab-label" for="3bc197f6-a626-46d6-be8a-bbee3eb2440a">
+<input checked="checked" id="85ee2d73-015d-44a5-bea5-87342d27daaa" name="8892b21a-0e54-4ef9-b5bb-ba3c5dd29509" type="radio">
+</input><label class="sd-tab-label" for="85ee2d73-015d-44a5-bea5-87342d27daaa">
 pip</label><div class="sd-tab-content docutils">
 <p>Using the <a class="reference external" href="https://pypi.org/project/pip/">pip package manager</a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install xlandsat
 </pre></div>
 </div>
 </div>
-<input id="a8347931-0c2f-4ff6-a39f-488a2d9fdc9e" name="5ee0c8c3-5105-48ec-86b3-a780ddcda111" type="radio">
-</input><label class="sd-tab-label" for="a8347931-0c2f-4ff6-a39f-488a2d9fdc9e">
+<input id="41bdada5-bf97-4ca6-8b81-79f8ccd1bd39" name="8892b21a-0e54-4ef9-b5bb-ba3c5dd29509" type="radio">
+</input><label class="sd-tab-label" for="41bdada5-bf97-4ca6-8b81-79f8ccd1bd39">
 conda/mamba</label><div class="sd-tab-content docutils">
 <p>Using the <a class="reference external" href="https://conda.io/">conda package manager</a> (or <code class="docutils literal notranslate"><span class="pre">mamba</span></code>)
 that comes with the Anaconda/Miniconda distribution:</p>
@@ -502,8 +562,8 @@ that comes with the Anaconda/Miniconda distribution:</p>
 </pre></div>
 </div>
 </div>
-<input id="8fc6d14e-eae6-467d-a286-d06975833a94" name="5ee0c8c3-5105-48ec-86b3-a780ddcda111" type="radio">
-</input><label class="sd-tab-label" for="8fc6d14e-eae6-467d-a286-d06975833a94">
+<input id="d05f3454-b72c-494e-9a7c-ccedc289ac42" name="8892b21a-0e54-4ef9-b5bb-ba3c5dd29509" type="radio">
+</input><label class="sd-tab-label" for="d05f3454-b72c-494e-9a7c-ccedc289ac42">
 Developement version</label><div class="sd-tab-content docutils">
 <p>You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install the latest <strong>unreleased</strong> version from
 GitHub (<strong>not recommended</strong> in most situations):</p>
@@ -528,6 +588,7 @@ See <a class="reference internal" href="compatibility.html#python-versions"><spa
 xlandsat with <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code>:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://www.numpy.org/">numpy</a></p></li>
+<li><p><a class="reference external" href="https://scipy.org">scipy</a></p></li>
 <li><p><a class="reference external" href="https://xarray.dev/">xarray</a></p></li>
 <li><p><a class="reference external" href="https://scikit-image.org/">scikit-image</a></p></li>
 <li><p><a class="reference external" href="https://www.fatiando.org/pooch/">pooch</a></p></li>
@@ -552,10 +613,10 @@ of each dependency.</p>
             <p class="prev-next-title">Overview</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="composites.html" title="next page">
+    <a class='right-next' id="next-link" href="io.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Composites</p>
+        <p class="prev-next-title">Loading and cropping scenes</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -567,7 +628,7 @@ of each dependency.</p>
         <footer class="col footer"><p>
   
       &copy; Copyright 2023, The xlandsat developers.<br/>
-    Last updated on Feb 08, 2023.<br/>
+    Last updated on Sep 29, 2023.<br/>
 </p>
         </footer>
     </div>
