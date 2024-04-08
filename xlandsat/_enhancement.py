@@ -40,8 +40,8 @@ def equalize_histogram(composite, kernel_size=None, clip_limit=0.01):
     Returns
     -------
     equalized_composite : :class:`xarray.DataArray`
-        The composite after equalization, scaled back to unsigned 8-bit integer
-        range.
+        The composite after equalization, scaled back to the range of the
+        original composite.
 
     Notes
     -----
@@ -53,7 +53,10 @@ def equalize_histogram(composite, kernel_size=None, clip_limit=0.01):
     color space.
     """
     result = composite.copy(deep=True)
-    hsv = skimage.color.rgb2hsv(result.values[:, :, :3])
+    # Make sure the input is in the 0-255 range for the color space transform
+    hsv = skimage.color.rgb2hsv(
+        skimage.exposure.rescale_intensity(result.values[:, :, :3], out_range="uint8")
+    )
     hsv[:, :, 2] = skimage.exposure.equalize_adapthist(
         hsv[:, :, 2],
         kernel_size=kernel_size,
@@ -61,6 +64,6 @@ def equalize_histogram(composite, kernel_size=None, clip_limit=0.01):
     )
     result.values[:, :, :3] = skimage.exposure.rescale_intensity(
         skimage.color.hsv2rgb(hsv),
-        out_range="uint8",
+        out_range=str(composite.values.dtype),
     )
     return result
