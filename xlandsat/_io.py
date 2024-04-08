@@ -22,7 +22,9 @@ BAND_NAMES = {
     6: "swir1",
     7: "swir2",
     8: "pan",
+    9: "cirrus",
     10: "thermal",
+    11: "thermal2",
 }
 BAND_TITLES = {
     1: "coastal aerosol",
@@ -33,7 +35,9 @@ BAND_TITLES = {
     6: "short-wave infrared 1",
     7: "short-wave infrared 2",
     8: "panchromatic",
+    9: "cirrus",
     10: "thermal",
+    11: "thermal 2",
 }
 BAND_UNITS = {
     1: "reflectance",
@@ -44,7 +48,9 @@ BAND_UNITS = {
     6: "reflectance",
     7: "reflectance",
     8: "reflectance",
+    9: "reflectance",
     10: "Kelvin",
+    11: "Kelvin",
 }
 
 
