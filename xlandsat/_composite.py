@@ -9,14 +9,14 @@ import skimage.exposure
 import xarray as xr
 
 
-def composite(scene, bands=("red", "green", "blue"), rescale_to=None):
+def composite(scene, bands=("red", "green", "blue"), rescale_to=None, dtype="uint8"):
     """
     Create a composite using the given bands.
 
     The composite will be an RGBA array if NaNs are present in any band (with
     transparency of the NaN pixels set to full), or RGB is no NaNs are present.
-    The RGB(A) array is encoded as unsigned 8-bit integers for easier plotting
-    with matplotlib and smaller memory footprint.
+    The RGB(A) array is encoded using the given dtype for easier plotting with
+    matplotlib.
 
     Optionally rescale each band to the given range for improved contrast.
 
@@ -32,6 +32,11 @@ def composite(scene, bands=("red", "green", "blue"), rescale_to=None):
         reflectance ranges to use for rescaling. The same values are used for
         each band. Bands are rescaled separately. Example: ``rescale_to=[0,
         0.5]``. Default is None.
+    dtype : str or numpy dtype
+        The type of the output array. Will determine the range of values in the
+        composite. Float types will result in [-1, 1] range outputs. Default is
+        ``"uint8"`` meaning outputs in [0, 255] range and a smaller memory
+        footprint. Use a float type for higher radiometric precision.
 
     Returns
     -------
@@ -54,7 +59,7 @@ def composite(scene, bands=("red", "green", "blue"), rescale_to=None):
         ndim = 4
     else:
         ndim = 3
-    composite = np.empty((nrows, ncols, ndim), dtype="uint8")
+    composite = np.empty((nrows, ncols, ndim), dtype=dtype)
     for i, band in enumerate(bands):
         if rescale_to is None:
             in_range = (np.nanmin(scene[band].values), np.nanmax(scene[band].values))
@@ -62,14 +67,18 @@ def composite(scene, bands=("red", "green", "blue"), rescale_to=None):
             in_range = tuple(rescale_to)
         composite[:, :, i] = skimage.exposure.rescale_intensity(
             scene[band].values,
-            out_range="uint8",
+            out_range=dtype,
             in_range=in_range,
         )
     if ndim == 4:
+        if np.dtype(dtype) == np.uint8:
+            vmax = 255
+        else:
+            vmax = 1
         composite[:, :, 3] = np.where(
             np.any([np.isnan(scene[b]) for b in bands], axis=0),
             0,
-            255,
+            vmax,
         )
     long_name = (
         ", ".join(f"{scene[b].attrs['long_name']}" for b in bands) + " composite"
