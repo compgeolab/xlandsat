@@ -11,7 +11,7 @@ volcano <https://en.wikipedia.org/wiki/Momotombo>`__, Nicaragua.
 We'll overlay the thermal band (only pixels above 320 K) on top of an RGB
 composite to show the ongoing lava flow.
 
-First, we'll import the required packages and load the sample scene:
+First, we'll import the required packages:
 
 .. jupyter-execute::
 
@@ -20,10 +20,18 @@ First, we'll import the required packages and load the sample scene:
     import xarray as xr
     import numpy as np
 
-    path = xls.datasets.fetch_momotombo()
-    scene = xls.load_scene(path)
-    # Fill the missing values due to the volcanic clouds to make it look nicer
-    scene = xls.interpolate_missing(scene)
+Now we can load a Level 1 version of the scene to make the RGB plot (the L2
+scene has a lot of issues from the atmospheric correction) and a Level 2
+version to get the thermal band as surface temperature:
+
+.. jupyter-execute::
+
+    path_l1 = xls.datasets.fetch_momotombo(level=1)
+    scene = xls.load_scene(path_l1)
+
+    path_l2 = xls.datasets.fetch_momotombo(level=2)
+    scene = scene.merge(xls.load_scene(path_l2, bands=["thermal"]))
+
     scene
 
 Now we can plot an RGB composite and thermal band separately to see that they
@@ -32,10 +40,7 @@ have to show:
 .. jupyter-execute::
 
     # Make the composite
-    rgb = xls.composite(scene, rescale_to=(0, 0.6))
-
-    # Histogram equalization for a better looking image
-    rgb = xls.equalize_histogram(rgb, clip_limit=0.02, kernel_size=200)
+    rgb = xls.composite(scene, rescale_to=(0, 0.2))
 
     # Plot the RGB and thermal separately
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 12))

@@ -24,8 +24,10 @@ POOCH = pooch.create(
         "LC08_L2SP_204023_20200927_20201006_02_T1-cropped.tar.gz": "md5:3c07e343ccf959be4e5dd5c9aca4e0a4",
         # Liverpool - Panchromatic
         "LC08_L1TP_204023_20200927_20201006_02_T1-cropped.tar.gz": "md5:7d43f8580b8e583d137a93f9ae51a73d",
-        # Momotombo
+        # Momotombo L2
         "LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz": "md5:8cc2e4c15e65940a7152fc1c8b412aa9",
+        # Momotombo L1
+        "LC08_L1TP_017051_20151205_20200908_02_T1-cropped.tar.gz": "md5:112d42e7adf709ac3a1179bbeedded6d",
         # Roraima
         "LC08_L2SP_232056_20151004_20200908_02_T1-cropped.tar.gz": "md5:f236a8b024aa4a4c62bee294d3bd737f",
         # Manaus
@@ -187,7 +189,7 @@ def fetch_liverpool_panchromatic(untar=False):
     )
 
 
-def fetch_momotombo(untar=False):
+def fetch_momotombo(untar=False, level=2):
     """
     Download a sample scene from the December 2015 Momotombo volcano eruption
 
@@ -209,16 +211,29 @@ def fetch_momotombo(untar=False):
     untar : bool
         If True, unpack the tar archive after downloading and return a path to
         the folder containing the unpacked files instead. Default is False.
+    level : int
+        Which level of data to load. Default is to load Level 2 surface
+        reflectance data. Can also be Level 1 top-of-the-atmosphere
+        reflectance.
 
     Returns
     -------
     path : str
         The path to the downloaded `.tar` file that contains the scene.
     """
-    return _fetch(
-        "LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz",
-        untar,
-    )
+    if level not in {1, 2}:
+        raise ValueError(f"Invalid data level '{level}'. Must be 1 or 2.")
+    if level == 2:
+        data = _fetch(
+            "LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz",
+            untar,
+        )
+    else:
+        data = _fetch(
+            "LC08_L1TP_017051_20151205_20200908_02_T1-cropped.tar.gz",
+            untar,
+        )
+    return data
 
 
 def fetch_roraima(untar=False):
