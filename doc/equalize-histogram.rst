@@ -69,12 +69,14 @@ equalization in :func:`xlandsat.equalize_histogram`.
 .. tip::
 
     It can be helpful to do a bit of contrast stretching first, but to a lesser
-    degree than we did previously.
+    degree than we did previously. It's also a good idea to use "float32" for
+    the composite to give it a larger range of color values (but this requires
+    more RAM).
 
 .. jupyter-execute::
 
-    rgb = xls.composite(scene, rescale_to=(0, 0.6))
-    rgb_eq = xls.equalize_histogram(rgb, clip_limit=0.02, kernel_size=300)
+    rgb = xls.composite(scene, rescale_to=(0, 0.8), dtype="float32")
+    rgb_eq = xls.equalize_histogram(rgb, clip_limit=0.04, kernel_size=300)
 
     fig, ax = plt.subplots(1, 1, figsize=(10, 6))
     rgb_eq.plot.imshow(ax=ax)

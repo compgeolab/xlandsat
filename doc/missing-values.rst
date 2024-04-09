@@ -1,7 +1,7 @@
 .. _missing-values:
 
-Filling missing values
-======================
+Fill missing values
+===================
 
 Landsat Level 2 data can sometimes contain missing values, particularly around
 bright clouds with dark shadows. These pixels will have a value of
@@ -11,7 +11,8 @@ can use the values of neighboring pixels to interpolate the missing values with
 
 Let's use our sample scene of the December 2015 eruption of `Momotombo volcano
 <https://en.wikipedia.org/wiki/Momotombo>`__, Nicaragua, to demonstrate how
-it's done.
+it's done. The Level 2 version of this scene has several holes because of the
+clouds and smoke from the volcano affecting the atmospheric correction method.
 
 First, we'll import the required packages and load the sample scene:
 
@@ -32,7 +33,7 @@ the missing values don't simply show up as white:
 .. jupyter-execute::
 
     # Make the composite and add it to the scene
-    rgb = xls.composite(scene, rescale_to=(0.04, 0.17))
+    rgb = xls.composite(scene, rescale_to=(0, 0.2))
 
     fig, ax = plt.subplots(1, 1, figsize=(10, 6))
 
@@ -49,7 +50,7 @@ We can fill these values with reasonable estimates using interpolation:
 
     scene_filled = xls.interpolate_missing(scene)
 
-    rgb_filled = xls.composite(scene_filled, rescale_to=(0.04, 0.17))
+    rgb_filled = xls.composite(scene_filled, rescale_to=(0, 0.2))
 
     fig, ax = plt.subplots(1, 1, figsize=(10, 6))
 
