@@ -6,7 +6,7 @@
     :padding: 0 0 0 0
 
     .. grid-item::
-        :columns: 12 12 12 12
+        :columns: 12 8 8 8
 
         .. raw:: html
 
@@ -15,6 +15,13 @@
         .. div:: sd-fs-3
 
             Analyze Landsat remote sensing images using xarray
+
+    .. grid-item::
+        :columns: 12 4 4 4
+
+        .. image:: ./_static/logo.svg
+            :width: 200px
+            :class: sd-m-auto dark-light
 
 
 **xlandsat** is Python library for loading and analyzing Landsat scenes

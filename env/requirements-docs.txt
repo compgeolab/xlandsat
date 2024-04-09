@@ -1,9 +1,8 @@
 # Requirements for building the documentation
-sphinx==4.5.*
-sphinx-book-theme==0.3.*
+sphinx==7.2.*
+sphinx-book-theme==1.1.*
 sphinx-copybutton==0.5.*
-jupyter-sphinx==0.4.*
-sphinx-design==0.1.*
-myst-parser==0.15.*
+sphinx-design==0.5.*
+jupyter-sphinx==0.5.*
 matplotlib
 ipykernel
