@@ -39,7 +39,7 @@ BAND_TITLES = {
     10: "thermal",
     11: "thermal 2",
 }
-BAND_UNITS = {
+BAND_UNITS_L2 = {
     1: "reflectance",
     2: "reflectance",
     3: "reflectance",
@@ -51,6 +51,19 @@ BAND_UNITS = {
     9: "reflectance",
     10: "Kelvin",
     11: "Kelvin",
+}
+BAND_UNITS_L1 = {
+    1: "reflectance",
+    2: "reflectance",
+    3: "reflectance",
+    4: "reflectance",
+    5: "reflectance",
+    6: "reflectance",
+    7: "reflectance",
+    8: "reflectance",
+    9: "reflectance",
+    10: "radiance",
+    11: "radiance",
 }
 
 
@@ -265,6 +278,10 @@ def read_and_scale_band(fname, reader, dtype, number, coords, metadata, region):
     mult, add = scaling_parameters(metadata, number)
     band_data *= mult
     band_data += add
+    if metadata["processing_level"] == "L1TP":
+        units = BAND_UNITS_L1[number]
+    else:
+        units = BAND_UNITS_L2[number]
     band = xr.DataArray(
         data=band_data,
         dims=("northing", "easting"),
@@ -272,7 +289,7 @@ def read_and_scale_band(fname, reader, dtype, number, coords, metadata, region):
         coords=coords,
         attrs={
             "long_name": BAND_TITLES[number],
-            "units": BAND_UNITS[number],
+            "units": units,
             "number": number,
             "filename": pathlib.Path(fname).name,
             "scaling_mult": mult,
@@ -287,13 +304,18 @@ def scaling_parameters(metadata, number):
     Get the scaling parameters for the band of the given number.
     """
     mult, add = None, None
-    mult_entries = [f"mult_band_{number}", f"mult_band_st_b{number}"]
-    add_entries = [f"add_band_{number}", f"add_band_st_b{number}"]
-    for key in metadata:
-        if any(key.endswith(entry) for entry in mult_entries):
-            mult = metadata[key]
-        if any(key.endswith(entry) for entry in add_entries):
-            add = metadata[key]
+    if number in set(range(1, 10)):
+        mult_entry = f"reflectance_mult_band_{number}"
+        add_entry = f"reflectance_add_band_{number}"
+    else:
+        if metadata["processing_level"] == "L1TP":
+            mult_entry = f"radiance_mult_band_{number}"
+            add_entry = f"radiance_add_band_{number}"
+        else:
+            mult_entry = f"temperature_mult_band_st_b{number}"
+            add_entry = f"temperature_add_band_st_b{number}"
+    mult = metadata[mult_entry]
+    add = metadata[add_entry]
     return mult, add
 
 
@@ -401,6 +423,8 @@ def parse_metadata(text):
         "CORNER_",
         "REFLECTANCE_MULT_BAND_",
         "REFLECTANCE_ADD_BAND_",
+        "RADIANCE_MULT_BAND_",
+        "RADIANCE_ADD_BAND_",
         "TEMPERATURE_MULT_BAND_",
         "TEMPERATURE_ADD_BAND_",
     ]
