@@ -2,51 +2,61 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     
-        <title>Making composites | xlandsat v0.0.post69+g8648da7</title>
+        <title>Making composites | xlandsat v0.0.post86+gc3b3f12</title>
     
 
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=12168cd1" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/thebelab-helper.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
-    <link rel="shortcut icon" href="_static/favicon.png"/>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'composites';</script>
+    <link rel="icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Working with indices" href="indices.html" />
@@ -55,530 +65,390 @@
     <script defer data-domain="compgeolab.org" src="https://plausible.io/js/plausible.js"></script>
 
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
-      
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">xlandsat <span class="project-version">v0.0.post69+g8648da7</span></h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Getting Started
- </span>
-</p>
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">xlandsat <span class="project-version">v0.0.post86+gc3b3f12</span></p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="install.html">
-   Installing
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  User Guide
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="io.html">
-   Loading and cropping scenes
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Making composites
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="indices.html">
-   Working with indices
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pansharpen.html">
-   Pansharpening
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="missing-values.html">
-   Filling missing values
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="equalize-histogram.html">
-   Histogram equalization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="plot-overlay.html">
-   Plotting bands overlaid on composites
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">Loading and cropping scenes</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Making composites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indices.html">Working with indices</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="pansharpen.html">Pansharpening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="missing-values.html">Fill missing values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equalize-histogram.html">Histogram equalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot-overlay.html">Plotting bands overlaid on composites</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Reference Documentation
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference Documentation</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="api/index.html">
-   List of functions and classes (API)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/generated/xlandsat.load_scene.html">
-     xlandsat.load_scene
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/generated/xlandsat.save_scene.html">
-     xlandsat.save_scene
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/generated/xlandsat.load_panchromatic.html">
-     xlandsat.load_panchromatic
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/generated/xlandsat.composite.html">
-     xlandsat.composite
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/generated/xlandsat.pansharpen.html">
-     xlandsat.pansharpen
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/generated/xlandsat.equalize_histogram.html">
-     xlandsat.equalize_histogram
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/generated/xlandsat.interpolate_missing.html">
-     xlandsat.interpolate_missing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_brumadinho_after.html">
-     xlandsat.datasets.fetch_brumadinho_after
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_brumadinho_before.html">
-     xlandsat.datasets.fetch_brumadinho_before
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_liverpool.html">
-     xlandsat.datasets.fetch_liverpool
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_liverpool_panchromatic.html">
-     xlandsat.datasets.fetch_liverpool_panchromatic
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_manaus.html">
-     xlandsat.datasets.fetch_manaus
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_momotombo.html">
-     xlandsat.datasets.fetch_momotombo
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api/generated/xlandsat.datasets.fetch_roraima.html">
-     xlandsat.datasets.fetch_roraima
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="citing.html">
-   Citing xlandsat
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="references.html">
-   References
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="changes.html">
-   Changelog
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="compatibility.html">
-   Version compatibility
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="versions.html">
-   Documentation for other versions
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api/index.html">List of functions and classes (API)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.load_scene.html">xlandsat.load_scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.save_scene.html">xlandsat.save_scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.load_panchromatic.html">xlandsat.load_panchromatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.composite.html">xlandsat.composite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.pansharpen.html">xlandsat.pansharpen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.equalize_histogram.html">xlandsat.equalize_histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.adjust_l1_colors.html">xlandsat.adjust_l1_colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.interpolate_missing.html">xlandsat.interpolate_missing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.datasets.fetch_brumadinho_after.html">xlandsat.datasets.fetch_brumadinho_after</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.datasets.fetch_brumadinho_before.html">xlandsat.datasets.fetch_brumadinho_before</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.datasets.fetch_liverpool.html">xlandsat.datasets.fetch_liverpool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.datasets.fetch_liverpool_panchromatic.html">xlandsat.datasets.fetch_liverpool_panchromatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.datasets.fetch_manaus.html">xlandsat.datasets.fetch_manaus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.datasets.fetch_momotombo.html">xlandsat.datasets.fetch_momotombo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.datasets.fetch_roraima.html">xlandsat.datasets.fetch_roraima</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Community
- </span>
-</p>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="citing.html">Citing xlandsat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compatibility.html">Version compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versions.html">Documentation for other versions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CONTRIBUTING.md">
-   How to contribute
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CODE_OF_CONDUCT.md">
-   Code of Conduct
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://github.com/compgeolab/xlandsat">
-   Source code on GitHub
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://www.compgeolab.org">
-   Computer-Oriented Geoscience Lab
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CONTRIBUTING.md">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/compgeolab/xlandsat">Source code on GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.compgeolab.org">Computer-Oriented Geoscience Lab</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/compgeolab/xlandsat" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/compgeolab/xlandsat/edit/main/doc/composites.rst" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/compgeolab/xlandsat/issues/new?title=Issue%20on%20page%20%2Fcomposites.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/composites.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/compgeolab/xlandsat"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/compgeolab/xlandsat/issues/new?title=Issue%20on%20page%20%2Fcomposites.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/compgeolab/xlandsat/edit/main/doc/composites.rst"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/composites.rst.txt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.rst</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rgb-composites">
-   RGB composites
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-composites">
-   Plotting composites
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rescaling-intensity-aka-contrast-stretching">
-   Rescaling intensity (AKA contrast stretching)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#color-infrared-composites">
-   Color infrared composites
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-composites">
-   Other composites
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Making composites</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rgb-composites">
-   RGB composites
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-composites">
-   Plotting composites
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rescaling-intensity-aka-contrast-stretching">
-   Rescaling intensity (AKA contrast stretching)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#color-infrared-composites">
-   Color infrared composites
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-composites">
-   Other composites
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Making composites</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rgb-composites">RGB composites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-composites">Plotting composites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rescaling-intensity-aka-contrast-stretching">Rescaling intensity (AKA contrast stretching)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color-infrared-composites">Color infrared composites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-composites">Other composites</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="making-composites">
-<span id="composites"></span><h1>Making composites<a class="headerlink" href="#making-composites" title="Permalink to this headline">#</a></h1>
+<span id="composites"></span><h1>Making composites<a class="headerlink" href="#making-composites" title="Link to this heading">#</a></h1>
 <p>Plotting individual bands is nice but we usually want to make some composite
 images, both RGB and false-color, to visualize information from multiple bands
 at once.
 We provide the <a class="reference internal" href="api/generated/xlandsat.composite.html#xlandsat.composite" title="xlandsat.composite"><code class="xref py py-func docutils literal notranslate"><span class="pre">xlandsat.composite</span></code></a> function to make this process easier
-and produce composites that are compatible with both <a class="reference external" href="https://docs.xarray.dev/en/stable/index.html#module-xarray" title="(in xarray v2023.9.1.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xarray</span></code></a> and
-<a class="reference external" href="https://matplotlib.org/stable/index.html#module-matplotlib" title="(in Matplotlib v3.8.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib</span></code></a>.</p>
+and produce composites that are compatible with both <a class="reference external" href="https://docs.xarray.dev/en/stable/index.html#module-xarray" title="(in xarray v2024.3.1.dev0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xarray</span></code></a> and
+<a class="reference external" href="https://matplotlib.org/stable/index.html#module-matplotlib" title="(in Matplotlib v3.8.4)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib</span></code></a>.</p>
 <p>As an example, let’s load our example scene from Manaus, Brazil, which is where
 the Solimões (brown water) and Negro (black water) rivers merge to form the
 Amazon river:</p>
@@ -958,18 +828,18 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 5MB
 Dimensions:   (easting: 851, northing: 468)
 Coordinates:
-  * easting   (easting) float64 8.325e+05 8.325e+05 ... 8.58e+05 8.58e+05
-  * northing  (northing) float64 -3.55e+05 -3.55e+05 ... -3.41e+05 -3.41e+05
+  * easting   (easting) float64 7kB 8.325e+05 8.325e+05 ... 8.58e+05 8.58e+05
+  * northing  (northing) float64 4kB -3.55e+05 -3.55e+05 ... -3.41e+05 -3.41e+05
 Data variables:
-    blue      (northing, easting) float16 0.05908 0.05896 ... 0.06702 0.06665
-    green     (northing, easting) float16 0.07446 0.0752 ... 0.09131 0.09082
-    red       (northing, easting) float16 0.06152 0.06201 ... 0.1055 0.1046
-    nir       (northing, easting) float16 0.2915 0.293 ... 0.06409 0.06445
-    swir1     (northing, easting) float16 0.1411 0.1434 ... 0.0509 0.05042
-    swir2     (northing, easting) float16 0.07996 0.08093 ... 0.04993 0.04968
+    blue      (northing, easting) float16 797kB 0.05908 0.05896 ... 0.06665
+    green     (northing, easting) float16 797kB 0.07446 0.0752 ... 0.09082
+    red       (northing, easting) float16 797kB 0.06152 0.06201 ... 0.1046
+    nir       (northing, easting) float16 797kB 0.2915 0.293 ... 0.06409 0.06445
+    swir1     (northing, easting) float16 797kB 0.1411 0.1434 ... 0.0509 0.05042
+    swir2     (northing, easting) float16 797kB 0.07996 0.08093 ... 0.04968
 Attributes: (12/19)
     Conventions:                CF-1.8
     title:                      Landsat 9 scene from 2023-07-23 (path/row=231...
@@ -983,59 +853,59 @@ Attributes: (12/19)
     scene_center_time:          14:12:31.2799050Z
     wrs_path:                   231
     wrs_row:                    62
-    mtl_file:                   GROUP = LANDSAT_METADATA_FILE\n  GROUP = PROD...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-5f2193f3-5040-468c-9e7e-5b5a88ad6be2' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-5f2193f3-5040-468c-9e7e-5b5a88ad6be2' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>easting</span>: 851</li><li><span class='xr-has-index'>northing</span>: 468</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-833871b0-20c4-4da7-8a07-1f9f66c74de5' class='xr-section-summary-in' type='checkbox'  checked><label for='section-833871b0-20c4-4da7-8a07-1f9f66c74de5' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>easting</span></div><div class='xr-var-dims'>(easting)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>8.325e+05 8.325e+05 ... 8.58e+05</div><input id='attrs-0b429b9b-365b-4c88-93e6-3e5ccf196351' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0b429b9b-365b-4c88-93e6-3e5ccf196351' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-71103e6c-0261-415a-b59a-41038db92c44' class='xr-var-data-in' type='checkbox'><label for='data-71103e6c-0261-415a-b59a-41038db92c44' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM easting</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([832500., 832530., 832560., ..., 857940., 857970., 858000.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>northing</span></div><div class='xr-var-dims'>(northing)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-3.55e+05 -3.55e+05 ... -3.41e+05</div><input id='attrs-f6048751-9591-43f2-978c-71ac2bb9a1b0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f6048751-9591-43f2-978c-71ac2bb9a1b0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-98365ebd-2dc5-4751-bf21-1785c0e33e3c' class='xr-var-data-in' type='checkbox'><label for='data-98365ebd-2dc5-4751-bf21-1785c0e33e3c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM northing</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([-355020., -354990., -354960., ..., -341070., -341040., -341010.])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-402b609b-d858-4f67-9ef9-48094ac2c65c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-402b609b-d858-4f67-9ef9-48094ac2c65c' class='xr-section-summary' >Data variables: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>blue</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.05908 0.05896 ... 0.06702 0.06665</div><input id='attrs-d15e63b3-a05d-4af1-97e4-430616042e89' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d15e63b3-a05d-4af1-97e4-430616042e89' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6375799f-dcbb-4233-9d62-399d68516d53' class='xr-var-data-in' type='checkbox'><label for='data-6375799f-dcbb-4233-9d62-399d68516d53' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>blue</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>2</dd><dt><span>filename :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1_SR_B2.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.05908, 0.05896, 0.05933, ..., 0.0663 , 0.0641 , 0.06384],
+    mtl_file:                   GROUP = LANDSAT_METADATA_FILE\n  GROUP = PROD...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-d0847e5f-7081-4259-8814-7ceeabba3495' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-d0847e5f-7081-4259-8814-7ceeabba3495' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>easting</span>: 851</li><li><span class='xr-has-index'>northing</span>: 468</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-1bbfeaa8-709b-4206-8e38-92a67c1331a3' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1bbfeaa8-709b-4206-8e38-92a67c1331a3' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>easting</span></div><div class='xr-var-dims'>(easting)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>8.325e+05 8.325e+05 ... 8.58e+05</div><input id='attrs-81cb4464-dc65-467c-8d9e-39f25f5594a1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-81cb4464-dc65-467c-8d9e-39f25f5594a1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fadd9bf7-963d-44d3-8492-7fd1671a8bd0' class='xr-var-data-in' type='checkbox'><label for='data-fadd9bf7-963d-44d3-8492-7fd1671a8bd0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM easting</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([832500., 832530., 832560., ..., 857940., 857970., 858000.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>northing</span></div><div class='xr-var-dims'>(northing)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-3.55e+05 -3.55e+05 ... -3.41e+05</div><input id='attrs-47524be6-a643-406b-8f63-fb42ae5f7d53' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-47524be6-a643-406b-8f63-fb42ae5f7d53' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d87035a9-d134-49a6-abc8-62ce4d59068b' class='xr-var-data-in' type='checkbox'><label for='data-d87035a9-d134-49a6-abc8-62ce4d59068b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM northing</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([-355020., -354990., -354960., ..., -341070., -341040., -341010.])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-aa1088f9-7026-4dea-900a-51605fe4b28a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-aa1088f9-7026-4dea-900a-51605fe4b28a' class='xr-section-summary' >Data variables: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>blue</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.05908 0.05896 ... 0.06702 0.06665</div><input id='attrs-a72dfcbf-2721-4ec4-9818-82e994d7bf99' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a72dfcbf-2721-4ec4-9818-82e994d7bf99' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0b1c0f76-9ae0-4fa6-8df8-9f4c03e1e665' class='xr-var-data-in' type='checkbox'><label for='data-0b1c0f76-9ae0-4fa6-8df8-9f4c03e1e665' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>blue</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>2</dd><dt><span>filename :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1_SR_B2.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.05908, 0.05896, 0.05933, ..., 0.0663 , 0.0641 , 0.06384],
        [0.05896, 0.05908, 0.05884, ..., 0.0668 , 0.0657 , 0.0647 ],
        [0.05908, 0.05896, 0.05872, ..., 0.0691 , 0.0681 , 0.0676 ],
        ...,
        [0.11475, 0.12354, 0.1078 , ..., 0.0665 , 0.0665 , 0.0676 ],
        [0.1183 , 0.1072 , 0.12366, ..., 0.067  , 0.0665 , 0.0676 ],
        [0.1123 , 0.1113 , 0.105  , ..., 0.06775, 0.067  , 0.06665]],
-      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>green</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.07446 0.0752 ... 0.09131 0.09082</div><input id='attrs-e692dce3-9cca-4e8f-8cc7-d26c3b7f78aa' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e692dce3-9cca-4e8f-8cc7-d26c3b7f78aa' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0f656430-74ef-4963-b8c0-285678ac0702' class='xr-var-data-in' type='checkbox'><label for='data-0f656430-74ef-4963-b8c0-285678ac0702' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>green</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>3</dd><dt><span>filename :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1_SR_B3.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.07446, 0.0752 , 0.07654, ..., 0.0896 , 0.0834 , 0.0857 ],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>green</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.07446 0.0752 ... 0.09131 0.09082</div><input id='attrs-8f032a15-c734-4f35-96cf-e82a993539ae' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8f032a15-c734-4f35-96cf-e82a993539ae' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-036d63e4-90a1-4429-be4f-bef99682ec40' class='xr-var-data-in' type='checkbox'><label for='data-036d63e4-90a1-4429-be4f-bef99682ec40' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>green</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>3</dd><dt><span>filename :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1_SR_B3.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.07446, 0.0752 , 0.07654, ..., 0.0896 , 0.0834 , 0.0857 ],
        [0.07336, 0.07446, 0.0753 , ..., 0.09094, 0.08655, 0.0873 ],
        [0.074  , 0.07495, 0.07434, ..., 0.09595, 0.09607, 0.095  ],
        ...,
        [0.119  , 0.1359 , 0.12463, ..., 0.0908 , 0.0908 , 0.09143],
        [0.1346 , 0.1262 , 0.1376 , ..., 0.09094, 0.0907 , 0.0913 ],
        [0.1287 , 0.1239 , 0.1245 , ..., 0.0919 , 0.0913 , 0.0908 ]],
-      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>red</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.06152 0.06201 ... 0.1055 0.1046</div><input id='attrs-ff90d9bd-d13b-4535-96f2-332ce5fe1821' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ff90d9bd-d13b-4535-96f2-332ce5fe1821' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-23232ae2-203a-4236-8776-aabcba981e72' class='xr-var-data-in' type='checkbox'><label for='data-23232ae2-203a-4236-8776-aabcba981e72' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>red</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>4</dd><dt><span>filename :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1_SR_B4.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.06152, 0.062  , 0.06287, ..., 0.077  , 0.07166, 0.07214],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>red</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.06152 0.06201 ... 0.1055 0.1046</div><input id='attrs-530688a7-d628-4854-b81d-d09dc869a062' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-530688a7-d628-4854-b81d-d09dc869a062' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-77102b44-8a4e-4e9d-a19d-2c2fdaf4eb20' class='xr-var-data-in' type='checkbox'><label for='data-77102b44-8a4e-4e9d-a19d-2c2fdaf4eb20' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>red</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>4</dd><dt><span>filename :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1_SR_B4.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.06152, 0.062  , 0.06287, ..., 0.077  , 0.07166, 0.07214],
        [0.0614 , 0.0619 , 0.06226, ..., 0.0779 , 0.0753 , 0.07446],
        [0.0625 , 0.06238, 0.06177, ..., 0.0814 , 0.08057, 0.07886],
        ...,
        [0.1266 , 0.1445 , 0.1349 , ..., 0.1046 , 0.1046 , 0.1061 ],
        [0.1409 , 0.1383 , 0.1462 , ..., 0.105  , 0.10474, 0.1056 ],
        [0.1316 , 0.139  , 0.142  , ..., 0.10596, 0.10547, 0.1046 ]],
-      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>nir</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.2915 0.293 ... 0.06409 0.06445</div><input id='attrs-33dd6354-e217-4e4c-9b7e-129257998b4f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-33dd6354-e217-4e4c-9b7e-129257998b4f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5a06de34-e131-4952-83c3-00c7116630b2' class='xr-var-data-in' type='checkbox'><label for='data-5a06de34-e131-4952-83c3-00c7116630b2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>near-infrared</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>5</dd><dt><span>filename :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1_SR_B5.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.2915 , 0.293  , 0.2954 , ..., 0.2905 , 0.2905 , 0.2852 ],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>nir</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.2915 0.293 ... 0.06409 0.06445</div><input id='attrs-f41edec5-fc82-4431-9ead-10574072a7f3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f41edec5-fc82-4431-9ead-10574072a7f3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ece3e74d-f12a-4e74-95ef-99a82117e527' class='xr-var-data-in' type='checkbox'><label for='data-ece3e74d-f12a-4e74-95ef-99a82117e527' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>near-infrared</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>5</dd><dt><span>filename :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1_SR_B5.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.2915 , 0.293  , 0.2954 , ..., 0.2905 , 0.2905 , 0.2852 ],
        [0.2744 , 0.2788 , 0.2876 , ..., 0.2905 , 0.2837 , 0.2866 ],
        [0.2793 , 0.2769 , 0.2632 , ..., 0.3145 , 0.3247 , 0.3306 ],
        ...,
        [0.1864 , 0.1781 , 0.1835 , ..., 0.063  , 0.0641 , 0.06494],
        [0.1761 , 0.1761 , 0.2042 , ..., 0.06323, 0.0635 , 0.0642 ],
        [0.1791 , 0.1818 , 0.2052 , ..., 0.0646 , 0.0641 , 0.06445]],
-      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>swir1</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.1411 0.1434 ... 0.0509 0.05042</div><input id='attrs-fbfe471c-48c2-4323-a6fc-6f71ed406f74' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fbfe471c-48c2-4323-a6fc-6f71ed406f74' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6f62fd24-ecaf-42ce-941f-15215a23c1e6' class='xr-var-data-in' type='checkbox'><label for='data-6f62fd24-ecaf-42ce-941f-15215a23c1e6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>short-wave infrared 1</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>6</dd><dt><span>filename :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1_SR_B6.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.1411 , 0.1434 , 0.1477 , ..., 0.1552 , 0.1416 , 0.1556 ],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>swir1</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.1411 0.1434 ... 0.0509 0.05042</div><input id='attrs-a81c3b68-7457-48d7-ad17-71086b53100c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a81c3b68-7457-48d7-ad17-71086b53100c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ed67534c-6b4f-41e9-a2ef-dec612dd9b7b' class='xr-var-data-in' type='checkbox'><label for='data-ed67534c-6b4f-41e9-a2ef-dec612dd9b7b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>short-wave infrared 1</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>6</dd><dt><span>filename :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1_SR_B6.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.1411 , 0.1434 , 0.1477 , ..., 0.1552 , 0.1416 , 0.1556 ],
        [0.135  , 0.1362 , 0.1337 , ..., 0.173  , 0.1705 , 0.1678 ],
        [0.1312 , 0.1343 , 0.1344 , ..., 0.1993 , 0.2006 , 0.2013 ],
        ...,
        [0.2428 , 0.2627 , 0.2554 , ..., 0.05005, 0.0503 , 0.05115],
        [0.2651 , 0.251  , 0.2686 , ..., 0.0504 , 0.05078, 0.05103],
        [0.2306 , 0.226  , 0.2396 , ..., 0.05115, 0.0509 , 0.0504 ]],
-      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>swir2</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.07996 0.08093 ... 0.04993 0.04968</div><input id='attrs-dd72256b-7247-464c-949f-a2402f1de637' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-dd72256b-7247-464c-949f-a2402f1de637' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4224785d-3ff1-4816-9b85-645508ed727d' class='xr-var-data-in' type='checkbox'><label for='data-4224785d-3ff1-4816-9b85-645508ed727d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>short-wave infrared 2</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>7</dd><dt><span>filename :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1_SR_B7.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.07996, 0.08093, 0.0836 , ..., 0.095  , 0.0901 , 0.09375],
+      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>swir2</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.07996 0.08093 ... 0.04993 0.04968</div><input id='attrs-be975736-5414-4fad-a4f7-734b4d00e284' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-be975736-5414-4fad-a4f7-734b4d00e284' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5bd22f98-a663-4134-9a28-8dc3e4b8a3d1' class='xr-var-data-in' type='checkbox'><label for='data-5bd22f98-a663-4134-9a28-8dc3e4b8a3d1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>short-wave infrared 2</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>7</dd><dt><span>filename :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1_SR_B7.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.07996, 0.08093, 0.0836 , ..., 0.095  , 0.0901 , 0.09375],
        [0.078  , 0.07837, 0.078  , ..., 0.1052 , 0.1017 , 0.1008 ],
        [0.0764 , 0.078  , 0.0779 , ..., 0.11743, 0.1179 , 0.1183 ],
        ...,
        [0.2155 , 0.236  , 0.2257 , ..., 0.04944, 0.04956, 0.0498 ],
        [0.2505 , 0.2269 , 0.2335 , ..., 0.04932, 0.04968, 0.05005],
        [0.2028 , 0.1962 , 0.2015 , ..., 0.05017, 0.04993, 0.04968]],
-      dtype=float16)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ca55eeb0-446c-4e66-9232-cf0704c2cca3' class='xr-section-summary-in' type='checkbox'  ><label for='section-ca55eeb0-446c-4e66-9232-cf0704c2cca3' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>easting</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-d0b9fcc6-2ec1-4c37-9ab8-d029e026dd0b' class='xr-index-data-in' type='checkbox'/><label for='index-d0b9fcc6-2ec1-4c37-9ab8-d029e026dd0b' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([832500.0, 832530.0, 832560.0, 832590.0, 832620.0, 832650.0, 832680.0,
+      dtype=float16)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9e8484f4-362b-4814-a70a-c68a8d30d032' class='xr-section-summary-in' type='checkbox'  ><label for='section-9e8484f4-362b-4814-a70a-c68a8d30d032' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>easting</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-41bbc6e3-d612-4c9d-bced-88f643aefb8a' class='xr-index-data-in' type='checkbox'/><label for='index-41bbc6e3-d612-4c9d-bced-88f643aefb8a' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([832500.0, 832530.0, 832560.0, 832590.0, 832620.0, 832650.0, 832680.0,
        832710.0, 832740.0, 832770.0,
        ...
        857730.0, 857760.0, 857790.0, 857820.0, 857850.0, 857880.0, 857910.0,
        857940.0, 857970.0, 858000.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;easting&#x27;, length=851))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>northing</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-89f30785-5710-4cf3-a3ac-40820d1fb01c' class='xr-index-data-in' type='checkbox'/><label for='index-89f30785-5710-4cf3-a3ac-40820d1fb01c' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-355020.0, -354990.0, -354960.0, -354930.0, -354900.0, -354870.0,
+      dtype=&#x27;float64&#x27;, name=&#x27;easting&#x27;, length=851))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>northing</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-d431823c-0707-46e0-8aec-75f02912333e' class='xr-index-data-in' type='checkbox'/><label for='index-d431823c-0707-46e0-8aec-75f02912333e' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-355020.0, -354990.0, -354960.0, -354930.0, -354900.0, -354870.0,
        -354840.0, -354810.0, -354780.0, -354750.0,
        ...
        -341280.0, -341250.0, -341220.0, -341190.0, -341160.0, -341130.0,
        -341100.0, -341070.0, -341040.0, -341010.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;northing&#x27;, length=468))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-0ccc076c-583f-4b57-b48a-8aae8f49adc8' class='xr-section-summary-in' type='checkbox'  ><label for='section-0ccc076c-583f-4b57-b48a-8aae8f49adc8' class='xr-section-summary' >Attributes: <span>(19)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>title :</span></dt><dd>Landsat 9 scene from 2023-07-23 (path/row=231/62)</dd><dt><span>digital_object_identifier :</span></dt><dd>https://doi.org/10.5066/P9OGBGM6</dd><dt><span>origin :</span></dt><dd>Image courtesy of the U.S. Geological Survey</dd><dt><span>landsat_product_id :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1</dd><dt><span>processing_level :</span></dt><dd>L2SP</dd><dt><span>collection_number :</span></dt><dd>02</dd><dt><span>collection_category :</span></dt><dd>T1</dd><dt><span>spacecraft_id :</span></dt><dd>LANDSAT_9</dd><dt><span>sensor_id :</span></dt><dd>OLI_TIRS</dd><dt><span>map_projection :</span></dt><dd>UTM</dd><dt><span>utm_zone :</span></dt><dd>20</dd><dt><span>datum :</span></dt><dd>WGS84</dd><dt><span>ellipsoid :</span></dt><dd>WGS84</dd><dt><span>date_acquired :</span></dt><dd>2023-07-23</dd><dt><span>scene_center_time :</span></dt><dd>14:12:31.2799050Z</dd><dt><span>wrs_path :</span></dt><dd>231</dd><dt><span>wrs_row :</span></dt><dd>62</dd><dt><span>mtl_file :</span></dt><dd>GROUP = LANDSAT_METADATA_FILE
+      dtype=&#x27;float64&#x27;, name=&#x27;northing&#x27;, length=468))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-65c87c78-2b6f-426e-84c8-d97550b69061' class='xr-section-summary-in' type='checkbox'  ><label for='section-65c87c78-2b6f-426e-84c8-d97550b69061' class='xr-section-summary' >Attributes: <span>(19)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>title :</span></dt><dd>Landsat 9 scene from 2023-07-23 (path/row=231/62)</dd><dt><span>digital_object_identifier :</span></dt><dd>https://doi.org/10.5066/P9OGBGM6</dd><dt><span>origin :</span></dt><dd>Image courtesy of the U.S. Geological Survey</dd><dt><span>landsat_product_id :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1</dd><dt><span>processing_level :</span></dt><dd>L2SP</dd><dt><span>collection_number :</span></dt><dd>02</dd><dt><span>collection_category :</span></dt><dd>T1</dd><dt><span>spacecraft_id :</span></dt><dd>LANDSAT_9</dd><dt><span>sensor_id :</span></dt><dd>OLI_TIRS</dd><dt><span>map_projection :</span></dt><dd>UTM</dd><dt><span>utm_zone :</span></dt><dd>20</dd><dt><span>datum :</span></dt><dd>WGS84</dd><dt><span>ellipsoid :</span></dt><dd>WGS84</dd><dt><span>date_acquired :</span></dt><dd>2023-07-23</dd><dt><span>scene_center_time :</span></dt><dd>14:12:31.2799050Z</dd><dt><span>wrs_path :</span></dt><dd>231</dd><dt><span>wrs_row :</span></dt><dd>62</dd><dt><span>mtl_file :</span></dt><dd>GROUP = LANDSAT_METADATA_FILE
   GROUP = PRODUCT_CONTENTS
     ORIGIN = &quot;Image courtesy of the U.S. Geological Survey&quot;
     DIGITAL_OBJECT_IDENTIFIER = &quot;https://doi.org/10.5066/P9OGBGM6&quot;
@@ -1390,7 +1260,7 @@ END
 </dd></dl></div></li></ul></div></div></div></div>
 </div>
 <section id="rgb-composites">
-<h2>RGB composites<a class="headerlink" href="#rgb-composites" title="Permalink to this headline">#</a></h2>
+<h2>RGB composites<a class="headerlink" href="#rgb-composites" title="Link to this heading">#</a></h2>
 <p>Let’s make an RGB (true color) composite since that is the most fundamental
 type and it allows us to get a good handle on what we’re seeing in the scene.
 The RGB composite is also the default made by <a class="reference internal" href="api/generated/xlandsat.composite.html#xlandsat.composite" title="xlandsat.composite"><code class="xref py py-func docutils literal notranslate"><span class="pre">xlandsat.composite</span></code></a> if the
@@ -1767,7 +1637,7 @@ dl.xr-attrs {
   fill: currentColor;
 }
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;composite_red_green_blue&#x27; (northing: 468, easting: 851,
-                                              channel: 4)&gt;
+                                              channel: 4)&gt; Size: 2MB
 array([[[ 13,  10,  39, 255],
         [ 13,  11,  39, 255],
         [ 13,  11,  39, 255],
@@ -1810,9 +1680,9 @@ array([[[ 13,  10,  39, 255],
         [ 23,  14,  41, 255],
         [ 23,  14,  41, 255]]], dtype=uint8)
 Coordinates:
-  * channel   (channel) &lt;U5 &#x27;red&#x27; &#x27;green&#x27; &#x27;blue&#x27; &#x27;alpha&#x27;
-  * easting   (easting) float64 8.325e+05 8.325e+05 ... 8.58e+05 8.58e+05
-  * northing  (northing) float64 -3.55e+05 -3.55e+05 ... -3.41e+05 -3.41e+05
+  * channel   (channel) &lt;U5 80B &#x27;red&#x27; &#x27;green&#x27; &#x27;blue&#x27; &#x27;alpha&#x27;
+  * easting   (easting) float64 7kB 8.325e+05 8.325e+05 ... 8.58e+05 8.58e+05
+  * northing  (northing) float64 4kB -3.55e+05 -3.55e+05 ... -3.41e+05 -3.41e+05
 Attributes: (12/20)
     long_name:                  red, green, blue composite
     Conventions:                CF-1.8
@@ -1826,7 +1696,7 @@ Attributes: (12/20)
     scene_center_time:          14:12:31.2799050Z
     wrs_path:                   231
     wrs_row:                    62
-    mtl_file:                   GROUP = LANDSAT_METADATA_FILE\n  GROUP = PROD...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'composite_red_green_blue'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>northing</span>: 468</li><li><span class='xr-has-index'>easting</span>: 851</li><li><span class='xr-has-index'>channel</span>: 4</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-ea465589-217f-4b20-b3db-ef995b3b83db' class='xr-array-in' type='checkbox' checked><label for='section-ea465589-217f-4b20-b3db-ef995b3b83db' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>13 10 39 255 13 11 39 255 13 11 ... 41 255 23 14 41 255 23 14 41 255</span></div><div class='xr-array-data'><pre>array([[[ 13,  10,  39, 255],
+    mtl_file:                   GROUP = LANDSAT_METADATA_FILE\n  GROUP = PROD...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'composite_red_green_blue'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>northing</span>: 468</li><li><span class='xr-has-index'>easting</span>: 851</li><li><span class='xr-has-index'>channel</span>: 4</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-fe53c9b5-be6e-4dd4-9b72-27d3b14e8edf' class='xr-array-in' type='checkbox' checked><label for='section-fe53c9b5-be6e-4dd4-9b72-27d3b14e8edf' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>13 10 39 255 13 11 39 255 13 11 ... 41 255 23 14 41 255 23 14 41 255</span></div><div class='xr-array-data'><pre>array([[[ 13,  10,  39, 255],
         [ 13,  11,  39, 255],
         [ 13,  11,  39, 255],
         ...,
@@ -1866,17 +1736,17 @@ Attributes: (12/20)
         ...,
         [ 23,  15,  41, 255],
         [ 23,  14,  41, 255],
-        [ 23,  14,  41, 255]]], dtype=uint8)</pre></div></div></li><li class='xr-section-item'><input id='section-20133f3d-1ea9-411f-9059-35ab92f6d1fe' class='xr-section-summary-in' type='checkbox'  checked><label for='section-20133f3d-1ea9-411f-9059-35ab92f6d1fe' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>channel</span></div><div class='xr-var-dims'>(channel)</div><div class='xr-var-dtype'>&lt;U5</div><div class='xr-var-preview xr-preview'>&#x27;red&#x27; &#x27;green&#x27; &#x27;blue&#x27; &#x27;alpha&#x27;</div><input id='attrs-8fc26d59-4945-42cd-a179-471cbda8b14f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-8fc26d59-4945-42cd-a179-471cbda8b14f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6afcd587-02a0-44e6-bb14-4b08b5fe5cad' class='xr-var-data-in' type='checkbox'><label for='data-6afcd587-02a0-44e6-bb14-4b08b5fe5cad' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;red&#x27;, &#x27;green&#x27;, &#x27;blue&#x27;, &#x27;alpha&#x27;], dtype=&#x27;&lt;U5&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>easting</span></div><div class='xr-var-dims'>(easting)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>8.325e+05 8.325e+05 ... 8.58e+05</div><input id='attrs-e64f3387-89fa-43e8-865d-e82c693d45bf' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e64f3387-89fa-43e8-865d-e82c693d45bf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3534b5c6-b9ec-4e18-a2c3-a7f7113a7248' class='xr-var-data-in' type='checkbox'><label for='data-3534b5c6-b9ec-4e18-a2c3-a7f7113a7248' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM easting</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([832500., 832530., 832560., ..., 857940., 857970., 858000.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>northing</span></div><div class='xr-var-dims'>(northing)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-3.55e+05 -3.55e+05 ... -3.41e+05</div><input id='attrs-d57c6cd5-1a67-404a-abd9-42bb74c851d9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d57c6cd5-1a67-404a-abd9-42bb74c851d9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5fee7320-d643-4e71-a922-d6a09465de59' class='xr-var-data-in' type='checkbox'><label for='data-5fee7320-d643-4e71-a922-d6a09465de59' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM northing</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([-355020., -354990., -354960., ..., -341070., -341040., -341010.])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-30fa5a60-eb43-44b4-a3d4-700d3050ab08' class='xr-section-summary-in' type='checkbox'  ><label for='section-30fa5a60-eb43-44b4-a3d4-700d3050ab08' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>channel</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-b101dfc4-0063-4236-bcf7-59ea9baeb734' class='xr-index-data-in' type='checkbox'/><label for='index-b101dfc4-0063-4236-bcf7-59ea9baeb734' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;red&#x27;, &#x27;green&#x27;, &#x27;blue&#x27;, &#x27;alpha&#x27;], dtype=&#x27;object&#x27;, name=&#x27;channel&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>easting</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-2a6e3247-3419-4d47-aa94-c42e9320bec6' class='xr-index-data-in' type='checkbox'/><label for='index-2a6e3247-3419-4d47-aa94-c42e9320bec6' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([832500.0, 832530.0, 832560.0, 832590.0, 832620.0, 832650.0, 832680.0,
+        [ 23,  14,  41, 255]]], dtype=uint8)</pre></div></div></li><li class='xr-section-item'><input id='section-3041d654-5638-4df5-97c5-85a1d2b5331e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3041d654-5638-4df5-97c5-85a1d2b5331e' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>channel</span></div><div class='xr-var-dims'>(channel)</div><div class='xr-var-dtype'>&lt;U5</div><div class='xr-var-preview xr-preview'>&#x27;red&#x27; &#x27;green&#x27; &#x27;blue&#x27; &#x27;alpha&#x27;</div><input id='attrs-790b408b-ae68-4277-b484-a57d0002c530' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-790b408b-ae68-4277-b484-a57d0002c530' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a16725a7-9a0c-4062-a5d2-afe014079582' class='xr-var-data-in' type='checkbox'><label for='data-a16725a7-9a0c-4062-a5d2-afe014079582' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;red&#x27;, &#x27;green&#x27;, &#x27;blue&#x27;, &#x27;alpha&#x27;], dtype=&#x27;&lt;U5&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>easting</span></div><div class='xr-var-dims'>(easting)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>8.325e+05 8.325e+05 ... 8.58e+05</div><input id='attrs-aeaf9209-2fde-442b-ad73-3c32d0def82d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-aeaf9209-2fde-442b-ad73-3c32d0def82d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-aa3626e3-d953-4003-bea5-329ff8595a3b' class='xr-var-data-in' type='checkbox'><label for='data-aa3626e3-d953-4003-bea5-329ff8595a3b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM easting</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([832500., 832530., 832560., ..., 857940., 857970., 858000.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>northing</span></div><div class='xr-var-dims'>(northing)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-3.55e+05 -3.55e+05 ... -3.41e+05</div><input id='attrs-18ace110-a0b0-46e9-81b8-9dd6c277d755' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-18ace110-a0b0-46e9-81b8-9dd6c277d755' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ab251153-1302-40b0-8ae1-f953925d9286' class='xr-var-data-in' type='checkbox'><label for='data-ab251153-1302-40b0-8ae1-f953925d9286' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM northing</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([-355020., -354990., -354960., ..., -341070., -341040., -341010.])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3be83e18-644a-45d2-be2f-915ad4c705a1' class='xr-section-summary-in' type='checkbox'  ><label for='section-3be83e18-644a-45d2-be2f-915ad4c705a1' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>channel</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-8cb17303-b15a-4d9f-bd46-507abffacb8e' class='xr-index-data-in' type='checkbox'/><label for='index-8cb17303-b15a-4d9f-bd46-507abffacb8e' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;red&#x27;, &#x27;green&#x27;, &#x27;blue&#x27;, &#x27;alpha&#x27;], dtype=&#x27;object&#x27;, name=&#x27;channel&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>easting</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-def69e76-9817-446b-88b9-54c89311c7ff' class='xr-index-data-in' type='checkbox'/><label for='index-def69e76-9817-446b-88b9-54c89311c7ff' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([832500.0, 832530.0, 832560.0, 832590.0, 832620.0, 832650.0, 832680.0,
        832710.0, 832740.0, 832770.0,
        ...
        857730.0, 857760.0, 857790.0, 857820.0, 857850.0, 857880.0, 857910.0,
        857940.0, 857970.0, 858000.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;easting&#x27;, length=851))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>northing</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-9aa412b4-a23a-4074-94ca-fc7bf5a205d6' class='xr-index-data-in' type='checkbox'/><label for='index-9aa412b4-a23a-4074-94ca-fc7bf5a205d6' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-355020.0, -354990.0, -354960.0, -354930.0, -354900.0, -354870.0,
+      dtype=&#x27;float64&#x27;, name=&#x27;easting&#x27;, length=851))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>northing</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-16b2d176-1137-4dc4-8f76-4e8af0126cac' class='xr-index-data-in' type='checkbox'/><label for='index-16b2d176-1137-4dc4-8f76-4e8af0126cac' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-355020.0, -354990.0, -354960.0, -354930.0, -354900.0, -354870.0,
        -354840.0, -354810.0, -354780.0, -354750.0,
        ...
        -341280.0, -341250.0, -341220.0, -341190.0, -341160.0, -341130.0,
        -341100.0, -341070.0, -341040.0, -341010.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;northing&#x27;, length=468))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-8818784c-a368-43f4-a1a4-d87b93267b19' class='xr-section-summary-in' type='checkbox'  ><label for='section-8818784c-a368-43f4-a1a4-d87b93267b19' class='xr-section-summary' >Attributes: <span>(20)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>red, green, blue composite</dd><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>title :</span></dt><dd>Landsat 9 scene from 2023-07-23 (path/row=231/62)</dd><dt><span>digital_object_identifier :</span></dt><dd>https://doi.org/10.5066/P9OGBGM6</dd><dt><span>origin :</span></dt><dd>Image courtesy of the U.S. Geological Survey</dd><dt><span>landsat_product_id :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1</dd><dt><span>processing_level :</span></dt><dd>L2SP</dd><dt><span>collection_number :</span></dt><dd>02</dd><dt><span>collection_category :</span></dt><dd>T1</dd><dt><span>spacecraft_id :</span></dt><dd>LANDSAT_9</dd><dt><span>sensor_id :</span></dt><dd>OLI_TIRS</dd><dt><span>map_projection :</span></dt><dd>UTM</dd><dt><span>utm_zone :</span></dt><dd>20</dd><dt><span>datum :</span></dt><dd>WGS84</dd><dt><span>ellipsoid :</span></dt><dd>WGS84</dd><dt><span>date_acquired :</span></dt><dd>2023-07-23</dd><dt><span>scene_center_time :</span></dt><dd>14:12:31.2799050Z</dd><dt><span>wrs_path :</span></dt><dd>231</dd><dt><span>wrs_row :</span></dt><dd>62</dd><dt><span>mtl_file :</span></dt><dd>GROUP = LANDSAT_METADATA_FILE
+      dtype=&#x27;float64&#x27;, name=&#x27;northing&#x27;, length=468))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3f5be50a-e2a3-450a-a497-e1ca53d59ec1' class='xr-section-summary-in' type='checkbox'  ><label for='section-3f5be50a-e2a3-450a-a497-e1ca53d59ec1' class='xr-section-summary' >Attributes: <span>(20)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>red, green, blue composite</dd><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>title :</span></dt><dd>Landsat 9 scene from 2023-07-23 (path/row=231/62)</dd><dt><span>digital_object_identifier :</span></dt><dd>https://doi.org/10.5066/P9OGBGM6</dd><dt><span>origin :</span></dt><dd>Image courtesy of the U.S. Geological Survey</dd><dt><span>landsat_product_id :</span></dt><dd>LC09_L2SP_231062_20230723_20230802_02_T1</dd><dt><span>processing_level :</span></dt><dd>L2SP</dd><dt><span>collection_number :</span></dt><dd>02</dd><dt><span>collection_category :</span></dt><dd>T1</dd><dt><span>spacecraft_id :</span></dt><dd>LANDSAT_9</dd><dt><span>sensor_id :</span></dt><dd>OLI_TIRS</dd><dt><span>map_projection :</span></dt><dd>UTM</dd><dt><span>utm_zone :</span></dt><dd>20</dd><dt><span>datum :</span></dt><dd>WGS84</dd><dt><span>ellipsoid :</span></dt><dd>WGS84</dd><dt><span>date_acquired :</span></dt><dd>2023-07-23</dd><dt><span>scene_center_time :</span></dt><dd>14:12:31.2799050Z</dd><dt><span>wrs_path :</span></dt><dd>231</dd><dt><span>wrs_row :</span></dt><dd>62</dd><dt><span>mtl_file :</span></dt><dd>GROUP = LANDSAT_METADATA_FILE
   GROUP = PRODUCT_CONTENTS
     ORIGIN = &quot;Image courtesy of the U.S. Geological Survey&quot;
     DIGITAL_OBJECT_IDENTIFIER = &quot;https://doi.org/10.5066/P9OGBGM6&quot;
@@ -2230,7 +2100,7 @@ END_GROUP = LANDSAT_METADATA_FILE
 END
 </dd></dl></div></li></ul></div></div></div></div>
 </div>
-<p>The composite is also an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2023.9.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> and is similar to the bands.
+<p>The composite is also an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2024.3.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> and is similar to the bands.
 It has the same easting and northing dimensions but also an extra <code class="docutils literal notranslate"><span class="pre">&quot;channel&quot;</span></code>
 dimension, which corresponds to red, green, blue, and alpha/transparency. This
 extra dimension is what combines the three bands into a single color image. The
@@ -2245,8 +2115,8 @@ blue).</p>
 </div>
 </section>
 <section id="plotting-composites">
-<h2>Plotting composites<a class="headerlink" href="#plotting-composites" title="Permalink to this headline">#</a></h2>
-<p>Composites can be plotted using the <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.plot.imshow.html#xarray.DataArray.plot.imshow" title="(in xarray v2023.9.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.DataArray.plot.imshow</span></code></a> method:</p>
+<h2>Plotting composites<a class="headerlink" href="#plotting-composites" title="Link to this heading">#</a></h2>
+<p>Composites can be plotted using the <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.plot.imshow.html#xarray.DataArray.plot.imshow" title="(in xarray v2024.3.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.DataArray.plot.imshow</span></code></a> method:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgb</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">()</span>
@@ -2254,7 +2124,7 @@ blue).</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f619be94e20&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fb293de7a60&gt;
 </pre></div>
 </div>
 <img alt="_images/composites_2_1.png" src="_images/composites_2_1.png" />
@@ -2263,7 +2133,7 @@ blue).</p>
 <p>With no arguments, xarray takes care of creating the new figure and adding a
 lot of the different plot elements, like axis labels and units.
 If we want more control over the plot, we must create a matplotlib figure and
-axes separately and tell <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.plot.imshow.html#xarray.DataArray.plot.imshow" title="(in xarray v2023.9.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">imshow</span></code></a> to plot on those
+axes separately and tell <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.plot.imshow.html#xarray.DataArray.plot.imshow" title="(in xarray v2024.3.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">imshow</span></code></a> to plot on those
 instead:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
@@ -2291,13 +2161,13 @@ available values. This can be mitigated by rescaling the intensity of the image
 to a smaller range of reflectance values.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Using <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.plot.html#xarray.DataArray.plot" title="(in xarray v2023.9.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.DataArray.plot</span></code></a> instead of
-<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.plot.imshow.html#xarray.DataArray.plot.imshow" title="(in xarray v2023.9.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.DataArray.plot.imshow</span></code></a> won’t work and will display histograms
+<p>Using <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.plot.html#xarray.DataArray.plot" title="(in xarray v2024.3.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.DataArray.plot</span></code></a> instead of
+<a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.plot.imshow.html#xarray.DataArray.plot.imshow" title="(in xarray v2024.3.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xarray.DataArray.plot.imshow</span></code></a> won’t work and will display histograms
 instead.</p>
 </div>
 </section>
 <section id="rescaling-intensity-aka-contrast-stretching">
-<h2>Rescaling intensity (AKA contrast stretching)<a class="headerlink" href="#rescaling-intensity-aka-contrast-stretching" title="Permalink to this headline">#</a></h2>
+<h2>Rescaling intensity (AKA contrast stretching)<a class="headerlink" href="#rescaling-intensity-aka-contrast-stretching" title="Link to this heading">#</a></h2>
 <p>We rescale the intensities of a composite to a given reflectance range by
 setting the <code class="docutils literal notranslate"><span class="pre">rescale_to</span></code> parameter when creating a composite. It takes a list
 of the min and max reflectance values allowed. For this image, we can arrive at
@@ -2334,7 +2204,7 @@ between 0 and 255 instead.</p>
 </div>
 </section>
 <section id="color-infrared-composites">
-<h2>Color infrared composites<a class="headerlink" href="#color-infrared-composites" title="Permalink to this headline">#</a></h2>
+<h2>Color infrared composites<a class="headerlink" href="#color-infrared-composites" title="Link to this heading">#</a></h2>
 <p>Another common type of composite is the color infrared (CIR) composites,
 which uses the NIR, red, and green bands as the red, green, blue channels.
 The added information of the NIR band helps highlight vegetation, which can
@@ -2363,7 +2233,7 @@ this band combination to <a class="reference internal" href="api/generated/xland
 right are much clearer!</p>
 </section>
 <section id="other-composites">
-<h2>Other composites<a class="headerlink" href="#other-composites" title="Permalink to this headline">#</a></h2>
+<h2>Other composites<a class="headerlink" href="#other-composites" title="Link to this heading">#</a></h2>
 <p>You can make pretty much any composite you’d like by passing the correct band
 combination to <a class="reference internal" href="api/generated/xlandsat.composite.html#xlandsat.composite" title="xlandsat.composite"><code class="xref py py-func docutils literal notranslate"><span class="pre">xlandsat.composite</span></code></a>.
 For example, let’s make one with NIR as red, SWIR1 as green, and red as blue:</p>
@@ -2392,49 +2262,106 @@ purple), and the forest (orange).</p>
 </section>
 
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="io.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Loading and cropping scenes</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="io.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Loading and cropping scenes</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="indices.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="indices.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Working with indices</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rgb-composites">RGB composites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-composites">Plotting composites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rescaling-intensity-aka-contrast-stretching">Rescaling intensity (AKA contrast stretching)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color-infrared-composites">Color infrared composites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-composites">Other composites</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-      &copy; Copyright 2023, The xlandsat developers.<br/>
-    Last updated on Sep 29, 2023.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, The xlandsat developers.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Apr 10, 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
