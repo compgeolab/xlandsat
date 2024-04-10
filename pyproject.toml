@@ -1,5 +1,45 @@
-# Specify that we use setuptools and setuptools_scm (to generate the version
-# string). Actual configuration is in setup.cfg.
+[project]
+name = "xlandsat"
+description = "Analyze Landsat remote sensing images using xarray"
+dynamic = ["version"]
+authors = [
+  {name="Leonardo Uieda", email="leo@uieda.com"},
+]
+readme = "README.md"
+license = {text = "MIT License"}
+keywords = ["xarray", "remote sensing", "satellite", "landsat"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Libraries",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+requires-python = ">=3.7"
+dependencies = [
+    "numpy>=1.19",
+    "scipy>=1.5",
+    "xarray>=0.16",
+    "scikit-image>=0.18",
+    "pooch>=1.3.0",
+]
+
+[project.urls]
+"Documentation" = "https://www.compgeolab.org/xlandsat"
+"Changelog" = "https://www.compgeolab.org/xlandsat/latest/changes.html"
+"Bug Tracker" = "https://github.com/compgeolab/xlandsat/issues"
+"Source Code" = "https://github.com/compgeolab/xlandsat"
+
 [build-system]
 requires = ["setuptools>=61", "wheel", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
