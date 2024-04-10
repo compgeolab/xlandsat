@@ -1,0 +1,758 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>xlandsat.datasets | xlandsat v0.5.0</title>
+    
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=12168cd1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/xlandsat/datasets';</script>
+    <link rel="icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <!-- Plausible analytics for anonymous usage statistics -->
+    <script defer data-domain="compgeolab.org" src="https://plausible.io/js/plausible.js"></script>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">xlandsat <span class="project-version">v0.5.0</span></p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installing</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../io.html">Loading and cropping scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../composites.html">Making composites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../indices.html">Working with indices</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../pansharpen.html">Pansharpening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../missing-values.html">Fill missing values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equalize-histogram.html">Histogram equalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plot-overlay.html">Plotting bands overlaid on composites</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference Documentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">List of functions and classes (API)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.load_scene.html">xlandsat.load_scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.save_scene.html">xlandsat.save_scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.load_panchromatic.html">xlandsat.load_panchromatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.composite.html">xlandsat.composite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.pansharpen.html">xlandsat.pansharpen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.equalize_histogram.html">xlandsat.equalize_histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.adjust_l1_colors.html">xlandsat.adjust_l1_colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.interpolate_missing.html">xlandsat.interpolate_missing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_brumadinho_after.html">xlandsat.datasets.fetch_brumadinho_after</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_brumadinho_before.html">xlandsat.datasets.fetch_brumadinho_before</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_liverpool.html">xlandsat.datasets.fetch_liverpool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_liverpool_panchromatic.html">xlandsat.datasets.fetch_liverpool_panchromatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_manaus.html">xlandsat.datasets.fetch_manaus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_momotombo.html">xlandsat.datasets.fetch_momotombo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/generated/xlandsat.datasets.fetch_roraima.html">xlandsat.datasets.fetch_roraima</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../citing.html">Citing xlandsat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../compatibility.html">Version compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versions.html">Documentation for other versions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CONTRIBUTING.md">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/compgeolab/xlandsat/blob/main/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/compgeolab/xlandsat">Source code on GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.compgeolab.org">Computer-Oriented Geoscience Lab</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/compgeolab/xlandsat" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/compgeolab/xlandsat/issues/new?title=Issue%20on%20page%20%2F_modules/xlandsat/datasets.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for xlandsat.datasets</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) 2022 The xlandsat developers.</span>
+<span class="c1"># Distributed under the terms of the MIT License.</span>
+<span class="c1"># SPDX-License-Identifier: MIT</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Functions for downloading and caching sample datasets.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="kn">import</span> <span class="nn">pooch</span>
+
+<span class="kn">from</span> <span class="nn">._version</span> <span class="kn">import</span> <span class="n">__version__</span>
+
+<span class="n">POOCH</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">path</span><span class="o">=</span><span class="n">pooch</span><span class="o">.</span><span class="n">os_cache</span><span class="p">(</span><span class="s2">&quot;xlandsat&quot;</span><span class="p">),</span>
+    <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://github.com/compgeolab/xlandsat/raw/</span><span class="si">{version}</span><span class="s2">/data/&quot;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="n">__version__</span><span class="p">,</span>
+    <span class="n">version_dev</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+    <span class="n">registry</span><span class="o">=</span><span class="p">{</span>
+        <span class="c1"># Brumadinho - after</span>
+        <span class="s2">&quot;LC08_L2SP_218074_20190130_20200829_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:4ae61a2d7a8b853c727c0c433680cece&quot;</span><span class="p">,</span>
+        <span class="c1"># Brumadinho - before</span>
+        <span class="s2">&quot;LC08_L2SP_218074_20190114_20200829_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:d2a503c944bb7ef3b41294d44b77e98c&quot;</span><span class="p">,</span>
+        <span class="c1"># Liverpool</span>
+        <span class="s2">&quot;LC08_L2SP_204023_20200927_20201006_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:3c07e343ccf959be4e5dd5c9aca4e0a4&quot;</span><span class="p">,</span>
+        <span class="c1"># Liverpool - Panchromatic</span>
+        <span class="s2">&quot;LC08_L1TP_204023_20200927_20201006_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:7d43f8580b8e583d137a93f9ae51a73d&quot;</span><span class="p">,</span>
+        <span class="c1"># Momotombo L2</span>
+        <span class="s2">&quot;LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:8cc2e4c15e65940a7152fc1c8b412aa9&quot;</span><span class="p">,</span>
+        <span class="c1"># Momotombo L1</span>
+        <span class="s2">&quot;LC08_L1TP_017051_20151205_20200908_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:112d42e7adf709ac3a1179bbeedded6d&quot;</span><span class="p">,</span>
+        <span class="c1"># Roraima</span>
+        <span class="s2">&quot;LC08_L2SP_232056_20151004_20200908_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:f236a8b024aa4a4c62bee294d3bd737f&quot;</span><span class="p">,</span>
+        <span class="c1"># Manaus</span>
+        <span class="s2">&quot;LC09_L2SP_231062_20230723_20230802_02_T1-cropped.tar.gz&quot;</span><span class="p">:</span> <span class="s2">&quot;md5:ffe2003e665dc7a1a3155011f700a61d&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_fetch</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">untar</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fetch a file and handle untaring the archive if requested.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">untar</span><span class="p">:</span>
+        <span class="n">processor</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">Untar</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">processor</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">POOCH</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span>
+        <span class="n">fname</span><span class="p">,</span>
+        <span class="n">processor</span><span class="o">=</span><span class="n">processor</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">untar</span><span class="p">:</span>
+        <span class="c1"># Get the folder name in case we unpacked the archive</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">parent</span>
+    <span class="k">return</span> <span class="n">path</span>
+
+
+<div class="viewcode-block" id="fetch_brumadinho_after">
+<a class="viewcode-back" href="../../api/generated/xlandsat.datasets.fetch_brumadinho_after.html#xlandsat.datasets.fetch_brumadinho_after">[docs]</a>
+<span class="k">def</span> <span class="nf">fetch_brumadinho_after</span><span class="p">(</span><span class="n">untar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Download a sample scene from after the Brumadinho tailings dam disaster</span>
+
+<span class="sd">    This is a cropped version of a Landsat 8 scene from 2019/01/30. It was</span>
+<span class="sd">    taken after the `Brumadinho tailings dam in Brazil</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Brumadinho_dam_disaster&gt;`__ collapsed,</span>
+<span class="sd">    flooding a whole region.</span>
+
+<span class="sd">    The scene was downloaded from `USGS Earth Explorer</span>
+<span class="sd">    &lt;https://earthexplorer.usgs.gov/&gt;`__. Original data are in the public</span>
+<span class="sd">    domain and are redistributed here in accordance with the `Landsat Data</span>
+<span class="sd">    Distribution Policy</span>
+<span class="sd">    &lt;https://www.usgs.gov/media/files/landsat-data-distribution-policy&gt;`__.</span>
+
+<span class="sd">    Source: https://doi.org/10.6084/m9.figshare.21665630</span>
+<span class="sd">    (`CC0 &lt;https://creativecommons.org/publicdomain/zero/1.0/&gt;`__)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    untar : bool</span>
+<span class="sd">        If True, unpack the tar archive after downloading and return a path to</span>
+<span class="sd">        the folder containing the unpacked files instead. Default is False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path to the downloaded `.tar` file that contains the scene.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_fetch</span><span class="p">(</span><span class="s2">&quot;LC08_L2SP_218074_20190130_20200829_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span> <span class="n">untar</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="fetch_brumadinho_before">
+<a class="viewcode-back" href="../../api/generated/xlandsat.datasets.fetch_brumadinho_before.html#xlandsat.datasets.fetch_brumadinho_before">[docs]</a>
+<span class="k">def</span> <span class="nf">fetch_brumadinho_before</span><span class="p">(</span><span class="n">untar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Download a sample scene from before the Brumadinho tailings dam disaster</span>
+
+<span class="sd">    This is a cropped version of a Landsat 8 scene from 2019/01/14. It was</span>
+<span class="sd">    taken before the `Brumadinho tailings dam in Brazil</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Brumadinho_dam_disaster&gt;`__ collapsed,</span>
+<span class="sd">    flooding a whole region.</span>
+
+<span class="sd">    The scene was downloaded from `USGS Earth Explorer</span>
+<span class="sd">    &lt;https://earthexplorer.usgs.gov/&gt;`__. Original data are in the public</span>
+<span class="sd">    domain and are redistributed here in accordance with the `Landsat Data</span>
+<span class="sd">    Distribution Policy</span>
+<span class="sd">    &lt;https://www.usgs.gov/media/files/landsat-data-distribution-policy&gt;`__.</span>
+
+<span class="sd">    Source: https://doi.org/10.6084/m9.figshare.21665630</span>
+<span class="sd">    (`CC0 &lt;https://creativecommons.org/publicdomain/zero/1.0/&gt;`__)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    untar : bool</span>
+<span class="sd">        If True, unpack the tar archive after downloading and return a path to</span>
+<span class="sd">        the folder containing the unpacked files instead. Default is False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path to the downloaded `.tar` file that contains the scene.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_fetch</span><span class="p">(</span>
+        <span class="s2">&quot;LC08_L2SP_218074_20190114_20200829_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span>
+        <span class="n">untar</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="fetch_liverpool">
+<a class="viewcode-back" href="../../api/generated/xlandsat.datasets.fetch_liverpool.html#xlandsat.datasets.fetch_liverpool">[docs]</a>
+<span class="k">def</span> <span class="nf">fetch_liverpool</span><span class="p">(</span><span class="n">untar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Download a sample scene from the city of Liverpool, UK</span>
+
+<span class="sd">    This is a cropped version of a Landsat 8 scene from 2020/09/27. It was</span>
+<span class="sd">    taken on a virtually cloud-free day and shows the Mersey river delta and</span>
+<span class="sd">    some off-shore wind turbines.</span>
+
+<span class="sd">    The scene was downloaded from `USGS Earth Explorer</span>
+<span class="sd">    &lt;https://earthexplorer.usgs.gov/&gt;`__. Original data are in the public</span>
+<span class="sd">    domain and are redistributed here in accordance with the `Landsat Data</span>
+<span class="sd">    Distribution Policy</span>
+<span class="sd">    &lt;https://www.usgs.gov/media/files/landsat-data-distribution-policy&gt;`__.</span>
+
+<span class="sd">    Source: https://doi.org/10.6084/m9.figshare.22041353</span>
+<span class="sd">    (`CC0 &lt;https://creativecommons.org/publicdomain/zero/1.0/&gt;`__)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    untar : bool</span>
+<span class="sd">        If True, unpack the tar archive after downloading and return a path to</span>
+<span class="sd">        the folder containing the unpacked files instead. Default is False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path to the downloaded `.tar` file that contains the scene.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_fetch</span><span class="p">(</span>
+        <span class="s2">&quot;LC08_L2SP_204023_20200927_20201006_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span>
+        <span class="n">untar</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="fetch_liverpool_panchromatic">
+<a class="viewcode-back" href="../../api/generated/xlandsat.datasets.fetch_liverpool_panchromatic.html#xlandsat.datasets.fetch_liverpool_panchromatic">[docs]</a>
+<span class="k">def</span> <span class="nf">fetch_liverpool_panchromatic</span><span class="p">(</span><span class="n">untar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Download a sample panchromatic band from the city of Liverpool, UK</span>
+
+<span class="sd">    This is a cropped version of the panchromatic band from a Landsat 8 Level 1</span>
+<span class="sd">    scene from 2020/09/27. It was taken on a virtually cloud-free day and shows</span>
+<span class="sd">    the Mersey river delta and some off-shore wind turbines.</span>
+
+<span class="sd">    The scene was downloaded from `USGS Earth Explorer</span>
+<span class="sd">    &lt;https://earthexplorer.usgs.gov/&gt;`__. Original data are in the public</span>
+<span class="sd">    domain and are redistributed here in accordance with the `Landsat Data</span>
+<span class="sd">    Distribution Policy</span>
+<span class="sd">    &lt;https://www.usgs.gov/media/files/landsat-data-distribution-policy&gt;`__.</span>
+
+<span class="sd">    Source: https://doi.org/10.6084/m9.figshare.22041353</span>
+<span class="sd">    (`CC0 &lt;https://creativecommons.org/publicdomain/zero/1.0/&gt;`__)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    untar : bool</span>
+<span class="sd">        If True, unpack the tar archive after downloading and return a path to</span>
+<span class="sd">        the folder containing the unpacked files instead. Default is False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path to the downloaded `.tar` file that contains the scene.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_fetch</span><span class="p">(</span>
+        <span class="s2">&quot;LC08_L1TP_204023_20200927_20201006_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span>
+        <span class="n">untar</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="fetch_momotombo">
+<a class="viewcode-back" href="../../api/generated/xlandsat.datasets.fetch_momotombo.html#xlandsat.datasets.fetch_momotombo">[docs]</a>
+<span class="k">def</span> <span class="nf">fetch_momotombo</span><span class="p">(</span><span class="n">untar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Download a sample scene from the December 2015 Momotombo volcano eruption</span>
+
+<span class="sd">    This is a cropped version of a Landsat 8 scene from 2015/12/05. It was</span>
+<span class="sd">    taken during the December 2015 eruption of `Momotombo volcano</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Momotombo&gt;`__, Nicaragua.</span>
+
+<span class="sd">    The scene was downloaded from `USGS Earth Explorer</span>
+<span class="sd">    &lt;https://earthexplorer.usgs.gov/&gt;`__. Original data are in the public</span>
+<span class="sd">    domain and are redistributed here in accordance with the `Landsat Data</span>
+<span class="sd">    Distribution Policy</span>
+<span class="sd">    &lt;https://www.usgs.gov/media/files/landsat-data-distribution-policy&gt;`__.</span>
+
+<span class="sd">    Source: https://doi.org/10.6084/m9.figshare.21931089.v3</span>
+<span class="sd">    (`CC0 &lt;https://creativecommons.org/publicdomain/zero/1.0/&gt;`__)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    untar : bool</span>
+<span class="sd">        If True, unpack the tar archive after downloading and return a path to</span>
+<span class="sd">        the folder containing the unpacked files instead. Default is False.</span>
+<span class="sd">    level : int</span>
+<span class="sd">        Which level of data to load. Default is to load Level 2 surface</span>
+<span class="sd">        reflectance data. Can also be Level 1 top-of-the-atmosphere</span>
+<span class="sd">        reflectance.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path to the downloaded `.tar` file that contains the scene.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">level</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid data level &#39;</span><span class="si">{</span><span class="n">level</span><span class="si">}</span><span class="s2">&#39;. Must be 1 or 2.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">_fetch</span><span class="p">(</span>
+            <span class="s2">&quot;LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span>
+            <span class="n">untar</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">_fetch</span><span class="p">(</span>
+            <span class="s2">&quot;LC08_L1TP_017051_20151205_20200908_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span>
+            <span class="n">untar</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span></div>
+
+
+
+<div class="viewcode-block" id="fetch_roraima">
+<a class="viewcode-back" href="../../api/generated/xlandsat.datasets.fetch_roraima.html#xlandsat.datasets.fetch_roraima">[docs]</a>
+<span class="k">def</span> <span class="nf">fetch_roraima</span><span class="p">(</span><span class="n">untar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Download a sample scene from Mount Roraima surrounded by clouds</span>
+
+<span class="sd">    Roraima is a *tepui* located in the junction of Brazil, Guyana, and</span>
+<span class="sd">    Venezuela. It&#39;s famous for the near-constant cloud coverage.</span>
+
+<span class="sd">    This is a cropped version of a Landsat 8 scene from 2015/10/04, which is</span>
+<span class="sd">    one of the rare relatively cloud-free scenes available.</span>
+
+<span class="sd">    The scene was downloaded from `USGS Earth Explorer</span>
+<span class="sd">    &lt;https://earthexplorer.usgs.gov/&gt;`__. Original data are in the public</span>
+<span class="sd">    domain and are redistributed here in accordance with the `Landsat Data</span>
+<span class="sd">    Distribution Policy</span>
+<span class="sd">    &lt;https://www.usgs.gov/media/files/landsat-data-distribution-policy&gt;`__.</span>
+
+<span class="sd">    Source: https://doi.org/10.6084/m9.figshare.24143622.v1</span>
+<span class="sd">    (`CC0 &lt;https://creativecommons.org/publicdomain/zero/1.0/&gt;`__)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    untar : bool</span>
+<span class="sd">        If True, unpack the tar archive after downloading and return a path to</span>
+<span class="sd">        the folder containing the unpacked files instead. Default is False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path to the downloaded `.tar` file that contains the scene.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_fetch</span><span class="p">(</span><span class="s2">&quot;LC08_L2SP_232056_20151004_20200908_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span> <span class="n">untar</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="fetch_manaus">
+<a class="viewcode-back" href="../../api/generated/xlandsat.datasets.fetch_manaus.html#xlandsat.datasets.fetch_manaus">[docs]</a>
+<span class="k">def</span> <span class="nf">fetch_manaus</span><span class="p">(</span><span class="n">untar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Download a sample scene from Manaus, Brazil</span>
+
+<span class="sd">    Manaus is located in the Brazilian Amazon. The scene shows a part of the</span>
+<span class="sd">    city and the meeting of the Solimões and Negro rivers to form the Amazon</span>
+<span class="sd">    river.</span>
+
+<span class="sd">    This is a cropped version of a Landsat 9 scene from 2023/07/23, during</span>
+<span class="sd">    the annual Amazon river floods.</span>
+
+<span class="sd">    The scene was downloaded from `USGS Earth Explorer</span>
+<span class="sd">    &lt;https://earthexplorer.usgs.gov/&gt;`__. Original data are in the public</span>
+<span class="sd">    domain and are redistributed here in accordance with the `Landsat Data</span>
+<span class="sd">    Distribution Policy</span>
+<span class="sd">    &lt;https://www.usgs.gov/media/files/landsat-data-distribution-policy&gt;`__.</span>
+
+<span class="sd">    Source: https://doi.org/10.6084/m9.figshare.24167235.v1</span>
+<span class="sd">    (`CC0 &lt;https://creativecommons.org/publicdomain/zero/1.0/&gt;`__)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    untar : bool</span>
+<span class="sd">        If True, unpack the tar archive after downloading and return a path to</span>
+<span class="sd">        the folder containing the unpacked files instead. Default is False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path to the downloaded `.tar` file that contains the scene.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_fetch</span><span class="p">(</span><span class="s2">&quot;LC09_L2SP_231062_20230723_20230802_02_T1-cropped.tar.gz&quot;</span><span class="p">,</span> <span class="n">untar</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, The xlandsat developers.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Apr 10, 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
