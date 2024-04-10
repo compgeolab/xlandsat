@@ -7,6 +7,7 @@ prune data
 exclude .*.yml
 exclude .*rc
 exclude .gitignore
+exclude .flake8
 exclude CONTRIBUTING.md
 exclude CODE_OF_CONDUCT.md
 exclude environment.yml
