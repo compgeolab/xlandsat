@@ -3,6 +3,42 @@
 Changelog
 =========
 
+Version 0.5.0
+-------------
+
+Released on: 2024/04/10
+
+doi: https://doi.org/10.5281/zenodo.10953496
+
+Bug fixes:
+
+* Fix issue with radiance conversion of Level 1 thermal bands (`#73 <https://github.com/compgeolab/xlandsat/pull/73>`__)
+* Add missing Cirrus and Thermal 2 bands to IO functions (`#63 <https://github.com/compgeolab/xlandsat/pull/63>`__)
+
+New features:
+
+* Add function ``adjust_l1_colors`` to fix the colors of an RGB composite made from Level 1 data (`#76 <https://github.com/compgeolab/xlandsat/pull/76>`__)
+* Add an option to download Level 1 data from the Momotombo eruption (`#75 <https://github.com/compgeolab/xlandsat/pull/75>`__)
+* Add an Level 1 scene for Momotombo (`#74 <https://github.com/compgeolab/xlandsat/pull/74>`__)
+* Allow choosing the dtype of composites (`#64 <https://github.com/compgeolab/xlandsat/pull/64>`__)
+
+Documentation:
+
+* Small improvements to some tutorials (`#77 <https://github.com/compgeolab/xlandsat/pull/77>`__)
+* Update the version of Sphinx and its plugins (`#65 <https://github.com/compgeolab/xlandsat/pull/65>`__)
+
+Maintenance:
+
+* Extend testing and support for Python 3.12 (`#80 <https://github.com/compgeolab/xlandsat/pull/80>`__)
+* Switch to pyproject.toml for package configuration (`#78 <https://github.com/compgeolab/xlandsat/pull/78>`__)
+* Use PyPI Trusted Publishers instead of API tokens (`#67 <https://github.com/compgeolab/xlandsat/pull/67>`__)
+* Use dependabot to manage GitHub Actions upgrades (`#66 <https://github.com/compgeolab/xlandsat/pull/66>`__)
+* Add social media card images (`#62 <https://github.com/compgeolab/xlandsat/pull/62>`__)
+
+This release contains contributions from:
+
+* Leonardo Uieda
+
 Version 0.4.0
 -------------
 
