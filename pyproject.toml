@@ -49,6 +49,9 @@ version_scheme =  "post-release"
 local_scheme =  "node-and-date"
 write_to =  "xlandsat/_version_generated.py"
 
+[tool.setuptools.packages]
+find = {}  # Scanning implicit namespaces is active by default
+
 # Make sure isort and Black are compatible
 [tool.isort]
 profile = "black"
