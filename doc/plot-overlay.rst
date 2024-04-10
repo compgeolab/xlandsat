@@ -40,7 +40,9 @@ have to show:
 .. jupyter-execute::
 
     # Make the composite
-    rgb = xls.composite(scene, rescale_to=(0, 0.2))
+    rgb = xls.composite(scene, rescale_to=(0, 0.15))
+    # Adjust the L1 colors to make it nicer and get rid of the blue glare
+    rgb = xls.adjust_l1_colors(rgb)
 
     # Plot the RGB and thermal separately
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 12))
