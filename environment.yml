@@ -11,6 +11,8 @@ dependencies:
   - scipy
   - xarray
   - scikit-image
+  - scikit-learn
+  - seaborn
   - pooch
   # Build
   - build
