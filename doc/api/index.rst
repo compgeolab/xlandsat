@@ -11,22 +11,37 @@ Input and output
 ----------------
 
 .. autosummary::
-   :toctree: generated/
+    :toctree: generated/
 
     load_scene
     save_scene
     load_panchromatic
 
+Visualization
+-------------
+
+.. autosummary::
+    :toctree: generated/
+
+    composite
+    equalize_histogram
+    adjust_l1_colors
+
+Indices
+-------
+
+.. autosummary::
+    :toctree: generated/
+
+    ndvi
+
 Processing
 ----------
 
 .. autosummary::
-   :toctree: generated/
+    :toctree: generated/
 
-    composite
     pansharpen
-    equalize_histogram
-    adjust_l1_colors
     interpolate_missing
 
 Sample datasets
