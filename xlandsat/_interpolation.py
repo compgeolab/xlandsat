@@ -8,9 +8,9 @@ import numpy as np
 import scipy as sp
 
 
-def interpolate_missing(scene, pixel_radius=20):
+def interpolate_missing(scene, pixel_radius=20, method="cubic"):
     """
-    Fill missing values (NaNs) in a scene by cubic interpolation
+    Fill missing values (NaNs) in a scene by interpolation
 
     Each missing value is filled by interpolating the pixels within a
     neighboring region (controlled by ``pixel_radius``) using a piecewise cubic
@@ -28,12 +28,26 @@ def interpolate_missing(scene, pixel_radius=20):
         that will be used for interpolation. Smaller values make for faster
         interpolation but may lead to bad results if many missing values are
         grouped together.
+    method : str
+        The interpolation method used. Can be one of: ``"cubic"`` for cubic
+        interpolation with
+        :class:`scipy.interpolate.CloughTocher2DInterpolator`, ``"neighbors"``
+        for nearest neighbor interpolation with
+        :class:`scipy.interpolate.NearestNDInterpolator`.
 
     Returns
     -------
     filled_scene : :class:`xarray.Dataset`
         The scene with missing values filled in.
     """
+    valid_methods = {
+        "cubic": sp.interpolate.CloughTocher2DInterpolator,
+        "neighbors": sp.interpolate.NearestNDInterpolator,
+    }
+    if method not in valid_methods:
+        raise ValueError(
+            f"Invalid interpolation method '{method}'. Must be one of: {tuple(valid_methods.keys())}"
+        )
     filled_scene = scene.copy(deep=True)
     rows, columns = np.meshgrid(
         np.arange(scene.northing.size),
@@ -47,7 +61,7 @@ def interpolate_missing(scene, pixel_radius=20):
             imin, imax = _search_range(i, pixel_radius, scene.northing.size)
             jmin, jmax = _search_range(j, pixel_radius, scene.easting.size)
             valid = ~np.isnan(values[imin:imax, jmin:jmax])
-            interpolator = sp.interpolate.CloughTocher2DInterpolator(
+            interpolator = valid_methods[method](
                 (
                     rows[imin:imax, jmin:jmax][valid],
                     columns[imin:imax, jmin:jmax][valid],

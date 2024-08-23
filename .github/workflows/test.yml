@@ -39,9 +39,9 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu, macos, windows]
-        python: ["3.7", "3.12"]
+        python: ["3.9", "3.12"]
         include:
-          - python: "3.7"
+          - python: "3.9"
             dependencies: oldest
           - python: "3.12"
             dependencies: latest
@@ -56,7 +56,7 @@ jobs:
       # We pin the commit hash corresponding to v0.5.0, and not pinning the tag
       # because we are giving full access through the github.token.
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@148d9a848c6acaf90a3ec30bc5062f646f8a4163
+        uses: styfle/cancel-workflow-action@85880fa0301c86cca9da44039ee3bb12d3bedbfa
         with:
           access_token: ${{ github.token }}
 
