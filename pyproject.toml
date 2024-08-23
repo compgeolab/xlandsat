@@ -29,7 +29,7 @@ dependencies = [
     "numpy>=1.23",
     "scipy>=1.9",
     "xarray>=2022.6.0",
-    "scikit-image>=0.19",
+    "scikit-image>=0.20",
     "pooch>=1.3.0",
 ]
 
