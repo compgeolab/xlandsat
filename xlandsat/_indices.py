@@ -7,8 +7,8 @@ Calculate indices based on data in xarray.Datasets
 
 
 def ndvi(scene, red_band="red", nir_band="nir"):
-    """
-    Normalized difference vegetation index
+    r"""
+    Normalized Difference Vegetation Index
 
     Calculate the NDVI for the given scene, defined as:
 
