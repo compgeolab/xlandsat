@@ -163,10 +163,10 @@ Here's a quick example:
 
     io.rst
     composites.rst
-    indices.rst
-    pansharpen.rst
-    missing-values.rst
     equalize-histogram.rst
+    indices.rst
+    missing-values.rst
+    pansharpen.rst
     plot-overlay.rst
 
 .. toctree::
