@@ -260,6 +260,83 @@ that many people will understand:
    `Silva Rotta et al. (2020) <https://doi.org/10.1016/j.jag.2020.102119>`__.
 
 
+NBR
+---
+
+The `Normalized Burn Ratio <https://www.earthdatascience.org/courses/earth-analytics/multispectral-remote-sensing-modis/normalized-burn-index-dNBR/>`__ is a useful tool to assess
+areas affected by recent fires.
+The NBR takes advantage of the relatively high reflectivity of burned areas in
+the short-wave infrared (SWIR) range when compared with vegetated areas.
+It's defined as
+
+.. math::
+
+    NBR = \dfrac{NIR - SWIR}{NIR + SWIR}
+
+As an example, we can use our sample data from a fire that happened in near the
+city of Corumbá, Brazil. The sample scene is generated from Level 1 Landsat 8
+data. It contains only a section of the fire and we have scenes from before the
+fire and from the very end of the fire.
+
+.. jupyter-execute::
+
+    before = xls.load_scene(xls.datasets.fetch_corumba_before())
+    after = xls.load_scene(xls.datasets.fetch_corumba_after())
+    after
+
+Let's make RGB composites to get a sense of what these two scenes contain:
+
+.. jupyter-execute::
+
+    rgb_before = xls.adjust_l1_colors(
+        xls.composite(before, rescale_to=(0, 0.2)),
+        percentile=0,
+    )
+    rgb_after = xls.adjust_l1_colors(
+        xls.composite(after, rescale_to=(0, 0.2)),
+        percentile=0,
+    )
+
+    fig, axes = plt.subplots(1, 2, figsize=(10, 8), layout="constrained")
+    for ax, rgb in zip(axes, [rgb_before, rgb_after]):
+        rgb.plot.imshow(ax=ax)
+        ax.set_title(rgb.attrs["title"])
+        ax.set_aspect("equal")
+    plt.show()
+
+Now we can calculate the NBR for before and after:
+
+.. jupyter-execute::
+
+    nbr_before = xls.nbr(before)
+    nbr_after = xls.nbr(after)
+
+    fig, axes = plt.subplots(1, 2, figsize=(10, 8), layout="constrained")
+    for ax, nbr in zip(axes, [nbr_before, nbr_after]):
+        nbr.plot.imshow(ax=ax, cbar_kwargs=dict(orientation="horizontal"))
+        ax.set_title(nbr.attrs["title"])
+        ax.set_aspect("equal")
+    plt.show()
+
+A useful metric to better visualize the extent of the fires and to even
+classify the burn intensity is the dNBR, which can be calculated as:
+
+.. jupyter-execute::
+
+    dnbr = nbr_before - nbr_after
+
+    fig, axes = plt.subplots(1, 2, figsize=(10, 7), layout="constrained")
+    rgb.plot.imshow(ax=axes[0])
+    dnbr.plot.imshow(ax=axes[1], cbar_kwargs=dict(orientation="horizontal"))
+    for ax in axes:
+        ax.set_aspect("equal")
+    plt.show()
+
+The dNBR values > 0.1 indicate the areas that have been burned. The bright red
+parts of the dNBR image above reflect the ongoing fire that was still burning
+in the area.
+
+
 Calculating your own indices
 ----------------------------
 
