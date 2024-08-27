@@ -61,3 +61,5 @@ Sample datasets
     datasets.fetch_manaus
     datasets.fetch_momotombo
     datasets.fetch_roraima
+    datasets.fetch_corumba_after
+    datasets.fetch_corumba_before

@@ -16,22 +16,23 @@ POOCH = pooch.create(
     version=__version__,
     version_dev="main",
     registry={
-        # Brumadinho - after
+        # Brumadinho
         "LC08_L2SP_218074_20190130_20200829_02_T1-cropped.tar.gz": "md5:4ae61a2d7a8b853c727c0c433680cece",
-        # Brumadinho - before
         "LC08_L2SP_218074_20190114_20200829_02_T1-cropped.tar.gz": "md5:d2a503c944bb7ef3b41294d44b77e98c",
         # Liverpool
         "LC08_L2SP_204023_20200927_20201006_02_T1-cropped.tar.gz": "md5:3c07e343ccf959be4e5dd5c9aca4e0a4",
         # Liverpool - Panchromatic
         "LC08_L1TP_204023_20200927_20201006_02_T1-cropped.tar.gz": "md5:7d43f8580b8e583d137a93f9ae51a73d",
-        # Momotombo L2
+        # Momotombo
         "LC08_L2SP_017051_20151205_20200908_02_T1-cropped.tar.gz": "md5:8cc2e4c15e65940a7152fc1c8b412aa9",
-        # Momotombo L1
         "LC08_L1TP_017051_20151205_20200908_02_T1-cropped.tar.gz": "md5:112d42e7adf709ac3a1179bbeedded6d",
         # Roraima
         "LC08_L2SP_232056_20151004_20200908_02_T1-cropped.tar.gz": "md5:f236a8b024aa4a4c62bee294d3bd737f",
         # Manaus
         "LC09_L2SP_231062_20230723_20230802_02_T1-cropped.tar.gz": "md5:ffe2003e665dc7a1a3155011f700a61d",
+        # Corumbá
+        "LC08_L1TP_227074_20190825_20200826_02_T1-cropped.tar.gz": "md5:ea283a7e56129a13dcd3438a82f0c3a8",
+        "LC08_L1TP_227074_20190809_20200827_02_T1-cropped.tar.gz": "md5:2a2871bb2477687cf40aefd4672a581a",
     },
 )
 
@@ -301,3 +302,63 @@ def fetch_manaus(untar=False):
         The path to the downloaded `.tar` file that contains the scene.
     """
     return _fetch("LC09_L2SP_231062_20230723_20230802_02_T1-cropped.tar.gz", untar)
+
+
+def fetch_corumba_after(untar=False):
+    """
+    Download a sample scene from after the 08/2019 fires near Curumbá, Brazil
+
+    This is a cropped version of a Landsat 8 scene from 2019/08/25. It was
+    taken at the end of a fire in the Pantanal near the city of Curumbá in the
+    triple border between Brazil, Bolivia, and Paraguay. The fires were much
+    larger than this cropped scene and took up the majority of the original
+    Landsat scene.
+
+    The scene was downloaded from `USGS Earth Explorer
+    <https://earthexplorer.usgs.gov/>`__. Original data are in the public
+    domain and are redistributed here in accordance with the `Landsat Data
+    Distribution Policy
+    <https://www.usgs.gov/media/files/landsat-data-distribution-policy>`__.
+
+    Parameters
+    ----------
+    untar : bool
+        If True, unpack the tar archive after downloading and return a path to
+        the folder containing the unpacked files instead. Default is False.
+
+    Returns
+    -------
+    path : str
+        The path to the downloaded `.tar` file that contains the scene.
+    """
+    return _fetch("LC08_L1TP_227074_20190825_20200826_02_T1-cropped.tar.gz", untar)
+
+
+def fetch_corumba_before(untar=False):
+    """
+    Download a sample scene from before the 08/2019 fires near Curumbá, Brazil
+
+    This is a cropped version of a Landsat 8 scene from 2019/08/09. It was
+    taken just before a fire in the Pantanal near the city of Curumbá in the
+    triple border between Brazil, Bolivia, and Paraguay. The fires were much
+    larger than this cropped scene and took up the majority of the original
+    Landsat scene.
+
+    The scene was downloaded from `USGS Earth Explorer
+    <https://earthexplorer.usgs.gov/>`__. Original data are in the public
+    domain and are redistributed here in accordance with the `Landsat Data
+    Distribution Policy
+    <https://www.usgs.gov/media/files/landsat-data-distribution-policy>`__.
+
+    Parameters
+    ----------
+    untar : bool
+        If True, unpack the tar archive after downloading and return a path to
+        the folder containing the unpacked files instead. Default is False.
+
+    Returns
+    -------
+    path : str
+        The path to the downloaded `.tar` file that contains the scene.
+    """
+    return _fetch("LC08_L1TP_227074_20190809_20200827_02_T1-cropped.tar.gz", untar)

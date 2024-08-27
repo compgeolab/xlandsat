@@ -11,6 +11,8 @@ import pytest
 from ..datasets import (
     fetch_brumadinho_after,
     fetch_brumadinho_before,
+    fetch_corumba_after,
+    fetch_corumba_before,
     fetch_liverpool,
     fetch_liverpool_panchromatic,
     fetch_manaus,
@@ -25,6 +27,8 @@ from ..datasets import (
     [
         fetch_brumadinho_after,
         fetch_brumadinho_before,
+        fetch_corumba_after,
+        fetch_corumba_before,
         fetch_liverpool,
         fetch_liverpool_panchromatic,
         fetch_manaus,
