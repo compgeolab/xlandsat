@@ -33,6 +33,7 @@ Indices
 .. autosummary::
     :toctree: generated/
 
+    nbr
     ndvi
 
 Processing
