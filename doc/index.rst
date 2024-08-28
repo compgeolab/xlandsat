@@ -36,24 +36,20 @@ Here's a quick example:
 .. jupyter-execute::
 
     import xlandsat as xls
-    import matplotlib.pyplot as plt
 
     # Download a sample Landsat 9 scene in EarthExplorer format
     path_to_scene_file = xls.datasets.fetch_manaus()
-
     # Load the data from the file into an xarray.Dataset
     scene = xls.load_scene(path_to_scene_file)
+    # Display the scene and included metadata
+    scene
+
+.. jupyter-execute::
 
     # Make an RGB composite as an xarray.DataArray
     rgb = xls.composite(scene, rescale_to=[0.02, 0.2])
-
-    # Plot the composite using xarray's plotting machinery
-    rgb.plot.imshow()
-
-    # Annotate the plot with the rich metadata xlandsat adds to the scene
-    plt.title(f"{rgb.attrs['title']}\n{rgb.attrs['long_name']}")
-    plt.axis("scaled")
-    plt.show()
+    # Plot the composite on an interactive Leaflet map
+    xls.plot_composite_leaflet(rgb, height="400px")
 
 
 ----

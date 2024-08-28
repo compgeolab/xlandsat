@@ -84,8 +84,16 @@ instead:
 
     plt.show()
 
-Well, this looks bad because some very bright pixels in the city are making the
-majority of the other pixels have only a small share of the full range of
+It's also possible to add a composite to an interactive `ipyleaflet
+<https://ipyleaflet.readthedocs.io/en/latest/>`__ map using
+:func:`xlandsat.plot_composite_leaflet`:
+
+.. jupyter-execute::
+
+    xls.plot_composite_leaflet(rgb)
+
+This composite looks bad because some very bright pixels in the city are making
+the majority of the other pixels have only a small share of the full range of
 available values. This can be mitigated by rescaling the intensity of the image
 to a smaller range of reflectance values.
 
