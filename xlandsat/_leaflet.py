@@ -84,7 +84,7 @@ def plot_composite_leaflet(composite, dpi=70, leaflet_map=None, height="600px"):
         bounds=bounds,
     )
     image_overlay.name = (
-        f"{composite.attrs["long_name"].title()} | {composite.attrs["title"]}"
+        f"{composite.attrs['long_name'].title()} | {composite.attrs['title']}"
     )
     # Create a map if one wasn't given
     if leaflet_map is None:
