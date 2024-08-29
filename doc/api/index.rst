@@ -26,6 +26,7 @@ Visualization
     composite
     equalize_histogram
     adjust_l1_colors
+    plot_composite_leaflet
 
 Indices
 -------

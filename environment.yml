@@ -12,6 +12,9 @@ dependencies:
   - xarray
   - scikit-image
   - pooch
+  - pyproj
+  - ipyleaflet
+  - matplotlib
   # Build
   - build
   - twine
@@ -25,7 +28,6 @@ dependencies:
   - sphinx-copybutton==0.5.*
   - sphinx-design==0.5.*
   - jupyter-sphinx==0.5.*
-  - matplotlib
   - ipykernel
   # Style
   - black
