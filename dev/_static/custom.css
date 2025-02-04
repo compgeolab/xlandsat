@@ -32,3 +32,8 @@ div.jupyter_container .cell_output {
 .jupyter_container div.code_cell pre {
   padding: 10px;
 }
+
+/* Disable borders in darkmode since it messes up the ipyleaflet plots */
+html[data-theme="dark"] .bd-content img:not(.only-dark):not(.dark-light) {
+  background: none;
+}
