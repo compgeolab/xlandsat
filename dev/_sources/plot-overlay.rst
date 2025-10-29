@@ -28,10 +28,8 @@ version to get the thermal band as surface temperature:
 
     path_l1 = xls.datasets.fetch_momotombo(level=1)
     scene = xls.load_scene(path_l1)
-
     path_l2 = xls.datasets.fetch_momotombo(level=2)
     scene = scene.merge(xls.load_scene(path_l2, bands=["thermal"]))
-
     scene
 
 Now we can plot an RGB composite and thermal band separately to see that they
@@ -45,14 +43,11 @@ have to show:
     rgb = xls.adjust_l1_colors(rgb)
 
     # Plot the RGB and thermal separately
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 12))
-
-    rgb.plot.imshow(ax=ax1)
-    scene.thermal.plot.imshow(ax=ax2, cmap="magma")
-
-    ax1.set_aspect("equal")
-    ax2.set_aspect("equal")
-
+    fig, axes = plt.subplots(2, 1, figsize=(10, 12), layout="constrained")
+    for ax in axes:
+        ax.set_aspect("equal")
+    rgb.plot.imshow(ax=axes[0])
+    scene.thermal.plot.imshow(ax=axes[1], cmap="magma")
     plt.show()
 
 Notice that the lava flow is clearly visible as temperatures above 320 K in the
@@ -72,10 +67,8 @@ this is with the :func:`xarray.where` function:
     # If the condition is true, use the thermal values. If it's false, use nan
     lava = xr.where(scene.thermal >= 320, scene.thermal, np.nan, keep_attrs=True)
 
-    fig, ax = plt.subplots(1, 1, figsize=(10, 6))
-
+    fig, ax = plt.subplots(1, 1, figsize=(10, 6), layout="constrained")
     lava.plot.imshow(ax=ax, cmap="magma")
-
     ax.set_aspect("equal")
     plt.show()
 
@@ -94,12 +87,10 @@ plot that on top of the RGB composite and add a bit of transparency using the
 
 .. jupyter-execute::
 
-    fig, ax = plt.subplots(1, 1, figsize=(10, 6))
-
+    fig, ax = plt.subplots(1, 1, figsize=(10, 6), layout="constrained")
     # RGB goes first so it's at the bottom
     rgb.plot.imshow(ax=ax)
     lava.plot.imshow(ax=ax, cmap="magma", alpha=0.6)
-
     ax.set_aspect("equal")
     plt.show()
 

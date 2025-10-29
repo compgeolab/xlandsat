@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     
-        <title>Plotting bands overlaid on composites | xlandsat v0.0.post86+gc3b3f12</title>
+        <title>Plotting bands overlaid on composites | xlandsat v0.0.post100+gb806a8be4</title>
     
 
   
@@ -18,32 +18,32 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=12168cd1" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=8f5dddd2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
@@ -51,7 +51,7 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/thebelab-helper.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="_static/design-tabs.js?v=36754332"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
@@ -60,7 +60,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="List of functions and classes (API)" href="api/index.html" />
-    <link rel="prev" title="Histogram equalization" href="equalize-histogram.html" />
+    <link rel="prev" title="Pansharpening" href="pansharpen.html" />
     <!-- Plausible analytics for anonymous usage statistics -->
     <script defer data-domain="compgeolab.org" src="https://plausible.io/js/plausible.js"></script>
 
@@ -71,27 +71,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -113,8 +109,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -138,6 +139,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="index.html">
   
@@ -146,14 +149,14 @@
   
   
   
-    <p class="title logo__title">xlandsat <span class="project-version">v0.0.post86+gc3b3f12</span></p>
+    <p class="title logo__title">xlandsat <span class="project-version">v0.0.post100+gb806a8be4</span></p>
   
 </a></div>
         <div class="sidebar-primary-item">
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -171,26 +174,28 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="io.html">Loading and cropping scenes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="composites.html">Making composites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equalize-histogram.html">Histogram equalization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="indices.html">Working with indices</a></li>
 
 
 
-
-<li class="toctree-l1"><a class="reference internal" href="pansharpen.html">Pansharpening</a></li>
 <li class="toctree-l1"><a class="reference internal" href="missing-values.html">Fill missing values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="equalize-histogram.html">Histogram equalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pansharpen.html">Pansharpening</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Plotting bands overlaid on composites</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference Documentation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="api/index.html">List of functions and classes (API)</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api/index.html">List of functions and classes (API)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.load_scene.html">xlandsat.load_scene</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.save_scene.html">xlandsat.save_scene</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.load_panchromatic.html">xlandsat.load_panchromatic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.composite.html">xlandsat.composite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.pansharpen.html">xlandsat.pansharpen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.equalize_histogram.html">xlandsat.equalize_histogram</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.adjust_l1_colors.html">xlandsat.adjust_l1_colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.plot_composite_leaflet.html">xlandsat.plot_composite_leaflet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.nbr.html">xlandsat.nbr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.ndvi.html">xlandsat.ndvi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.pansharpen.html">xlandsat.pansharpen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.interpolate_missing.html">xlandsat.interpolate_missing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.datasets.fetch_brumadinho_after.html">xlandsat.datasets.fetch_brumadinho_after</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.datasets.fetch_brumadinho_before.html">xlandsat.datasets.fetch_brumadinho_before</a></li>
@@ -199,8 +204,10 @@
 <li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.datasets.fetch_manaus.html">xlandsat.datasets.fetch_manaus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.datasets.fetch_momotombo.html">xlandsat.datasets.fetch_momotombo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.datasets.fetch_roraima.html">xlandsat.datasets.fetch_roraima</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.datasets.fetch_corumba_after.html">xlandsat.datasets.fetch_corumba_after</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/generated/xlandsat.datasets.fetch_corumba_before.html">xlandsat.datasets.fetch_corumba_before</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="citing.html">Citing xlandsat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
@@ -228,7 +235,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -237,14 +244,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -386,10 +393,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -397,7 +404,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -456,10 +463,8 @@ version to get the thermal band as surface temperature:</p>
 <div class="cell_input code_cell docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_l1</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">fetch_momotombo</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">scene</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">load_scene</span><span class="p">(</span><span class="n">path_l1</span><span class="p">)</span>
-
 <span class="n">path_l2</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">fetch_momotombo</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">xls</span><span class="o">.</span><span class="n">load_scene</span><span class="p">(</span><span class="n">path_l2</span><span class="p">,</span> <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;thermal&quot;</span><span class="p">]))</span>
-
 <span class="n">scene</span>
 </pre></div>
 </div>
@@ -480,38 +485,86 @@ version to get the thermal band as surface temperature:</p>
 </symbol>
 </defs>
 </svg>
-<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
- *
- */
+<style>/* CSS stylesheet for displaying xarray objects in notebooks */
 
 :root {
-  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
-  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
-  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
-  --xr-border-color: var(--jp-border-color2, #e0e0e0);
-  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
-  --xr-background-color: var(--jp-layout-color0, white);
-  --xr-background-color-row-even: var(--jp-layout-color1, white);
-  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base rgba(0, 0, 0, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, white)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 15))
+  );
 }
 
-html[theme=dark],
-body[data-theme=dark],
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
 body.vscode-dark {
-  --xr-font-color0: rgba(255, 255, 255, 1);
-  --xr-font-color2: rgba(255, 255, 255, 0.54);
-  --xr-font-color3: rgba(255, 255, 255, 0.38);
-  --xr-border-color: #1F1F1F;
-  --xr-disabled-color: #515151;
-  --xr-background-color: #111111;
-  --xr-background-color-row-even: #111111;
-  --xr-background-color-row-odd: #313131;
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base, rgba(255, 255, 255, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, #111111)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 15))
+  );
 }
 
 .xr-wrap {
   display: block !important;
   min-width: 300px;
   max-width: 700px;
+  line-height: 1.6;
 }
 
 .xr-text-repr-fallback {
@@ -534,11 +587,18 @@ body.vscode-dark {
 }
 
 .xr-obj-type,
-.xr-array-name {
+.xr-obj-name,
+.xr-group-name {
   margin-left: 2px;
   margin-right: 10px;
 }
 
+.xr-group-name::before {
+  content: "📁";
+  padding-right: 0.3em;
+}
+
+.xr-group-name,
 .xr-obj-type {
   color: var(--xr-font-color2);
 }
@@ -546,7 +606,9 @@ body.vscode-dark {
 .xr-sections {
   padding-left: 0 !important;
   display: grid;
-  grid-template-columns: 150px auto auto 1fr 20px 20px;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .xr-section-item {
@@ -554,16 +616,24 @@ body.vscode-dark {
 }
 
 .xr-section-item input {
-  display: none;
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+  margin: 0;
 }
 
 .xr-section-item input + label {
   color: var(--xr-disabled-color);
+  border: 2px solid transparent !important;
 }
 
 .xr-section-item input:enabled + label {
   cursor: pointer;
   color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0) !important;
 }
 
 .xr-section-item input:enabled + label:hover {
@@ -587,7 +657,7 @@ body.vscode-dark {
 
 .xr-section-summary-in + label:before {
   display: inline-block;
-  content: '►';
+  content: "►";
   font-size: 11px;
   width: 15px;
   text-align: center;
@@ -598,7 +668,7 @@ body.vscode-dark {
 }
 
 .xr-section-summary-in:checked + label:before {
-  content: '▼';
+  content: "▼";
 }
 
 .xr-section-summary-in:checked + label > span {
@@ -608,7 +678,6 @@ body.vscode-dark {
 .xr-section-summary,
 .xr-section-inline-details {
   padding-top: 4px;
-  padding-bottom: 4px;
 }
 
 .xr-section-inline-details {
@@ -618,11 +687,38 @@ body.vscode-dark {
 .xr-section-details {
   display: none;
   grid-column: 1 / -1;
+  margin-top: 4px;
   margin-bottom: 5px;
 }
 
 .xr-section-summary-in:checked ~ .xr-section-details {
   display: contents;
+}
+
+.xr-group-box {
+  display: inline-grid;
+  grid-template-columns: 0px 20px auto;
+  width: 100%;
+}
+
+.xr-group-box-vline {
+  grid-column-start: 1;
+  border-right: 0.2em solid;
+  border-color: var(--xr-border-color);
+  width: 0px;
+}
+
+.xr-group-box-hline {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  height: 1em;
+  width: 20px;
+  border-bottom: 0.2em solid;
+  border-color: var(--xr-border-color);
+}
+
+.xr-group-box-contents {
+  grid-column-start: 3;
 }
 
 .xr-array-wrap {
@@ -670,15 +766,15 @@ body.vscode-dark {
 }
 
 .xr-dim-list:before {
-  content: '(';
+  content: "(";
 }
 
 .xr-dim-list:after {
-  content: ')';
+  content: ")";
 }
 
 .xr-dim-list li:not(:last-child):after {
-  content: ',';
+  content: ",";
   padding-right: 5px;
 }
 
@@ -695,7 +791,9 @@ body.vscode-dark {
 .xr-var-item label,
 .xr-var-item > .xr-var-name span {
   background-color: var(--xr-background-color-row-even);
+  border-color: var(--xr-background-color-row-odd);
   margin-bottom: 0;
+  padding-top: 2px;
 }
 
 .xr-var-item > .xr-var-name:hover span {
@@ -706,6 +804,7 @@ body.vscode-dark {
 .xr-var-list > li:nth-child(odd) > label,
 .xr-var-list > li:nth-child(odd) > .xr-var-name span {
   background-color: var(--xr-background-color-row-odd);
+  border-color: var(--xr-background-color-row-even);
 }
 
 .xr-var-name {
@@ -755,8 +854,15 @@ body.vscode-dark {
 .xr-var-data,
 .xr-index-data {
   display: none;
-  background-color: var(--xr-background-color) !important;
-  padding-bottom: 5px !important;
+  border-top: 2px dotted var(--xr-background-color);
+  padding-bottom: 20px !important;
+  padding-top: 10px !important;
+}
+
+.xr-var-attrs-in + label,
+.xr-var-data-in + label,
+.xr-index-data-in + label {
+  padding: 0 1px;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
@@ -767,6 +873,12 @@ body.vscode-dark {
 
 .xr-var-data > table {
   float: right;
+}
+
+.xr-var-data > pre,
+.xr-index-data > pre,
+.xr-var-data > table > tbody > tr {
+  background-color: transparent !important;
 }
 
 .xr-var-name span,
@@ -828,6 +940,14 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
+
+.xr-var-attrs-in:checked + label > .xr-icon-file-text2,
+.xr-var-data-in:checked + label > .xr-icon-database,
+.xr-index-data-in:checked + label > .xr-icon-database {
+  color: var(--xr-font-color0);
+  filter: drop-shadow(1px 1px 5px var(--xr-font-color2));
+  stroke-width: 0.8px;
+}
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 2MB
 Dimensions:   (easting: 468, northing: 334)
 Coordinates:
@@ -854,65 +974,57 @@ Attributes: (12/19)
     scene_center_time:          16:06:06.8773380Z
     wrs_path:                   17
     wrs_row:                    51
-    mtl_file:                   GROUP = LANDSAT_METADATA_FILE\n  GROUP = PROD...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-3b09e3fc-7790-4c96-90c1-43711be42836' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-3b09e3fc-7790-4c96-90c1-43711be42836' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>easting</span>: 468</li><li><span class='xr-has-index'>northing</span>: 334</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-2d86acef-a943-4907-ab02-8443c53d9b89' class='xr-section-summary-in' type='checkbox'  checked><label for='section-2d86acef-a943-4907-ab02-8443c53d9b89' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>easting</span></div><div class='xr-var-dims'>(easting)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>5.44e+05 5.44e+05 ... 5.58e+05</div><input id='attrs-d4cfe1cd-5a30-49a4-a6ba-faa01dbde5bf' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d4cfe1cd-5a30-49a4-a6ba-faa01dbde5bf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8c757bde-0727-4da6-9cd0-79dd56f77097' class='xr-var-data-in' type='checkbox'><label for='data-8c757bde-0727-4da6-9cd0-79dd56f77097' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM easting</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([543990., 544020., 544050., ..., 557940., 557970., 558000.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>northing</span></div><div class='xr-var-dims'>(northing)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>1.369e+06 1.369e+06 ... 1.379e+06</div><input id='attrs-41da8be8-a9b5-4277-8c84-bc294227fbe6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-41da8be8-a9b5-4277-8c84-bc294227fbe6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dabcf808-3d98-426c-9be8-4f8b2993de56' class='xr-var-data-in' type='checkbox'><label for='data-dabcf808-3d98-426c-9be8-4f8b2993de56' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM northing</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([1368990., 1369020., 1369050., ..., 1378920., 1378950., 1378980.])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-81a0c2e8-4467-4d7f-8462-ebbd60287f98' class='xr-section-summary-in' type='checkbox'  checked><label for='section-81a0c2e8-4467-4d7f-8462-ebbd60287f98' class='xr-section-summary' >Data variables: <span>(7)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>blue</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.1144 0.1152 ... 0.08728 0.09058</div><input id='attrs-baa1c6af-cc12-4f58-b90e-74213213e57c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-baa1c6af-cc12-4f58-b90e-74213213e57c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-744301b0-c833-4b04-8135-68f124c5ab77' class='xr-var-data-in' type='checkbox'><label for='data-744301b0-c833-4b04-8135-68f124c5ab77' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>blue</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>2</dd><dt><span>filename :</span></dt><dd>LC08_L1TP_017051_20151205_20200908_02_T1_B2.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.1144 , 0.11523, 0.1166 , ..., 0.08655, 0.08813, 0.0858 ],
+    mtl_file:                   GROUP = LANDSAT_METADATA_FILE\n  GROUP = PROD...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-25c9cbdb-d353-417a-a84d-8c245034e7cc' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-25c9cbdb-d353-417a-a84d-8c245034e7cc' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>easting</span>: 468</li><li><span class='xr-has-index'>northing</span>: 334</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-a6159b3e-0db3-430d-85f1-c5047b060212' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a6159b3e-0db3-430d-85f1-c5047b060212' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>easting</span></div><div class='xr-var-dims'>(easting)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>5.44e+05 5.44e+05 ... 5.58e+05</div><input id='attrs-27f291f3-86de-4256-8c30-0c5c4860d78d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-27f291f3-86de-4256-8c30-0c5c4860d78d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-312de52d-5021-4d38-959a-cb2a42d1c1bc' class='xr-var-data-in' type='checkbox'><label for='data-312de52d-5021-4d38-959a-cb2a42d1c1bc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM easting</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([543990., 544020., 544050., ..., 557940., 557970., 558000.], shape=(468,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>northing</span></div><div class='xr-var-dims'>(northing)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>1.369e+06 1.369e+06 ... 1.379e+06</div><input id='attrs-c7ec8d0c-3430-4c4f-a2b0-aea6f88049d0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c7ec8d0c-3430-4c4f-a2b0-aea6f88049d0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bf264c0c-0137-41ad-ae82-48d20a5756a6' class='xr-var-data-in' type='checkbox'><label for='data-bf264c0c-0137-41ad-ae82-48d20a5756a6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>UTM northing</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([1368990., 1369020., 1369050., ..., 1378920., 1378950., 1378980.],
+      shape=(334,))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-24f2f639-df80-4416-a896-27befd120a38' class='xr-section-summary-in' type='checkbox'  checked><label for='section-24f2f639-df80-4416-a896-27befd120a38' class='xr-section-summary' >Data variables: <span>(7)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>blue</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.1144 0.1152 ... 0.08728 0.09058</div><input id='attrs-e58b41c6-a5ab-449d-802b-8484c7f5a748' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e58b41c6-a5ab-449d-802b-8484c7f5a748' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1b072d94-76fa-4eeb-83fb-e171f4bf5dcc' class='xr-var-data-in' type='checkbox'><label for='data-1b072d94-76fa-4eeb-83fb-e171f4bf5dcc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>blue</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>2</dd><dt><span>filename :</span></dt><dd>LC08_L1TP_017051_20151205_20200908_02_T1_B2.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.1144 , 0.11523, 0.1166 , ..., 0.08655, 0.08813, 0.0858 ],
        [0.11523, 0.1162 , 0.11694, ..., 0.0856 , 0.0845 , 0.0834 ],
        [0.11584, 0.11584, 0.11633, ..., 0.0835 , 0.0803 , 0.0803 ],
        ...,
        [0.11646, 0.1173 , 0.1166 , ..., 0.084  , 0.0824 , 0.08923],
        [0.11584, 0.1178 , 0.11694, ..., 0.0829 , 0.08765, 0.09375],
        [0.1144 , 0.1157 , 0.1178 , ..., 0.0791 , 0.0873 , 0.0906 ]],
-      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>green</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.1035 0.1042 ... 0.08313 0.08264</div><input id='attrs-30b21029-276f-45b8-8df5-5b658ed491fa' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-30b21029-276f-45b8-8df5-5b658ed491fa' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-da4768f7-bfba-4354-9bfe-75dcdd259a27' class='xr-var-data-in' type='checkbox'><label for='data-da4768f7-bfba-4354-9bfe-75dcdd259a27' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>green</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>3</dd><dt><span>filename :</span></dt><dd>LC08_L1TP_017051_20151205_20200908_02_T1_B3.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.1035 , 0.10425, 0.105  , ..., 0.0681 , 0.0687 , 0.0675 ],
+      shape=(334, 468), dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>green</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.1035 0.1042 ... 0.08313 0.08264</div><input id='attrs-db636d15-c0ee-4414-8f91-a5ee603fa689' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-db636d15-c0ee-4414-8f91-a5ee603fa689' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ac65f186-9b2d-4d8c-823a-78bc9ee6795c' class='xr-var-data-in' type='checkbox'><label for='data-ac65f186-9b2d-4d8c-823a-78bc9ee6795c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>green</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>3</dd><dt><span>filename :</span></dt><dd>LC08_L1TP_017051_20151205_20200908_02_T1_B3.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.1035 , 0.10425, 0.105  , ..., 0.0681 , 0.0687 , 0.0675 ],
        [0.10425, 0.1041 , 0.10474, ..., 0.06775, 0.06396, 0.06384],
        [0.10425, 0.1045 , 0.10596, ..., 0.0626 , 0.05957, 0.06006],
        ...,
        [0.1024 , 0.1024 , 0.1039 , ..., 0.0773 , 0.0747 , 0.08057],
        [0.10315, 0.1029 , 0.1051 , ..., 0.0748 , 0.07886, 0.08203],
        [0.10266, 0.1034 , 0.10425, ..., 0.0708 , 0.0831 , 0.08264]],
-      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>red</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.08057 0.08093 ... 0.08423 0.07532</div><input id='attrs-009259ed-3fc2-40d8-8e37-e5999334dbec' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-009259ed-3fc2-40d8-8e37-e5999334dbec' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7f34e03d-0aba-4260-bbc7-4ff1765a25c4' class='xr-var-data-in' type='checkbox'><label for='data-7f34e03d-0aba-4260-bbc7-4ff1765a25c4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>red</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>4</dd><dt><span>filename :</span></dt><dd>LC08_L1TP_017051_20151205_20200908_02_T1_B4.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.08057, 0.08093, 0.0814 , ..., 0.05078, 0.0515 , 0.04968],
+      shape=(334, 468), dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>red</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.08057 0.08093 ... 0.08423 0.07532</div><input id='attrs-eb9b64e0-311a-4ea8-98dd-fe86012411cb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-eb9b64e0-311a-4ea8-98dd-fe86012411cb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-95d4317b-053f-415c-ade2-21e5d8ba8d19' class='xr-var-data-in' type='checkbox'><label for='data-95d4317b-053f-415c-ade2-21e5d8ba8d19' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>red</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>4</dd><dt><span>filename :</span></dt><dd>LC08_L1TP_017051_20151205_20200908_02_T1_B4.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.08057, 0.08093, 0.0814 , ..., 0.05078, 0.0515 , 0.04968],
        [0.08044, 0.08105, 0.08203, ..., 0.05103, 0.04736, 0.04614],
        [0.0819 , 0.0819 , 0.0831 , ..., 0.04504, 0.0421 , 0.04236],
        ...,
        [0.0842 , 0.0824 , 0.0858 , ..., 0.0631 , 0.0636 , 0.0709 ],
        [0.0836 , 0.0841 , 0.08545, ..., 0.05945, 0.0764 , 0.08044],
        [0.08203, 0.0846 , 0.0847 , ..., 0.05518, 0.0842 , 0.0753 ]],
-      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>nir</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.05298 0.05371 ... 0.2059 0.1991</div><input id='attrs-15ddc573-cfc9-4625-a631-141677a02b11' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-15ddc573-cfc9-4625-a631-141677a02b11' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d7b1e0d4-1f15-4812-a4bc-475e7d8d8a04' class='xr-var-data-in' type='checkbox'><label for='data-d7b1e0d4-1f15-4812-a4bc-475e7d8d8a04' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>near-infrared</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>5</dd><dt><span>filename :</span></dt><dd>LC08_L1TP_017051_20151205_20200908_02_T1_B5.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.05298, 0.0537 , 0.0547 , ..., 0.02856, 0.03064, 0.02625],
+      shape=(334, 468), dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>nir</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.05298 0.05371 ... 0.2059 0.1991</div><input id='attrs-1bdb86dd-d080-40bc-bd37-d4c68ba99072' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1bdb86dd-d080-40bc-bd37-d4c68ba99072' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e6353c6d-55f7-4d0c-b8a1-207f0e6365ae' class='xr-var-data-in' type='checkbox'><label for='data-e6353c6d-55f7-4d0c-b8a1-207f0e6365ae' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>near-infrared</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>5</dd><dt><span>filename :</span></dt><dd>LC08_L1TP_017051_20151205_20200908_02_T1_B5.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.05298, 0.0537 , 0.0547 , ..., 0.02856, 0.03064, 0.02625],
        [0.05396, 0.0548 , 0.0575 , ..., 0.02869, 0.02527, 0.02246],
        [0.0553 , 0.0559 , 0.0586 , ..., 0.02313, 0.01868, 0.0177 ],
        ...,
        [0.273  , 0.2783 , 0.2632 , ..., 0.292  , 0.2408 , 0.2362 ],
        [0.2715 , 0.272  , 0.27   , ..., 0.31   , 0.2177 , 0.2242 ],
        [0.271  , 0.2773 , 0.2773 , ..., 0.3096 , 0.2059 , 0.1991 ]],
-      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>swir1</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.02832 0.0293 ... 0.1639 0.1517</div><input id='attrs-7edfbc35-efbe-49b9-ba85-231efb29ad61' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7edfbc35-efbe-49b9-ba85-231efb29ad61' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bc36a821-54c1-449d-ad9d-7cabbd109ded' class='xr-var-data-in' type='checkbox'><label for='data-bc36a821-54c1-449d-ad9d-7cabbd109ded' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>short-wave infrared 1</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>6</dd><dt><span>filename :</span></dt><dd>LC08_L1TP_017051_20151205_20200908_02_T1_B6.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.02832 , 0.0293  , 0.03125 , ..., 0.01923 , 0.01746 , 0.01477 ],
+      shape=(334, 468), dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>swir1</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.02832 0.0293 ... 0.1639 0.1517</div><input id='attrs-f303f7dc-de52-45d8-a5b6-6e45a6280b6e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f303f7dc-de52-45d8-a5b6-6e45a6280b6e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e74d0aa9-95ba-4be9-9386-037298e9ca63' class='xr-var-data-in' type='checkbox'><label for='data-e74d0aa9-95ba-4be9-9386-037298e9ca63' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>short-wave infrared 1</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>6</dd><dt><span>filename :</span></dt><dd>LC08_L1TP_017051_20151205_20200908_02_T1_B6.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.02832 , 0.0293  , 0.03125 , ..., 0.01923 , 0.01746 , 0.01477 ],
        [0.02832 , 0.02905 , 0.0304  , ..., 0.01825 , 0.01221 , 0.01123 ],
        [0.02869 , 0.02893 , 0.02979 , ..., 0.01135 , 0.007996, 0.007263],
        ...,
        [0.1449  , 0.1442  , 0.1432  , ..., 0.1683  , 0.1676  , 0.1791  ],
        [0.1426  , 0.1447  , 0.1456  , ..., 0.1627  , 0.1627  , 0.1725  ],
        [0.1434  , 0.1416  , 0.141   , ..., 0.1588  , 0.164   , 0.1517  ]],
-      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>swir2</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.02081 0.02148 ... 0.1073 0.1031</div><input id='attrs-96cdfea3-1852-4d93-89c3-96b52965d4b8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-96cdfea3-1852-4d93-89c3-96b52965d4b8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e529c8e2-c041-4afc-a745-5e0ac3f3d487' class='xr-var-data-in' type='checkbox'><label for='data-e529c8e2-c041-4afc-a745-5e0ac3f3d487' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>short-wave infrared 2</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>7</dd><dt><span>filename :</span></dt><dd>LC08_L1TP_017051_20151205_20200908_02_T1_B7.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.02081, 0.02148, 0.02264, ..., 0.01855, 0.01794, 0.01459],
+      shape=(334, 468), dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>swir2</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>0.02081 0.02148 ... 0.1073 0.1031</div><input id='attrs-4b915f17-eb01-4651-a6d3-234cfb56fd43' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4b915f17-eb01-4651-a6d3-234cfb56fd43' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f5680fda-1f04-401e-9036-3fa9d9997465' class='xr-var-data-in' type='checkbox'><label for='data-f5680fda-1f04-401e-9036-3fa9d9997465' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>short-wave infrared 2</dd><dt><span>units :</span></dt><dd>reflectance</dd><dt><span>number :</span></dt><dd>7</dd><dt><span>filename :</span></dt><dd>LC08_L1TP_017051_20151205_20200908_02_T1_B7.TIF</dd><dt><span>scaling_mult :</span></dt><dd>2e-05</dd><dt><span>scaling_add :</span></dt><dd>-0.1</dd></dl></div><div class='xr-var-data'><pre>array([[0.02081, 0.02148, 0.02264, ..., 0.01855, 0.01794, 0.01459],
        [0.02094, 0.0216 , 0.02258, ..., 0.01733, 0.01129, 0.01019],
        [0.0213 , 0.02148, 0.02222, ..., 0.01099, 0.00708, 0.00592],
        ...,
        [0.0735 , 0.07275, 0.07434, ..., 0.07776, 0.08923, 0.1017 ],
        [0.07324, 0.0742 , 0.0748 , ..., 0.07227, 0.0945 , 0.1017 ],
        [0.07324, 0.07227, 0.07263, ..., 0.0692 , 0.1073 , 0.10315]],
-      dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>thermal</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>nan nan nan ... 309.5 311.0 312.0</div><input id='attrs-fd0ac492-383f-4a9b-b2d3-19a373346498' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fd0ac492-383f-4a9b-b2d3-19a373346498' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5547a7ed-1fcf-4d85-a8be-5225a6acf83f' class='xr-var-data-in' type='checkbox'><label for='data-5547a7ed-1fcf-4d85-a8be-5225a6acf83f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>thermal</dd><dt><span>units :</span></dt><dd>Kelvin</dd><dt><span>number :</span></dt><dd>10</dd><dt><span>filename :</span></dt><dd>LC08_L2SP_017051_20151205_20200908_02_T1_ST_B10.TIF</dd><dt><span>scaling_mult :</span></dt><dd>0.00341802</dd><dt><span>scaling_add :</span></dt><dd>149.0</dd></dl></div><div class='xr-var-data'><pre>array([[  nan,   nan,   nan, ...,   nan,   nan,   nan],
+      shape=(334, 468), dtype=float16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>thermal</span></div><div class='xr-var-dims'>(northing, easting)</div><div class='xr-var-dtype'>float16</div><div class='xr-var-preview xr-preview'>nan nan nan ... 309.5 311.0 312.0</div><input id='attrs-1a3644ad-f467-4472-acee-65f4111ef70f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1a3644ad-f467-4472-acee-65f4111ef70f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e46023ec-d8d1-4086-9beb-5038c1eb4f3e' class='xr-var-data-in' type='checkbox'><label for='data-e46023ec-d8d1-4086-9beb-5038c1eb4f3e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>thermal</dd><dt><span>units :</span></dt><dd>Kelvin</dd><dt><span>number :</span></dt><dd>10</dd><dt><span>filename :</span></dt><dd>LC08_L2SP_017051_20151205_20200908_02_T1_ST_B10.TIF</dd><dt><span>scaling_mult :</span></dt><dd>0.00341802</dd><dt><span>scaling_add :</span></dt><dd>149.0</dd></dl></div><div class='xr-var-data'><pre>array([[  nan,   nan,   nan, ...,   nan,   nan,   nan],
        [  nan, 293.5, 293.5, ..., 297.5, 297.5, 297.8],
        [  nan, 293. , 293.5, ..., 298. , 298. , 298. ],
        ...,
        [  nan, 274.5, 274.5, ..., 310.5, 311. , 312. ],
        [  nan, 275.2, 275.5, ..., 310. , 311.5, 312.5],
-       [  nan, 276. , 276.2, ..., 309.5, 311. , 312. ]], dtype=float16)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-6eeced85-d9bc-4892-8915-3b83aa5d2c98' class='xr-section-summary-in' type='checkbox'  ><label for='section-6eeced85-d9bc-4892-8915-3b83aa5d2c98' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>easting</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-a9c4b916-7439-4083-8513-2041e3c6e5b2' class='xr-index-data-in' type='checkbox'/><label for='index-a9c4b916-7439-4083-8513-2041e3c6e5b2' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([543990.0, 544020.0, 544050.0, 544080.0, 544110.0, 544140.0, 544170.0,
-       544200.0, 544230.0, 544260.0,
-       ...
-       557730.0, 557760.0, 557790.0, 557820.0, 557850.0, 557880.0, 557910.0,
-       557940.0, 557970.0, 558000.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;easting&#x27;, length=468))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>northing</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-9e9c3b2d-54f3-47c6-9d97-e2aefeee9a21' class='xr-index-data-in' type='checkbox'/><label for='index-9e9c3b2d-54f3-47c6-9d97-e2aefeee9a21' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([1368990.0, 1369020.0, 1369050.0, 1369080.0, 1369110.0, 1369140.0,
-       1369170.0, 1369200.0, 1369230.0, 1369260.0,
-       ...
-       1378710.0, 1378740.0, 1378770.0, 1378800.0, 1378830.0, 1378860.0,
-       1378890.0, 1378920.0, 1378950.0, 1378980.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;northing&#x27;, length=334))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-e6924e21-4fae-4cb8-9bbf-557e4faa7adb' class='xr-section-summary-in' type='checkbox'  ><label for='section-e6924e21-4fae-4cb8-9bbf-557e4faa7adb' class='xr-section-summary' >Attributes: <span>(19)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>title :</span></dt><dd>Landsat 8 scene from 2015-12-05 (path/row=17/51)</dd><dt><span>digital_object_identifier :</span></dt><dd>https://doi.org/10.5066/P975CC9B</dd><dt><span>origin :</span></dt><dd>Image courtesy of the U.S. Geological Survey</dd><dt><span>landsat_product_id :</span></dt><dd>LC08_L1TP_017051_20151205_20200908_02_T1</dd><dt><span>processing_level :</span></dt><dd>L1TP</dd><dt><span>collection_number :</span></dt><dd>02</dd><dt><span>collection_category :</span></dt><dd>T1</dd><dt><span>spacecraft_id :</span></dt><dd>LANDSAT_8</dd><dt><span>sensor_id :</span></dt><dd>OLI_TIRS</dd><dt><span>map_projection :</span></dt><dd>UTM</dd><dt><span>utm_zone :</span></dt><dd>16</dd><dt><span>datum :</span></dt><dd>WGS84</dd><dt><span>ellipsoid :</span></dt><dd>WGS84</dd><dt><span>date_acquired :</span></dt><dd>2015-12-05</dd><dt><span>scene_center_time :</span></dt><dd>16:06:06.8773380Z</dd><dt><span>wrs_path :</span></dt><dd>17</dd><dt><span>wrs_row :</span></dt><dd>51</dd><dt><span>mtl_file :</span></dt><dd>GROUP = LANDSAT_METADATA_FILE
+       [  nan, 276. , 276.2, ..., 309.5, 311. , 312. ]],
+      shape=(334, 468), dtype=float16)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-7a6686bf-511e-4976-b02a-186498b48185' class='xr-section-summary-in' type='checkbox'  ><label for='section-7a6686bf-511e-4976-b02a-186498b48185' class='xr-section-summary' >Attributes: <span>(19)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>title :</span></dt><dd>Landsat 8 scene from 2015-12-05 (path/row=17/51)</dd><dt><span>digital_object_identifier :</span></dt><dd>https://doi.org/10.5066/P975CC9B</dd><dt><span>origin :</span></dt><dd>Image courtesy of the U.S. Geological Survey</dd><dt><span>landsat_product_id :</span></dt><dd>LC08_L1TP_017051_20151205_20200908_02_T1</dd><dt><span>processing_level :</span></dt><dd>L1TP</dd><dt><span>collection_number :</span></dt><dd>02</dd><dt><span>collection_category :</span></dt><dd>T1</dd><dt><span>spacecraft_id :</span></dt><dd>LANDSAT_8</dd><dt><span>sensor_id :</span></dt><dd>OLI_TIRS</dd><dt><span>map_projection :</span></dt><dd>UTM</dd><dt><span>utm_zone :</span></dt><dd>16</dd><dt><span>datum :</span></dt><dd>WGS84</dd><dt><span>ellipsoid :</span></dt><dd>WGS84</dd><dt><span>date_acquired :</span></dt><dd>2015-12-05</dd><dt><span>scene_center_time :</span></dt><dd>16:06:06.8773380Z</dd><dt><span>wrs_path :</span></dt><dd>17</dd><dt><span>wrs_row :</span></dt><dd>51</dd><dt><span>mtl_file :</span></dt><dd>GROUP = LANDSAT_METADATA_FILE
   GROUP = PRODUCT_CONTENTS
     ORIGIN = &quot;Image courtesy of the U.S. Geological Survey&quot;
     DIGITAL_OBJECT_IDENTIFIER = &quot;https://doi.org/10.5066/P975CC9B&quot;
@@ -1210,14 +1322,11 @@ have to show:</p>
 <span class="n">rgb</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">adjust_l1_colors</span><span class="p">(</span><span class="n">rgb</span><span class="p">)</span>
 
 <span class="c1"># Plot the RGB and thermal separately</span>
-<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-
-<span class="n">rgb</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
-<span class="n">scene</span><span class="o">.</span><span class="n">thermal</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">)</span>
-
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
-
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;constrained&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">rgb</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">thermal</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1235,16 +1344,14 @@ to overlay the two in a single plot.</p>
 <p>To do so, we’ll first create a version of the thermal band that has all pixels
 with temperature below 320 K set to NaN (not-a-number). This is used to
 indicate to matplotlib that a pixel should be transparent. An easy way to do
-this is with the <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.where.html#xarray.where" title="(in xarray v2024.3.1.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">xarray.where</span></code></a> function:</p>
+this is with the <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.where.html#xarray.where" title="(in xarray v2025.10.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">xarray.where</span></code></a> function:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If the condition is true, use the thermal values. If it&#39;s false, use nan</span>
 <span class="n">lava</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">thermal</span> <span class="o">&gt;=</span> <span class="mi">320</span><span class="p">,</span> <span class="n">scene</span><span class="o">.</span><span class="n">thermal</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">keep_attrs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;constrained&quot;</span><span class="p">)</span>
 <span class="n">lava</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">)</span>
-
 <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1262,17 +1369,15 @@ will preserve the information on units, procedence, etc. But be careful
 with this since it can lead to metadata being propagated when it’s no
 longer valid.</p>
 </div>
-<p>Now that we have an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2024.3.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> with the lava flow only, we can
+<p>Now that we have an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v2025.10.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a> with the lava flow only, we can
 plot that on top of the RGB composite and add a bit of transparency using the
 <code class="docutils literal notranslate"><span class="pre">alpha</span></code> parameter of <code class="docutils literal notranslate"><span class="pre">imshow</span></code>.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;constrained&quot;</span><span class="p">)</span>
 <span class="c1"># RGB goes first so it&#39;s at the bottom</span>
 <span class="n">rgb</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">lava</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-
 <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1294,16 +1399,16 @@ flow is displayed in a nice format.</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="equalize-histogram.html"
+       href="pansharpen.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Histogram equalization</p>
+        <p class="prev-next-title">Pansharpening</p>
       </div>
     </a>
     <a class="right-next"
@@ -1322,8 +1427,6 @@ flow is displayed in a nice format.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
-              
             
           </div>
           <footer class="bd-footer-content">
@@ -1339,7 +1442,7 @@ flow is displayed in a nice format.</p>
 
   <p class="copyright">
     
-      © Copyright 2024, The xlandsat developers.
+      © Copyright 2025, The xlandsat developers.
       <br/>
     
   </p>
@@ -1348,7 +1451,7 @@ flow is displayed in a nice format.</p>
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Apr 10, 2024.
+  Last updated on Oct 29, 2025.
   <br/>
 </p>
   </div>
@@ -1366,8 +1469,8 @@ flow is displayed in a nice format.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
