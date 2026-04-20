@@ -38,13 +38,20 @@ jobs:
       # run all of them to catch failures in different combinations.
       fail-fast: false
       matrix:
-        os: [ubuntu, macos, windows]
+        os: [ubuntu-latest, windows-latest]
         python: ["3.9", "3.12"]
         include:
           - python: "3.9"
             dependencies: oldest
           - python: "3.12"
             dependencies: latest
+          # Have to use older mac because older dependencies don't have ARM builds
+          - os: macos-13
+            dependencies: oldest
+            python: "3.9"
+          - os: macos-latest
+            dependencies: latest
+            python: "3.12"
     env:
       REQUIREMENTS: env/requirements-build.txt env/requirements-test.txt
       # Used to tag codecov submissions
