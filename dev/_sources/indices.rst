@@ -10,9 +10,26 @@ differentiate between them.
 Many of these indices can be calculated with simple arithmetic operations.
 So now that our data are in :class:`xarray.Dataset`'s, it's fairly easy to
 calculate them.
-As an example, we'll use two example scenes from before and after the
+Some commonly used indices are provided as functions in :mod:`xlandsat` but
+any other index can be calculated using the power of :mod:`xarray`.
+
+Here, we'll see some examples of indices that can be calculated.
+First, we must import the required packages for the examples below.
+
+.. jupyter-execute::
+
+    import xlandsat as xls
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+NDVI
+----
+
+As an example, we'll use two scenes from before and after the
 `Brumadinho tailings dam disaster <https://en.wikipedia.org/wiki/Brumadinho_dam_disaster>`__
-to try to image and quantify the total area flooded by the damn collapse.
+to try to image and quantify the total area flooded by the damn collapse using
+`NDVI <https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index>`__,
+which is available in :func:`xlandsat.ndvi`.
 
 .. admonition:: Trigger warning
     :class: warning
@@ -25,24 +42,18 @@ to try to image and quantify the total area flooded by the damn collapse.
     **Some readers may find this topic disturbing and may not wish to read
     futher.**
 
-First, we must import the required packages, download our two sample scenes,
-and load them with :func:`xlandsat.load_scene`:
+First, we must download the sample data and load the two scenes with
+:func:`xlandsat.load_scene`:
 
 .. jupyter-execute::
 
-    import xlandsat as xls
-    import matplotlib.pyplot as plt
-
-
     path_before = xls.datasets.fetch_brumadinho_before()
     path_after = xls.datasets.fetch_brumadinho_after()
-
     before = xls.load_scene(path_before)
     after = xls.load_scene(path_after)
     after
 
-Let's make RGB composites to get a sense of what these
-two scenes contain:
+Let's make RGB composites to get a sense of what these two scenes contain:
 
 .. jupyter-execute::
 
@@ -65,42 +76,23 @@ as it was contaminated by the mud flow.
 
      See :ref:`composites` for more information on what we did above.
 
-NDVI
-----
-
-We can calculate the
-`NDVI <https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index>`__
-for these scenes to see if we can isolate the effect of the flood following the
-dam collapse.
+We can calculate the NDVI for these scenes to see if we can isolate the effect
+of the flood following the dam collapse.
 NDVI highlights vegetation, which we assume will have decreased in the after
 scene due to the flood.
-NDVI is defined as:
-
-.. math::
-
-    NDVI = \dfrac{NIR - Red}{NIR + Red}
-
-which we can calculate with xarray as:
+Calculating the NDVI is as simple as calling :func:`xlandsat.ndvi` with the
+scene as an argument:
 
 .. jupyter-execute::
 
-    ndvi_before = (before.nir - before.red) / (before.nir + before.red)
-    ndvi_before
-
-Now we can do the same for the after scene:
-
-.. jupyter-execute::
-
-    ndvi_after = (after.nir - after.red) / (after.nir + after.red)
+    ndvi_before = xls.ndvi(before)
+    ndvi_after = xls.ndvi(after)
     ndvi_after
 
-And add some metadata for xarray to find when making plots:
+And add some extra metadata for xarray to find when making plots:
 
 .. jupyter-execute::
 
-    for ndvi in [ndvi_before, ndvi_after]:
-        ndvi.attrs["long_name"] = "normalized difference vegetation index"
-        ndvi.attrs["units"] = "dimensionless"
     ndvi_before.attrs["title"] = "NDVI before"
     ndvi_after.attrs["title"] = "NDVI after"
 
@@ -119,7 +111,7 @@ disaster:
 
 
 Tracking differences
---------------------
+++++++++++++++++++++
 
 An advantage of having our data in :class:`xarray.DataArray` format is that we
 can perform **coordinate-aware** calculations. This means that taking the
@@ -168,7 +160,7 @@ collapse in purple at the center.
 
 
 Estimating area
----------------
++++++++++++++++
 
 One things we can do with indices and their differences in time is calculated
 **area estimates**. If we know that the region of interest has index values
@@ -268,42 +260,112 @@ that many people will understand:
    `Silva Rotta et al. (2020) <https://doi.org/10.1016/j.jag.2020.102119>`__.
 
 
-Other indices
--------------
+NBR
+---
 
-Calculating other indices will follow a very similar strategy to NDVI since
-most of them only involve arithmetic operations on different bands.
-As an example, let's calculate and plot the
-`Modified Soil Adjusted Vegetation Index (MSAVI) <https://doi.org/10.1016/0034-4257(94)90134-1>`__
-for our two scenes:
+The `Normalized Burn Ratio <https://www.earthdatascience.org/courses/earth-analytics/multispectral-remote-sensing-modis/normalized-burn-index-dNBR/>`__ is a useful tool to assess
+areas affected by recent fires.
+The NBR takes advantage of the relatively high reflectivity of burned areas in
+the short-wave infrared (SWIR) range when compared with vegetated areas.
+It's defined as
+
+.. math::
+
+    NBR = \dfrac{NIR - SWIR}{NIR + SWIR}
+
+As an example, we can use our sample data from a fire that happened in near the
+city of Corumbá, Brazil. The sample scene is generated from Level 1 Landsat 8
+data. It contains only a section of the fire and we have scenes from before the
+fire and from the very end of the fire.
 
 .. jupyter-execute::
 
-    import numpy as np
+    before = xls.load_scene(xls.datasets.fetch_corumba_before())
+    after = xls.load_scene(xls.datasets.fetch_corumba_after())
+    after
 
-    # This time, use a loop and put them in a list to avoid repeated code
-    msavi_collection = []
-    for scene in [before, after]:
-        msavi = (
-            (
-                2 * scene.nir + 1 - np.sqrt(
-                    (2 * scene.nir + 1) * 2 - 8 * (scene.nir - scene.red)
-                )
-            ) / 2
-        )
-        msavi.name = "msavi"
-        msavi.attrs["long_name"] = "modified soil adjusted vegetation index"
-        msavi.attrs["units"] = "dimensionless"
-        msavi.attrs["title"] = scene.attrs["title"]
-        msavi_collection.append(msavi)
+Let's make RGB composites to get a sense of what these two scenes contain:
 
-    # Plotting is mostly the same
-    fig, axes = plt.subplots(2, 1, figsize=(10, 12), layout="tight")
-    for ax, msavi in zip(axes, msavi_collection):
-        msavi.plot(ax=ax, vmin=-0.5, vmax=0.5, cmap="RdBu_r")
-        ax.set_title(msavi.attrs["title"])
+.. jupyter-execute::
+
+    rgb_before = xls.adjust_l1_colors(
+        xls.composite(before, rescale_to=(0, 0.2)),
+        percentile=0,
+    )
+    rgb_after = xls.adjust_l1_colors(
+        xls.composite(after, rescale_to=(0, 0.2)),
+        percentile=0,
+    )
+
+    fig, axes = plt.subplots(1, 2, figsize=(10, 8), layout="constrained")
+    for ax, rgb in zip(axes, [rgb_before, rgb_after]):
+        rgb.plot.imshow(ax=ax)
+        ax.set_title(rgb.attrs["title"])
         ax.set_aspect("equal")
     plt.show()
 
-**With this same logic, you could calculate NBR and dNBR, other variants of
-NDVI, NDSI, etc.**
+Now we can calculate the NBR for before and after:
+
+.. jupyter-execute::
+
+    nbr_before = xls.nbr(before)
+    nbr_after = xls.nbr(after)
+
+    fig, axes = plt.subplots(1, 2, figsize=(10, 8), layout="constrained")
+    for ax, nbr in zip(axes, [nbr_before, nbr_after]):
+        nbr.plot.imshow(ax=ax, cbar_kwargs=dict(orientation="horizontal"))
+        ax.set_title(nbr.attrs["title"])
+        ax.set_aspect("equal")
+    plt.show()
+
+A useful metric to better visualize the extent of the fires and to even
+classify the burn intensity is the dNBR, which can be calculated as:
+
+.. jupyter-execute::
+
+    dnbr = nbr_before - nbr_after
+
+    fig, axes = plt.subplots(1, 2, figsize=(10, 7), layout="constrained")
+    rgb.plot.imshow(ax=axes[0])
+    dnbr.plot.imshow(ax=axes[1], cbar_kwargs=dict(orientation="horizontal"))
+    for ax in axes:
+        ax.set_aspect("equal")
+    plt.show()
+
+The dNBR values > 0.1 indicate the areas that have been burned. The bright red
+parts of the dNBR image above reflect the ongoing fire that was still burning
+in the area.
+
+
+Calculating your own indices
+----------------------------
+
+Calculating other indices will is relatively straight forward since most of
+them only involve arithmetic operations on different bands.
+As an example, let's calculate and plot the
+`Modified Soil Adjusted Vegetation Index (MSAVI) <https://doi.org/10.1016/0034-4257(94)90134-1>`__
+for our Manaus, Brazil, sample data:
+
+.. jupyter-execute::
+
+    scene = xls.load_scene(xls.datasets.fetch_manaus())
+
+    msavi = 0.5 * (
+        2 * scene.nir + 1
+        - np.sqrt((2 * scene.nir + 1) * 2 - 8 * (scene.nir - scene.red))
+    )
+    msavi.name = "msavi"
+    msavi.attrs["long_name"] = "modified soil adjusted vegetation index"
+
+    # Plot an RGB as well for comparison
+    rgb = xls.composite(scene, rescale_to=[0.02, 0.2])
+
+    fig, axes = plt.subplots(2, 1, figsize=(10, 9.75), layout="constrained")
+    rgb.plot.imshow(ax=axes[0])
+    msavi.plot(ax=axes[1], vmin=-0.5, vmax=0.5, cmap="RdBu_r")
+    axes[0].set_title("Manaus, Brazil")
+    for ax in axes:
+        ax.set_aspect("equal")
+    plt.show()
+
+**With this same logic, you could calculate any other index.**

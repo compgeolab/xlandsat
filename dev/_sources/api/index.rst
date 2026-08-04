@@ -11,22 +11,39 @@ Input and output
 ----------------
 
 .. autosummary::
-   :toctree: generated/
+    :toctree: generated/
 
     load_scene
     save_scene
     load_panchromatic
 
+Visualization
+-------------
+
+.. autosummary::
+    :toctree: generated/
+
+    composite
+    equalize_histogram
+    adjust_l1_colors
+    plot_composite_leaflet
+
+Indices
+-------
+
+.. autosummary::
+    :toctree: generated/
+
+    nbr
+    ndvi
+
 Processing
 ----------
 
 .. autosummary::
-   :toctree: generated/
+    :toctree: generated/
 
-    composite
     pansharpen
-    equalize_histogram
-    adjust_l1_colors
     interpolate_missing
 
 Sample datasets
@@ -46,3 +63,5 @@ Sample datasets
     datasets.fetch_manaus
     datasets.fetch_momotombo
     datasets.fetch_roraima
+    datasets.fetch_corumba_after
+    datasets.fetch_corumba_before

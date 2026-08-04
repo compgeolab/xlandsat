@@ -84,8 +84,16 @@ instead:
 
     plt.show()
 
-Well, this looks bad because some very bright pixels in the city are making the
-majority of the other pixels have only a small share of the full range of
+It's also possible to add a composite to an interactive `ipyleaflet
+<https://ipyleaflet.readthedocs.io/en/latest/>`__ map using
+:func:`xlandsat.plot_composite_leaflet`:
+
+.. jupyter-execute::
+
+    xls.plot_composite_leaflet(rgb)
+
+This composite looks bad because some very bright pixels in the city are making
+the majority of the other pixels have only a small share of the full range of
 available values. This can be mitigated by rescaling the intensity of the image
 to a smaller range of reflectance values.
 
@@ -155,6 +163,39 @@ this band combination to :func:`xlandsat.composite` to see what happens:
 In this composite, the contrast between the forest and water bodies on the
 right are much clearer!
 
+Composites highlighting fires
+-----------------------------
+
+When a fire is currently burning and producing smoke, it can be difficult to
+visualize the fire front in a regular RGB composite. For this, the SWIR and NIR
+bands can be very useful. A composite of SWIR, NIR, and blue can be useful to
+highlight the burned areas, ongoing fire, and vegetation.
+Let's see what this looks like in our Corumbá, Brazil, sample data:
+
+.. jupyter-execute::
+
+    corumba = xls.load_scene(xls.datasets.fetch_corumba_after())
+    corumba_rgb = xls.adjust_l1_colors(
+        xls.composite(corumba, rescale_to=(0, 0.2)),
+        percentile=0,
+    )
+    corumba_fire = xls.composite(
+        corumba, rescale_to=(0, 0.4), bands=["swir1", "nir", "blue"],
+    )
+
+    fig, axes = plt.subplots(1, 2, figsize=(10, 8), layout="constrained")
+    for ax, composite in zip(axes, [corumba_rgb, corumba_fire]):
+        composite.plot.imshow(ax=ax)
+        ax.set_title(rgb.attrs["long_name"])
+        ax.set_aspect("equal")
+    plt.show()
+
+The burn scar can be seen in the RGB but there is smoke in the South and it's
+not clear whether there are any active fires still burning.
+The SWIR/NIR/green composite highlights the active fires in bright red and can
+even show then through the smoke (which doesn't reflect in the SWIR bands).
+This composite also highlights the difference between burned areas and
+preserved vegetation.
 
 Other composites
 ----------------

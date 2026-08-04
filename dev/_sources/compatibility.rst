@@ -56,4 +56,6 @@ releases to ensure compatibility:
     * - **Python version**
       - **Last compatible release**
     * - 3.7
-      - Not yet released
+      - v0.5.0
+    * - 3.8
+      - v0.5.0
